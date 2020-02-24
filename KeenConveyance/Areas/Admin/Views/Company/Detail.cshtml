@@ -1,0 +1,284 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblTransportCompany
+@{
+
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section scripts
+{
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","Company")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-4" style="text-align:center">
+                    @{
+                        if (Model.Logo == null)
+                        {
+                            <img src="~/Logo/defaultlogo.jpg" class="img-thumbnail" />
+                        }
+                        else
+                        {
+                            <img src="~/Logo/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" />
+                        }
+                    }
+                    <br />
+                    <p>
+                        Member since
+                    </p>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <h1 class="text-primary"><b>@Html.DisplayFor(model => model.CompanyName)'s Profile</b></h1><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="EmailID:@Html.DisplayFor(model => model.CompanyEmail)">
+                                <h5>@Html.DisplayFor(model => model.CompanyEmail)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-phone"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="Phone No.:@Html.DisplayFor(model => model.CompanyPhNo)">
+                                <h5>@Html.DisplayFor(model => model.CompanyPhNo)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-clipboard-list"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.AboutCompany)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-user-circle"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.ContactPersonName)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-phone-square"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.ContactPersonNo)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-search-location"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.WebURL)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsActive @if (Model.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
+                                    <label class="custom-control-label" for="active_@Model.CompanyId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
+                                    <label class="custom-control-label" for="active_@Model.CompanyId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-lg-8 align-content-lg-center">
+                <h2 class="text-info"><b>Price List of Company</b></h2>
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>Unit Name</td>
+                            <td>Min Value</td>
+                            <td>Max Value</td>
+                            <td>Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.PriceList)
+                        {
+                            <tr>
+                                <td>@item.UnitName</td>
+                                <td>@item.MinValue</td>
+                                <td>@item.MaxValue</td>
+                                <td>@item.PricePerUnit</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-lg-8 align-content-lg-center">
+                <h2 class="text-info"><b>Driver List of Company</b></h2>
+                <table class="table table-bordered table-hover" id="dataTable1" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>DriverName</td>
+                            <td>ContactNo</td>
+                            <td>EmailId</td>
+                            <td>LicenseNo</td>
+                            <td>AadharcardNo</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.driverlist)
+                        {
+                            <tr>
+                                <td>@item.DriverName</td>
+                                <td>@item.ContactNo</td>
+                                <td>@item.EmailId</td>
+                                <td>@item.LicenseNo</td>
+                                <td>@item.AadharcardNo</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-lg-8 align-content-lg-center">
+                <h2 class="text-info"><b>Vehicle List of Company</b></h2>
+                <table class="table table-bordered table-hover" id="dataTable2" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>VehicleName</td>
+                            <td>RegNo</td>
+                            <td>Fuel</td>
+                            <td>Capacity</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.vehiclelist)
+                        {
+                            <tr>
+                                <td>@item.VehicleName</td>
+                                <td>@item.RegNo</td>
+                                <td>@item.Fuel</td>
+                                <td>@item.Capacity</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-lg-8 align-content-lg-center">
+                <h2 class="text-info"><b>Service List of Company</b></h2>
+                <table class="table table-bordered table-hover" id="dataTable3" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>ServiceName</td>
+                            <td>ServiceDesc</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.servicelist)
+                        {
+                            <tr>
+                                <td>@item.ServiceName</td>
+                                <td>@item.ServiceDesc</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable').DataTable();
+    });
+</script>
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable1').DataTable();
+    });
+</script>
+
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable2').DataTable();
+    });
+</script>
+
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable3').DataTable();
+    });
+</script>
+
+
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","Company")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@

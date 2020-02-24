@@ -1,0 +1,137 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblVehicle
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","Vehicle")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-4" style="text-align:center">
+                    <img src="~/Images/@Html.DisplayFor(model => model.Image)" class="img-thumbnail" />
+                    <br />
+
+                    <br />
+                    <p>
+                         Member since <b> @Html.ViewBag.Year </b>
+                    </p>
+                    <br />
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h1 class="alert-light">@ViewBag.CompanyName's vehicle</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-id-badge"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.VehicleTypeId)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-truck"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.VehicleName)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-registered"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.RegNo)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-file-excel"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.DocumentImage)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-oil-can"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.Fuel)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-cc-amazon-pay "></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.Capacity)</h5>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsActive @if (Model.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.VehicleId" onchange="return activate(@Model.VehicleId)">
+                                    <label class="custom-control-label" for="active_@Model.VehicleId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.VehicleId" onchange="return activate(@Model.VehicleId)">
+                                    <label class="custom-control-label" for="active_@Model.VehicleId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","User")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+

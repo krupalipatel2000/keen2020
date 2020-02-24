@@ -1,0 +1,145 @@
+﻿@model KeenConveyance.Areas.Admin.Models.JoinViewAll
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","Bidding")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <h1 class="text-info">@Html.DisplayFor(model => model.company.CompanyName)'s Bid</h1><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.bid.ConsignmentId)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.bid.BidAmount)</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.bid.EstimatedDelivery)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.bid.BidOn)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.bid.ModifiedOn))</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsModified
+                        </h5>
+                        <div class="col-1">
+                            @if (Model.bid.IsModified == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.bid.BidId" onchange="return activate(@Model.bid.BidId)">
+                                    <label class="custom-control-label" for="active_@Model.bid.BidId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.bid.BidId" onchange="return activate(@Model.bid.BidId)">
+                                    <label class="custom-control-label" for="active_@Model.bid.BidId"></label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsAssigned
+                        </h5>
+                        <div class="col-1">
+                            @if (Model.bid.IsAssigned == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.bid.BidId" onchange="return activate(@Model.bid.BidId)">
+                                    <label class="custom-control-label" for="active_@Model.bid.BidId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.bid.BidId" onchange="return activate(@Model.bid.BidId)">
+                                    <label class="custom-control-label" for="active_@Model.bid.BidId"></label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                   </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Html.ViewBag.Year</b>
+            </p>
+            <br />
+        </div>
+    </div>
+</div>
+
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","User")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+
+

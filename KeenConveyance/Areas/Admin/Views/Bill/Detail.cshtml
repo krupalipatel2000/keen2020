@@ -1,0 +1,88 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblBill
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","Bill")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <h1 class="text-info">@Html.DisplayFor(model => model.BillId)'s Profile</h1><br />
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-mail-bulk"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.UserId)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-phone"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.BookingId)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-calendar"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.Price)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-user"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.TollTax)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-user"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.GST)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-user"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.TotalPrice)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-user"></i>
+                    </div>
+                    <div class="col-6">
+                        <h5>@Html.DisplayFor(model => model.CreatedOn)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="text-align:center">
+                <p>
+                    Member since <b> @Model.CreatedOn.Year </b>
+                </p>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

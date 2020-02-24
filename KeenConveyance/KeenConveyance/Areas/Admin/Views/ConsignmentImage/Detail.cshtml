@@ -1,0 +1,96 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblConSignmentImage
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Detail</h2>
+<div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <img src="~/Images/@Html.DisplayFor(model => model.ImageURL)" class="img-thumbnail" />
+            <br />
+
+            <br />
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h1 class="alert-light">@Html.DisplayFor(model => model.ConsignmentImageId)'s vehicle</h1>
+            </div>
+            <div class="row">
+                <h4>ConsignmentID : @Html.DisplayFor(model => model.ConsignmentID)</h4>
+            </div>
+            <div class="row">
+                <h4>ImageURL : @Html.DisplayFor(model => model.ImageURL)</h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsDefault  : @if (Model.IsDefault == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentImageId" onchange="return activate(@Model.ConsignmentImageId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentImageId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentImageId" onchange="return activate(@Model.ConsignmentImageId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentImageId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+
+
+            <div class="row">
+                <h4>
+                    IsActive : @if (Model.IsActive == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentImageId" onchange="return activate(@Model.ConsignmentImageId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentImageId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentImageId" onchange="return activate(@Model.ConsignmentImageId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentImageId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","Company")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+

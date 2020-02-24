@@ -1,0 +1,219 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblAdmin
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4" id="jclass">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("List","Admin")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-4" style="text-align:center">
+                    <img src="~/images/user2.png" class="img-thumbnail" id="userimage" />
+                    <br />
+                    <p>
+                        Member since <b> @Model.CreatedOn.Year </b>
+                    </p>
+                    <br />
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h1 class="text-info"><b>@Html.DisplayFor(model => model.Name)'s Profile</b></h1><br />
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="EmailID:@Html.DisplayFor(model => model.EmailId)">
+                                <h5>@Html.DisplayFor(model => model.EmailId)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-phone"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="tel:@Html.DisplayFor(model => model.ContactNo)">
+                                <h5>@Html.DisplayFor(model => model.ContactNo)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-calendar"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.CreatedOn)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-user"></i>
+                        </div>
+                        <div class="col-6">
+                            <h5>@ViewBag.AdminName</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsActive @if (Model.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsSuper @if (Model.IsSuper == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsInsert @if (Model.IsInsert == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsEdit &nbsp;&nbsp;@if (Model.IsEdit == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsDelete @if (Model.IsDelete == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.AdminId" onchange="return activate(@Model.AdminId)">
+                                    <label class="custom-control-label" for="active_@Model.AdminId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                    <br />
+                    <div class="row">
+                        @{
+                            if (Model.IsActive == true)
+                            {
+                                <a href="#"> Deactivate Account </a>
+                            }
+                        }
+                    </div>
+                    <div class="row">
+                        <br /><br />
+                        <div class="alert-danger" style="margin-top:40px; margin-left:10px">
+                            @{
+                                if (Model.IsActive == true)
+                                {
+                                    <a href="@Url.Action("Activate","Admin")" class="btn btn-danger"> Deactivate Account </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>*@
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#jclass").animate({
+            center: '250px',
+            height: '+=20px',
+            width: '+=20px',
+        });
+    });
+</script>
+
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","User")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+

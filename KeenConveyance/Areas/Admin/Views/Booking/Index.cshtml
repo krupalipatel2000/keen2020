@@ -1,0 +1,86 @@
+﻿@model IEnumerable<KeenConveyance.Areas.Admin.Models.tblBooking>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">List of Booking</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ConsignmentId</th>
+                        <th>DispatchDate</th>
+                        <th>DeliveredDate</th>
+                        <th>TotalPayment</th>
+                        <th>PaymentMode</th>
+                       
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ConsignmentId</th>
+                        <th>DispatchDate</th>
+                        <th>DeliveredDate</th>
+                        <th>TotalPayment</th>
+                        <th>PaymentMode</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href=" @Url.Action("Detail", new { id = item.BookingId})">
+                                    @item.ConsignmentId
+                                </a>
+                            </td>
+                            <td>@item.DispatchDate</td>
+                            <td>@item.DeliveredDate</td>
+                            <td>@item.TotalPayment</td>
+                            <td>@item.PaymentMode</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="~/js/demo/datatables-demo.js"></script>
+<link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" class="init">
+        $(document).ready(function () {
+            //alert("Done");
+            $('#dataTable').DataTable();
+        });
+</script>
+<script>
+    function activate(id) {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("Active","inquiry")" + "/" + id,
+                success: function (response) {
+                    if (response == true) {
+                        alert("Account deactivated");
+                    }
+                    else {
+                        alert("Accout activated");
+                    }
+                },
+                failure: function (response) {
+                    alert('Fail - ' + response.responseText);
+                },
+                error: function (response) {
+                    alert('Error - ' + response.responseText);
+                }
+            });
+    }
+</script>
+

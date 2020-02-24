@@ -1,0 +1,65 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblFeedback
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Detail</h2>
+<div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h1 class="alert-light">@Html.DisplayFor(model => model.FeedbackId)'s Feedback</h1>
+            </div>
+            <div class="row">
+                <h4>CompanyId : @Html.DisplayFor(model => model.CompanyId)</h4>
+            </div>
+            <div class="row">
+                <h4>UserId : @Html.DisplayFor(model => model.UserId)</h4>
+            </div>
+            <div class="row">
+                <h4>Subject : @Html.DisplayFor(model => model.Subject)</h4>
+            </div>
+            <div class="row">
+                <h4>Description : @Html.DisplayFor(model => model.Desc)</h4>
+            </div>
+
+            <div class="row">
+                <h4>CreatedOn : @Html.DisplayFor(model => model.CreatedOn)</h4>
+            </div>
+            <div class="row">
+                <h4>Rate : @Html.DisplayFor(model => model.Rate)</h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","Company")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+

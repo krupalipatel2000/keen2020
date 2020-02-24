@@ -1,0 +1,105 @@
+﻿@model IEnumerable<KeenConveyance.Areas.Admin.Models.JoinViewAll>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">List of Services</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ServiceImage</th>
+                        <th>CompanyName</th>
+                        <th>ServiceName</th>
+                        <th>ServiceDesc</th>
+                        <th>IsActive</th>
+                        <th>CreatedOn</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ServiceImage</th>
+                        <th>CompanyName</th>
+                        <th>ServiceName</th>
+                        <th>ServiceDesc</th>
+                        <th>IsActive</th>
+                        <th>CreatedOn</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href=" @Url.Action("Detail", new { id = item.comservice.ServiceId})">
+                                    <img src="~/Images/@item.comservice.ServiceImage" class="img-thumbnail" style="height:100px;width:100px;" />
+                                </a>
+                            </td>
+                            <td>@item.company.CompanyName</td>
+                            <td>@item.comservice.ServiceName</td>
+                            <td>@item.comservice.ServiceDesc</td>
+                            <td>
+                                @if (item.comservice.IsActive == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.comservice.ServiceId" onchange="return activate(@item.comservice.ServiceId)">
+                                        <label class="custom-control-label" for="active_@item.comservice.ServiceId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="active_@item.comservice.ServiceId" onchange="return activate(@item.comservice.ServiceId)">
+                                        <label class="custom-control-label" for="active_@item.comservice.ServiceId"></label>
+                                    </div>
+                                }
+                            </td>
+                            <td>@item.comservice.CreatedOn</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="~/js/demo/datatables-demo.js"></script>
+<link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" class="init">
+        $(document).ready(function () {
+            //alert("Done");
+            $('#dataTable').DataTable();
+        });
+</script>
+<script>
+    function activate(id) {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("Active","inquiry")" + "/" + id,
+                success: function (response) {
+                    if (response == true) {
+                        alert("Account activated");
+                    }
+                    else {
+                        alert("Accout deactivated");
+                    }
+                },
+                failure: function (response) {
+                    alert('Fail - ' + response.responseText);
+                },
+                error: function (response) {
+                    alert('Error - ' + response.responseText);
+                }
+            });
+    }
+</script>
+
+

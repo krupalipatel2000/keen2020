@@ -1,0 +1,9 @@
+﻿Generated model file: dcAdminTransport.edmx.
+Loading metadata from the database took 00:00:01.7478110.
+Generating the model took 00:00:03.1185222.
+Generated model file: dcAdminTransport.edmx.
+Loading metadata from the database took 00:00:00.9640079.
+Generating the model took 00:00:03.2871100.
+Generated model file: dcAdminTransport.edmx.
+Loading metadata from the database took 00:00:01.0101879.
+Generating the model took 00:00:04.0951157.

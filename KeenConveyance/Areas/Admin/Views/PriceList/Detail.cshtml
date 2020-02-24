@@ -1,0 +1,129 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblPriceList
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","PriceList")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <h1 class="text-primary"><b>@ViewBag.Company's Profile</b></h1><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Name of Unit</h4>
+                            @*<i class="fa fa-1x fa-weight"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.UnitName)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Minimum Value of Unit</h4>
+                            @*<i class="fa fa-1x fa-minus"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.MinValue)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Maximum Value of Unit</h4>
+                            @*<i class="fa fa-1x fa-window-maximize"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.MaxValue)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Price Per Unit</h4>
+                            @*<i class="fa fa-1x fa-monero"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.PricePerUnit)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Name of Company</h4>
+                            @*<i class="fa fa-1x fa-id-card"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@ViewBag.Company</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h5 class="fa fa-1x">
+                                IsActive
+                            </h5>
+                        </div>
+                        <div class="col-1">
+                            @if (Model.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.PriceListId" onchange="return activate(@Model.PriceListId)">
+                                    <label class="custom-control-label" for="active_@Model.PriceListId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.PriceListId" onchange="return activate(@Model.PriceListId)">
+                                    <label class="custom-control-label" for="active_@Model.PriceListId"></label>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+            <br />
+        </div>
+    </div>
+</div>
+
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","User")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+
+

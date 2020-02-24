@@ -1,0 +1,90 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblInquiry
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+<div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h1 class="alert-light">@Html.DisplayFor(model => model.InquiryId)'s Inquiry</h1>
+            </div>
+            <div class="row">
+                <h4>FirstName : @Html.DisplayFor(model => model.FirstName)</h4>
+            </div>
+            <div class="row">
+                <h4>LastName : @Html.DisplayFor(model => model.LastName)</h4>
+            </div>
+            <div class="row">
+                <h4>EmailId : @Html.DisplayFor(model => model.EmailId)</h4>
+            </div>
+            <div class="row">
+                <h4>ContactNo : @Html.DisplayFor(model => model.ContactNo)</h4>
+            </div>
+            <div class="row">
+                <h4>Subject : @Html.DisplayFor(model => model.Subject)</h4>
+            </div>
+            <div class="row">
+                <h4>Desc : @Html.DisplayFor(model => model.Desc)</h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsActive : @if (Model.IsReplied == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.InquiryId" onchange="return activate(@Model.InquiryId)">
+                            <label class="custom-control-label" for="active_@Model.InquiryId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.InquiryId" onchange="return activate(@Model.InquiryId)">
+                            <label class="custom-control-label" for="active_@Model.InquiryId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+            <div class="row">
+                <h4>RepliedText : @Html.DisplayFor(model => model.RepliedText)</h4>
+            </div>
+            <div class="row">
+                <h4>RepliedOn : @Html.DisplayFor(model => model.RepliedOn)</h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","Company")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+
+

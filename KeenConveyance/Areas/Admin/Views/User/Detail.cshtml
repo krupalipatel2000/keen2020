@@ -1,0 +1,224 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblUser
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","User")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-4" style="text-align:center">
+                    @{
+                        if (Model.ProfilePic == null)
+                        {
+                            <img src="~/Images/user2.png" class="img-thumbnail" />
+                        }
+                        else
+                        {
+                            <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+                        }
+                    }
+
+                    <br />
+                    <p>
+                        Member since <b> @Model.CreatedOn.Year </b>
+                    </p>
+                    <br />
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h1 class="text-info">@Html.DisplayFor(model => model.FirstName)'s Profile</h1><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="EmailID:@Html.DisplayFor(model => model.EmailId)">
+                                <h5>@Html.DisplayFor(model => model.EmailId)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-phone"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="tel:@Html.DisplayFor(model => model.ContactNo)">
+                                <h5>@Html.DisplayFor(model => model.ContactNo)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsActive &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  @if (Model.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
+                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
+                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsVerified &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@if (Model.IsVerified == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
+                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
+                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+
+                    <div class="row">
+                        <h5 class="fa fa-1x">
+                            IsMobileVerified @if (Model.IsMobileVerified == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
+                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
+                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
+                                </div>
+                            }
+                        </h5>
+                    </div>
+                    <br />
+                    <div class="row">
+                        @{
+                            if (Model.IsActive == true)
+                            {
+                                <a href="#"> Deactivate Account </a>
+                            }
+                        }
+                    </div>
+                    <div class="row">
+                        <br /><br />
+                        <div class="alert-danger" style="margin-top:40px; margin-left:10px">
+                            @{
+                                if (Model.IsActive == true)
+                                {
+                                    <a href="@Url.Action("Activate","Admin")" class="btn btn-danger"> Deactivate Account </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Model.CreatedOn.Year </b>
+            </p>
+            <br />
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-lg-8 align-content-lg-center">
+                <h2 class="text-dark"><b>Consignment List of User</b></h2>
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>ReceiverName</td>
+                            <td>ReceiverContactNo</td>
+                            <td>UnitType</td>
+                            <td>UnitValue</td>
+                            <td>Budget</td>
+                            <td>MinBidValue</td>
+                            <td>MaxBidValue</td>
+                            <td>MinTime</td>
+                            <td>MaxTime</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.consignmentlist)
+                        {
+                            <tr>
+                                <td>@item.ReceiverName</td>
+                                <td>@item.ReceiverContactNo</td>
+                                <td>@item.UnitType</td>
+                                <td>@item.UnitValue</td>
+                                <td>@item.Budget</td>
+                                <td>@item.MinBidValue</td>
+                                <td>@item.MaxBidValue</td>
+                                <td>@item.MinTime</td>
+                                <td>@item.MaxTime</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable').DataTable();
+    });
+</script>
+
+
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","User")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
+                    }
+                });
+        }
+    </script>*@
+
+
+

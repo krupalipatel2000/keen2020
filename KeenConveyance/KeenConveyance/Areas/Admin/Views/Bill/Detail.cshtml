@@ -1,0 +1,44 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblBill
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+<div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h1 class="alert-light">@Html.DisplayFor(model => model.BillId)'s Profile</h1>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.UserId)</h4>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.BookingId)</h4>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.Price)</h4>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.TollTax)</h4>
+            </div>
+            <div class="row">
+                <h4>GST : @Html.DisplayFor(model => model.GST)</h4>
+            </div>
+            <div class="row">
+                <h4>TotalPrice : @Html.DisplayFor(model => model.TotalPrice)</h4>
+            </div>
+            <div class="row">
+                <h4>CreatedOn : @Html.DisplayFor(model => model.CreatedOn)</h4>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

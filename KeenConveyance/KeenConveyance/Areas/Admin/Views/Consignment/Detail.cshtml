@@ -1,0 +1,196 @@
+﻿@model  KeenConveyance.Areas.Admin.Models.tblConsignment
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+<div>
+    <div class="row">
+        @*<div class="col-md-4" style="text-align:center">
+                <img src="~/UserImage/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+                <br />
+
+                <br />
+                <p>
+                    Member since <b> @Html.ViewBag.Year </b>
+                </p>
+            </div>*@
+        <div class="col-md-8">
+            <div class="row">
+                <h1 class="alert-light">@Html.DisplayFor(model => model.ReceiverName)'s Consignment</h1>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.ReceiverContactNo)</h4>
+            </div>
+            <div class="row">
+                <h4>ReceiverPinNo : @Html.DisplayFor(model => model.ReceiverPinNo)</h4>
+            </div>
+            <div class="row">
+                <h4>UserId : @Html.DisplayFor(model => model.UserId)</h4>
+            </div>
+            <div class="row">
+                <h4>SourceId : @Html.DisplayFor(model => model.SourceId)</h4>
+            </div>
+            <div class="row">
+                <h4>DestinationId : @Html.DisplayFor(model => model.DestinationId)</h4>
+            </div>
+            <div class="row">
+                <h4>Distance : @Html.DisplayFor(model => model.Distance)</h4>
+            </div>
+            <div class="row">
+                <h4>UnitType : @Html.DisplayFor(model => model.UnitType)</h4>
+            </div>
+            <div class="row">
+                <h4>UnitValue : @Html.DisplayFor(model => model.UnitValue)</h4>
+            </div>
+            <div class="row">
+                <h4>Budget : @Html.DisplayFor(model => model.Budget)</h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsRefregreted : @if(model.IsRefregreted == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsFlamable : @if (Model.IsFlamable == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsDelicate : @if (Model.IsDelicate == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+            <div class="row">
+                <h4>MinBidValue : @Html.DisplayFor(model => model.MinBidValue)</h4>
+            </div>
+            <div class="row">
+                <h4>MaxBidValue : @Html.DisplayFor(model => model.MaxBidValue)</h4>
+            </div>
+            <div class="row">
+                <h4>MinTime : @Html.DisplayFor(model => model.MinTime)</h4>
+            </div>
+            <div class="row">
+                <h4>MaxTime : @Html.DisplayFor(model => model.MaxTime)</h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsDelivered : @if (Model.IsDelivered == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsActive : @if (Model.IsActive == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+            <div class="row">
+                <h4>
+                    IsPaid : @if (Model.IsPaid == true)
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                            <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                        </div>
+                    }
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+@*<script>
+    function activate(id) {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("Active","Consignment")" + "/" + id,
+                success: function (response) {
+                    if (response == true) {
+                        alert("Account activated");
+                    }
+                    else {
+                        alert("Accout deactivated");
+                    }
+                },
+                failure: function (response) {
+                    alert('Fail - ' + response.responseText);
+                },
+                error: function (response) {
+                    alert('Error - ' + response.responseText);
+                }
+            });
+    }
+</script>*@
+

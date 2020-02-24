@@ -1,0 +1,309 @@
+﻿@model  KeenConveyance.Areas.Admin.Models.tblConsignment
+@{
+                /**/
+
+                ViewBag.Title = "Detail";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","Consignment")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <h1 class="text-body"><b>@Html.DisplayFor(model => model.ReceiverName)'s Consignment</b></h1><br />
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa fa-1x fa-phone"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="tel:@Html.DisplayFor(model => model.ReceiverContactNo)">
+                                <h5>@Html.DisplayFor(model => model.ReceiverContactNo)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Sender Name</h4>
+                            @*<i class="fa fa-1x fa-user"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@ViewBag.User</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Source Address</h4>
+                            @*<i class="fa fa-1x fa-address-book"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.SourceId)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Destination Address</h4>
+                            @*<i class="fa fa-1x fa-address-book"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.DestinationId)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Distance</h4>
+                            @*<i class="fa fa-1x fa"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.Distance) km</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Type of Unit</h4>
+                            @*<i class="fa fa-1x fa-weight"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.UnitType)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Value of Unit</h4>
+                            @*<i class="fa fa-1x fa-weight-hanging"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.UnitValue)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">User's Budget</h4>
+                            @*<i class="fa fa-1x fa-money"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.Budget)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Minimum Bid Value of User</h4>
+                            @*<i class="fa fa-1x fa-window-maximize"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.MinBidValue)</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4 class="fa fa-1x">Maximum Bid Value of User</h4>
+                            @*<i class="fa fa-1x fa-window-minimize"></i>*@
+                        </div>
+                        <div class="col-6">
+                            <h5>@Html.DisplayFor(model => model.MaxBidValue)</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="fa fa-1x fa-calendar-day"></i>
+                            </div>
+                            <div class="col-6">
+                                <h5>@Html.DisplayFor(model => model.MinTime)</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="fa fa-1x fa-calendar-day"></i>
+                            </div>
+                            <div class="col-6">
+                                <h5>@Html.DisplayFor(model => model.MaxTime)</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsRefregreted @if (Model.IsRefregreted == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsFlamable &nbsp;&nbsp;&nbsp;  @if (Model.IsFlamable == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsDelicate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  @if (Model.IsDelicate == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsDelivered &nbsp;&nbsp;&nbsp; @if (Model.IsDelivered == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsActive &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@if (Model.IsActive == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsPaid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@if (Model.IsPaid == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                        <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+            <br />
+        </div>
+    </div>
+
+</div>
+<link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable').DataTable();
+    });
+</script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Consignment Images
+         </h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            @foreach (var item in ViewBag.ConsignmentImage)
+            {
+                <div class="col-lg-3">
+                    <img src="~/Images/@item.ImageURL" class="img img-thumbnail" />
+                </div>
+            }
+         </div>
+     </div>
+</div>
+
+
+
+            @*<script>
+                    function activate(id) {
+                        $.ajax(
+                            {
+                                type: "POST",
+                                url: "@Url.Action("Active","User")" + "/" + id,
+                                success: function (response) {
+                                    if (response == true) {
+                                        alert("Account activated");
+                                    }
+                                    else {
+                                        alert("Accout deactivated");
+                                    }
+                                },
+                                failure: function (response) {
+                                    alert('Fail - ' + response.responseText);
+                                },
+                                error: function (response) {
+                                    alert('Error - ' + response.responseText);
+                                }
+                            });
+                    }
+                </script>*@
+
+
