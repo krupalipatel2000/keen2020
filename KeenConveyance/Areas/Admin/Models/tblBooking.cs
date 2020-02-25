@@ -25,5 +25,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public bool IsPaid { get; set; }
         public string PaymentMode { get; set; }
         public int BidId { get; set; }
+        public int UserId { get; set; }
     }
 }

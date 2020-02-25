@@ -94,7 +94,7 @@
             <PropertyRef Name="BookingId" />
           </Key>
           <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ConsignmentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="VehicleId" Type="int" Nullable="false" />
           <Property Name="DriverId" Type="int" Nullable="false" />
           <Property Name="DispatchDate" Type="datetime" Nullable="false" />
@@ -467,6 +467,7 @@
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
           <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BidId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tblCMSPage">
           <Key>
@@ -823,8 +824,8 @@
           <EntitySetMapping Name="tblBookings">
             <EntityTypeMapping TypeName="dbTransportModel.tblBooking">
               <MappingFragment StoreEntitySet="tblBooking">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
                 <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />

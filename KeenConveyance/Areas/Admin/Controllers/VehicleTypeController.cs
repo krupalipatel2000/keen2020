@@ -29,7 +29,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public ActionResult Insert(FormCollection form)
         {
             tblVehicleType type = new tblVehicleType();
-            type.TypeName = form["txtTname"];
+            type.TypeName = form["txtname"];
             type.TypeImage = form["txtImage"];
             type.CreatedOn = DateTime.Now;
             dc.tblVehicleTypes.Add(type);
