@@ -38,11 +38,11 @@
             if (password != "" && password.value.match(pass_pat)) {
             }
             else {
-                alert("Wrong Password or Password does not match");
+                alert("Password is not Proper");
                 password.focus();
                 return false;
             }
-            var cno_pat = /^[0-9]+$/;
+            var cno_pat = /^\d{10}$/;
             if (cno.value != "" && cno.value.match(cno_pat)) {
             }
             else {
@@ -50,11 +50,12 @@
                 cno.focus();
                 return false;
             }
-            if (createdby.value != "") {
+            var numbers = /^[0-9]+$/;
+            if (createdby.value != "" && createdby.value.match(numbers)){
 
             }
             else {
-                alert("fill the field");
+                alert("Enter digit only");
                 createdby.focus();
                 return false;
             }

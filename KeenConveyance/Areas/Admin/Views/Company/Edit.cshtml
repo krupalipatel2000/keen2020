@@ -17,6 +17,8 @@
             var email = document.registration.txtEmail;
             var password = document.registration.txtPwd;
             var cno = document.registration.txtCno;
+            var cpname = document.registration.txtContactPersonName;
+            var cpno = document.registration.txtContactPersonPhNo;
             var name_pat = /^[A-Za-z]+$/;
             if (name.value != "" && name.value.match(name_pat)) {
             }
@@ -41,12 +43,28 @@
                 password.focus();
                 return false;
             }
-            var cno_pat = /^[0-9]+$/;
+            var cno_pat = /^\d{10}$/;
             if (cno.value != "" && cno.value.match(cno_pat)) {
             }
             else {
                 alert("Contact number is not Proper");
                 cno.focus();
+                return false;
+            }
+            var cpname_pat = /^[A-Za-z]+$/;
+            if (cpname.value != "" && cpname.value.match(cpname_pat)) {
+            }
+            else {
+                alert("OwnerName is Not Proper");
+                cpname.focus();
+                return false;
+            }
+            var cpno_pat = /^\d{10}$/;
+            if (cpno.value != "" && cpno.value.match(cpno_pat)) {
+            }
+            else {
+                alert("Owner ContactNo is Not Proper");
+                cpno.focus();
                 return false;
             }
             return true;
