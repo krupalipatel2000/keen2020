@@ -53,10 +53,11 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                @if(Session["AdminType"] != null && Session["AdminType"].ToString() == "Super")
+                @if (Session["AdminType"] != null && Session["AdminType"].ToString() == "Super")
                 {
                     <a class="nav-link collapsed" href="@Url.Action("List","Admin")">Admin</a>
                 }
+                <a class="nav-link collapsed" href="@Url.Action("Index","CMSpage")">CMS Page</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","User")">User</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Company")">Company</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Driver")">Driver</a>

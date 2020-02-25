@@ -1,0 +1,11 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblCMSPage
+@{
+    ViewBag.Title = "ViewCMS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>@Html.DisplayNameFor(model=>model.PageTitle)</h2>
+    <hr />
+    <p>@Html.Raw(Model.Desc)</p>
+</div>

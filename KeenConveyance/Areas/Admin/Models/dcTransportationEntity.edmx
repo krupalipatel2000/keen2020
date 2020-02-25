@@ -113,6 +113,7 @@
           <Property Name="PageTitle" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Desc" Type="varchar(max)" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="int" />
@@ -301,7 +302,7 @@
           <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeImage" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CityMaster_StateMaster">
           <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
@@ -478,6 +479,7 @@
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblComplaint">
           <Key>
@@ -663,7 +665,7 @@
           <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TypeImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_CityMaster_StateMaster">
           <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
@@ -838,6 +840,7 @@
           <EntitySetMapping Name="tblCMSPages">
             <EntityTypeMapping TypeName="dbTransportModel.tblCMSPage">
               <MappingFragment StoreEntitySet="tblCMSPage">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CMSPageId" ColumnName="CMSPageId" />
                 <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
                 <ScalarProperty Name="Desc" ColumnName="Desc" />

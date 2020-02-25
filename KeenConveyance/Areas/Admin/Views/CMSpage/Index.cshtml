@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "image media link",
+    });
+</script>
+<div class="card shadow mb-4">
+    <form method="post">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">CMS Creation Page</h6>
+        </div>
+        <div class="card-body">
+            <input type="text" name="pageTitle" />
+            <textarea name="BlogContent" style="height:600px"></textarea>
+        </div>
+        <input type="submit" value="Save" class="btn btn-success btn-lg" />
+    </form>
+</div>

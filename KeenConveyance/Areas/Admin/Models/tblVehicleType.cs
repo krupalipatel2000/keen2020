@@ -18,6 +18,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public string TypeName { get; set; }
         public string TypeImage { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
+        public int CreatedBy { get; set; }
     }
 }

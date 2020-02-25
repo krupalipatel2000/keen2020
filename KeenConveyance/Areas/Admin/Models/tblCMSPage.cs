@@ -21,5 +21,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public int CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
+        public bool IsActive { get; set; }
     }
 }
