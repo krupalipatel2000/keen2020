@@ -17,7 +17,7 @@ namespace KeenConveyance.Areas.Admin.Models
         public int VehicleTypeId { get; set; }
         public string TypeName { get; set; }
         public string TypeImage { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
     }
 }

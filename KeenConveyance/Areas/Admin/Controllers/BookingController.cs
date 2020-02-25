@@ -16,7 +16,6 @@ namespace KeenConveyance.Areas.Admin.Controllers
         {
             var book = dc.tblBookings.ToList();
             return View(book);
-
         }
         [HttpPost]
         public JsonResult Active(int id)

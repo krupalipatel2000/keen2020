@@ -71,7 +71,7 @@
           <Property Name="ConsignmentId" Type="int" Nullable="false" />
           <Property Name="BidAmount" Type="int" Nullable="false" />
           <Property Name="BidOn" Type="datetime" Nullable="false" />
-          <Property Name="EstimatedDelivery" Type="datetime" />
+          <Property Name="EstimatedDelivery" Type="datetime" Nullable="false" />
           <Property Name="IsModified" Type="bit" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="IsAssigned" Type="bit" Nullable="false" />
@@ -82,9 +82,9 @@
           </Key>
           <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="BookingId" Type="int" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="TollTax" Type="int" />
+          <Property Name="TollTax" Type="int" Nullable="false" />
           <Property Name="GST" Type="int" Nullable="false" />
           <Property Name="TotalPrice" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -201,10 +201,10 @@
             <PropertyRef Name="InquiryId" />
           </Key>
           <Property Name="InquiryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
-          <Property Name="EmailId" Type="varchar" MaxLength="254" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="254" Nullable="false" />
           <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Desc" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="IsReplied" Type="bit" Nullable="false" />
@@ -301,7 +301,7 @@
           <Property Name="VehicleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeImage" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CityMaster_StateMaster">
@@ -434,7 +434,7 @@
           <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
           <Property Name="BidAmount" Type="Int32" Nullable="false" />
           <Property Name="BidOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EstimatedDelivery" Type="DateTime" Precision="3" />
+          <Property Name="EstimatedDelivery" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="IsModified" Type="Boolean" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="IsAssigned" Type="Boolean" Nullable="false" />
@@ -445,9 +445,9 @@
           </Key>
           <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BookingId" Type="Int32" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="TollTax" Type="Int32" />
+          <Property Name="TollTax" Type="Int32" Nullable="false" />
           <Property Name="GST" Type="Int32" Nullable="false" />
           <Property Name="TotalPrice" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
@@ -564,10 +564,10 @@
             <PropertyRef Name="InquiryId" />
           </Key>
           <Property Name="InquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsReplied" Type="Boolean" Nullable="false" />
@@ -664,7 +664,7 @@
           <Property Name="VehicleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TypeImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_CityMaster_StateMaster">
