@@ -15,12 +15,12 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public ActionResult Index()
         {
             //var book = dc.tblBookings.ToList();
-            var Booking = from ob in dc.tblBookings select new JoinViewAll
+            var Booking = from ob in dc.tblBookings join ob2 in dc.tblConsignments on ob.ConsignmentId equals ob2.ConsignmentId
+                          join ob3 in dc.tblUsers on ob2.UserId equals ob3.UserId
+                          select new
             {
-                user = (from obCon in dc.tblConsignments join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId where obCon.ConsignmentId == ob.ConsignmentId select obUser).Take(1).FirstOrDefault(),
-                consignment = dc.tblConsignments.FirstOrDefault(obCon => obCon.ConsignmentId == ob.ConsignmentId),
-                book = dc.tblBookings.FirstOrDefault(obBook => obBook.BookingId == ob.BookingId)
-                //book = dc.tblBookings.FirstOrDefault(obBook => obBook.BookingId == ob.BookingId)
+                              UserName = ob3.FirstName,
+
             };
             return View(Booking);
         }
