@@ -24,6 +24,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             if (ad != null)
             {
                 Session["loginId"] = ad.Name;
+                Session["LogID"] = ad.AdminId;
                 if (ad.IsSuper == true)
                 {
                     Session["AdminType"] = "Super";
@@ -71,7 +72,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ad.ContactNo = form["txtCno"];
             ad.IsActive = true;
             ad.CreatedOn = DateTime.Now;
-            ad.CreatedBy = Convert.ToInt32(form["txtCreatedBy"]);
+            ad.CreatedBy = Convert.ToInt32(Session["LogID"]);
             ad.IsSuper = true;
             ad.IsInsert = true;
             ad.IsEdit = true;

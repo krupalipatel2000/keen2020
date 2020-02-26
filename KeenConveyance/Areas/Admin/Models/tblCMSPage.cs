@@ -18,9 +18,9 @@ namespace KeenConveyance.Areas.Admin.Models
         public string PageTitle { get; set; }
         public string Desc { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public bool IsActive { get; set; }
         public int CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
-        public bool IsActive { get; set; }
     }
 }

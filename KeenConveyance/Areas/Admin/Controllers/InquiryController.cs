@@ -14,9 +14,9 @@ namespace KeenConveyance.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var inquiry = dc.tblInquiries.ToList();
-            return View(inquiry);
-
+                var inquiry = dc.tblInquiries.ToList();
+                return View(inquiry);
+            
         }
         [HttpPost]
         public JsonResult Active(int id)

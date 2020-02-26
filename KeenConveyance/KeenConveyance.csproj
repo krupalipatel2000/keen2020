@@ -419,7 +419,6 @@
     <Content Include="Areas\Admin\Views\Service\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Tracking\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Tracking\Detail.cshtml" />
-    <Content Include="Areas\Admin\Views\Booking\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Booking\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Bill\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Company\Insert.cshtml" />
@@ -442,6 +441,7 @@
     <Content Include="Areas\Admin\Views\Driver\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\CMSpage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CMSpage\ViewCMS.cshtml" />
+    <Content Include="Areas\Admin\Views\Booking\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

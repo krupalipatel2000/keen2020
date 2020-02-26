@@ -1,4 +1,5 @@
-﻿@model IEnumerable<KeenConveyance.Areas.Admin.Models.tblBooking>
+﻿@model  KeenConveyance.Areas.Admin.Models.JoinViewAll
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -34,15 +35,15 @@
                     {
                         <tr>
                             <td>
-                                <a href=" @Url.Action("Detail", new { id = item.BookingId})">
-                                    @item.ConsignmentId
+                                <a href=" @Url.Action("Detail", new { id = item.book.BookingId})">
+                                    @item.user.FirstName
                                 </a>
                             </td>
                             
-                            <td>@item.DispatchDate</td>
-                            <td>@item.DeliveredDate</td>
-                            <td>@item.TotalPayment</td>
-                            <td>@item.PaymentMode</td>
+                            <td>@item.book.DispatchDate</td>
+                            <td>@item.book.DeliveredDate</td>
+                            <td>@item.book.TotalPayment</td>
+                            <td>@item.book.PaymentMode</td>
                         </tr>
                     }
                 </tbody>

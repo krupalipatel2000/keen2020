@@ -13,6 +13,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
         dbTransportEntities3 dc = new dbTransportEntities3();
         public ActionResult Index()
         {
+
             var type = dc.tblVehicleTypes.ToList();
             return View(type);
         }

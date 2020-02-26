@@ -37,7 +37,11 @@
                                 </a>
                             </td>
                             <td>@item.bid.EstimatedDelivery</td>
-                            <td>@item.company.CompanyName</td>
+                            <td>
+                                <a href=" @Url.Action("Detail","Company")">
+                                    @item.company.CompanyName
+                                 </a>
+                            </td>
                             <td>@item.bid.BidOn</td>
                         </tr>
                     }

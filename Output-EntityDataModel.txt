@@ -1,0 +1,21 @@
+﻿Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:02.2706107.
+Generating the model took 00:00:02.8674976.
+Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:00.6916638.
+Generating the model took 00:00:02.5074337.
+Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:01.7593563.
+Generating the model took 00:00:02.6514041.
+Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:01.7635600.
+Generating the model took 00:00:01.8845459.
+Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:00.6930144.
+Generating the model took 00:00:01.5109536.
+Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:01.6473013.
+Generating the model took 00:00:02.2021094.
+Generated model file: dcTransportationEntity.edmx.
+Loading metadata from the database took 00:00:01.0746323.
+Generating the model took 00:00:01.8185225.

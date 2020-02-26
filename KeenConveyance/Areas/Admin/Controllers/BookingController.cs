@@ -14,8 +14,15 @@ namespace KeenConveyance.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var book = dc.tblBookings.ToList();
-            return View(book);
+            //var book = dc.tblBookings.ToList();
+            var Booking = from ob in dc.tblBookings select new JoinViewAll
+            {
+                user = (from obCon in dc.tblConsignments join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId where obCon.ConsignmentId == ob.ConsignmentId select obUser).Take(1).FirstOrDefault(),
+                consignment = dc.tblConsignments.FirstOrDefault(obCon => obCon.ConsignmentId == ob.ConsignmentId),
+                book = dc.tblBookings.FirstOrDefault(obBook => obBook.BookingId == ob.BookingId)
+                //book = dc.tblBookings.FirstOrDefault(obBook => obBook.BookingId == ob.BookingId)
+            };
+            return View(Booking);
         }
         [HttpPost]
         public JsonResult Active(int id)
