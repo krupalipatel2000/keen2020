@@ -26,5 +26,9 @@ namespace KeenConveyance.Controllers
 
             return View();
         }
+        public ActionResult Blank()
+        {
+            return View();
+        }
     }
 }
