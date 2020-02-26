@@ -19,7 +19,13 @@ namespace KeenConveyance.Areas.Admin.Controllers
         }
         public ActionResult Detail(int id)
         {
-            tblVehicleType vehicle = dc.tblVehicleTypes.SingleOrDefault(ob => ob.VehicleTypeId == id);
+            var vehicle = from ob in dc.tblVehicleTypes
+                                     join ob2 in dc.tblAdmins on ob.CreatedBy equals ob2.AdminId
+                                     select new JoinViewAll
+                                     {
+                                         admin = ob2,
+                                         vehicletype = ob
+                                     };
             return View(vehicle);
         }
         public ActionResult Insert()

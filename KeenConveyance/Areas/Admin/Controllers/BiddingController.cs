@@ -23,15 +23,16 @@ namespace KeenConveyance.Areas.Admin.Controllers
             return View(joinBid);
         }
         
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
-            var joinBid = from obBid in dc.tblBiddings
+            var joinBid = (from obBid in dc.tblBiddings
                           join obCom in dc.tblTransportCompanies on obBid.CompanyId equals obCom.CompanyId
+                          where obBid.BidId == id
                           select new JoinViewAll
                           {
                               bid = obBid,
                               company = obCom
-                          };
+                          }).Take(1).SingleOrDefault();
             return View(joinBid);
         }
     }

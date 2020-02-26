@@ -127,6 +127,24 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ViewBag.AdminName = (from ob in dc.tblAdmins where ob.AdminId == ad.CreatedBy select ob).Take(1).SingleOrDefault().Name;
             string Name = ViewBag.AdminName;
             return View(ad);
+
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+            tblAdmin admin = dc.tblAdmins.SingleOrDefault(ob => ob.EmailId == id);
+            if (admin != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
