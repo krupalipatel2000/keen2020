@@ -1,0 +1,10 @@
+﻿@{
+    var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
+
+        .AddTitle("My New Chart")
+        .AddSeries(
+            chartType: "area",
+            name: "Consignment Biding",
+            xValue: ViewBag.X,
+            yValues: ViewBag.Y).Write();
+}

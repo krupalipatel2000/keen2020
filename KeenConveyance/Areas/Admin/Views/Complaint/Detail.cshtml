@@ -4,74 +4,125 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detail</h2>
-<div>
-    <div class="row">
-        <div class="col-md-4" style="text-align:center">
-            <p>
-                Member since <b> @Html.ViewBag.Year </b>
-            </p>
-        </div>
-        <div class="col-md-8">
-            <div class="row">
-                <h1 class="alert-light">@Html.DisplayFor(model => model.ComplaintId)'s Complaint</h1>
-            </div>
-            <div class="row">
-                <h4>UserId : @Html.DisplayFor(model => model.UserId)</h4>
-            </div>
-            <div class="row">
-                <h4>CompanyId : @Html.DisplayFor(model => model.CompanyId)</h4>
-            </div>
-            <div class="row">
-                <h4>Subject : @Html.DisplayFor(model => model.Subject)</h4>
-            </div>
-            <div class="row">
-                <h4>Description : @Html.DisplayFor(model => model.Desc)</h4>
-            </div>
-            <div class="row">
-                <h4>CreatedOn : @Html.DisplayFor(model => model.CreatedOn)</h4>
-            </div>
-            <div class="row">
-                <h4>
-                    IsModified : @if (Model.IsSolved == true)
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
-                            <label class="custom-control-label" for="active_@Model.CompanyId"></label>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
-                            <label class="custom-control-label" for="active_@Model.CompanyId"></label>
-                        </div>
-                    }
-                </h4>
-            </div>
-            <div class="row">
-                <h4>SolvedOn : @Html.DisplayFor(model => model.SolvedOn)</h4>
-            </div>
-            <div class="row">
-                <h4>
-                    IsReplied : @if (Model.IsReplied == true)
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ComplaintId" onchange="return activate(@Model.ComplaintId)">
-                            <label class="custom-control-label" for="active_@Model.ComplaintId"></label>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ComplaintId" onchange="return activate(@Model.ComplaintId)">
-                            <label class="custom-control-label" for="active_@Model.ComplaintId"></label>
-                        </div>
-                    }
-                </h4>
-            </div>
-            <div class="row">
-                <h4>RepliedText : @Html.DisplayFor(model => model.RepliedText)</h4>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","Complaint")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <div class="col-md-8">
+                <div class="row">
+                    <h1 class="alert-light"><b>@ViewBag.Name's Complaint </b></h1><br />
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">UserName</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4> @ViewBag.Name</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">CompanyName</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4> @ViewBag.Company</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">Subject</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4> @Html.DisplayFor(model => model.Subject)</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">Description</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4>@Html.DisplayFor(model => model.Desc)</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">CreatedOn</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4> @Html.DisplayFor(model => model.CreatedOn)</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5 class="fa fa-1x">
+                            IsSolved
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsSolved == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
+                                <label class="custom-control-label" for="active_@Model.CompanyId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
+                                <label class="custom-control-label" for="active_@Model.CompanyId"></label>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">SolvedOn</h4>
+                    </div>
+                    <div class="col-6">
+
+                        <h4>@Html.DisplayFor(model => model.SolvedOn)</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5 class="fa fa-1x">
+                            IsReplied
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsReplied == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ComplaintId" onchange="return activate(@Model.ComplaintId)">
+                                <label class="custom-control-label" for="active_@Model.ComplaintId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ComplaintId" onchange="return activate(@Model.ComplaintId)">
+                                <label class="custom-control-label" for="active_@Model.ComplaintId"></label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h4 class="fa fa-1x">RepliedText</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4>@Html.DisplayFor(model => model.RepliedText)</h4>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

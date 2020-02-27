@@ -17,10 +17,10 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="row">
-                        <h1 class="text-info">@Html.DisplayFor(model => model.company.CompanyName)'s Bid</h1><br />
+                        <h1 class="text-info"><b>@Html.DisplayFor(model => model.company.CompanyName)'s Bid</b></h1><br />
                     </div>
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-mail-bulk"></i>
                         </div>
                         <div class="col-6">
@@ -29,8 +29,8 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Amount of Biding</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.bid.BidAmount)</h5>
@@ -38,34 +38,36 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Delivery Date</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.bid.EstimatedDelivery)</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Biding Date</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.bid.BidOn)</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Modification Date</i>
                         </div>
                         <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.bid.ModifiedOn))</h5>
+                            <h5>@Html.DisplayFor(model => model.bid.ModifiedOn)</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsModified
-                        </h5>
                         <div class="col-1">
+                            <h5 class="fa fa-1x">
+                                IsModified
+                            </h5>
+                        </div>
+                        <div class="col-2">
                             @if (Model.bid.IsModified == true)
                             {
                                 <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -83,10 +85,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsAssigned
-                        </h5>
                         <div class="col-1">
+                            <h5 class="fa fa-1x">
+                                IsAssigned
+                            </h5>
+                        </div>
+                        <div class="col-2">
                             @if (Model.bid.IsAssigned == true)
                             {
                                 <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -103,7 +107,7 @@
                             }
                         </div>
                     </div>
-                   </div>
+                </div>
             </div>
         </div>
     </div>

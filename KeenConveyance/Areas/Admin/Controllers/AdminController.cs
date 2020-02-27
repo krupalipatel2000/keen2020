@@ -145,6 +145,34 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //dc.SaveChanges();
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Dashboard()
+        {
+            ViewBag.UserCount = (from ob in dc.tblUsers select ob).ToList().Count().ToString();
+            ViewBag.CompanyCount = (from ob in dc.tblTransportCompanies where ob.IsActive == true select ob).ToList().Count().ToString();
+            ViewBag.BiddingCount = (from ob in dc.tblBiddings select ob).ToList().Count().ToString();
+            ViewBag.ConCount = (from ob in dc.tblConsignments select ob).ToList().Count().ToString();
 
+            return View();
+        }
+        public ActionResult SampleChart()
+        {
+            //ViewBag.Y = new List<int>() { 10, 24, 23, 47, 50, 36, 27, 18 };
+            //ViewBag.X = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+
+            var consignment = from ob in dc.tblConsignments select ob;
+            string[] X = new string[consignment.ToList().Count];
+            int[] Y = new int[consignment.ToList().Count];
+            int i = 0;
+            foreach (tblConsignment u in consignment)
+            {
+                X[i] = u.ConsignmentId.ToString();
+                Y[i] = (from ob in dc.tblBiddings where ob.ConsignmentId == u.ConsignmentId select ob).ToList().Count;
+                i++;
+            }
+            ViewBag.X = X;
+            ViewBag.Y = Y;
+
+            return View();
+        }
     }
 }

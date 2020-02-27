@@ -38,11 +38,24 @@ namespace KeenConveyance.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Insert(FormCollection form)
+        public ActionResult Insert(FormCollection form,HttpPostedFileBase txtLogo)
         {
+            string name = "txtLogo";
+            if(txtLogo != null)
+            {
+                int size = (int)txtLogo.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtLogo.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Logo/");
+                    txtLogo.SaveAs(path + "" + name);
+                }
+            }
             tblTransportCompany com = new tblTransportCompany();
             com.CompanyName = form["txtComName"];
-            com.Logo = form["txtLogo"];
+            //com.Logo = form["txtLogo"];
+            com.Logo = name.ToString();
             com.CompanyPhNo = form["txtComPhNo"];
             com.CompanyEmail = form["txtComEmail"];
             com.Password = form["txtPwd"];
@@ -98,5 +111,27 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ViewBag.servicelist = service;
             return View(com);
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+            tblTransportCompany admin = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyEmail == id);
+            if (admin != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        public string Code()
+        {
+            string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
+            return code;
+        }
+
     }
 }

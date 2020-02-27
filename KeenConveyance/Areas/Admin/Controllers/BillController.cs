@@ -28,6 +28,8 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BillId == id);
+            ViewBag.UserName = (from ob in dc.tblUsers where ob.UserId == bill.UserId select ob).Take(1).SingleOrDefault().FirstName;
+            string Name = ViewBag.UserName;
             return View(bill);
         }
     }
