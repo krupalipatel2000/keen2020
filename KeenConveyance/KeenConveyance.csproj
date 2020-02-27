@@ -408,7 +408,6 @@
     <Content Include="Areas\Admin\Views\Vehicle\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\VehicleType\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\VehicleType\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Driver\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Complaint\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Complaint\Detail.cshtml" />

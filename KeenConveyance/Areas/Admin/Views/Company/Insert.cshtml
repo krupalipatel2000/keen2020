@@ -4,9 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Insert</h2>
-
-
 @section scripts
     {
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -104,7 +101,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="email" class="form-control" name="txtComEmail" placeholder="Email Address"><br />
+                    <input type="email" class="form-control" name="txtComEmail" placeholder="Email Address" onblur="return checkEmail(this.value);"><br />
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0">
                     <input type="password" class="form-control" name="txtPwd" placeholder="Enter Password">

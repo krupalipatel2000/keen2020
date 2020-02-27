@@ -14,7 +14,6 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>VehicleTypeId</th>
                         <th>TypeName</th>
                         <th>TypeImage</th>
                         <th>CreatedOn</th>
@@ -24,7 +23,6 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>VehicleTypeId</th>
                         <th>TypeName</th>
                         <th>TypeImage</th>
                         <th>CreatedOn</th>
@@ -36,11 +34,6 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                <a href=" @Url.Action("Detail", new { id = item.VehicleTypeId })">
-                                    @item.VehicleTypeId
-                                </a>
-                            </td>
                             <td>@item.TypeName</td>
                             <td><img src="~/Images/@item.TypeImage" class="img-thumbnail" style="height:100px;width:100px;" /></td>
                             <td>@item.CreatedOn</td>

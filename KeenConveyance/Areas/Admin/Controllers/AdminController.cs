@@ -73,7 +73,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ad.IsActive = true;
             ad.CreatedOn = DateTime.Now;
             ad.CreatedBy = Convert.ToInt32(Session["LogID"]);
-            ad.IsSuper = true;
+            ad.IsSuper = false;
             ad.IsInsert = true;
             ad.IsEdit = true;
             ad.IsDelete = true;

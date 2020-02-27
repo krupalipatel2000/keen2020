@@ -115,8 +115,8 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public JsonResult CheckEmail(string id)
         {
             string response;
-            tblTransportCompany admin = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyEmail == id);
-            if (admin != null)
+            tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyEmail == id);
+            if (company != null)
             {
                 response = "true";
             }
