@@ -38,6 +38,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             tblVehicleType type = new tblVehicleType();
             type.TypeName = form["txtname"];
             type.TypeImage = form["txtImage"];
+            type.CreatedBy = Convert.ToInt32(Session["LogID"]);
             type.CreatedOn = DateTime.Now;
             dc.tblVehicleTypes.Add(type);
             dc.SaveChanges();
