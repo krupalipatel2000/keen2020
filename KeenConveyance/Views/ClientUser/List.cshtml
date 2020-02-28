@@ -14,16 +14,17 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ProfilePic</th>
+
                         <th>FirstName</th>
                         <th>LastName</th>
                         <th>EmailId</th>
+                        @*<th>Gender</th>*@
                         <th>ContactNo</th>
                         <th>IsActive</th>
                         <th>CreatedOn</th>
                         <th>IsVerified</th>
                         <th>IsMobileVerified</th>
-                        <th>Action</th>
+                        <th>ProfilePic</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -31,12 +32,13 @@
                         <th>FirstName</th>
                         <th>LastName</th>
                         <th>EmailId</th>
+                        @*<th>Gender</th>*@
                         <th>ContactNo</th>
                         <th>IsActive</th>
                         <th>CreatedOn</th>
                         <th>IsVerified</th>
                         <th>IsMobileVerified</th>
-                        <th>Action</th>
+                        <th>ProfilePic</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -58,7 +60,7 @@
                                 else
                                 {
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.UserId" onchange="return activate(@item.UserId)">
+                                        <input type="checkbox" class="custom-control-input" id="active_@item.UserId" onchange="return activate(@item.UserId)">
                                         <label class="custom-control-label" for="active_@item.UserId"></label>
                                     </div>
                                 }
@@ -75,7 +77,7 @@
                                 else
                                 {
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.UserId" onchange="return activate(@item.UserId)">
+                                        <input type="checkbox" class="custom-control-input" id="active_@item.UserId" onchange="return activate(@item.UserId)">
                                         <label class="custom-control-label" for="active_@item.UserId"></label>
                                     </div>
                                 }
@@ -91,18 +93,10 @@
                                 else
                                 {
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.UserId" onchange="return activate(@item.UserId)">
+                                        <input type="checkbox" class="custom-control-input" id="active_@item.UserId" onchange="return activate(@item.UserId)">
                                         <label class="custom-control-label" for="active_@item.UserId"></label>
                                     </div>
                                 }
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Edit",new { id=item.UserId})">
-                                    <i class="fa fa-edit"></i>
-                                </a>|
-                                <a href="@Url.Action("Delete",new { id=item.UserId})">
-                                    <i class="fa fa-trash"></i>
-                                </a>
                             </td>
                         </tr>
                     }

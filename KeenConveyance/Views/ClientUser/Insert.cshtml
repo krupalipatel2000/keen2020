@@ -4,22 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Insert</h2>
-
+<br>
 <script>
         function validate() {
-            var name = document.registration.txtComName;
-            var email = document.registration.txtComEmail;
+            var fname = document.registration.txtFirstName;
+            var lname = document.registration.txtLastName;
+            var email = document.registration.txtEmailId;
             var password = document.registration.txtPwd;
-            var cno = document.registration.txtComPhNo;
-            var cpname = document.registration.txtContactPersonName;
-            var cpno = document.registration.txtContactPersonPhNo;
-            var name_pat = /^[A-Za-z]+$/;
-            if (name.value != "" && name.value.match(name_pat)) {
+            var cno = document.registration.txtCno;
+            var fname_pat = /^[A-Za-z]+$/;
+            if (fname.value != "" && fname.value.match(fname_pat)) {
             }
             else {
-                alert("Name is not Proper");
-                name.focus();
+                alert("FirstName is not Proper");
+                fname.focus();
+                return false;
+            }
+            var lname_pat = /^[A-Za-z]+$/;
+            if (lname.value != "" && lname.value.match(lname_pat)) {
+            }
+            else {
+                alert("LastName is not Proper");
+                lname.focus();
                 return false;
             }
             var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -46,22 +52,7 @@
                 cno.focus();
                 return false;
             }
-            var cpname_pat = /^[A-Za-z]+$/;
-            if (cpname.value != "" && cpname.value.match(cpname_pat)) {
-            }
-            else {
-                alert("OwnerName is Not Proper");
-                cpname.focus();
-                return false;
-            }
-            var cpno_pat = /^\d{10}$/;
-            if (cpno.value != "" && cpno.value.match(cpno_pat)) {
-            }
-            else {
-                alert("Owner ContactNo is Not Proper");
-                cpno.focus();
-                return false;
-            }
+           
             return true;
         }
 </script>
@@ -76,30 +67,36 @@
         </h6><br />
 
     </div>
-    <div class="card-body">
+    <div class="card-body bg-dark">
         <form class="user" method="post" name="registration" enctype="multipart/form-data">
-            <div class="col-sm-6">
+            <center><h2 style="color:azure">Registration</h2></center><br />
+            <div class="form-group row">
+                <div class="col-sm-5 mb-3 mb-sm-3">
+                    <input type="text" class="form-control" name="txtFirstName" placeholder="Your FirstName"  maxlength="15">
+                </div>
+                <div class="col-sm-5 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" name="txtLastName" placeholder="Your LastName">
+                </div>
+            </div>
+            <div class="col-sm-10">
                 <input type="file" class="form-control" name="txtprofile" placeholder="ProfilePic"><br />
             </div>
             <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="txtFirstName" placeholder="Your FirstName">
-                </div>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="txtLastName" placeholder="Your FirstName">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="col-sm-5 mb-3 mb-sm-0">
                     <input type="email" class="form-control" name="txtEmailId" placeholder="Your EmailId">
                 </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="password" class="form-control" name="txtPwd" placeholder=" Your Password"><br />
+                <div class="col-sm-5 mb-3 mb-sm-0">
+                    <input type="password" class="form-control" name="txtPwd" placeholder=" Your Password">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="radio" class="form-control" name="txtGender" placeholder="your Gender">
+                    <h4 style="color:azure">Gender : </h4>
+                    <input type="radio" id="male" name="txtgender" value="male" checked>
+                    <label for="male">Male</label>      
+                    <input type="radio" id="female" name="txtgender" value="female">
+                    <label for="female">Female</label><br>
+
                 </div>
                 <div class="col-sm-10 mb-3 mb-sm-0">
                     <input type="text" class="form-control" name="txtCno" placeholder="Your ContactNumber"><br />
