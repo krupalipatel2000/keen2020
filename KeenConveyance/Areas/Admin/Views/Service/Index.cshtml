@@ -17,7 +17,7 @@
                         <th>CompanyName</th>
                         <th>ServiceName</th>
                         <th>ServiceDesc</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>CreatedOn</th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         <th>CompanyName</th>
                         <th>ServiceName</th>
                         <th>ServiceDesc</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>CreatedOn</th>
                     </tr>
                 </tfoot>
@@ -43,7 +43,7 @@
                             <td>@item.company.CompanyName</td>
                             <td>@item.comservice.ServiceName</td>
                             <td>@item.comservice.ServiceDesc</td>
-                            <td>
+                            <td align="center">
                                 @if (item.comservice.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">

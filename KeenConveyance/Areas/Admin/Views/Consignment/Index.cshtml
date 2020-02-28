@@ -17,7 +17,7 @@
                         <th>UnitType</th>
                         <th>UnitValue</th>
                         <th>Budget</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -27,7 +27,7 @@
                         <th>UnitType</th>
                         <th>UnitValue</th>
                         <th>Budget</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -43,7 +43,7 @@
                             <td>@item.UnitType</td>
                             <td>@item.UnitValue</td>
                             <td>@item.Budget</td>
-                            <td>
+                            <td align="center">
                                 @if (item.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">

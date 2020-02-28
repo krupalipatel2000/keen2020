@@ -16,6 +16,7 @@
                         <th>Name</th>
                         <th>Subject</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -23,6 +24,7 @@
                         <th>Name</th>
                         <th>Subject</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -30,12 +32,15 @@
                     {
                         <tr>
                             <td>
-                                <a href=" @Url.Action("Detail", new { id = item.InquiryId})">
-                                    @item.FirstName @item.LastName
-                                </a>
+                                @item.FirstName @item.LastName
                             </td>
                             <td>@item.Subject</td>
                             <td>@item.Desc</td>
+                            <td align="center">
+                                <a href="@Url.Action("Detail","Inquiry",new { id=item.InquiryId})" class="btn btn-success btn-sm">
+                                    Reply
+                                </a>
+                            </td>
                         </tr>
                     }
                 </tbody>

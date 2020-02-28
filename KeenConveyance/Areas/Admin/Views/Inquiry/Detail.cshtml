@@ -21,7 +21,7 @@
                     <div class="row">
                         <h1 class="alert-light">@Html.DisplayFor(model => model.FirstName)'s Inquiry</h1>
                     </div>
-                    <div class="row">
+                    @*<div class="row">
                         <div class="col-1">
                             <i class="fa fa-1x fa-phone"></i>
                         </div>
@@ -40,47 +40,13 @@
                                 <h5>@Html.DisplayFor(model => model.EmailId)</h5>
                             </a>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="row">
                         <div class="col-1">
                             <i class="fa fa-drivers-license-o" style="font-size:48px;color:red"></i>
                         </div>
                         <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.Subject)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-drivers-license-o" style="font-size:48px;color:red"></i>
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.Desc)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsReplied &nbsp; @if (Model.IsReplied == true)
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.InquiryId" onchange="return activate(@Model.InquiryId)">
-                                    <label class="custom-control-label" for="active_@Model.InquiryId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.InquiryId" onchange="return activate(@Model.InquiryId)">
-                                    <label class="custom-control-label" for="active_@Model.InquiryId"></label>
-                                </div>
-                            }
-                        </h5>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-drivers-license-o" style="font-size:48px;color:red"></i>
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.RepliedText)</h5>
+                            <h2>@Html.DisplayFor(model => model.Subject)</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -88,17 +54,14 @@
                             <i class="fa fa-drivers-license-o" style="font-size:48px;color:red"></i>
                         </div>
                         <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.RepliedOn)</h5>
+                            <p>@Html.DisplayFor(model => model.Desc)</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-drivers-license-o" style="font-size:48px;color:red"></i>
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.RepliedBy)</h5>
-                        </div>
-                    </div>
+                    <form method="post" action="@Url.Action("Detail","Inquiry",new { id=Model.InquiryId})">
+                        <textarea name="txtReply"></textarea>
+                        <br />
+                        <input type="submit" class="btn btn-primary" value="Reply" />
+                    </form>
                 </div>
             </div>
         </div>

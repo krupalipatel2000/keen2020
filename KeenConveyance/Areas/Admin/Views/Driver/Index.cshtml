@@ -15,7 +15,7 @@
                         <th>DriverName</th>
                         <th>ContactNo</th>
                         <th>EmailId</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>ImageURL</th>
                     </tr>
                 </thead>
@@ -24,7 +24,7 @@
                         <th>DriverName</th>
                         <th>ContactNo</th>
                         <th>EmailId</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>ImageURL</th>
                     </tr>
                 </tfoot>
@@ -39,7 +39,7 @@
                             </td>
                             <td>@item.ContactNo</td>
                             <td>@item.EmailId</td>
-                            <td>
+                            <td align="center">
                                 @if (item.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">

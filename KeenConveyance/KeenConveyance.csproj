@@ -557,6 +557,7 @@
     <Content Include="Images\transport.jpg" />
     <Content Include="Images\transportation.jpg" />
     <Content Include="Images\trveltransport.jpg" />
+    <Content Include="Images\user2.png" />
     <Content Include="Images\vehicle.jpg" />
     <Content Include="Images\defaultlogo.jpg" />
     <Content Include="favicon.ico" />
@@ -651,6 +652,8 @@
     <Content Include="Areas\Admin\Views\Booking\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\SampleChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UserChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CompanyChart.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

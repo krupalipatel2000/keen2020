@@ -18,7 +18,7 @@
                         <th>MinValue</th>
                         <th>MaxValue</th>
                         <th>PricePerUnit</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         
                     </tr>
                 </thead>
@@ -29,7 +29,7 @@
                         <th>MinValue</th>
                         <th>MaxValue</th>
                         <th>PricePerUnit</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         
                     </tr>
                 </tfoot>
@@ -46,7 +46,7 @@
                             <td>@item.price.MinValue</td>
                             <td>@item.price.MaxValue</td>
                             <td>@item.price.PricePerUnit</td>
-                            <td>
+                            <td align="center">
                                 @if (item.price.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">

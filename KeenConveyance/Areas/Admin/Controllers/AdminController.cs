@@ -176,17 +176,39 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public ActionResult UserChart()
         {
             //ViewBag.Y = new List<int>() { 10, 24, 23, 47, 50, 36, 27, 18 };
-            //ViewBag.X = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+            //ViewBag.X = new List<int>() {1,2,3,4,5,6,7,8,9,10,11,12};
 
             var user = from ob in dc.tblUsers select ob;
-            string[] X = new string[user.ToList().Count];
-            int[] Y = new int[user.ToList().Count];
+            int[] X = new int[] {1,2,3,4,5,6,7,8,9,10,11,12 };
+            int[] Y = new int[12];
             int i = 0;
             foreach (tblUser u in user)
             {
-                X[i] = u.CreatedOn.Month.ToString();
-                Y[i] = (from ob in dc.tblUsers where ob.UserId == u.UserId select ob).ToList().Count;
                 i++;
+                
+                Y[i] = (from ob in dc.tblUsers where ob.CreatedOn.Month == i select ob).ToList().Count;
+                
+            }
+            ViewBag.X = X;
+            ViewBag.Y = Y;
+
+            return View();
+        }
+        public ActionResult CompanyChart()
+        {
+            //ViewBag.Y = new List<int>() { 10, 24, 23, 47, 50, 36, 27, 18 };
+            //ViewBag.X = new List<int>() {1,2,3,4,5,6,7,8,9,10,11,12};
+
+            var company = from ob in dc.tblTransportCompanies select ob;
+            int[] X = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            int[] Y = new int[12];
+            int i = 0;
+            foreach (tblTransportCompany u in company)
+            {
+                i++;
+
+                Y[i] = (from ob in dc.tblTransportCompanies where ob.CreatedOn.Month == i select ob).ToList().Count;
+
             }
             ViewBag.X = X;
             ViewBag.Y = Y;

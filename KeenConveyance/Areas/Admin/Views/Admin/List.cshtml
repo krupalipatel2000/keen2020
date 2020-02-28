@@ -20,7 +20,7 @@
                         <th>Name</th>
                         <th>EmailId</th>
                         <th>ContactNo</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>CreatedOn</th>
                         <th>Action</th>
                     </tr>
@@ -30,7 +30,7 @@
                         <th>Name</th>
                         <th>EmailId</th>
                         <th>ContactNo</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>CreatedOn</th>
                         <th>Action</th>
                     </tr>
@@ -42,7 +42,7 @@
                             <td><a href="@Url.Action("Detail", new { id = item.AdminId })" id="flip">@item.Name</a></td>
                             <td>@item.EmailId</td>
                             <td>@item.ContactNo</td>
-                            <td>
+                            <td align="center">
                                 @if (item.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">
@@ -59,7 +59,7 @@
                                 }
                             </td>
                             <td>@item.CreatedOn</td>
-                            <td>
+                            <td align="center">
                                 <a href="@Url.Action("Edit",new { id=item.AdminId})">
                                     <i class="fa fa-edit"></i>
                                 </a>|

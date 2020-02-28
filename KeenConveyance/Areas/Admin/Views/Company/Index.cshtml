@@ -20,7 +20,7 @@
                         <th>CompanyEmail</th>
                         <th>ContactPersonName</th>
                         <th>ContactPersonNo</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@
                         <th>CompanyEmail</th>
                         <th>ContactPersonName</th>
                         <th>ContactPersonNo</th>
-                        <th>IsActive</th>
+                        <th>Active</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -48,7 +48,7 @@
                             <td>@item.CompanyEmail</td>
                             <td>@item.ContactPersonName</td>
                             <td>@item.ContactPersonNo</td>
-                            <td>
+                            <td align="center">
                                 @if (item.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">
@@ -64,7 +64,7 @@
                                     </div>
                                 }
                             </td>
-                            <td>
+                            <td align="center">
                                 <a href="@Url.Action("Edit",new { id=item.CompanyId})">
                                     <i class="fa fa-edit"></i>
                                     @*<img src="~/Images/edit.jpg" style="width:20px;height:20px" />*@

@@ -25,5 +25,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public string ContactPersonNo { get; set; }
         public string WebURL { get; set; }
         public bool IsActive { get; set; }
+        public System.DateTime CreatedOn { get; set; }
     }
 }
