@@ -39,7 +39,7 @@ namespace KeenConveyance.Controllers
             user.LastName = form["txtLastName"];
             user.EmailId = form["txtEmailId"];
             user.Password = form["txtPwd"];
-            user.Gender = form["txtgender"];
+            //user.Gender = form["txtgender"];
             user.ContactNo = form["txtCno"];
             user.IsActive = false;
             user.CreatedOn = DateTime.Now;
