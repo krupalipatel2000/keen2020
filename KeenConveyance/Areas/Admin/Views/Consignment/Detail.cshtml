@@ -1,9 +1,11 @@
 ﻿@model  KeenConveyance.Areas.Admin.Models.tblConsignment
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Detail";
-                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    /**/
+
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -132,7 +134,10 @@
                         </div>
                         <div class="row">
                             <h5 class="fa fa-1x">
-                                IsRefregreted @if (Model.IsRefregreted == true)
+                                IsRefregreted
+                            </h5>
+                            <div class="col-5">
+                                @if (Model.IsRefregreted == true)
                                 {
                                     <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                         <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
@@ -146,11 +151,14 @@
                                         <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
                                     </div>
                                 }
-                            </h5>
+                            </div>
                         </div>
                         <div class="row">
                             <h5 class="fa fa-1x">
-                                IsFlamable &nbsp;&nbsp;&nbsp;  @if (Model.IsFlamable == true)
+                                IsFlamable
+                            </h5>
+                            <div class="col-6">
+                                @if (Model.IsFlamable == true)
                                 {
                                     <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                         <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
@@ -164,11 +172,14 @@
                                         <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
                                     </div>
                                 }
-                            </h5>
+                            </div>
                         </div>
                         <div class="row">
                             <h5 class="fa fa-1x">
-                                IsDelicate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  @if (Model.IsDelicate == true)
+                                IsDelicate
+                            </h5>
+                            <div class="col-6">
+                                @if (Model.IsDelicate == true)
                                 {
                                     <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                         <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
@@ -182,12 +193,15 @@
                                         <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
                                     </div>
                                 }
-                            </h5>
-                        </div>
 
+                            </div>
+                        </div>
                         <div class="row">
                             <h5 class="fa fa-1x">
-                                IsDelivered &nbsp;&nbsp;&nbsp; @if (Model.IsDelivered == true)
+                                IsDelivered
+                            </h5>
+                            <div class="col-5">
+                                @if (Model.IsDelivered == true)
                                 {
                                     <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                         <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
@@ -201,7 +215,7 @@
                                         <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
                                     </div>
                                 }
-                            </h5>
+                            </div>
                         </div>
                         <div class="row">
                             <h5 class="fa fa-1x">
@@ -266,7 +280,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">
             Consignment Images
-         </h6>
+        </h6>
     </div>
     <div class="card-body">
         <div class="row">
@@ -276,34 +290,34 @@
                     <img src="~/Images/@item.ImageURL" class="img img-thumbnail" />
                 </div>
             }
-         </div>
-     </div>
+        </div>
+    </div>
 </div>
 
 
 
-            @*<script>
-                    function activate(id) {
-                        $.ajax(
-                            {
-                                type: "POST",
-                                url: "@Url.Action("Active","User")" + "/" + id,
-                                success: function (response) {
-                                    if (response == true) {
-                                        alert("Account activated");
-                                    }
-                                    else {
-                                        alert("Accout deactivated");
-                                    }
-                                },
-                                failure: function (response) {
-                                    alert('Fail - ' + response.responseText);
-                                },
-                                error: function (response) {
-                                    alert('Error - ' + response.responseText);
-                                }
-                            });
+@*<script>
+        function activate(id) {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active","User")" + "/" + id,
+                    success: function (response) {
+                        if (response == true) {
+                            alert("Account activated");
+                        }
+                        else {
+                            alert("Accout deactivated");
+                        }
+                    },
+                    failure: function (response) {
+                        alert('Fail - ' + response.responseText);
+                    },
+                    error: function (response) {
+                        alert('Error - ' + response.responseText);
                     }
-                </script>*@
+                });
+        }
+    </script>*@
 
 

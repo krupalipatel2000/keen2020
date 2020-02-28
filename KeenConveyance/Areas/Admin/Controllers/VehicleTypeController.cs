@@ -17,17 +17,6 @@ namespace KeenConveyance.Areas.Admin.Controllers
             var type = dc.tblVehicleTypes.ToList();
             return View(type);
         }
-        public ActionResult Detail(int id)
-        {
-            var vehicle = from ob in dc.tblVehicleTypes
-                                     join ob2 in dc.tblAdmins on ob.CreatedBy equals ob2.AdminId
-                                     select new JoinViewAll
-                                     {
-                                         admin = ob2,
-                                         vehicletype = ob
-                                     };
-            return View(vehicle);
-        }
         public ActionResult Insert()
         {
             return View();
@@ -38,6 +27,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             tblVehicleType type = new tblVehicleType();
             type.TypeName = form["txtname"];
             type.TypeImage = form["txtImage"];
+            type.CreatedBy = Convert.ToInt32(Session["LogID"]);
             type.CreatedOn = DateTime.Now;
             dc.tblVehicleTypes.Add(type);
             dc.SaveChanges();

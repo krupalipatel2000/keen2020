@@ -4,9 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Insert</h2>
-
-
 @section scripts
     {
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -90,7 +87,11 @@
                     <input type="text" class="form-control" name="txtComName" placeholder="Company Name">
                 </div>
                 <div class="col-sm-6">
-                    <input type="file" class="form-control" name="txtLogo" placeholder="Logo">
+                    
+                    <input type="file" accept="~/Logo/" onchange="return loadFile(event);" class="form-control" id="txtLogo" name="txtLogo" placeholder="Logo">
+                </div>
+                <div class="col-4">
+                    <img src="#"  id="txtLogo" name="txtLogo" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
                 </div>
             </div>
             <div class="form-group row">
@@ -100,7 +101,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="email" class="form-control" name="txtComEmail" placeholder="Email Address"><br />
+                    <input type="email" class="form-control" name="txtComEmail" placeholder="Email Address" onblur="return checkEmail(this.value);"><br />
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0">
                     <input type="password" class="form-control" name="txtPwd" placeholder="Enter Password">
@@ -122,24 +123,25 @@
                     <input type="text" class="form-control" name="txtWebURL" placeholder="Enter Web URL">
                 </div>
             </div>
-            <input type="submit" value="Create Company" class="btn btn-success" onclick="return validate();"/>
+            <input type="submit" value="Create Company" class="btn btn-success" onclick="return validate();" />
         </form>
     </div>
 </div>
-    @*<script>
-            var loadFile = function (event) {
-                var output = document.getElementById('txtProfile');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.hidden = false;
-            };
-        </script>
-        <script>
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('txtLogo');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.hidden = false;
+    };
+</script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
             function checkEmail(val) {
                 if (val != "") {
                     $.ajax(
                         {
                             type: "POST",
-                            url: "@Url.Action("checkEmail","Admin")",
+                            url: "@Url.Action("checkEmail","Company")",
                             data: { id: val },
                             success: function (response) {
                                 if (response == "false") {
@@ -159,5 +161,5 @@
                         });
                 }
             }
-        </script>*@
+</script>
 

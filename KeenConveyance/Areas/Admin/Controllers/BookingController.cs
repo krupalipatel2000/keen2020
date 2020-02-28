@@ -17,11 +17,12 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //var book = dc.tblBookings.ToList();
             var Booking = from ob in dc.tblBookings join ob2 in dc.tblConsignments on ob.ConsignmentId equals ob2.ConsignmentId
                           join ob3 in dc.tblUsers on ob2.UserId equals ob3.UserId
-                          select new
+                          select new JoinViewAll
             {
-                              UserName = ob3.FirstName,
-
+                              user = ob3,
+                              book = ob
             };
+            ViewBag.Booking = Booking;
             return View(Booking);
         }
         [HttpPost]

@@ -38,7 +38,7 @@
                             </td>
                             <td>@item.bid.EstimatedDelivery</td>
                             <td>
-                                <a href=" @Url.Action("Detail","Company")">
+                                <a href=" @Url.Action("Detail","Company", new { id = item.company.CompanyId})">
                                     @item.company.CompanyName
                                  </a>
                             </td>

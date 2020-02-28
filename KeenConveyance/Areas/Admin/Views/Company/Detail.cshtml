@@ -95,7 +95,10 @@
                     </div>
                     <div class="row">
                         <h5 class="fa fa-1x">
-                            IsActive @if (Model.IsActive == true)
+                            IsActive
+                        </h5>
+                        <div class="col-1">
+                            @if (Model.IsActive == true)
                             {
                                 <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                     <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.CompanyId" onchange="return activate(@Model.CompanyId)">
@@ -109,7 +112,7 @@
                                     <label class="custom-control-label" for="active_@Model.CompanyId"></label>
                                 </div>
                             }
-                        </h5>
+                        </div>
                     </div>
                 </div>
             </div>
