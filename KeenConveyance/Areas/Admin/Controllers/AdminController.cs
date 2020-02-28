@@ -28,7 +28,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
                 if (ad.IsSuper == true)
                 {
                     Session["AdminType"] = "Super";
-                    return RedirectToAction("List", "Admin");
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 else
                 {
@@ -39,7 +39,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Admin");
+                return RedirectToAction("Dashboard", "Admin");
             }
         }
         public ActionResult Blank()
@@ -127,7 +127,6 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ViewBag.AdminName = (from ob in dc.tblAdmins where ob.AdminId == ad.CreatedBy select ob).Take(1).SingleOrDefault().Name;
             string Name = ViewBag.AdminName;
             return View(ad);
-
         }
         [HttpPost]
         public JsonResult CheckEmail(string id)
@@ -167,6 +166,26 @@ namespace KeenConveyance.Areas.Admin.Controllers
             {
                 X[i] = u.ConsignmentId.ToString();
                 Y[i] = (from ob in dc.tblBiddings where ob.ConsignmentId == u.ConsignmentId select ob).ToList().Count;
+                i++;
+            }
+            ViewBag.X = X;
+            ViewBag.Y = Y;
+
+            return View();
+        }
+        public ActionResult UserChart()
+        {
+            //ViewBag.Y = new List<int>() { 10, 24, 23, 47, 50, 36, 27, 18 };
+            //ViewBag.X = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+
+            var user = from ob in dc.tblUsers select ob;
+            string[] X = new string[user.ToList().Count];
+            int[] Y = new int[user.ToList().Count];
+            int i = 0;
+            foreach (tblUser u in user)
+            {
+                X[i] = u.CreatedOn.Month.ToString();
+                Y[i] = (from ob in dc.tblUsers where ob.UserId == u.UserId select ob).ToList().Count;
                 i++;
             }
             ViewBag.X = X;

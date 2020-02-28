@@ -37,17 +37,27 @@
         <h6 class="m-0 font-weight-bold text-primary">Add New Company</h6>
     </div>
     <div class="card-body">
-        <form class="user" method="post" name="registration">
+        <form class="user" method="post" name="registration" enctype="multipart/form-data">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control" name="txtname" placeholder="Vehicle Type Name">
                 </div>
                 <div class="col-sm-6">
-                    <input type="file" class="form-control" name="txtImage" placeholder="Vehicle Image">
+                    <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtImage" name="txtImage" placeholder="Logo">
+                </div>
+                <div class="col-4">
+                    <img src="#" id="txtImage" name="txtImage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
                 </div>
             </div>
             <input type="submit" value="Create VehicleType" class="btn btn-success" onclick="return validate();" />
         </form>
     </div>
 </div>
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('txtImage');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.hidden = false;
+    };
+</script>
 

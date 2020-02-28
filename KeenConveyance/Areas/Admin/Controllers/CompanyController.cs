@@ -48,7 +48,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
                 if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
                 {
                     name = Code() + "" + extention;
-                    string path = Server.MapPath("~/Logo/");
+                    string path = Server.MapPath("~/Images/");
                     txtLogo.SaveAs(path + "" + name);
                 }
             }

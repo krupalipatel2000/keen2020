@@ -13,7 +13,6 @@ namespace KeenConveyance.Areas.Admin.Controllers
         dbTransportEntities3 dc = new dbTransportEntities3();
         public ActionResult Index()
         {
-
             var type = dc.tblVehicleTypes.ToList();
             return View(type);
         }
@@ -22,13 +21,28 @@ namespace KeenConveyance.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Insert(FormCollection form)
+        public ActionResult Insert(FormCollection form,HttpPostedFileBase txtImage)
         {
+
+            string name = "txtImage";
+            if (txtImage != null)
+            {
+                int size = (int)txtImage.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtImage.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtImage.SaveAs(path + "" + name);
+                }
+            }
             tblVehicleType type = new tblVehicleType();
             type.TypeName = form["txtname"];
-            type.TypeImage = form["txtImage"];
+            //type.TypeImage = form["txtImage"];
+            type.TypeImage = name.ToString();
             type.CreatedBy = Convert.ToInt32(Session["LogID"]);
             type.CreatedOn = DateTime.Now;
+
             dc.tblVehicleTypes.Add(type);
             dc.SaveChanges();
             return RedirectToAction("Index");
@@ -55,6 +69,11 @@ namespace KeenConveyance.Areas.Admin.Controllers
             dc.tblVehicleTypes.Remove(type);
             dc.SaveChanges();
             return RedirectToAction("Index", "VehicleType");
+        }
+        public string Code()
+        {
+            string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
+            return code;
         }
     }
 }
