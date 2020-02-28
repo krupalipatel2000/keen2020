@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<h2>Contact Us</h2>
+<form method="post">
+    <div class="form-group">
+        <input type="text" name="txtFname" class="form-control" placeholder="First Name" />
+    </div>
+    <div class="form-group">
+        <input type="text" name="txtLname" class="form-control" placeholder="Last Name" />
+    </div>
+    <div class="form-group">
+        <input type="text" name="txtContactNo" class="form-control" placeholder="Contact Number" />
+    </div>
+    <div class="form-group">
+        <input type="text" name="txtEmail" class="form-control" placeholder="Email Address" />
+    </div>
+    <div class="form-group">
+        <input type="text" name="txtSubject" class="form-control" placeholder="Subject Title" />
+    </div>
+    <div class="form-group">
+        <textarea name="txtDesc" class="tox-textarea" style="height:400px; width:500px">
+
+        </textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Submit your Query" />
+    </div>
+
+</form>

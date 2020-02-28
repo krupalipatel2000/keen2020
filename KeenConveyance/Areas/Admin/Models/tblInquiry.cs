@@ -23,7 +23,8 @@ namespace KeenConveyance.Areas.Admin.Models
         public string Desc { get; set; }
         public bool IsReplied { get; set; }
         public string RepliedText { get; set; }
-        public System.DateTime RepliedOn { get; set; }
+        public Nullable<System.DateTime> RepliedOn { get; set; }
         public Nullable<int> RepliedBy { get; set; }
+        public System.DateTime CreatedOn { get; set; }
     }
 }

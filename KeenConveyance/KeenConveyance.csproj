@@ -234,6 +234,7 @@
     <Compile Include="Areas\Admin\Models\tblVehicleType.cs">
       <DependentUpon>dcTransportationEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClientInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2652,6 +2653,7 @@
     <Content Include="Views\User\Insert.cshtml" />
     <Content Include="Views\ClientUser\Insert.cshtml" />
     <Content Include="Views\ClientUser\List.cshtml" />
+    <Content Include="Views\ClientInquery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
