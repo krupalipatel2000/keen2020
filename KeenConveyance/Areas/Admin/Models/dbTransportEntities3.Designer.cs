@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Nandani Borse\source\repos\keen20203\KeenConveyance\Areas\Admin\Models\dcTransportationEntity.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\User\source\repos\Keen2020\KeenConveyance\Areas\Admin\Models\dbTransportEntities3.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

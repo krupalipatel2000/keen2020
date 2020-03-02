@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class CMSpageController : Controller
     {
         // GET: Admin/CMSpage
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             return View();
@@ -33,5 +33,26 @@ namespace KeenConveyance.Areas.Admin.Controllers
             tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.PageTitle == Title);
             return View(cms);
         }
+        public ActionResult List()
+        {
+            var cms = dc.tblCMSPages.ToList();
+            return View(cms);
+        }
+        [HttpPost]
+        public JsonResult Active(int id)
+        {
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
+            if (cms.IsActive == true)
+            {
+                cms.IsActive = false;
+            }
+            else
+            {
+                cms.IsActive = true;
+            }
+            dc.SaveChanges();
+            return Json(cms.IsActive, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

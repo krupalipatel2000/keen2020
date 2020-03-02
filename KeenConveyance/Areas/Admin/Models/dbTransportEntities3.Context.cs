@@ -13,10 +13,10 @@ namespace KeenConveyance.Areas.Admin.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbTransportEntities3 : DbContext
+    public partial class dbTransportEntities4 : DbContext
     {
-        public dbTransportEntities3()
-            : base("name=dbTransportEntities3")
+        public dbTransportEntities4()
+            : base("name=dbTransportEntities4")
         {
         }
     
@@ -36,9 +36,9 @@ namespace KeenConveyance.Areas.Admin.Models
         public virtual DbSet<tblCMSPage> tblCMSPages { get; set; }
         public virtual DbSet<tblComplaint> tblComplaints { get; set; }
         public virtual DbSet<tblConsignment> tblConsignments { get; set; }
-        public virtual DbSet<tblConSignmentImage> tblConSignmentImages { get; set; }
         public virtual DbSet<tblDriver> tblDrivers { get; set; }
         public virtual DbSet<tblFeedback> tblFeedbacks { get; set; }
+        public virtual DbSet<tblInquiry> tblInquiries { get; set; }
         public virtual DbSet<tblPriceList> tblPriceLists { get; set; }
         public virtual DbSet<tblService> tblServices { get; set; }
         public virtual DbSet<tblTracking> tblTrackings { get; set; }
@@ -46,6 +46,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblVehicle> tblVehicles { get; set; }
         public virtual DbSet<tblVehicleType> tblVehicleTypes { get; set; }
-        public virtual DbSet<tblInquiry> tblInquiries { get; set; }
+        public virtual DbSet<tblConSignmentImage> tblConSignmentImages { get; set; }
     }
 }

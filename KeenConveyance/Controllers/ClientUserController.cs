@@ -10,7 +10,7 @@ namespace KeenConveyance.Controllers
     public class ClientUserController : Controller
     {
         // GET: User
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             return View();

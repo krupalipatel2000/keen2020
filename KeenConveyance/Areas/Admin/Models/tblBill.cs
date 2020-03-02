@@ -22,5 +22,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public int GST { get; set; }
         public int TotalPrice { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CompanyId { get; set; }
     }
 }

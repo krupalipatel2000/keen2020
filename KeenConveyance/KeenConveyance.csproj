@@ -153,86 +153,86 @@
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleTypeController.cs" />
     <Compile Include="Areas\Admin\Models\CityMaster.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\CountryMaster.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\dcTransportationEntity.Context.cs">
+    <Compile Include="Areas\Admin\Models\dbTransportEntities3.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dcTransportationEntity.Context.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\dcTransportationEntity.cs">
+    <Compile Include="Areas\Admin\Models\dbTransportEntities3.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\dcTransportationEntity.Designer.cs">
+    <Compile Include="Areas\Admin\Models\dbTransportEntities3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dcTransportationEntity.edmx</DependentUpon>
+      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\JoinViewAll.cs" />
     <Compile Include="Areas\Admin\Models\StateMaster.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblAddress.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblAdmin.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblBidding.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblBill.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblBooking.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblCMSPage.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblComplaint.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblConsignment.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblConSignmentImage.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblDriver.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblFeedback.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblInquiry.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblPriceList.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblService.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblTracking.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblTransportCompany.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblUser.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblVehicle.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblVehicleType.cs">
-      <DependentUpon>dcTransportationEntity.tt</DependentUpon>
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClientInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -247,15 +247,15 @@
     <Content Include="App_Data\dbTransport_log.ldf">
       <DependentUpon>dbTransport.mdf</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Models\dcTransportationEntity.Context.tt">
+    <Content Include="Areas\Admin\Models\dbTransportEntities3.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dcTransportationEntity.edmx</DependentUpon>
-      <LastGenOutput>dcTransportationEntity.Context.cs</LastGenOutput>
+      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
+      <LastGenOutput>dbTransportEntities3.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Admin\Models\dcTransportationEntity.tt">
+    <Content Include="Areas\Admin\Models\dbTransportEntities3.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dcTransportationEntity.edmx</DependentUpon>
-      <LastGenOutput>dcTransportationEntity.cs</LastGenOutput>
+      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
+      <LastGenOutput>dbTransportEntities3.cs</LastGenOutput>
     </Content>
     <Content Include="clientcontent\css\animate.css" />
     <Content Include="clientcontent\css\bootstrap.min.css" />
@@ -549,14 +549,39 @@
     <Content Include="DataTables\datatables.min.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.min.js" />
+    <Content Include="Images\box.jpg" />
+    <Content Include="Images\cold1.jpg" />
+    <Content Include="Images\cold2.jpg" />
+    <Content Include="Images\coldstorage.jpg" />
+    <Content Include="Images\consinmentbox.jpeg" />
+    <Content Include="Images\delicate1.jpg" />
     <Content Include="Images\distribiution.jpg" />
     <Content Include="Images\effiletower.jpg" />
+    <Content Include="Images\flame1.jpg" />
+    <Content Include="Images\flame2.png" />
+    <Content Include="Images\gmg.png" />
     <Content Include="Images\happy.jpg" />
+    <Content Include="Images\home1.jpg" />
+    <Content Include="Images\home2.jpg" />
+    <Content Include="Images\home3.jpg" />
+    <Content Include="Images\homeshiping.jpg" />
     <Content Include="Images\login.png" />
+    <Content Include="Images\logo1.png" />
+    <Content Include="Images\logo2.png" />
+    <Content Include="Images\logo4.jpg" />
+    <Content Include="Images\logo5.jpg" />
     <Content Include="Images\night.jpeg" />
+    <Content Include="Images\plane.jpg" />
+    <Content Include="Images\register.jpg" />
+    <Content Include="Images\ship.jpg" />
+    <Content Include="Images\stransport.jpg" />
+    <Content Include="Images\tata.jpg" />
+    <Content Include="Images\tempo.jpg" />
     <Content Include="Images\tower.jpg" />
     <Content Include="Images\transport.jpg" />
     <Content Include="Images\transportation.jpg" />
+    <Content Include="Images\truck.png" />
+    <Content Include="Images\trucks.jpg" />
     <Content Include="Images\trveltransport.jpg" />
     <Content Include="Images\user2.png" />
     <Content Include="Images\vehicle.jpg" />
@@ -578,6 +603,7 @@
     <Content Include="AdminContent\js\demo\datatables-demo.js" />
     <Content Include="AdminContent\js\sb-admin-2.js" />
     <Content Include="AdminContent\js\sb-admin-2.min.js" />
+    <Content Include="Images\weburl.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -611,7 +637,6 @@
     <Content Include="Areas\Admin\Views\User\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Company\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Consignment\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Consignment\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\ConsignmentImage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ConsignmentImage\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\Index.cshtml" />
@@ -640,13 +665,6 @@
     <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Bidding\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Detail.cshtml" />
-    <EntityDeploy Include="Areas\Admin\Models\dcTransportationEntity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dcTransportationEntity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Areas\Admin\Models\dcTransportationEntity.edmx.diagram">
-      <DependentUpon>dcTransportationEntity.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Driver\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\CMSpage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CMSpage\ViewCMS.cshtml" />
@@ -655,6 +673,15 @@
     <Content Include="Areas\Admin\Views\Admin\SampleChart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\UserChart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\CompanyChart.cshtml" />
+    <EntityDeploy Include="Areas\Admin\Models\dbTransportEntities3.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbTransportEntities3.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\dbTransportEntities3.edmx.diagram">
+      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\CMSpage\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Consignment\Detail.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -11,7 +11,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     {
         // GET: Admin/Complaint
 
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             var joincom = from obcomplaint in dc.tblComplaints

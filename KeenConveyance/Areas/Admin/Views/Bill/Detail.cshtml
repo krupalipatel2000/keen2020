@@ -12,77 +12,42 @@
         </h6>
     </div>
     <div class="card-body">
-        <div>
-            <div class="row">
-
-            </div>
-            <div class="col-md-8">
-                <div class="row">
-                    <h1 class="text-info"><b>@ViewBag.UserName's Bill</b></h1><br />
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <i class="fa fa-1x">UserName</i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@ViewBag.UserName</h5>
-                    </div>
-                </div>
-                @*<div class="row">
-                    <div class="col-1">
-                        <i class="fa fa-1x fa-phone"></i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@Html.DisplayFor(model => model.BookingId)</h5>
-                    </div>
-                </div>*@
-                <div class="row">
-                    <div class="col-2">
-                        <i class="fa fa-1x">Price</i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@Html.DisplayFor(model => model.Price)</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <i class="fa fa-1x">TollTax</i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@Html.DisplayFor(model => model.TollTax)</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <i class="fa fa-1x">GST</i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@Html.DisplayFor(model => model.GST)</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <i class="fa fa-1x">Total Price</i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@Html.DisplayFor(model => model.TotalPrice)</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <i class="fa fa-1x">CreatedOn</i>
-                    </div>
-                    <div class="col-6">
-                        <h5>@Html.DisplayFor(model => model.CreatedOn)</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" style="text-align:center">
-                <p>
-                    Member since <b> @Model.CreatedOn.Year </b>
-                </p>
-                <br />
-            </div>
+        <div class="row">
+            <h1 class="text text-primary"><b>@ViewBag.ComName Transportation Company</b></h1>
+        </div>
+        <hr />
+        <div class="row">
+            <img src="~/Images/weburl.png" style="height:50px;width:50px" />
+            <h3 class="text text-dark"><b>&nbsp;@ViewBag.WebUrl</b></h3>
+        </div>
+        <div class="row">
+            <h3>Name : <b>@ViewBag.UserName</b></h3>
+        </div>
+        <div class="row">
+            <h3>Contact Number : <b>@ViewBag.cno</b></h3>
+        </div>
+        <br />
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Sr.No.</b></td>
+                        <td><b>Price</b></td>
+                        <td><b>Toll Tax</b></td>
+                        <td><b>GST</b></td>
+                        <td><b>Total Amount</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(model => model.BillId)</td>
+                        <td>@Html.DisplayFor(model => model.Price)</td>
+                        <td>@Html.DisplayFor(model => model.TollTax)</td>
+                        <td>@Html.DisplayFor(model => model.GST)</td>
+                        <td>@Html.DisplayFor(model => model.TotalPrice)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

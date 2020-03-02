@@ -20,73 +20,74 @@
                     <br />
 
                     <br />
-                    <p>
-                         Member since <b> @Html.ViewBag.Year </b>
-                    </p>
+                    @*<p>
+                         Member since <b> @Html..Year </b>
+                    </p>*@
                     <br />
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <h1 class="alert-light">@ViewBag.CompanyName's vehicle</h1>
+                        <h1 class="alert-light"><b>@ViewBag.CompanyName's vehicle</b></h1>
                     </div>
+                    <hr />
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-id-badge"></i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.VehicleTypeId)</h5>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-truck"></i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.VehicleName)</h5>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-registered"></i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.RegNo)</h5>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-file-excel"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Document Image</i>
                         </div>
                         <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.DocumentImage)</h5>
+                            <h5>@*@Html.DisplayFor(model => model.DocumentImage)*@
+                                <img src="~/Images/@Html.DisplayFor(model => model.DocumentImage)" style="height:100px;width:100px" />
+                            </h5>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-oil-can"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Fuel Type</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.Fuel)</h5>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-cc-amazon-pay "></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Capacity of Vehicle</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.Capacity)</h5>
                         </div>
                     </div>
-
-
                     <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsActive @if (Model.IsActive == true)
+                        <div class="col-2">
+                            <h5 class="fa fa-1x">
+                                IsActive
+                            </h5>
+                        </div>
+                        <div class="col-1">
+                            @if (Model.IsActive == true)
                             {
                                 <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                     <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.VehicleId" onchange="return activate(@Model.VehicleId)">
@@ -100,11 +101,9 @@
                                     <label class="custom-control-label" for="active_@Model.VehicleId"></label>
                                 </div>
                             }
-                        </h5>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

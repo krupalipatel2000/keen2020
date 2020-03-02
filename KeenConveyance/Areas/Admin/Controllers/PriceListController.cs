@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class PriceListController : Controller
     {
         // GET: Admin/PriceList
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             var joinprice = from obprice in dc.tblPriceLists

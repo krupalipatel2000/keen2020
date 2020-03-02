@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class CompanyController : Controller
     {
         // GET: Admin/Company
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         
         
         public ActionResult Index()
@@ -64,6 +64,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             com.ContactPersonNo = form["txtContactPersonPhNo"];
             com.WebURL = form["txtWebURL"];
             com.IsActive = true;
+            com.CreatedOn = DateTime.Now;
             dc.tblTransportCompanies.Add(com);
             dc.SaveChanges();
             return RedirectToAction("Index");

@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class UserController : Controller
     {
         // GET: Admin/User
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             var user = dc.tblUsers.ToList();

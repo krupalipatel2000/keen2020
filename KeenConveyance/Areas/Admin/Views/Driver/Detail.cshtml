@@ -28,10 +28,11 @@
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <h1 class="alert-light">@ViewBag.CompanyName's driver</h1>
+                        <h1 class="alert-light"><b>@ViewBag.CompanyName's driver</b></h1>
                     </div>
+                    <hr />
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-user"></i>
                         </div>
                         <div class="col-6">
@@ -40,7 +41,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-phone"></i>
                         </div>
                         <div class="col-6">
@@ -52,7 +53,7 @@
 
 
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-mail-bulk"></i>
                         </div>
                         <div class="col-6">
@@ -62,8 +63,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-drivers-license-o" style="font-size:48px;color:red"></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">License Number</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.LicenseNo)</h5>
@@ -71,15 +72,15 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-1">
-                            <i class="fa "></i>
+                        <div class="col-2">
+                            <i class="fa fa-1x">Aadharcard Number</i>
                         </div>
                         <div class="col-6">
                             <h5>@Html.DisplayFor(model => model.AadharcardNo)</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <i class="fa fa-1x fa-calendar-day"></i>
                         </div>
                         <div class="col-6">
@@ -87,8 +88,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsActive &nbsp; @if (Model.IsActive == true)
+                        <div class="col-2">
+                            <h5 class="fa fa-1x">
+                                IsActive
+                            </h5>
+                        </div>
+                        <div class="col-1">
+                            @if (Model.IsActive == true)
                             {
                                 <div class="custom-control custom-switch" style="float:right;margin-left:10px">
                                     <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.DriverId" onchange="return activate(@Model.DriverId)">
@@ -102,7 +108,7 @@
                                     <label class="custom-control-label" for="active_@Model.DriverId"></label>
                                 </div>
                             }
-                        </h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,7 +138,7 @@
                     }
                 });
         }
-    </script>
+</script>
 
 
 

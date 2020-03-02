@@ -26,6 +26,5 @@ namespace KeenConveyance.Areas.Admin.Models
         public string RepliedText { get; set; }
         public Nullable<System.DateTime> RepliedOn { get; set; }
         public Nullable<int> RepliedBy { get; set; }
-        public System.DateTime CreatedOn { get; set; }
     }
 }

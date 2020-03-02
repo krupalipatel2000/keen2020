@@ -34,8 +34,9 @@
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <h1 class="text-info">@Html.DisplayFor(model => model.FirstName)'s Profile</h1><br />
+                        <h1 class="text-info"><b>@Html.DisplayFor(model => model.FirstName)'s Profile</b></h1><br />
                     </div>
+                    <hr />
                     <div class="row">
                         <div class="col-1">
                             <i class="fa fa-1x fa-mail-bulk"></i>
@@ -113,37 +114,37 @@
                         </h5>
                     </div>
                     <br />
-                    <div class="row">
-                        @{
-                            if (Model.IsActive == true)
-                            {
-                                <a href="#"> Deactivate Account </a>
-                            }
-                        }
-                    </div>
-                    <div class="row">
-                        <br /><br />
-                        <div class="alert-danger" style="margin-top:40px; margin-left:10px">
-                            @{
-                                if (Model.IsActive == true)
-                                {
-                                    <a href="@Url.Action("Activate","Admin")" class="btn btn-danger"> Deactivate Account </a>
-                                }
-                            }
-                        </div>
-                    </div>
+                    @*<div class="row">
+            @{
+                if (Model.IsActive == true)
+                {
+                    <a href="#"> Deactivate Account </a>
+                }
+            }
+        </div>*@
+                    @*<div class="row">
+            <br /><br />
+            <div class="alert-danger" style="margin-top:40px; margin-left:10px">
+                @{
+                    if (Model.IsActive == true)
+                    {
+                        <a href="@Url.Action("Activate","Admin")" class="btn btn-danger"> Deactivate Account </a>
+                    }
+                }
+            </div>
+        </div>*@
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    @*<div class="row">
         <div class="col-md-4" style="text-align:center">
             <p>
                 Member since <b> @Model.CreatedOn.Year </b>
             </p>
             <br />
         </div>
-    </div>
+    </div>*@
     <div class="card-footer">
         <div class="row">
             <div class="col-lg-8 align-content-lg-center">

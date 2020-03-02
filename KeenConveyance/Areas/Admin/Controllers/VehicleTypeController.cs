@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class VehicleTypeController : Controller
     {
         // GET: Admin/VehicleType
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             var type = dc.tblVehicleTypes.ToList();

@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         // GET: Admin/Admin
-        dbTransportEntities3 dc = new dbTransportEntities3();
+        dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
             Session.Clear();
@@ -39,7 +39,10 @@ namespace KeenConveyance.Areas.Admin.Controllers
             }
             else
             {
-                return RedirectToAction("Dashboard", "Admin");
+                
+                ViewBag.message = "*Inavalid email or password";
+                return View();
+               //return RedirectToAction("Dashboard", "Admin");
             }
         }
         public ActionResult Blank()
