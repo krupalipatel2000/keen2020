@@ -128,6 +128,22 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //dc.SaveChanges();
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult CheckCom(string id)
+        {
+            string response;
+            tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyName == id);
+            if (company != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
         public string Code()
         {
             string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");

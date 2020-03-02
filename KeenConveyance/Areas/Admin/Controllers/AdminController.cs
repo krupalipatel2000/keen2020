@@ -25,15 +25,27 @@ namespace KeenConveyance.Areas.Admin.Controllers
             {
                 Session["loginId"] = ad.Name;
                 Session["LogID"] = ad.AdminId;
+
+                Session["Insert"] = ad.IsInsert;
+                Session["Edit"] = ad.IsEdit;
+                Session["Delete"] = ad.IsDelete;
+
                 if (ad.IsSuper == true)
                 {
                     Session["AdminType"] = "Super";
+
+
+
                     return RedirectToAction("Dashboard", "Admin");
                 }
                 else
                 {
                     //Session["AdminType"] = "Sub";
-                    return RedirectToAction("Index", "User");
+                    Session["Insert"] = ad.IsInsert;
+                    Session["Edit"] = ad.IsEdit;
+                    Session["Delete"] = ad.IsDelete;
+
+                    return RedirectToAction("Dashboard", "Admin");
                 }
              
             }

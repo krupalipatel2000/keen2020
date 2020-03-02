@@ -556,6 +556,15 @@
     <Content Include="Images\consinmentbox.jpeg" />
     <Content Include="Images\delicate1.jpg" />
     <Content Include="Images\distribiution.jpg" />
+    <Content Include="Images\doc1.png" />
+    <Content Include="Images\doc2.png" />
+    <Content Include="Images\doc3.jpg" />
+    <Content Include="Images\doc4.jpg" />
+    <Content Include="Images\doc5.png" />
+    <Content Include="Images\driver1.png" />
+    <Content Include="Images\driver2.jpg" />
+    <Content Include="Images\driver3.jpg" />
+    <Content Include="Images\driver4.png" />
     <Content Include="Images\effiletower.jpg" />
     <Content Include="Images\flame1.jpg" />
     <Content Include="Images\flame2.png" />
@@ -583,7 +592,11 @@
     <Content Include="Images\truck.png" />
     <Content Include="Images\trucks.jpg" />
     <Content Include="Images\trveltransport.jpg" />
+    <Content Include="Images\user1.png" />
     <Content Include="Images\user2.png" />
+    <Content Include="Images\user3.png" />
+    <Content Include="Images\user4.png" />
+    <Content Include="Images\user5.png" />
     <Content Include="Images\vehicle.jpg" />
     <Content Include="Images\defaultlogo.jpg" />
     <Content Include="favicon.ico" />

@@ -21,17 +21,17 @@ namespace KeenConveyance.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult Active(int id)
         {
-            tblDriver driver = dc.tblDrivers.SingleOrDefault(ob => ob.DriverId == id);
-            if (driver.IsActive == true)
-            {
-                driver.IsActive = false;
-            }
-            else
-            {
-                driver.IsActive = true;
-            }
-            dc.SaveChanges();
-            return Json(driver.IsActive, JsonRequestBehavior.AllowGet);
+                tblDriver driver = dc.tblDrivers.SingleOrDefault(ob => ob.DriverId == id);
+                if (driver.IsActive == true)
+                {
+                    driver.IsActive = false;
+                }
+                else
+                {
+                    driver.IsActive = true;
+                }
+                dc.SaveChanges();
+                return Json(driver.IsActive, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Detail(int id)
         {
