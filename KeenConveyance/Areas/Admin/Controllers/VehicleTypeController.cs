@@ -47,6 +47,23 @@ namespace KeenConveyance.Areas.Admin.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public JsonResult CheckType(string id)
+        {
+            string response;
+            tblVehicleType company = dc.tblVehicleTypes.SingleOrDefault(ob => ob.TypeName == id);
+            if (company != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Edit(int id)
         {
             TempData["id"] = id;

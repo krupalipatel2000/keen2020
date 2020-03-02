@@ -40,7 +40,9 @@
                             <td>@item.ContactNo</td>
                             <td>@item.EmailId</td>
                             <td align="center">
-                                @if (item.IsActive == true)
+                                @if (Session["Edit"].ToString() == "False")
+                                {
+                                if (item.IsActive == true)
                                 {
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" checked class="custom-control-input" id="active_@item.DriverId" onchange="return activate(@item.DriverId)">
@@ -53,6 +55,7 @@
                                         <input type="checkbox" class="custom-control-input" id="active_@item.DriverId" onchange="return activate(@item.DriverId)">
                                         <label class="custom-control-label" for="active_@item.DriverId"></label>
                                     </div>
+                                }
                                 }
                             </td>
                             <td><img src="~/Images/@item.ImageURL" class="img-thumbnail" style="height:100px;width:100px;" /></td>

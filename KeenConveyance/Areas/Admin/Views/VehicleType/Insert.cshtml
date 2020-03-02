@@ -40,7 +40,7 @@
         <form class="user" method="post" name="registration" enctype="multipart/form-data">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="txtname" placeholder="Vehicle Type Name">
+                    <input type="text" class="form-control" name="txtname" placeholder="Vehicle Type Name" onblur="return CheckType(this.value);">
                 </div>
                 <div class="col-sm-6">
                     <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtImage" name="txtImage" placeholder="Logo">
@@ -60,4 +60,33 @@
         output.hidden = false;
     };
 </script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+            function CheckType(val) {
+                if (val != "") {
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "@Url.Action("CheckType", "VehicleType")",
+                            data: { id: val },
+                            success: function (response) {
+                                if (response == "false") {
+                                }
+                                else {
+                                    alert("VehicleType already exist");
+                                    $('#txtType').val("");
+                                    $('#txtType').focus();
+                                }
+                            },
+                            failure: function (response) {
+                                alert('Fail - ' + response.responseText);
+                            },
+                            error: function (response) {
+                                alert('Error - ' + response.responseText);
+                            }
+                        });
+                }
+            }
+</script>
+
 
