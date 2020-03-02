@@ -17,7 +17,7 @@
                         <th>TypeName</th>
                         <th>TypeImage</th>
                         <th>CreatedOn</th>
-                        <th>CreatedBy</th>
+                        @*<th>CreatedBy</th>*@
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@
                         <th>TypeName</th>
                         <th>TypeImage</th>
                         <th>CreatedOn</th>
-                        <th>CreatedBy</th>
+                        @*<th>CreatedBy</th>*@
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -37,7 +37,7 @@
                             <td>@item.TypeName</td>
                             <td><img src="~/Images/@item.TypeImage" class="img-thumbnail" style="height:100px;width:100px;" /></td>
                             <td>@item.CreatedOn</td>
-                            <td>@item.CreatedBy</td>
+                            @*<td>@item.CreatedBy</td>*@
                             <td align="center">
                                 <a href="@Url.Action("Edit",new { id=item.VehicleTypeId})">
                                     <i class="fa fa-edit"></i>

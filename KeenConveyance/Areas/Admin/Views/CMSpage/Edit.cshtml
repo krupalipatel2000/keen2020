@@ -1,0 +1,27 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblCMSPage
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Edit CMS Page</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post">
+            <div class="form-group row">
+                <div class="col-sm-10 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" value="@Model.PageTitle" name="txtPage" placeholder="Admin Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-5 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" value="@Model.Desc" name="txtDesc" placeholder="Email Address">
+                </div>
+            </div>
+            <input type="submit" value="Update CMS" class="btn btn-success" />
+        </form>
+    </div>
+</div>
+

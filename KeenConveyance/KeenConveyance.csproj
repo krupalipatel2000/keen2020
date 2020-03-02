@@ -555,6 +555,7 @@
     <Content Include="Images\coldstorage.jpg" />
     <Content Include="Images\consinmentbox.jpeg" />
     <Content Include="Images\delicate1.jpg" />
+    <Content Include="Images\distance.jpg" />
     <Content Include="Images\distribiution.jpg" />
     <Content Include="Images\effiletower.jpg" />
     <Content Include="Images\flame1.jpg" />
@@ -682,6 +683,7 @@
     </Content>
     <Content Include="Areas\Admin\Views\CMSpage\List.cshtml" />
     <Content Include="Areas\Admin\Views\Consignment\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\CMSpage\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

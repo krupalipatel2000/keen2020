@@ -34,7 +34,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td><a href="@Url.Action("Detail", new { id = item.CMSPageId })" id="flip">@item.PageTitle</a></td>
+                            <td>@item.PageTitle</td>
                             <td>@item.Desc</td>
                             <td>@item.CreatedOn</td>
                             <td align="center">
