@@ -234,6 +234,7 @@
     <Compile Include="Areas\Admin\Models\tblVehicleType.cs">
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClientCompanyController.cs" />
     <Compile Include="Controllers\ClientInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
@@ -2697,6 +2698,10 @@
     <Content Include="Views\ClientUser\Insert.cshtml" />
     <Content Include="Views\ClientUser\List.cshtml" />
     <Content Include="Views\ClientInquery\Index.cshtml" />
+    <Content Include="Views\ClientCompany\Insert.cshtml" />
+    <Content Include="Views\ClientUser\Index.cshtml" />
+    <Content Include="Views\ClientCompany\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
