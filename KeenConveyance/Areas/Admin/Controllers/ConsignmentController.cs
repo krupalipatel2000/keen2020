@@ -35,7 +35,11 @@ namespace KeenConveyance.Areas.Admin.Controllers
         {
             tblConsignment consignment = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
             ViewBag.User = (from ob in dc.tblUsers where ob.UserId == consignment.UserId select ob).Take(1).SingleOrDefault().FirstName;
+            ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == consignment.SourceId select ob).Take(1).SingleOrDefault().Address;
+            ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == consignment.DestinationId select ob).Take(1).SingleOrDefault().Address;
             string Name = ViewBag.User;
+            string source = ViewBag.Source;
+            string destination = ViewBag.Destination;
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID==id select ob;
             return View(consignment);
         }

@@ -550,12 +550,15 @@
     <Content Include="DataTables\datatables.min.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.min.js" />
+    <Content Include="Images\admin.png" />
+    <Content Include="Images\admin1.jpg" />
     <Content Include="Images\box.jpg" />
     <Content Include="Images\cold1.jpg" />
     <Content Include="Images\cold2.jpg" />
     <Content Include="Images\coldstorage.jpg" />
     <Content Include="Images\consinmentbox.jpeg" />
     <Content Include="Images\delicate1.jpg" />
+    <Content Include="Images\distance.jpg" />
     <Content Include="Images\distribiution.jpg" />
     <Content Include="Images\doc1.png" />
     <Content Include="Images\doc2.png" />
@@ -696,6 +699,7 @@
     </Content>
     <Content Include="Areas\Admin\Views\CMSpage\List.cshtml" />
     <Content Include="Areas\Admin\Views\Consignment\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\CMSpage\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

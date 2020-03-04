@@ -51,8 +51,8 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public JsonResult CheckType(string id)
         {
             string response;
-            tblVehicleType company = dc.tblVehicleTypes.SingleOrDefault(ob => ob.TypeName == id);
-            if (company != null)
+            tblVehicleType vehicle = dc.tblVehicleTypes.SingleOrDefault(ob => ob.TypeName == id);
+            if (vehicle != null)
             {
                 response = "true";
             }
@@ -71,12 +71,25 @@ namespace KeenConveyance.Areas.Admin.Controllers
             return View(type);
         }
         [HttpPost]
-        public ActionResult Edit(FormCollection form)
+        public ActionResult Edit(FormCollection form,HttpPostedFileBase txtImage)
         {
+            string name = "txtImage";
+            if (txtImage != null)
+            {
+                int size = (int)txtImage.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtImage.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtImage.SaveAs(path + "" + name);
+                }
+            }
+
             int id = Convert.ToInt32(TempData["id"]);
             tblVehicleType type = dc.tblVehicleTypes.SingleOrDefault(ob => ob.VehicleTypeId == id);
-            type.TypeName = form["txtTname"];
-            type.TypeImage = form["txtImage"];
+            type.TypeName = form["txtname"];
+            type.TypeImage = name.ToString();
             dc.SaveChanges();
             return RedirectToAction("Index");
         }

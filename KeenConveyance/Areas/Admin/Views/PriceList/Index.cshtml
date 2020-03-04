@@ -85,7 +85,7 @@
         $.ajax(
             {
                 type: "POST",
-                url: "@Url.Action("Active","inquiry")" + "/" + id,
+                url: "@Url.Action("Active","PriceList")" + "/" + id,
                 success: function (response) {
                     if (response == true) {
                         alert("Account activated");

@@ -53,6 +53,28 @@ namespace KeenConveyance.Areas.Admin.Controllers
             dc.SaveChanges();
             return Json(cms.IsActive, JsonRequestBehavior.AllowGet);
         }
-
+        public ActionResult Edit(int id)
+        {
+            TempData["id"] = id;
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
+            return View(cms);
+        }
+        [HttpPost]
+        public ActionResult Edit(FormCollection form)
+        {
+            int id = Convert.ToInt32(TempData["id"]);
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
+            cms.PageTitle = form["txtPage"];
+            cms.Desc = form["txtDesc"];
+            dc.SaveChanges();
+            return RedirectToAction("List", "CMSpage");
+        }
+        public ActionResult Delete(int id)
+        {
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
+            dc.tblCMSPages.Remove(cms);
+            dc.SaveChanges();
+            return RedirectToAction("List", "CMSpage");
+        }
     }
 }

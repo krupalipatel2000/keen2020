@@ -17,6 +17,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>AdminID</th>
                         <th>Name</th>
                         <th>EmailId</th>
                         <th>ContactNo</th>
@@ -27,6 +28,7 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th> AdminID</th>
                         <th>Name</th>
                         <th>EmailId</th>
                         <th>ContactNo</th>
@@ -39,6 +41,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td> @item.AdminId</td>
                             <td><a href="@Url.Action("Detail", new { id = item.AdminId })" id="flip">@item.Name</a></td>
                             <td>@item.EmailId</td>
                             <td>@item.ContactNo</td>
@@ -53,7 +56,7 @@
                                 else
                                 {
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.AdminId" onchange="return activate(@item.AdminId)">
+                                        <input type="checkbox" class="custom-control-input" id="active_@item.AdminId" onchange="return activate(@item.AdminId)">
                                         <label class="custom-control-label" for="active_@item.AdminId"></label>
                                     </div>
                                 }
@@ -64,7 +67,7 @@
                                     <i class="fa fa-edit"></i>
                                 </a>|
                                 <a href="@Url.Action("Delete",new { id=item.AdminId})">
-                                    <i class="fa fa-trash"></i>
+                                    <i class="fa fa-trash" onclick="return confirm('Are You Sure?');"></i>
                                 </a>
                             </td>
                         </tr>
