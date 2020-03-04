@@ -31,11 +31,13 @@ namespace KeenConveyance.Areas.Admin.Controllers
         public ActionResult ViewCMS(string Title)
         {
             tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.PageTitle == Title);
+            
             return View(cms);
         }
         public ActionResult List()
         {
             var cms = dc.tblCMSPages.ToList();
+            ViewBag.CMSTitle = new SelectList(cms, "CMSPageId", "PageTitle");
             return View(cms);
         }
         [HttpPost]

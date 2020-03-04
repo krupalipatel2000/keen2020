@@ -44,5 +44,35 @@ namespace KeenConveyance.Areas.Admin.Controllers
             string Name = ViewBag.Company;
             return View(service);
         }
+        public ActionResult Insert()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Insert(FormCollection form,HttpPostedFileBase txtSimage)
+        {
+            string name = "txtSimage";
+            if (txtSimage != null)
+            {
+                int size = (int)txtSimage.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtSimage.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtSimage.SaveAs(path + "" + name);
+                }
+            }
+            tblService service = new tblService();
+            service.ServiceName = form["txtSname"];
+            service.ServiceDesc = form["txtDesc"];
+            service.ServiceImage = name.ToString();
+            return RedirectToAction("Index", "Service");
+        }
+        public string Code()
+        {
+            string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
+            return code;
+        }
     }
 }
