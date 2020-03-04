@@ -17,42 +17,35 @@ namespace KeenConveyance.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(string txtEmail,string txtPwd)
+        public ActionResult Index(string txtEmail, string txtPwd)
         {
             tblAdmin ad = (from ob in dc.tblAdmins where ob.EmailId == txtEmail && ob.Password == txtPwd && ob.IsActive == true select ob).Take(1).SingleOrDefault();
             if (ad != null)
             {
                 Session["loginId"] = ad.Name;
-                if (Session["loginId"] != null)
+                Session["LogID"] = ad.AdminId;
+                if (ad.IsSuper == true)
                 {
-                    Session["LogID"] = ad.AdminId;
-                    if (ad.IsSuper == true)
-                    {
-                        Session["AdminType"] = "Super";
-                        Session["Insert"] = ad.IsInsert;
-                        Session["Edit"] = ad.IsEdit;
-                        Session["Delete"] = ad.IsDelete;
-                        return RedirectToAction("Dashboard", "Admin");
-                    }
-                    else
-                    {
-                        //Session["AdminType"] = "Sub";
-                        Session["Insert"] = ad.IsInsert;
-                        Session["Edit"] = ad.IsEdit;
-                        Session["Delete"] = ad.IsDelete;
-                        return RedirectToAction("Dashboard", "Admin");
-                    }
+                    Session["AdminType"] = "Super";
+                    Session["Insert"] = ad.IsInsert;
+                    Session["Edit"] = ad.IsEdit;
+                    Session["Delete"] = ad.IsDelete;
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Admin");
+                    //Session["AdminType"] = "Sub";
+                    Session["Insert"] = ad.IsInsert;
+                    Session["Edit"] = ad.IsEdit;
+                    Session["Delete"] = ad.IsDelete;
+                    return RedirectToAction("Dashboard", "Admin");
                 }
             }
             else
-            {   
+            {
                 ViewBag.message = "*Inavalid email or password";
                 return View();
-               //return RedirectToAction("Dashboard", "Admin");
+                //return RedirectToAction("Dashboard", "Admin");
             }
         }
         public ActionResult Blank()
@@ -68,7 +61,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Admin");
+                return RedirectToAction("Index", "Admin");
             }
         }
         public ActionResult Insert()
@@ -121,9 +114,9 @@ namespace KeenConveyance.Areas.Admin.Controllers
             int id = Convert.ToInt32(TempData["id"]);
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
             ad.Name = form["txtName"];
-           // ad.EmailId = form["txtEmail"];
+            // ad.EmailId = form["txtEmail"];
             ad.ContactNo = form["txtCno"];
-           // ad.ImageUrl = form["txtFile"];
+            // ad.ImageUrl = form["txtFile"];
             dc.SaveChanges();
             return RedirectToAction("List");
         }
@@ -132,7 +125,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
             dc.tblAdmins.Remove(ad);
             dc.SaveChanges();
-            return RedirectToAction("List","Admin");
+            return RedirectToAction("List", "Admin");
         }
         public ActionResult Detail(int id)
         {
@@ -157,7 +150,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //dc.SaveChanges();
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-       [HttpPost]
+        [HttpPost]
         public JsonResult CheckCno(string id)
         {
             string response;
@@ -208,17 +201,18 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //ViewBag.Y = new List<int>() { 10, 24, 23, 47, 50, 36, 27, 18 };
             //ViewBag.X = new List<int>() {1,2,3,4,5,6,7,8,9,10,11,12};
 
-            var user = from ob in dc.tblUsers select ob;
-            int[] X = new int[] {1,2,3,4,5,6,7,8,9,10,11,12 };
-            int[] Y = new int[12];
+            var user = (from ob in dc.tblUsers where ob.CreatedOn.Year == DateTime.Now.Year select ob.CreatedOn.Month).Distinct();
+            string[] X = new string[user.Count()];
+            int[] Y = new int[user.Count()];
             int i = 0;
-            foreach (tblUser u in user)
+            foreach (int Month in user)
             {
+
+                X[i] = Month.ToString();
+                Y[i] = (from ob in dc.tblUsers where ob.CreatedOn.Month == Month select ob).ToList().Count();
                 i++;
-                
-                Y[i] = (from ob in dc.tblUsers where ob.CreatedOn.Month == i select ob).ToList().Count;
-                
             }
+
             ViewBag.X = X;
             ViewBag.Y = Y;
 

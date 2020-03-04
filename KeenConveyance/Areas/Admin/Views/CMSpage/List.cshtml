@@ -9,68 +9,18 @@
         <h6 class="m-0 font-weight-bold text-primary">List of CMS Page</h6><br />
         <a href="@Url.Action("Index")">Add New CMS</a>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>PageTitle</th>
-                        <th>Description</th>
-                        <th>CreatedOn</th>
-                        <th>Active</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>PageTitle</th>
-                        <th>Description</th>
-                        <th>CreatedOn</th>
-                        <th>Active</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.PageTitle</td>
-                            <td>@item.Desc</td>
-                            <td>@item.CreatedOn</td>
-                            <td align="center">
-                                @if (item.IsActive == true)
-                                {
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.CMSPageId" onchange="return activate(@item.CMSPageId)">
-                                        <label class="custom-control-label" for="active_@item.CMSPageId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="active_@item.CMSPageId" onchange="return activate(@item.CMSPageId)">
-                                        <label class="custom-control-label" for="active_@item.CMSPageId"></label>
-                                    </div>
-                                }
-                            </td>
-                            @*<td>@item.CreatedBy</td>
-                            <td>@item.ModifiedOn</td>
-                            <td>@item.ModifiedBy</td>*@
-                            <td align="center">
-                                <a href="@Url.Action("Edit",new { id=item.CMSPageId})">
-                                    <i class="fa fa-edit"></i>
-                                </a>|
-                                <a href="@Url.Action("Delete",new { id=item.CMSPageId})">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    <form id="frmCMS">
+        <div class="card-body">
+            @Html.DropDownList("ddTitle", ViewBag.CMSTitle as SelectList, "Select Title", new { onchange = "TitleChange(this.value);" })
+
         </div>
-    </div>
+    </form>
 </div>
+<script>
+    function TitleChange(value) {
+        document.location(@Url.Action("list", "CMSpage"));
+    }
+</script>
 <!-- Bootstrap core JavaScript-->
 @*<script src="~/vendor/jquery/jquery.min.js"></script>*@
 <script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
