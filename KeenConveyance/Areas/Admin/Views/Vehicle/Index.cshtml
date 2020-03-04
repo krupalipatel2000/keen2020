@@ -15,7 +15,6 @@
                             <tr>
                                 <th>VehicleName</th>
                                 <th>RegNo</th>
-                                <th>DocumentImage</th>
                                 <th>Active</th>
                                 <th>Image</th>
                             </tr>
@@ -24,7 +23,6 @@
                             <tr>
                                 <th>VehicleName</th>
                                 <th>RegNo</th>
-                                <th>DocumentImage</th>
                                 <th>Active</th>
                                 <th>Image</th>
                             </tr>
@@ -40,7 +38,6 @@
                                         </a>
                                     </td>
                                     <td>@item.RegNo</td>
-                                    <td>@item.DocumentImage</td>
                                     <td align="center">
                                         @if (item.IsActive == true)
                                         {
@@ -81,7 +78,7 @@
         $.ajax(
             {
                 type: "POST",
-                url: "@Url.Action("Active","Consignment")" + "/" + id,
+                url: "@Url.Action("Active","Vehicle")" + "/" + id,
                 success: function (response) {
                     if (response == true) {
                         alert("Account activated");

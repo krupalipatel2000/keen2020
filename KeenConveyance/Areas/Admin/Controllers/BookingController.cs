@@ -46,7 +46,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ViewBag.Vehicle = (from ob in dc.tblVehicles where ob.VehicleId == book.VehicleId select ob).Take(1).SingleOrDefault().VehicleName;
             ViewBag.Driver = (from ob in dc.tblDrivers where ob.DriverId == book.DriverId select ob).Take(1).SingleOrDefault().DriverName;
             ViewBag.UserName = (from ob in dc.tblUsers join ob2 in dc.tblConsignments on ob.UserId equals ob2.UserId where ob2.ConsignmentId == book.ConsignmentId select ob).Take(1).SingleOrDefault().FirstName;
-
+            ViewBag.Pic = (from ob in dc.tblUsers join ob2 in dc.tblConsignments on ob.UserId equals ob2.UserId where ob2.ConsignmentId == book.ConsignmentId select ob).Take(1).SingleOrDefault().ProfilePic;
             string vehicle = ViewBag.Vehicle;
             string dr = ViewBag.Driver;
             return View(book);

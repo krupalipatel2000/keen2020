@@ -12,151 +12,39 @@
         </h6>
     </div>
     <div class="card-body">
-        <div>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <h1 class="text-info">@ViewBag.UserName's Order</h1><br />
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-2">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.ConsignmentId)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Vehicle Name</h5>
-                            @*<i class="fa fa-1x fa-mail-bulk"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@ViewBag.Vehicle</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Driver Name</h5>
-                            @*<i class="fa fa-1x fa-mail-bulk"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@ViewBag.Driver</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Dispatch Date</h5>
-                            @*<i class="fa fa-1x fa-"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.DispatchDate)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Delivered Date</h5>
-                            @*<i class="fa fa-1x fa-mail-bulk"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.DeliveredDate)</h5>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Total Payment of Consignment</h5>
-                            @*<i class="fa fa-1x fa-mail-bulk"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.TotalPayment)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Remarks for Consignment</h5>
-                            @*<i class="fa fa-1x fa-mail-bulk"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.Remarks)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1">Mode of Payment</h5>
-                            @*<i class="fa fa-1x fa-mail-bulk"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.PaymentMode)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.BidId)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsPaid
-                        </h5>
-                        <div class="col-2">
-                            @if (Model.IsPaid == true)
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.BookingId" onchange="return activate(@Model.BookingId)">
-                                    <label class="custom-control-label" for="active_@Model.BookingId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.BookingId" onchange="return activate(@Model.BookingId)">
-                                    <label class="custom-control-label" for="active_@Model.BookingId"></label>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-2">
+                <img src="~/Images/@ViewBag.Pic" style="height:100px;width:100px;" class="img img-thumbnail" />
+            </div>
+            <div class="col-10"><b>@ViewBag.UserName</b></div>
+        </div><br />
+        <div class="row">
+            <div class="col-2">ConsignmentId : </div>
+            <div class="col-10">
+                <b>@Model.ConsignmentId</b>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4" style="text-align:center">
-            <p>
-                Member since <b> @Html.ViewBag.Year </b>
-            </p>
-            <br />
-        </div>
+        <div class="row">
+            <div class="col-2">
+                DispatchDate :
+            </div>
+            <div class="col-10"><b>@Model.DispatchDate.ToShortDateString()</b></div>
+            <div class="col-2">
+                DeliveredDate :
+            </div>
+            <div class="col-10"><b>@Model.DeliveredDate.ToShortDateString()</b></div>
+        </div><br />
+        <div class="row">
+            <div class="col-2">
+                Payment Mode :
+            </div>
+            <div class="col-10"><b>@Model.PaymentMode</b></div>
+            <div class="col-2">
+                Payment :
+            </div>
+            <div class="col-10"><b>@Model.TotalPayment</b></div>
+        </div><br />
     </div>
 </div>
-
-@*<script>
-        function activate(id) {
-            $.ajax(
-                {
-                    type: "POST",
-                    url: "@Url.Action("Active","User")" + "/" + id,
-                    success: function (response) {
-                        if (response == true) {
-                            alert("Account activated");
-                        }
-                        else {
-                            alert("Accout deactivated");
-                        }
-                    },
-                    failure: function (response) {
-                        alert('Fail - ' + response.responseText);
-                    },
-                    error: function (response) {
-                        alert('Error - ' + response.responseText);
-                    }
-                });
-        }
-    </script>*@
-
 
 

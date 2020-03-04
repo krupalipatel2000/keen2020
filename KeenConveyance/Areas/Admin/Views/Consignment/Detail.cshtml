@@ -21,24 +21,24 @@
     <div class="col-md-5">
         <div class="card shadow mb-4" style="width:500px;">
             <div class="card-body">
-                <h5 class="text text-body">Type of Unit : <b>@Model.UnitType</b></h5><br />
-                <h5 class="text text-body">Value of Unit : <b>@Model.UnitValue</b></h5><br />
-                <h5 class="text text-body">Budget : <b>@Model.Budget</b></h5><br />
-                <h5 class="text text-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Type of Unit : <b>@Model.UnitType</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Value of Unit : <b>@Model.UnitValue</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Budget : <b>@Model.Budget</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                     Min Bid Value : <b>@Model.MinBidValue</b>
                     &nbsp;&nbsp; Max Bid Value : <b>@Model.MaxBidValue</b>
                 </h5><br />
-                <h5 class="text text-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                     Mini Time : <b>@Model.MinTime.ToShortDateString()</b>
                     &nbsp;&nbsp; Max Time : <b>@Model.MaxTime.ToShortDateString()</b>
                 </h5><br />
                 <div class="row">
                     <div class="col-4">
-                        <h5 class="text text-body">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                             IsRefregreted :
                         </h5>
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         @if (Model.IsRefregreted == true)
                         {
                             <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -54,12 +54,12 @@
                             </div>
                         }
                     </div>
-                    <div class="col-3">
-                        <h5 class="text text-body">
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                             IsDelivered :
                         </h5>
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         @if (Model.IsDelivered == true)
                         {
                             <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -78,11 +78,11 @@
                 </div>
                 <div class="row">
                     <div class="col-4">
-                        <h5 class="text text-body">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                             IsFlamable :
                         </h5>
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         @if (Model.IsFlamable == true)
                         {
                             <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -98,12 +98,12 @@
                             </div>
                         }
                     </div>
-                    <div class="col-3">
-                        <h5 class="text text-body">
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                             IsActive :
                         </h5>
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         @if (Model.IsActive == true)
                         {
                             <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -122,11 +122,11 @@
                 </div>
                 <div class="row">
                     <div class="col-4">
-                        <h5 class="text text-body">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                             IsDelicate :
                         </h5>
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         @if (Model.IsDelicate == true)
                         {
                             <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -142,12 +142,12 @@
                             </div>
                         }
                     </div>
-                    <div class="col-3">
-                        <h5 class="text text-body">
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                             IsPaid :
                         </h5>
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         @if (Model.IsPaid == true)
                         {
                             <div class="custom-control custom-switch" style="float:right;margin-left:10px">
@@ -170,22 +170,22 @@
     <div class="col-md-5">
         <div class="card shadow mb-4" style="width:600px;">
             <div class="card-body">
-                <h5 class="text text-body">Sender Name : <b>@ViewBag.User</b></h5><br />
-                <h5 class="text text-body">Sender Address : <b>@ViewBag.Source</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Sender Name : <b>@ViewBag.User</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Sender Address : <b>@ViewBag.Source</b></h5><br />
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="text text-body"><img src="~/Images/distance.jpg" style="height:100px;width:100px;" />@Model.Distance KM</h5>
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"><img src="~/Images/distance.jpg" style="height:100px;width:100px;" />@Model.Distance KM</h5>
             </div>
         </div>
         <br />
         <div class="card shadow mb-4" style="width:600px;">
             <div class="card-body">
-                <h5 class="text text-body">Receiver Name : <b>@Model.ReceiverName</b></h5><br />
-                <h5 class="text text-body">Receiver Contact Number : <b>@Model.ReceiverContactNo</b></h5><br />
-                <h5 class="text text-body">Receiver Address : <b>@ViewBag.Destination</b></h5><br />
-                <h5 class="text text-body">Receiver Pin Number : <b>@Model.ReceiverPinNo</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Name : <b>@Model.ReceiverName</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Contact Number : <b>@Model.ReceiverContactNo</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Address : <b>@ViewBag.Destination</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Pin Number : <b>@Model.ReceiverPinNo</b></h5><br />
             </div>
         </div>
         <br>

@@ -21,8 +21,8 @@
 
                     <br />
                     @*<p>
-                         Member since <b> @Html..Year </b>
-                    </p>*@
+                             Member since <b> @Html..Year </b>
+                        </p>*@
                     <br />
                 </div>
                 <div class="col-md-8">
@@ -59,7 +59,8 @@
                             <i class="fa fa-1x">Document Image</i>
                         </div>
                         <div class="col-6">
-                            <h5>@*@Html.DisplayFor(model => model.DocumentImage)*@
+                            <h5>
+                                @*@Html.DisplayFor(model => model.DocumentImage)*@
                                 <img src="~/Images/@Html.DisplayFor(model => model.DocumentImage)" style="height:100px;width:100px" />
                             </h5>
                         </div>
@@ -97,7 +98,7 @@
                             else
                             {
                                 <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.VehicleId" onchange="return activate(@Model.VehicleId)">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.VehicleId" onchange="return activate(@Model.VehicleId)">
                                     <label class="custom-control-label" for="active_@Model.VehicleId"></label>
                                 </div>
                             }
@@ -108,13 +109,12 @@
         </div>
     </div>
 </div>
-
-@*<script>
+<script>
         function activate(id) {
             $.ajax(
                 {
                     type: "POST",
-                    url: "@Url.Action("Active","User")" + "/" + id,
+                    url: "@Url.Action("Active","Vehicle")" + "/" + id,
                     success: function (response) {
                         if (response == true) {
                             alert("Account activated");
@@ -131,6 +131,5 @@
                     }
                 });
         }
-    </script>*@
-
+</script>
 

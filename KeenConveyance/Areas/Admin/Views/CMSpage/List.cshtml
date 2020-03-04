@@ -18,7 +18,7 @@
                         <th>Description</th>
                         <th>CreatedOn</th>
                         <th>Active</th>
-                        @*<th>Action</th>*@
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -27,7 +27,7 @@
                         <th>Description</th>
                         <th>CreatedOn</th>
                         <th>Active</th>
-                        @*<th>Action</th>*@
+                        <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -56,14 +56,14 @@
                             @*<td>@item.CreatedBy</td>
                             <td>@item.ModifiedOn</td>
                             <td>@item.ModifiedBy</td>*@
-                            @*<td align="center">
+                            <td align="center">
                                 <a href="@Url.Action("Edit",new { id=item.CMSPageId})">
                                     <i class="fa fa-edit"></i>
                                 </a>|
                                 <a href="@Url.Action("Delete",new { id=item.CMSPageId})">
                                     <i class="fa fa-trash"></i>
                                 </a>
-                            </td>*@
+                            </td>
                         </tr>
                     }
                 </tbody>

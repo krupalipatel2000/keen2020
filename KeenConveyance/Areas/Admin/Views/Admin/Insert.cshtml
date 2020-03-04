@@ -70,7 +70,7 @@
         <form class="user" method="post" name="registration">
             <div class="form-group row">
                 <div class="col-sm-10 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="txtName" placeholder="Admin Name" maxlength="20" >
+                    <input type="text" class="form-control" name="txtName" placeholder="Admin Name" maxlength="20">
                 </div>
             </div>
             <div class="form-group row">
@@ -83,63 +83,13 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-5 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="txtCno" placeholder="Contact Number"><br />
+                    <input type="text" class="form-control" name="txtCno" id="txtCno" placeholder="Contact Number" onblur="return CheckCno(this.value);"><br />
                 </div>
             </div>
             <input type="submit" value="Create Sub Admin" class="btn btn-success" onclick="return validate();" />
         </form>
     </div>
 </div>
-
-@*<!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-    </body>
-    </html>*@
-@*<h2>Add Admin Details</h2><hr />
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <form method="post" name="registration" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="text" name="txtName" class="form-control" placeholder="Enter Your Name" /><br />
-                </div>
-                <div class="form-group">
-                    <input type="text" name="txtEmail" id="txtEmail" class="form-control" placeholder="Enter Your EmailID" onblur="return checkEmail(this.value)" /><br />
-                </div>
-                <div class="form-group">
-                    <input type="password" name="txtPwd" class="form-control" placeholder="Enter Your Password" /><br />
-                </div>
-                <div class="form-group">
-                    <input type="text" name="txtCno" class="form-control" placeholder="Enter Your ContactNo" /><br />
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <input type="file" accept="image/*" onchange="return loadFile(event)" id="txtFile" name="txtFile" class="form-control-file" placeholder="Select your profilepic" /><br />
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <img src="#" name="txtProfile" id="txtProfile" class="img img-thumbnail" style="height:100px;width:100px;" hidden />
-                    </div>
-                </div>
-                <input type="text" name="txtCreatedBy" class="form-control" placeholder="Enter Your AdminId" /><br />
-                <input type="submit" name="submit" value="Submit" class="btn btn-lg btn-success" onclick="return validate()" />
-            </form>
-        </div>
-    </div>
-</div>
-<script>
-    var loadFile = function (event) {
-        var output = document.getElementById('txtProfile');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.hidden = false;
-    };
-</script>*@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
     function checkEmail(val) {
@@ -150,13 +100,41 @@
                             url: "@Url.Action("CheckEmail","Admin")",
                             data: { id: val },
                             success: function (response) {
-                                alert("Success");
+                                //alert("Success");
                                 if (response == "false") {
                                 }
                                 else {
                                     alert("Email already exist");
                                     $('#txtEmail').val("");
                                     $('#txtEmail').focus();
+                                }
+                            },
+                            failure: function (response) {
+                                alert('Fail - ' + response.responseText);
+                            },
+                            error: function (response) {
+                                alert('Error - ' + response.responseText);
+                            }
+                        });
+                }
+            }
+</script>
+<script>
+    function CheckCno(val) {
+                if (val != "") {
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "@Url.Action("CheckCno", "Admin")",
+                            data: { id: val },
+                            success: function (response) {
+                                //alert("Success");
+                                if (response == "false") {
+                                }
+                                else {
+                                    alert("ContactNo already exist");
+                                    $('#txtCno').val("");
+                                    $('#txtCno').focus();
                                 }
                             },
                             failure: function (response) {

@@ -83,7 +83,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             com.CompanyName = form["txtComName"];
             com.Logo = form["txtLogo"];
             com.CompanyPhNo = form["txtComPhNo"];
-            com.CompanyEmail = form["txtComEmail"];
+            //com.CompanyEmail = form["txtComEmail"];
            // com.Password = form["txtPwd"];
             com.AboutCompany = form["txtAboutCompany"];
             com.ContactPersonName = form["txtContactPersonName"];

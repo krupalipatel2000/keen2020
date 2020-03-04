@@ -4,6 +4,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts
+{
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "image media link",
+    });
+</script>
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Edit CMS Page</h6>

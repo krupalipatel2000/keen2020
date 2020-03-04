@@ -549,6 +549,8 @@
     <Content Include="DataTables\datatables.min.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.min.js" />
+    <Content Include="Images\admin.png" />
+    <Content Include="Images\admin1.jpg" />
     <Content Include="Images\box.jpg" />
     <Content Include="Images\cold1.jpg" />
     <Content Include="Images\cold2.jpg" />

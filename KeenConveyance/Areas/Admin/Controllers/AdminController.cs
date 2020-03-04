@@ -16,42 +16,40 @@ namespace KeenConveyance.Areas.Admin.Controllers
             Session.Clear();
             return View();
         }
-        
         [HttpPost]
         public ActionResult Index(string txtEmail,string txtPwd)
         {
-            tblAdmin ad = (from ob in dc.tblAdmins where ob.EmailId == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
+            tblAdmin ad = (from ob in dc.tblAdmins where ob.EmailId == txtEmail && ob.Password == txtPwd && ob.IsActive == true select ob).Take(1).SingleOrDefault();
             if (ad != null)
             {
                 Session["loginId"] = ad.Name;
-                Session["LogID"] = ad.AdminId;
-
-                Session["Insert"] = ad.IsInsert;
-                Session["Edit"] = ad.IsEdit;
-                Session["Delete"] = ad.IsDelete;
-
-                if (ad.IsSuper == true)
+                if (Session["loginId"] != null)
                 {
-                    Session["AdminType"] = "Super";
-
-
-
-                    return RedirectToAction("Dashboard", "Admin");
+                    Session["LogID"] = ad.AdminId;
+                    if (ad.IsSuper == true)
+                    {
+                        Session["AdminType"] = "Super";
+                        Session["Insert"] = ad.IsInsert;
+                        Session["Edit"] = ad.IsEdit;
+                        Session["Delete"] = ad.IsDelete;
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else
+                    {
+                        //Session["AdminType"] = "Sub";
+                        Session["Insert"] = ad.IsInsert;
+                        Session["Edit"] = ad.IsEdit;
+                        Session["Delete"] = ad.IsDelete;
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
                 }
                 else
                 {
-                    //Session["AdminType"] = "Sub";
-                    Session["Insert"] = ad.IsInsert;
-                    Session["Edit"] = ad.IsEdit;
-                    Session["Delete"] = ad.IsDelete;
-
-                    return RedirectToAction("Dashboard", "Admin");
+                    return RedirectToAction("Index", "Admin");
                 }
-             
             }
             else
-            {
-                
+            {   
                 ViewBag.message = "*Inavalid email or password";
                 return View();
                //return RedirectToAction("Dashboard", "Admin");
@@ -123,7 +121,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             int id = Convert.ToInt32(TempData["id"]);
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
             ad.Name = form["txtName"];
-            ad.EmailId = form["txtEmail"];
+           // ad.EmailId = form["txtEmail"];
             ad.ContactNo = form["txtCno"];
            // ad.ImageUrl = form["txtFile"];
             dc.SaveChanges();
@@ -159,6 +157,23 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //dc.SaveChanges();
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+       [HttpPost]
+        public JsonResult CheckCno(string id)
+        {
+            string response;
+            tblAdmin admin = dc.tblAdmins.SingleOrDefault(ob => ob.ContactNo == id);
+            if (admin != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Dashboard()
         {
             ViewBag.UserCount = (from ob in dc.tblUsers select ob).ToList().Count().ToString();

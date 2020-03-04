@@ -10,45 +10,39 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <script>
-        function validate() {
-            var name = document.registration.txtName;
-            var image = document.registration.txtImage;
-            var name_pat = /^[A-Za-z]+$/;
-            if (name.value != "" && name.value.match(name_pat)) {
-            }
-            else {
-                alert("Vehicle Type Name is not Proper");
-                name.focus();
-                return false;
-            }
-            if (image.value != "") {
-            }
-            else {
-                alert("Choose image");
-                name.focus();
-                return false;
-            }
-            
-            return true;
-        }
-    </script>
+
 }
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('txtImage');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.hidden = false;
+    };
+</script>
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Add New Company</h6>
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("Index","VehicleType")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+        </h6>
     </div>
     <div class="card-body">
-        <form class="user" method="post" name="registration">
+        <form class="user" method="post" enctype="multipart/form-data">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" value="@Model.TypeName" name="txtTname" placeholder="Vehicle Type Name">
+                    <input type="text" class="form-control" value="@Model.TypeName" name="txtname" placeholder="Vehicle Type Name">
                 </div>
+                @*<div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" value="@Model.TypeImage" name="txtname" placeholder="Vehicle Type Name" onblur="return CheckType(this.value);">
+                </div>*@
                 <div class="col-sm-6">
-                    <input type="file" class="form-control" value="@Model.TypeImage" name="txtImage" placeholder="Vehicle Image">
+                    <input type="file" accept="~/Images/" value="@Model.TypeImage" onchange="return loadFile(event);" class="form-control" id="txtImage" name="txtImage" placeholder="Logo">
                 </div>
+
             </div>
-            <input type="submit" value="Create VehicleType" class="btn btn-success" onclick="return validate();"/>
+            <input type="submit" value="Update VehicleType" class="btn btn-success" />
         </form>
     </div>
 </div>

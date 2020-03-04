@@ -16,7 +16,7 @@
     <script>
         function validate() {
             var name = document.registration.txtComName;
-            var email = document.registration.txtComEmail;
+           // var email = document.registration.txtComEmail;
             var cno = document.registration.txtComPhNo;
             var cpname = document.registration.txtContactPersonName;
             var cpno = document.registration.txtContactPersonPhNo;
@@ -28,14 +28,14 @@
                 name.focus();
                 return false;
             }
-            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if (email.value.match(email_pat)) {
-            }
-            else {
-                alert("Email is not Proper");
-                email.focus();
-                return false;
-            }
+            //var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            //if (email.value.match(email_pat)) {
+            //}
+            //else {
+            //    alert("Email is not Proper");
+            //    email.focus();
+            //    return false;
+            //}
 
             var cno_pat = /^\d{10}$/;
             if (cno.value.match(cno_pat)) {
@@ -77,16 +77,10 @@
         <form class="user" method="post" name="registration">
             <div class="form-group row">
                 <div class="col-md-5">
-                    Company Name :
-                </div>
-                <div class="col-md-5">
                     Logo of Company :
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" value="@Model.CompanyName" name="txtComName" placeholder="Company Name">
-                </div>
                 <div class="col-sm-5">
                     <input type="file" class="form-control" value="@Model.Logo" name="txtLogo" placeholder="Logo">
                 </div>
@@ -102,7 +96,7 @@
                     <input type="text" class="form-control" value="@Model.CompanyPhNo" name="txtComPhNo" placeholder="Contact Number">
                 </div>
             </div>
-            <div class="form-group row">
+            @*<div class="form-group row">
                 <div class="col-md-5">
                     Email Address of Company :
                 </div>
@@ -111,7 +105,7 @@
                 <div class="col-sm-4 mb-3 mb-sm-0">
                     <input type="email" class="form-control" value="@Model.CompanyEmail" name="txtComEmail" placeholder="Email Address"><br />
                 </div>
-            </div>
+            </div>*@
             <div class="form-group row">
                 <div class="col-md-5">
                     Description of Company :
