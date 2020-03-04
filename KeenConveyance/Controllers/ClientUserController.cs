@@ -65,7 +65,7 @@ namespace KeenConveyance.Controllers
             user.CreatedOn = DateTime.Now;
             user.IsVerified = false;
             user.IsMobileVerified = false;
-            user.ProfilePic = form["txtprofile"];
+            user.ProfilePic = name.ToString();
             dc.tblUsers.Add(user);
             dc.SaveChanges();
             return RedirectToAction("List");

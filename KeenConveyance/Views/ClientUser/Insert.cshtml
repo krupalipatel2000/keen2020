@@ -57,53 +57,54 @@
         }
 </script>
 
+<div class="p-2">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <a href="@Url.Action("Index","ClientUser")" class="btn btn-primary">
+                    <i class="fa fa-step-backward"></i>
+                </a>
+            </h6><br />
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-            <a href="@Url.Action("Index","ClientUser")" class="btn btn-primary">
-                <i class="fa fa-step-backward"></i>
-            </a>
-        </h6><br />
+        </div>
+        <div class="card-body bg-dark">
+            <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                <center><h2 style="color:azure">Registration</h2></center><br />
+                <div class="form-group row">
+                    <div class="col-sm-5 mb-3 mb-sm-3">
+                        <input type="text" class="form-control" name="txtFirstName" placeholder="Your FirstName" maxlength="15">
+                    </div>
+                    <div class="col-sm-5 mb-3 mb-sm-0">
+                        <input type="text" class="form-control" name="txtLastName" placeholder="Your LastName">
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control" name="txtprofile" placeholder="ProfilePic"><br />
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-5 mb-3 mb-sm-0">
+                        <input type="email" class="form-control" name="txtEmailId" placeholder="Your EmailId">
+                    </div>
+                    <div class="col-sm-5 mb-3 mb-sm-0">
+                        <input type="password" class="form-control" name="txtPwd" placeholder=" Your Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <h4 style="color:azure">Gender : </h4>
+                        <input type="radio" id="male" name="gender" value="male" checked>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br>
 
-    </div>
-    <div class="card-body bg-dark">
-        <form class="user" method="post" name="registration" enctype="multipart/form-data">
-            <center><h2 style="color:azure">Registration</h2></center><br />
-            <div class="form-group row">
-                <div class="col-sm-5 mb-3 mb-sm-3">
-                    <input type="text" class="form-control" name="txtFirstName" placeholder="Your FirstName"  maxlength="15">
+                    </div>
+                    <div class="col-sm-10 mb-3 mb-sm-0">
+                        <input type="text" class="form-control" name="txtCno" placeholder="Your ContactNumber"><br />
+                    </div>
                 </div>
-                <div class="col-sm-5 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="txtLastName" placeholder="Your LastName">
-                </div>
-            </div>
-            <div class="col-sm-10">
-                <input type="file" class="form-control" name="txtprofile" placeholder="ProfilePic"><br />
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-5 mb-3 mb-sm-0">
-                    <input type="email" class="form-control" name="txtEmailId" placeholder="Your EmailId">
-                </div>
-                <div class="col-sm-5 mb-3 mb-sm-0">
-                    <input type="password" class="form-control" name="txtPwd" placeholder=" Your Password">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <h4 style="color:azure">Gender : </h4>
-                    <input type="radio" id="male" name="gender" value="male" checked>
-                    <label for="male">Male</label>      
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Female</label><br>
 
-                </div>
-                <div class="col-sm-10 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="txtCno" placeholder="Your ContactNumber"><br />
-                </div>
-            </div>
-
-            <input type="submit" value="Create User" class="btn btn-success" onclick="return validate();" />
-        </form>
+                <input type="submit" value="Create User" class="btn btn-success" onclick="return validate();" />
+            </form>
+        </div>
     </div>
 </div>
