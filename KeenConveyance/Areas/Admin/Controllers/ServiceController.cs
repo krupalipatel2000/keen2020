@@ -67,12 +67,42 @@ namespace KeenConveyance.Areas.Admin.Controllers
             service.ServiceName = form["txtSname"];
             service.ServiceDesc = form["txtDesc"];
             service.ServiceImage = name.ToString();
-            return RedirectToAction("Index", "Service");
+            service.IsActive = false;
+            service.CreatedOn = DateTime.Now;
+
+            dc.tblServices.Add(service);
+            dc.SaveChanges();
+            return RedirectToAction("Index","Service");
         }
         public string Code()
         {
             string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
             return code;
         }
+        public ActionResult Edit(int id)
+        {
+            TempData["id"] = id;
+            tblService service = dc.tblServices.SingleOrDefault(ob => ob.ServiceId == id);
+            return View(service);
+        }
+        [HttpPost]
+        public ActionResult Edit(FormCollection form)
+        {
+            int id = Convert.ToInt32(TempData["id"]);
+            tblService service = dc.tblServices.SingleOrDefault(ob => ob.ServiceId == id);
+            service.ServiceName = form["txtSname"];
+            service.ServiceDesc = form["txtDesc"];
+            service.ServiceImage = form["txtSimage"];
+            dc.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            tblService service = dc.tblServices.SingleOrDefault(ob => ob.ServiceId == id);
+            dc.tblServices.Remove(service);
+            dc.SaveChanges();
+            return RedirectToAction("Index", "Service");
+        }
+
     }
 }

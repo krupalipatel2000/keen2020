@@ -20,6 +20,8 @@
                         <th>ServiceDesc</th>
                         <th>Active</th>
                         <th>CreatedOn</th>
+                        <th>Action</th>
+
                     </tr>
                 </thead>
                 <tfoot>
@@ -30,38 +32,50 @@
                         <th>ServiceDesc</th>
                         <th>Active</th>
                         <th>CreatedOn</th>
+                        <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                <a href=" @Url.Action("Detail", new { id = item.comservice.ServiceId})">
-                                    <img src="~/Images/@item.comservice.ServiceImage" class="img-thumbnail" style="height:100px;width:100px;" />
-                                </a>
-                            </td>
-                            <td>@item.company.CompanyName</td>
-                            <td>@item.comservice.ServiceName</td>
-                            <td>@item.comservice.ServiceDesc</td>
-                            <td align="center">
-                                @if (item.comservice.IsActive == true)
-                                {
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.comservice.ServiceId" onchange="return activate(@item.comservice.ServiceId)">
-                                        <label class="custom-control-label" for="active_@item.comservice.ServiceId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="active_@item.comservice.ServiceId" onchange="return activate(@item.comservice.ServiceId)">
-                                        <label class="custom-control-label" for="active_@item.comservice.ServiceId"></label>
-                                    </div>
-                                }
-                            </td>
-                            <td>@item.comservice.CreatedOn</td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <a href=" @Url.Action("Detail", new { id = item.comservice.ServiceId})">
+                                <img src="~/Images/@item.comservice.ServiceImage" class="img-thumbnail" style="height:100px;width:100px;" />
+                            </a>
+                        </td>
+                        <td>@item.company.CompanyName</td>
+                        <td>@item.comservice.ServiceName</td>
+                        <td>@item.comservice.ServiceDesc</td>
+                        <td align="center">
+                            @if (item.comservice.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" checked class="custom-control-input" id="active_@item.comservice.ServiceId" onchange="return activate(@item.comservice.ServiceId)">
+                                    <label class="custom-control-label" for="active_@item.comservice.ServiceId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="active_@item.comservice.ServiceId" onchange="return activate(@item.comservice.ServiceId)">
+                                    <label class="custom-control-label" for="active_@item.comservice.ServiceId"></label>
+                                </div>
+                            }
+                        </td>
+                        <td>@item.comservice.CreatedOn</td>
+                        <td align="center">
+                            <a href="@Url.Action("Edit",new { id=item.comservice.ServiceId})">
+                                <i class="fa fa-edit"></i>
+                                @*<img src="~/Images/edit.jpg" style="width:20px;height:20px" />*@
+                            </a>|
+                            <a href="@Url.Action("Delete",new { id=item.comservice.ServiceId})">
+                                <i class="fa fa-trash" onclick="return confirm('Are You Sure?');"></i>
+                                @*<img src="~/Images/delete.png" style="width:20px;height:20px" />*@
+                            </a>
+                        </td>
+
+                    </tr>
                     }
                 </tbody>
             </table>
