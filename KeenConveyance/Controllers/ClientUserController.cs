@@ -15,19 +15,39 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(string txtEmail, string txtPwd)
+        {
+            tblUser user = (from ob in dc.tblUsers where ob.EmailId == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
+            if (user != null)
+            {
+                Session["loginId"] = user.FirstName;
+                //Session["LogID"] = user.UserId;
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+
+                ViewBag.message = "*Inavalid email or password";
+                return View();
+                //return RedirectToAction("Dashboard", "Admin");
+            }
+        }
+
         public ActionResult Insert()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Insert(FormCollection form,HttpPostedFileBase txtprofile)
+        public ActionResult Insert(FormCollection form, HttpPostedFileBase txtprofile)
         {
             string name = "txtprofile";
-            if(txtprofile != null)
+            if (txtprofile != null)
             {
                 int size = (int)txtprofile.ContentLength / 1024;
                 var extention = System.IO.Path.GetExtension(txtprofile.FileName);
-                if(size <= 1024 && (extention.ToLower().Equals(".jpg")|| extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
                 {
                     name = code() + "" + extention;
                     string path = Server.MapPath("~/Images/");
@@ -39,7 +59,7 @@ namespace KeenConveyance.Controllers
             user.LastName = form["txtLastName"];
             user.EmailId = form["txtEmailId"];
             user.Password = form["txtPwd"];
-            //user.Gender = form["txtgender"];
+            user.Gender = form["gender"];
             user.ContactNo = form["txtCno"];
             user.IsActive = false;
             user.CreatedOn = DateTime.Now;
@@ -50,7 +70,7 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("List");
         }
-       
+
         public ActionResult List()
         {
             var user = dc.tblUsers.ToList();
