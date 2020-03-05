@@ -556,6 +556,7 @@
     <Content Include="Images\cold1.jpg" />
     <Content Include="Images\cold2.jpg" />
     <Content Include="Images\coldstorage.jpg" />
+    <Content Include="Images\companylogo.png" />
     <Content Include="Images\consinmentbox.jpeg" />
     <Content Include="Images\delicate1.jpg" />
     <Content Include="Images\distance.jpg" />
@@ -622,6 +623,7 @@
     <Content Include="AdminContent\js\sb-admin-2.js" />
     <Content Include="AdminContent\js\sb-admin-2.min.js" />
     <Content Include="Images\weburl.png" />
+    <Content Include="Models\companylogo.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -2700,7 +2702,6 @@
     <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\Temp\" />
   </ItemGroup>
   <ItemGroup>
