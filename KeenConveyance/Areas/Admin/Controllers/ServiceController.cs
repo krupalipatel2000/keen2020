@@ -29,6 +29,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             if (service.IsActive == true)
             {
                 service.IsActive = false;
+
             }
             else
             {
