@@ -22,6 +22,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             tblAdmin ad = (from ob in dc.tblAdmins where ob.EmailId == txtEmail && ob.Password == txtPwd && ob.IsActive == true select ob).Take(1).SingleOrDefault();
             if (ad != null)
             {
+                parul
                 Session["loginId"] = ad.Name;
                 Session["LogID"] = ad.AdminId;
                 if (ad.IsSuper == true)
