@@ -17,17 +17,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="row">
-                        <h1 class="alert-light">@ViewBag.Company's Feedback</h1>
+                        <h1 class="alert-light">Feedback</h1>
                     </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <i class="fa fa-1x fa-user"></i>
-                        </div>
-                        <div class="col-6">
-                            <h5>@ViewBag.User</h5>
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="col-2">
                             <h5 class="fa fa-1x">Subject of Feedback</h5>
@@ -54,12 +45,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1x">Rating</h5>
-                            @*<i class="fa fa-star"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.Rate)</h5>
+                        <h5 class="fa fa-1x">
+                            IsActive
+                        </h5>
+                        <div class="col-1">
+                            @if (Model.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.FeedbackId" onchange="return activate(@Model.FeedbackId)">
+                                    <label class="custom-control-label" for="active_@Model.FeedbackId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.FeedbackId" onchange="return activate(@Model.FeedbackId)">
+                                    <label class="custom-control-label" for="active_@Model.FeedbackId"></label>
+                                </div>
+                            }
                         </div>
                     </div>
                     <br />

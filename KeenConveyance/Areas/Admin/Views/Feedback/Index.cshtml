@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KeenConveyance.Areas.Admin.Models.JoinViewAll>
+﻿@model IEnumerable<KeenConveyance.Areas.Admin.Models.tblFeedback>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -12,16 +12,16 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>CompanyName</th>
                         <th>Subject</th>
                         <th>CreatedOn</th>
+                        <th>Active</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>CompanyName</th>
                         <th>Subject</th>
                         <th>CreatedOn</th>
+                        <th>Active</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -29,12 +29,28 @@
                     {
                         <tr>
                             <td>
-                                <a href=" @Url.Action("Detail", new { id = item.feedback.FeedbackId })">
-                                    @item.company.CompanyName
+                                <a href=" @Url.Action("Detail", new { id = item.FeedbackId })">
+                                    @item.Subject
                                 </a>
                             </td>
-                            <td>@item.feedback.Subject</td>
-                            <td>@item.feedback.CreatedOn</td>
+                            <td>@item.CreatedOn</td>
+                            <td align="center">
+                                @if (item.IsActive == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.FeedbackId" onchange="return activate(@item.FeedbackId)">
+                                        <label class="custom-control-label" for="active_@item.FeedbackId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="active_@item.FeedbackId" onchange="return activate(@item.FeedbackId)">
+                                        <label class="custom-control-label" for="active_@item.FeedbackId"></label>
+                                    </div>
+                                }
+                            </td>
+
                         </tr>
                     }
                 </tbody>
@@ -64,6 +80,29 @@
         //alert("Done");
         $('#dataTable').DataTable();
     });
+</script>
+<script>
+    function activate(id) {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("Active","Feedback")" + "/" + id,
+                success: function (response) {
+                    if (response == true) {
+                        alert("Account deactivated");
+                    }
+                    else {
+                        alert("Accout activated");
+                    }
+                },
+                failure: function (response) {
+                    alert('Fail - ' + response.responseText);
+                },
+                error: function (response) {
+                    alert('Error - ' + response.responseText);
+                }
+            });
+    }
 </script>
 
 

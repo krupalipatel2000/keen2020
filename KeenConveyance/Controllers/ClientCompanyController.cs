@@ -28,7 +28,6 @@ namespace KeenConveyance.Controllers
             }
             else
             {
-
                 ViewBag.message = "*Inavalid email or password";
                 return View();
                 //return RedirectToAction("Dashboard", "Admin");
@@ -68,7 +67,7 @@ namespace KeenConveyance.Controllers
             com.CreatedOn = DateTime.Now;
             dc.tblTransportCompanies.Add(com);
             dc.SaveChanges();
-            return RedirectToAction("Index", "ClientUser");
+            return RedirectToAction("Index", "Home");
         }
         public string Code()
         {

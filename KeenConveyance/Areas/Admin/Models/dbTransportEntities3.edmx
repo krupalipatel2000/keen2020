@@ -190,12 +190,10 @@
             <PropertyRef Name="FeedbackId" />
           </Key>
           <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Subject" Type="varchar" MaxLength="50" />
           <Property Name="Desc" Type="varchar" MaxLength="100" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="Rate" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblInquiry">
           <Key>
@@ -225,6 +223,17 @@
           <Property Name="PricePerUnit" Type="int" Nullable="false" />
           <Property Name="CompanyId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="ConsignmentId" Type="int" Nullable="false" />
+          <Property Name="Review" Type="varchar(max)" />
+          <Property Name="Rate" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblService">
           <Key>
@@ -348,6 +357,7 @@
           <EntitySet Name="tblFeedback" EntityType="Self.tblFeedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInquiry" EntityType="Self.tblInquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPriceList" EntityType="Self.tblPriceList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReview" EntityType="Self.tblReview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblService" EntityType="Self.tblService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTracking" EntityType="Self.tblTracking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTransportCompany" EntityType="Self.tblTransportCompany" Schema="dbo" store:Type="Tables" />
@@ -541,18 +551,6 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="tblFeedback">
-          <Key>
-            <PropertyRef Name="FeedbackId" />
-          </Key>
-          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblInquiry">
           <Key>
             <PropertyRef Name="InquiryId" />
@@ -700,7 +698,6 @@
           <EntitySet Name="tblComplaints" EntityType="Self.tblComplaint" />
           <EntitySet Name="tblConsignments" EntityType="Self.tblConsignment" />
           <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
-          <EntitySet Name="tblFeedbacks" EntityType="Self.tblFeedback" />
           <EntitySet Name="tblInquiries" EntityType="Self.tblInquiry" />
           <EntitySet Name="tblPriceLists" EntityType="Self.tblPriceList" />
           <EntitySet Name="tblServices" EntityType="Self.tblService" />
@@ -718,6 +715,8 @@
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
           <EntitySet Name="tblConSignmentImages" EntityType="dbTransportModel.tblConSignmentImage" />
+          <EntitySet Name="tblReviews" EntityType="dbTransportModel.tblReview" />
+          <EntitySet Name="tblFeedbacks" EntityType="dbTransportModel.tblFeedback" />
         </EntityContainer>
         <EntityType Name="tblConSignmentImage">
           <Key>
@@ -727,6 +726,27 @@
           <Property Name="ConsignmentID" Type="Int32" Nullable="false" />
           <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
+          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblFeedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
@@ -917,19 +937,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblFeedbacks">
-            <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
-              <MappingFragment StoreEntitySet="tblFeedback">
-                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblInquiries">
             <EntityTypeMapping TypeName="dbTransportModel.tblInquiry">
               <MappingFragment StoreEntitySet="tblInquiry">
@@ -1056,6 +1063,29 @@
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
                 <ScalarProperty Name="ConsignmentID" ColumnName="ConsignmentID" />
                 <ScalarProperty Name="ConsignmentImageId" ColumnName="ConsignmentImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReviews">
+            <EntityTypeMapping TypeName="dbTransportModel.tblReview">
+              <MappingFragment StoreEntitySet="tblReview">
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeedbacks">
+            <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
+              <MappingFragment StoreEntitySet="tblFeedback">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

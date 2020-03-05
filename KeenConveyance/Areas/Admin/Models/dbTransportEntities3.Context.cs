@@ -37,7 +37,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public virtual DbSet<tblComplaint> tblComplaints { get; set; }
         public virtual DbSet<tblConsignment> tblConsignments { get; set; }
         public virtual DbSet<tblDriver> tblDrivers { get; set; }
-        public virtual DbSet<tblFeedback> tblFeedbacks { get; set; }
         public virtual DbSet<tblInquiry> tblInquiries { get; set; }
         public virtual DbSet<tblPriceList> tblPriceLists { get; set; }
         public virtual DbSet<tblService> tblServices { get; set; }
@@ -47,5 +46,7 @@ namespace KeenConveyance.Areas.Admin.Models
         public virtual DbSet<tblVehicle> tblVehicles { get; set; }
         public virtual DbSet<tblVehicleType> tblVehicleTypes { get; set; }
         public virtual DbSet<tblConSignmentImage> tblConSignmentImages { get; set; }
+        public virtual DbSet<tblReview> tblReviews { get; set; }
+        public virtual DbSet<tblFeedback> tblFeedbacks { get; set; }
     }
 }

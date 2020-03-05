@@ -19,6 +19,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(string txtEmail, string txtPwd)
         {
+
             tblAdmin ad = (from ob in dc.tblAdmins where ob.EmailId == txtEmail && ob.Password == txtPwd && ob.IsActive == true select ob).Take(1).SingleOrDefault();
             if (ad != null)
             {

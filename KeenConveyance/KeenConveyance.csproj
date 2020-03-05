@@ -216,6 +216,9 @@
     <Compile Include="Areas\Admin\Models\tblPriceList.cs">
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\tblReview.cs">
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Models\tblService.cs">
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
@@ -556,6 +559,7 @@
     <Content Include="Images\cold1.jpg" />
     <Content Include="Images\cold2.jpg" />
     <Content Include="Images\coldstorage.jpg" />
+    <Content Include="Images\coloruser.png" />
     <Content Include="Images\consinmentbox.jpeg" />
     <Content Include="Images\delicate1.jpg" />
     <Content Include="Images\distance.jpg" />
@@ -579,6 +583,7 @@
     <Content Include="Images\home3.jpg" />
     <Content Include="Images\homeshiping.jpg" />
     <Content Include="Images\line.png" />
+    <Content Include="Images\line1.jpg" />
     <Content Include="Images\login.png" />
     <Content Include="Images\logo1.png" />
     <Content Include="Images\logo2.png" />
@@ -2698,6 +2703,8 @@
     <Content Include="Views\ClientUser\Index.cshtml" />
     <Content Include="Views\ClientCompany\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\ForgetPassword.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

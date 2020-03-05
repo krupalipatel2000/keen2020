@@ -12,12 +12,13 @@ namespace KeenConveyance.Areas.Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblFeedback
+    public partial class tblReview
     {
-        public int FeedbackId { get; set; }
-        public string Subject { get; set; }
-        public string Desc { get; set; }
-        public System.DateTime CreatedOn { get; set; }
-        public bool IsActive { get; set; }
+        public int ReviewId { get; set; }
+        public int UserId { get; set; }
+        public int CompanyId { get; set; }
+        public int ConsignmentId { get; set; }
+        public string Review { get; set; }
+        public string Rate { get; set; }
     }
 }

@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="dbTransportModel.tblComplaint" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblConsignment" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblDriver" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblFeedback" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblInquiry" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblPriceList" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblService" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
@@ -29,6 +28,8 @@
         <AssociationConnector Association="dbTransportModel.FK_CityMaster_StateMaster" ManuallyRouted="false" />
         <AssociationConnector Association="dbTransportModel.FK_StateMaster_CountryMaster" ManuallyRouted="false" />
         <EntityTypeShape EntityType="dbTransportModel.tblConSignmentImage" Width="1.5" PointX="9.375" PointY="13.75" />
+        <EntityTypeShape EntityType="dbTransportModel.tblReview" Width="1.5" PointX="11.375" PointY="13.75" />
+        <EntityTypeShape EntityType="dbTransportModel.tblFeedback" Width="1.5" PointX="13.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
