@@ -71,13 +71,24 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult ChangePassword(FormCollection form)
         {
-            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == Convert.ToInt32(Session["LoginUserID"]));
-            user.Password = form["txtPassword"];
-            dc.SaveChanges();
-            return View();
+            int ID = Convert.ToInt32(Session["LoginUserID"]);
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == ID);
+            if (user != null)
+            {
+
+
+                user.Password = form["txtPassword"];
+                dc.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            else {
+                return RedirectToAction("Login");
+            }
+
         }
 
 

@@ -715,8 +715,8 @@
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
           <EntitySet Name="tblConSignmentImages" EntityType="dbTransportModel.tblConSignmentImage" />
-          <EntitySet Name="tblReviews" EntityType="dbTransportModel.tblReview" />
           <EntitySet Name="tblFeedbacks" EntityType="dbTransportModel.tblFeedback" />
+          <EntitySet Name="tblReviews" EntityType="dbTransportModel.tblReview" />
         </EntityContainer>
         <EntityType Name="tblConSignmentImage">
           <Key>
@@ -726,6 +726,16 @@
           <Property Name="ConsignmentID" Type="Int32" Nullable="false" />
           <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFeedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblReview">
@@ -738,16 +748,6 @@
           <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
           <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblFeedback">
-          <Key>
-            <PropertyRef Name="FeedbackId" />
-          </Key>
-          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1066,6 +1066,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblFeedbacks">
+            <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
+              <MappingFragment StoreEntitySet="tblFeedback">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblReviews">
             <EntityTypeMapping TypeName="dbTransportModel.tblReview">
               <MappingFragment StoreEntitySet="tblReview">
@@ -1075,17 +1086,6 @@
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblFeedbacks">
-            <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
-              <MappingFragment StoreEntitySet="tblFeedback">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

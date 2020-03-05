@@ -216,6 +216,9 @@
     <Compile Include="Areas\Admin\Models\tblPriceList.cs">
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\tblReview.cs">
+      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Models\tblService.cs">
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
@@ -2700,6 +2703,8 @@
     <Content Include="Views\ClientUser\Index.cshtml" />
     <Content Include="Views\ClientCompany\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Home\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Temp\" />
