@@ -56,7 +56,20 @@
                 {
                     <a class="nav-link collapsed" href="@Url.Action("List","Admin")">Admin</a>
                 }
-
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+                    @*<i class="fas fa-fw fa-cog"></i>*@
+                    <span>CMS Pages</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("Index","CMSpage")">Add New</a>
+                        <a class="collapse-item" href="@Url.Action("ViewCMS","CMSpage")">View/Edit</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
                 @*<a class="nav-link collapsed" href="@Url.Action("Index","CMSpage")">CMS Page</a>*@
                 <a class="nav-link collapsed" href="@Url.Action("Index","User")">User</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Company")">Company</a>
@@ -74,7 +87,6 @@
                 <a class="nav-link collapsed" href="@Url.Action("Index","Feedback")">Feedback</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Inquiry")">Inquiry</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Complaint")">Complaint</a>
-
             </li>
 
             <!-- Divider -->
@@ -254,9 +266,9 @@
                                 }
                                 else
                                 {
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    Welcome, @Session["loginId"].ToString()
-                                </span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        Welcome, @Session["loginId"].ToString()
+                                    </span>
                                 }
 
                                 <img class="img-profile rounded-circle" src="~/Images/admin1.jpg">
