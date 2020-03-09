@@ -13,70 +13,40 @@ namespace KeenConveyance.Areas.Admin.Controllers
         dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
+            var TitleList = from ob in dc.tblCMSPages select ob.PageTitle;
+            ViewBag.Titles = TitleList;
             return View();
         }
         [HttpPost,ValidateInput(false)]
-        public ActionResult Index(string pageTitle,string BlogContent)
+        public ActionResult Index(string txtTitle, string BlogContent)
         {
             tblCMSPage cms = new tblCMSPage();
-            cms.PageTitle = pageTitle;
+            cms.PageTitle = txtTitle;
             cms.Desc = BlogContent;
             cms.CreatedOn = DateTime.Now;
             cms.IsActive = true;
             dc.tblCMSPages.Add(cms);
             dc.SaveChanges();
-            ViewBag.Content = BlogContent;
-            return RedirectToAction("ViewCMS", new { Title = pageTitle });
+            ViewBag.Desc = BlogContent;
+            return RedirectToAction("ViewCMS", new { Title = txtTitle });
         }
-        public ActionResult ViewCMS(string Title)
+        public ActionResult ViewCMS(int id = 1)
         {
-            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.PageTitle == Title);
-            
-            return View(cms);
-        }
-        public ActionResult List()
-        {
-            var cms = dc.tblCMSPages.ToList();
-            ViewBag.CMSTitle = new SelectList(cms, "CMSPageId", "PageTitle");
-            return View(cms);
-        }
-        [HttpPost]
-        public JsonResult Active(int id)
-        {
-            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
-            if (cms.IsActive == true)
-            {
-                cms.IsActive = false;
-            }
-            else
-            {
-                cms.IsActive = true;
-            }
-            dc.SaveChanges();
-            return Json(cms.IsActive, JsonRequestBehavior.AllowGet);
-        }
-        public ActionResult Edit(int id)
-        {
-            TempData["id"] = id;
+            var TitleList = from ob in dc.tblCMSPages select ob;
+            ViewBag.CMS = TitleList;
             tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
             return View(cms);
         }
-        [HttpPost]
-        public ActionResult Edit(FormCollection form)
-        {
-            int id = Convert.ToInt32(TempData["id"]);
-            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
-            cms.PageTitle = form["txtPage"];
-            cms.Desc = form["txtDesc"];
-            dc.SaveChanges();
-            return RedirectToAction("List", "CMSpage");
-        }
-        public ActionResult Delete(int id)
+        [HttpPost, ValidateInput(false)]
+        public ActionResult ViewCMS(string BlogContent, int id)
         {
             tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
-            dc.tblCMSPages.Remove(cms);
+            cms.Desc = BlogContent;
             dc.SaveChanges();
-            return RedirectToAction("List", "CMSpage");
+            //string myOTP = Services.GenerateOTP();
+            //string UCode = Services.UniqueCode();
+            return RedirectToAction("ViewCMS", "CMSpage");
         }
+
     }
 }

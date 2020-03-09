@@ -11,19 +11,31 @@
 <script>
     tinymce.init({
         selector: 'textarea',
-        plugins: "image media link",
+        plugins: "image media link table",
     });
 </script>
+
 <div class="card shadow mb-4">
     <form method="post">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">CMS Creation Page</h6>
+            <h6 class="m-0 font-weight-bold text-primary"> CMS Creation Page</h6>
         </div>
         <div class="card-body">
-            <input type="text" name="pageTitle" placeholder="Enter title of page" /><br /><br />
-            <a href="@Url.Action("Edit","CMSpage")">Edit CMS Page</a>
-            <textarea name="BlogContent" style="height:600px"></textarea>
+            Page Title :
+            <input type="text" name="txtTitle" list="Titles" class="form-control" />
+            <datalist id="Titles">
+                @foreach (string item in ViewBag.Titles)
+                {
+                    <option value="@item" />
+                }
+            </datalist>
         </div>
-        <input type="submit" value="Save" class="btn btn-success btn-lg" />
+        <div class="card-body">
+            <textarea name="BlogContent" style="height:600px">
+            </textarea>
+        </div>
+        <div class="card-body">
+            <input type="submit" value="Save" class="btn btn-success col-lg-3 offset-4" />
+        </div>
     </form>
 </div>
