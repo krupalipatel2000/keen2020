@@ -14,6 +14,11 @@ namespace KeenConveyance.Controllers
         dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
         {
+            //if (Request.Cookies["FirstName"] != null && Request.Cookies["Password"] != null)
+            //{
+            //    ViewBag.UserName = Request.Cookies["FirstName"].Value;
+            //    ViewBag.Password = Request.Cookies["Password"].Value;
+            //}
             return View();
         }
 
@@ -34,62 +39,63 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ForgetPassword(string txtForgetEmail)
-        {
-            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.EmailId == txtForgetEmail);
-            if (user != null)
-            {
-                Session["LoginUserID"] = user.UserId;
-                MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
-                Msg.Subject = "Password Recovery";
-                Msg.Body = "Your OTP is : <h3>" + 1234 + "</h3>";
-                Msg.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
-                smtp.Credentials = MyCredentials;
-                smtp.Send(Msg);
-                Session["OTP"] = "1234";
-                return View();
-            }
-            else
-            {
-                ViewBag.Error = "Account Not Found";
-                return View();
-            }
-        }
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
+        //public ActionResult Login()
+        //{
+        //   return View();
+        //}
+        //[HttpPost]
+        //public ActionResult ForgetPassword(string txtForgetEmail)
+        //{
+        //    tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.EmailId == txtForgetEmail);
+        //    if (user != null)
+        //    {
+        //        Session["LoginUserID"] = user.UserId;
+        //        MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
+        //        Msg.Subject = "Password Recovery";
+        //        Msg.Body = "Your OTP is : <h3>" + 1234 + "</h3>";
+        //        Msg.IsBodyHtml = true;
+        //        SmtpClient smtp = new SmtpClient();
+        //        smtp.Host = "smtp.gmail.com";
+        //        smtp.Port = 587;
+        //        smtp.UseDefaultCredentials = false;
+        //        smtp.EnableSsl = true;
+        //        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //        NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
+        //        smtp.Credentials = MyCredentials;
+        //        smtp.Send(Msg);
+        //        Session["OTP"] = "1234";
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Error = "Account Not Found";
+        //        return View();
+        //    }
+        //}
+        //public ActionResult ChangePassword()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult ChangePassword(FormCollection form)
-        {
-            int ID = Convert.ToInt32(Session["LoginUserID"]);
-            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == ID);
-            if (user != null)
-            {
+        //[HttpPost]
+        //public ActionResult ChangePassword(FormCollection form)
+        //{
+        //    int ID = Convert.ToInt32(Session["LoginUserID"]);
+        //    tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == ID);
+        //    if (user != null)
+        //    {
 
 
-                user.Password = form["txtPassword"];
-                dc.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            else {
-                return RedirectToAction("Login");
-            }
+        //        user.Password = form["txtPassword"];
+        //        dc.SaveChanges();
+        //        return RedirectToAction("Login");
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
 
-        }
+        //}
 
 
     }

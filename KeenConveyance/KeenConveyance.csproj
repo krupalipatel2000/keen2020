@@ -2701,9 +2701,9 @@
     <Content Include="Views\ClientCompany\Insert.cshtml" />
     <Content Include="Views\ClientUser\Index.cshtml" />
     <Content Include="Views\ClientCompany\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\ChangePassword.cshtml" />
-    <Content Include="Views\Home\ForgetPassword.cshtml" />
+    <Content Include="Views\ClientUser\ChangePassword.cshtml" />
+    <Content Include="Views\ClientUser\ForgetPassword.cshtml" />
+    <Content Include="Views\ClientUser\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
