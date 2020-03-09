@@ -17,79 +17,16 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Index(string txtEmail, string txtPwd)
+        public ActionResult UserProfile(tblUser user)
         {
-            tblUser user = (from ob in dc.tblUsers where ob.EmailId == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
-            if (user != null)
+            if (user.UserId != 0)
             {
-                Session["loginId"] = user.FirstName;
-                //Session["LogID"] = user.UserId;
-
-                return RedirectToAction("Index", "Home");
+                ViewBag.Year = user.CreatedOn.Year.ToString();
+                return View(user);
             }
             else
             {
-                ViewBag.message = "*Inavalid email or password";
-                return View();
-                //return RedirectToAction("Dashboard", "Admin");
-            }
-        }
-        //public ActionResult Login()
-        //{
-        //    return View();
-        //}
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ForgetPassword(string txtForgetEmail)
-        {
-            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.EmailId == txtForgetEmail);
-            if (user != null)
-            {
-                Session["LoginUserID"] = user.UserId;
-                MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
-                Msg.Subject = "Password Recovery";
-                Msg.Body = "Your OTP is : <h3>" + 1234 + "</h3>";
-                Msg.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
-                smtp.Credentials = MyCredentials;
-                smtp.Send(Msg);
-                Session["OTP"] = "1234";
-                return View();
-            }
-            else
-            {
-                ViewBag.Error = "Account Not Found";
-                return View();
-            }
-        }
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ChangePassword(FormCollection form)
-        {
-            int ID = Convert.ToInt32(Session["LoginUserID"]);
-            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == ID);
-            if (user != null)
-            {
-                user.Password = form["txtPassword"];
-                dc.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
             }
         }
         public ActionResult Insert()
@@ -151,6 +88,18 @@ namespace KeenConveyance.Controllers
         {
             string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
             return code;
+        }
+        [HttpPost]
+        public ActionResult UploadImage(HttpPostedFileBase profimg)
+        {
+            int ID = Convert.ToInt32(Session["UserID"]);
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == ID);
+            user.ProfilePic = profimg.FileName;
+            dc.SaveChanges();
+            //string newImage = profimg.FileName;
+            string path = Server.MapPath("~/images/");
+            profimg.SaveAs(path + profimg.FileName);
+            return View();
         }
     }
 

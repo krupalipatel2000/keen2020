@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xl-10 col-lg-10 col-md-8">
                 <center>
-                    <div class="card o-hidden border-0 shadow-lg my-5" style="height:400px;;width:1120px;">
+                    <div class="card o-hidden border-0 shadow-lg my-5" style="height:500px;width:1120px;">
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
                             <div class="row">
@@ -22,6 +22,13 @@
                                                 <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                                             </div>
                                             <form class="user" method="post" name="login">
+                                                <div class="form-group">
+                                                    <select name="usertype" class="form-control form-control-user">
+                                                        <option value=""> Select User Type</option>
+                                                        <option value="U"> User </option>
+                                                        <option value="C"> Company</option>
+                                                    </select>
+                                                </div>
                                                 <div class="form-group">
                                                     <input type="email" name="txtEmail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>
                                                 </div>
@@ -36,12 +43,10 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-lg-6">
-                                                        <input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn For User" style="font-size:small;" />
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn For Company" style="font-size:small;" />
+                                                        <input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn" style="font-size:small;" />
                                                     </div>
                                                 </div>
+
                                                 <hr>
                                             </form>
                                             <div class="text-center">
@@ -50,6 +55,7 @@
                                                     Forgot Password
                                                 </button>
                                             </div>
+                                            @ViewBag.message
                                         </center>
                                     </div>
                                 </div>
@@ -73,10 +79,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <a href="@Url.Action("Insert","ClientUser")" class="btn btn-primary btn-lg" style="font-size:small;">
-                                                SignIn For User
-                                            </a>
-                                            @*<input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn For User" />*@
+                                            <input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn For User" />
                                         </div>
                                         <div class="col-md-7">
                                             <a href="@Url.Action("Insert","ClientCompany")" class="btn btn-primary btn-lg" style="font-size:small;">
