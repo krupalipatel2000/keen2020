@@ -17,12 +17,13 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
-        public ActionResult UserProfile(tblUser user)
+        public ActionResult UserProfile()
         {
-            if (user.UserId != 0)
+
+            if (Session["LogID"] != null)
             {
-                ViewBag.Year = user.CreatedOn.Year.ToString();
-                return View(user);
+                //ViewBag.Year = user.CreatedOn.Year.ToString();
+                return View();
             }
             else
             {
@@ -64,11 +65,11 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("List");
         }
-        public ActionResult List()
-        {
-            var user = dc.tblUsers.ToList();
-            return View(user);
-        }
+        //public ActionResult List()
+        //{
+        //    var user = dc.tblUsers.ToList();
+        //    return View(user);
+        //}
         [HttpPost]
         public JsonResult Active(int id)
         {

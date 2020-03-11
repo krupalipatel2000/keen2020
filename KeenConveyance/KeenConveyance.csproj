@@ -238,6 +238,7 @@
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClientCompanyController.cs" />
+    <Compile Include="Controllers\ClientConsignmentController.cs" />
     <Compile Include="Controllers\ClientInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
@@ -2706,6 +2707,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
     <Content Include="Views\Home\ForgetPassword.cshtml" />
+    <Content Include="Views\ClientConsignment\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

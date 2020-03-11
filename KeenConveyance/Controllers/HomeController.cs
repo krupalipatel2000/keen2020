@@ -13,7 +13,7 @@ namespace KeenConveyance.Controllers
     {
         dbTransportEntities4 dc = new dbTransportEntities4();
         public ActionResult Index()
-        {   
+        {
             return View();
         }
         public ActionResult About()
@@ -36,8 +36,8 @@ namespace KeenConveyance.Controllers
         }
         [HttpPost]
         public ActionResult Login(string txtEmail, string txtPwd, string usertype)
-
         {
+           
 
             if (usertype == "U")
             {
@@ -45,7 +45,7 @@ namespace KeenConveyance.Controllers
                 if (user != null)
                 {
                     Session["UserId"] = user.FirstName;
-                    //Session["LogID"] = user.UserId;
+                    Session["LogID"] = user.UserId;
                     return RedirectToAction("UserProfile", "ClientUser");
                 }
                 else
@@ -73,33 +73,65 @@ namespace KeenConveyance.Controllers
             }
         }
         [HttpPost]
-        public ActionResult ForgetPassword(string txtForgetEmail)
+        public ActionResult ForgetPassword(string txtForgetEmail, string usertype)
         {
-            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.EmailId == txtForgetEmail);
-            if (user != null)
+            if (usertype == "U")
             {
-                Session["LoginUserID"] = user.UserId;
-                MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
-                Msg.Subject = "Password Recovery";
-                Msg.Body = "Your OTP is : <h3>" + 1234 + "</h3>";
-                Msg.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
-                smtp.Credentials = MyCredentials;
-                smtp.Send(Msg);
-                Session["OTP"] = "1234";
-                return View();
+                tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.EmailId == txtForgetEmail);
+                if (user != null)
+                {
+                    Session["LoginUserID"] = user.UserId;
+                    MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
+                    Msg.Subject = "Password Recovery";
+                    Msg.Body = "Your OTP is : <h3>" + Code() + "</h3>";
+                    Msg.IsBodyHtml = true;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
+                    smtp.Credentials = MyCredentials;
+                    smtp.Send(Msg);
+                    Session["OTP"] = Code();
+                    return View();
+                }
+                else
+                {
+                    ViewBag.Error = "Account Not Found";
+                    return View();
+                }
             }
-            else
+            else 
             {
-                ViewBag.Error = "Account Not Found";
-                return View();
+                tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyEmail == txtForgetEmail);
+                if (com != null)
+                {
+                    Session["LoginUserID"] = com.CompanyId;
+                    MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
+                    Msg.Subject = "Password Recovery";
+                    Msg.Body = "Your OTP is : <h3>" + Code() + "</h3>";
+                    Msg.IsBodyHtml = true;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
+                    smtp.Credentials = MyCredentials;
+                    smtp.Send(Msg);
+                    Session["OTP"] = Code();
+                    return View();
+                }
+                else
+                {
+                    ViewBag.Error = "Account Not Found";
+                    return View();
+                }
             }
+            
         }
         public ActionResult ChangePassword()
         {
@@ -121,6 +153,13 @@ namespace KeenConveyance.Controllers
                 return RedirectToAction("Login");
             }
 
+        }
+        public string Code()
+        {
+            Random R = new Random(0001);
+            string OTP;
+            OTP = R.Next(1111, 9999).ToString();
+            return OTP;
         }
     }
 }
