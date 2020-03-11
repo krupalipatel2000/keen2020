@@ -238,6 +238,7 @@
       <DependentUpon>dbTransportEntities3.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClientCompanyController.cs" />
+    <Compile Include="Controllers\ClientConsignmentController.cs" />
     <Compile Include="Controllers\ClientInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
@@ -2700,14 +2701,13 @@
     <Content Include="Views\ClientUser\List.cshtml" />
     <Content Include="Views\ClientInquery\Index.cshtml" />
     <Content Include="Views\ClientCompany\Insert.cshtml" />
-    <Content Include="Views\ClientUser\Index.cshtml" />
     <Content Include="Views\ClientCompany\Index.cshtml" />
-    <Content Include="Views\ClientUser\ChangePassword.cshtml" />
-    <Content Include="Views\ClientUser\ForgetPassword.cshtml" />
-    <Content Include="Views\ClientUser\Login.cshtml" />
-    <Content Include="Views\ClientCompany\Login.cshtml" />
-    <Content Include="Views\ClientCompany\ForgetPassword.cshtml" />
-    <Content Include="Views\ClientCompany\ChangePassword.cshtml" />
+    <Content Include="Views\ClientUser\UserProfile.cshtml" />
+    <Content Include="Views\ClientUser\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Home\ForgetPassword.cshtml" />
+    <Content Include="Views\ClientConsignment\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
