@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbTransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbTransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CityMaster">
           <Key>
             <PropertyRef Name="ID" />
@@ -43,7 +43,7 @@
           <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CityId" Type="int" Nullable="false" />
           <Property Name="Zipcode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MapURL" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MapURL" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tblAdmin">
           <Key>
@@ -374,39 +374,10 @@
             <End Role="StateMaster" EntitySet="StateMaster" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbTransportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CityMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StateID" Type="Int32" />
-          <NavigationProperty Name="StateMaster" Relationship="Self.FK_CityMaster_StateMaster" FromRole="CityMaster" ToRole="StateMaster" />
-        </EntityType>
-        <EntityType Name="CountryMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="StateMasters" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
-        </EntityType>
-        <EntityType Name="StateMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryID" Type="Int32" />
-          <NavigationProperty Name="CityMasters" Relationship="Self.FK_CityMaster_StateMaster" FromRole="StateMaster" ToRole="CityMaster" />
-          <NavigationProperty Name="CountryMaster" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
-        </EntityType>
         <EntityType Name="tblAddress">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -421,17 +392,78 @@
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
           <Property Name="Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MapURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MapURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="dbTransportEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAddresses" EntityType="Self.tblAddress" />
+          <EntitySet Name="CityMasters" EntityType="dbTransportModel.CityMaster" />
+          <EntitySet Name="CountryMasters" EntityType="dbTransportModel.CountryMaster" />
+          <EntitySet Name="StateMasters" EntityType="dbTransportModel.StateMaster" />
+          <EntitySet Name="tblAdmins" EntityType="dbTransportModel.tblAdmin" />
+          <EntitySet Name="tblBiddings" EntityType="dbTransportModel.tblBidding" />
+          <EntitySet Name="tblBills" EntityType="dbTransportModel.tblBill" />
+          <EntitySet Name="tblBookings" EntityType="dbTransportModel.tblBooking" />
+          <EntitySet Name="tblCMSPages" EntityType="dbTransportModel.tblCMSPage" />
+          <EntitySet Name="tblComplaints" EntityType="dbTransportModel.tblComplaint" />
+          <EntitySet Name="tblConsignments" EntityType="dbTransportModel.tblConsignment" />
+          <EntitySet Name="tblConSignmentImages" EntityType="dbTransportModel.tblConSignmentImage" />
+          <EntitySet Name="tblDrivers" EntityType="dbTransportModel.tblDriver" />
+          <EntitySet Name="tblFeedbacks" EntityType="dbTransportModel.tblFeedback" />
+          <EntitySet Name="tblInquiries" EntityType="dbTransportModel.tblInquiry" />
+          <EntitySet Name="tblPriceLists" EntityType="dbTransportModel.tblPriceList" />
+          <EntitySet Name="tblReviews" EntityType="dbTransportModel.tblReview" />
+          <EntitySet Name="tblServices" EntityType="dbTransportModel.tblService" />
+          <EntitySet Name="tblTrackings" EntityType="dbTransportModel.tblTracking" />
+          <EntitySet Name="tblTransportCompanies" EntityType="dbTransportModel.tblTransportCompany" />
+          <EntitySet Name="tblUsers" EntityType="dbTransportModel.tblUser" />
+          <EntitySet Name="tblVehicles" EntityType="dbTransportModel.tblVehicle" />
+          <EntitySet Name="tblVehicleTypes" EntityType="dbTransportModel.tblVehicleType" />
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="dbTransportModel.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="CityMaster" EntitySet="CityMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="dbTransportModel.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMasters" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int32" />
+          <NavigationProperty Name="StateMaster" Relationship="dbTransportModel.FK_CityMaster_StateMaster" FromRole="CityMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StateMasters" Relationship="dbTransportModel.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="CityMasters" Relationship="dbTransportModel.FK_CityMaster_StateMaster" FromRole="StateMaster" ToRole="CityMaster" />
+          <NavigationProperty Name="CountryMaster" Relationship="dbTransportModel.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
         </EntityType>
         <EntityType Name="tblAdmin">
           <Key>
             <PropertyRef Name="AdminId" />
           </Key>
           <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
@@ -489,8 +521,8 @@
             <PropertyRef Name="CMSPageId" />
           </Key>
           <Property Name="CMSPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PageTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
@@ -504,8 +536,8 @@
           <Property Name="ComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsSolved" Type="Boolean" Nullable="false" />
           <Property Name="SolvedOn" Type="DateTime" Precision="3" />
@@ -545,7 +577,7 @@
           </Key>
           <Property Name="ConsignmentImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConsignmentID" Type="Int32" Nullable="false" />
-          <Property Name="ImageURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDefault" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
@@ -555,12 +587,12 @@
           </Key>
           <Property Name="DriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ImageURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="LicenseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AadharcardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LicenseNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AadharcardNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -579,12 +611,12 @@
             <PropertyRef Name="InquiryId" />
           </Key>
           <Property Name="InquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsReplied" Type="Boolean" Nullable="false" />
           <Property Name="RepliedText" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -596,9 +628,9 @@
             <PropertyRef Name="PriceListId" />
           </Key>
           <Property Name="PriceListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MinValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MaxValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MinValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaxValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PricePerUnit" Type="Int32" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
@@ -620,9 +652,9 @@
           </Key>
           <Property Name="ServiceId" Type="Int32" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ServiceDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ServiceImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceDesc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -631,9 +663,9 @@
             <PropertyRef Name="TrackingId" />
           </Key>
           <Property Name="TrackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FromPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ToPlace" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FromPlace" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tblTransportCompany">
@@ -641,14 +673,14 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CompanyPhNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CompanyEmail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyPhNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyEmail" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AboutCompany" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ContactPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactPersonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactPersonName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="WebURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
@@ -658,17 +690,17 @@
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsVerified" Type="Boolean" Nullable="false" />
           <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
-          <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProfilePic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblVehicle">
           <Key>
@@ -677,27 +709,27 @@
           <Property Name="VehicleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="VehicleTypeId" Type="Int32" Nullable="false" />
-          <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DocumentImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Fuel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehicleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fuel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblVehicleType">
           <Key>
             <PropertyRef Name="VehicleTypeId" />
           </Key>
           <Property Name="VehicleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TypeImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_CityMaster_StateMaster">
-          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
-          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <End Type="dbTransportModel.StateMaster" Role="StateMaster" Multiplicity="0..1" />
+          <End Type="dbTransportModel.CityMaster" Role="CityMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StateMaster">
               <PropertyRef Name="ID" />
@@ -708,8 +740,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StateMaster_CountryMaster">
-          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
-          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <End Type="dbTransportModel.CountryMaster" Role="CountryMaster" Multiplicity="0..1" />
+          <End Type="dbTransportModel.StateMaster" Role="StateMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CountryMaster">
               <PropertyRef Name="ID" />
@@ -719,72 +751,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbTransportEntities5" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
-          <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
-          <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
-          <EntitySet Name="tblAddresses" EntityType="Self.tblAddress" />
-          <EntitySet Name="tblAdmins" EntityType="Self.tblAdmin" />
-          <EntitySet Name="tblBiddings" EntityType="Self.tblBidding" />
-          <EntitySet Name="tblBills" EntityType="Self.tblBill" />
-          <EntitySet Name="tblBookings" EntityType="Self.tblBooking" />
-          <EntitySet Name="tblCMSPages" EntityType="Self.tblCMSPage" />
-          <EntitySet Name="tblComplaints" EntityType="Self.tblComplaint" />
-          <EntitySet Name="tblConsignments" EntityType="Self.tblConsignment" />
-          <EntitySet Name="tblConSignmentImages" EntityType="Self.tblConSignmentImage" />
-          <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
-          <EntitySet Name="tblFeedbacks" EntityType="Self.tblFeedback" />
-          <EntitySet Name="tblInquiries" EntityType="Self.tblInquiry" />
-          <EntitySet Name="tblPriceLists" EntityType="Self.tblPriceList" />
-          <EntitySet Name="tblReviews" EntityType="Self.tblReview" />
-          <EntitySet Name="tblServices" EntityType="Self.tblService" />
-          <EntitySet Name="tblTrackings" EntityType="Self.tblTracking" />
-          <EntitySet Name="tblTransportCompanies" EntityType="Self.tblTransportCompany" />
-          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
-          <EntitySet Name="tblVehicles" EntityType="Self.tblVehicle" />
-          <EntitySet Name="tblVehicleTypes" EntityType="Self.tblVehicleType" />
-          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
-            <End Role="StateMaster" EntitySet="StateMasters" />
-            <End Role="CityMaster" EntitySet="CityMasters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
-            <End Role="CountryMaster" EntitySet="CountryMasters" />
-            <End Role="StateMaster" EntitySet="StateMasters" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbTransportModelStoreContainer" CdmEntityContainer="dbTransportEntities5">
-          <EntitySetMapping Name="CityMasters">
-            <EntityTypeMapping TypeName="dbTransportModel.CityMaster">
-              <MappingFragment StoreEntitySet="CityMaster">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="StateID" ColumnName="StateID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CountryMasters">
-            <EntityTypeMapping TypeName="dbTransportModel.CountryMaster">
-              <MappingFragment StoreEntitySet="CountryMaster">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StateMasters">
-            <EntityTypeMapping TypeName="dbTransportModel.StateMaster">
-              <MappingFragment StoreEntitySet="StateMaster">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblAddresses">
             <EntityTypeMapping TypeName="dbTransportModel.tblAddress">
               <MappingFragment StoreEntitySet="tblAddress">
@@ -802,298 +774,325 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CityMasters">
+            <EntityTypeMapping TypeName="dbTransportModel.CityMaster">
+              <MappingFragment StoreEntitySet="CityMaster">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryMasters">
+            <EntityTypeMapping TypeName="dbTransportModel.CountryMaster">
+              <MappingFragment StoreEntitySet="CountryMaster">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="dbTransportModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblAdmins">
             <EntityTypeMapping TypeName="dbTransportModel.tblAdmin">
               <MappingFragment StoreEntitySet="tblAdmin">
-                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsSuper" ColumnName="IsSuper" />
-                <ScalarProperty Name="IsInsert" ColumnName="IsInsert" />
-                <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+                <ScalarProperty Name="IsInsert" ColumnName="IsInsert" />
+                <ScalarProperty Name="IsSuper" ColumnName="IsSuper" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblBiddings">
             <EntityTypeMapping TypeName="dbTransportModel.tblBidding">
               <MappingFragment StoreEntitySet="tblBidding">
-                <ScalarProperty Name="BidId" ColumnName="BidId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
-                <ScalarProperty Name="BidAmount" ColumnName="BidAmount" />
-                <ScalarProperty Name="BidOn" ColumnName="BidOn" />
-                <ScalarProperty Name="EstimatedDelivery" ColumnName="EstimatedDelivery" />
-                <ScalarProperty Name="IsModified" ColumnName="IsModified" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="IsAssigned" ColumnName="IsAssigned" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsModified" ColumnName="IsModified" />
+                <ScalarProperty Name="EstimatedDelivery" ColumnName="EstimatedDelivery" />
+                <ScalarProperty Name="BidOn" ColumnName="BidOn" />
+                <ScalarProperty Name="BidAmount" ColumnName="BidAmount" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="BidId" ColumnName="BidId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblBills">
             <EntityTypeMapping TypeName="dbTransportModel.tblBill">
               <MappingFragment StoreEntitySet="tblBill">
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="TollTax" ColumnName="TollTax" />
-                <ScalarProperty Name="GST" ColumnName="GST" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="TollTax" ColumnName="TollTax" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblBookings">
             <EntityTypeMapping TypeName="dbTransportModel.tblBooking">
               <MappingFragment StoreEntitySet="tblBooking">
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
-                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
-                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
-                <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
-                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
-                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
-                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
                 <ScalarProperty Name="BidId" ColumnName="BidId" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
+                <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCMSPages">
             <EntityTypeMapping TypeName="dbTransportModel.tblCMSPage">
               <MappingFragment StoreEntitySet="tblCMSPage">
-                <ScalarProperty Name="CMSPageId" ColumnName="CMSPageId" />
-                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="CMSPageId" ColumnName="CMSPageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblComplaints">
             <EntityTypeMapping TypeName="dbTransportModel.tblComplaint">
               <MappingFragment StoreEntitySet="tblComplaint">
-                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
-                <ScalarProperty Name="SolvedOn" ColumnName="SolvedOn" />
-                <ScalarProperty Name="IsReplied" ColumnName="IsReplied" />
                 <ScalarProperty Name="RepliedText" ColumnName="RepliedText" />
+                <ScalarProperty Name="IsReplied" ColumnName="IsReplied" />
+                <ScalarProperty Name="SolvedOn" ColumnName="SolvedOn" />
+                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblConsignments">
             <EntityTypeMapping TypeName="dbTransportModel.tblConsignment">
               <MappingFragment StoreEntitySet="tblConsignment">
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
-                <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
-                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
-                <ScalarProperty Name="ReceiverContactNo" ColumnName="ReceiverContactNo" />
-                <ScalarProperty Name="ReceiverPinNo" ColumnName="ReceiverPinNo" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
-                <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
-                <ScalarProperty Name="Distance" ColumnName="Distance" />
-                <ScalarProperty Name="UnitType" ColumnName="UnitType" />
-                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
-                <ScalarProperty Name="Budget" ColumnName="Budget" />
-                <ScalarProperty Name="IsRefregreted" ColumnName="IsRefregreted" />
-                <ScalarProperty Name="IsFlamable" ColumnName="IsFlamable" />
-                <ScalarProperty Name="IsDelicate" ColumnName="IsDelicate" />
-                <ScalarProperty Name="MinBidValue" ColumnName="MinBidValue" />
-                <ScalarProperty Name="MaxBidValue" ColumnName="MaxBidValue" />
-                <ScalarProperty Name="MinTime" ColumnName="MinTime" />
-                <ScalarProperty Name="MaxTime" ColumnName="MaxTime" />
-                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+                <ScalarProperty Name="MaxTime" ColumnName="MaxTime" />
+                <ScalarProperty Name="MinTime" ColumnName="MinTime" />
+                <ScalarProperty Name="MaxBidValue" ColumnName="MaxBidValue" />
+                <ScalarProperty Name="MinBidValue" ColumnName="MinBidValue" />
+                <ScalarProperty Name="IsDelicate" ColumnName="IsDelicate" />
+                <ScalarProperty Name="IsFlamable" ColumnName="IsFlamable" />
+                <ScalarProperty Name="IsRefregreted" ColumnName="IsRefregreted" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+                <ScalarProperty Name="UnitType" ColumnName="UnitType" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReceiverPinNo" ColumnName="ReceiverPinNo" />
+                <ScalarProperty Name="ReceiverContactNo" ColumnName="ReceiverContactNo" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblConSignmentImages">
             <EntityTypeMapping TypeName="dbTransportModel.tblConSignmentImage">
               <MappingFragment StoreEntitySet="tblConSignmentImage">
-                <ScalarProperty Name="ConsignmentImageId" ColumnName="ConsignmentImageId" />
-                <ScalarProperty Name="ConsignmentID" ColumnName="ConsignmentID" />
-                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="ConsignmentID" ColumnName="ConsignmentID" />
+                <ScalarProperty Name="ConsignmentImageId" ColumnName="ConsignmentImageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDrivers">
             <EntityTypeMapping TypeName="dbTransportModel.tblDriver">
               <MappingFragment StoreEntitySet="tblDriver">
-                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
-                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
-                <ScalarProperty Name="AadharcardNo" ColumnName="AadharcardNo" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AadharcardNo" ColumnName="AadharcardNo" />
+                <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFeedbacks">
             <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
               <MappingFragment StoreEntitySet="tblFeedback">
-                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblInquiries">
             <EntityTypeMapping TypeName="dbTransportModel.tblInquiry">
               <MappingFragment StoreEntitySet="tblInquiry">
-                <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsReplied" ColumnName="IsReplied" />
-                <ScalarProperty Name="RepliedText" ColumnName="RepliedText" />
-                <ScalarProperty Name="RepliedOn" ColumnName="RepliedOn" />
                 <ScalarProperty Name="RepliedBy" ColumnName="RepliedBy" />
+                <ScalarProperty Name="RepliedOn" ColumnName="RepliedOn" />
+                <ScalarProperty Name="RepliedText" ColumnName="RepliedText" />
+                <ScalarProperty Name="IsReplied" ColumnName="IsReplied" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPriceLists">
             <EntityTypeMapping TypeName="dbTransportModel.tblPriceList">
               <MappingFragment StoreEntitySet="tblPriceList">
-                <ScalarProperty Name="PriceListId" ColumnName="PriceListId" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
-                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
-                <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="PriceListId" ColumnName="PriceListId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblReviews">
             <EntityTypeMapping TypeName="dbTransportModel.tblReview">
               <MappingFragment StoreEntitySet="tblReview">
-                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
-                <ScalarProperty Name="Review" ColumnName="Review" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblServices">
             <EntityTypeMapping TypeName="dbTransportModel.tblService">
               <MappingFragment StoreEntitySet="tblService">
-                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
-                <ScalarProperty Name="ServiceDesc" ColumnName="ServiceDesc" />
-                <ScalarProperty Name="ServiceImage" ColumnName="ServiceImage" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ServiceImage" ColumnName="ServiceImage" />
+                <ScalarProperty Name="ServiceDesc" ColumnName="ServiceDesc" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTrackings">
             <EntityTypeMapping TypeName="dbTransportModel.tblTracking">
               <MappingFragment StoreEntitySet="tblTracking">
-                <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
-                <ScalarProperty Name="ToPlace" ColumnName="ToPlace" />
-                <ScalarProperty Name="FromPlace" ColumnName="FromPlace" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FromPlace" ColumnName="FromPlace" />
+                <ScalarProperty Name="ToPlace" ColumnName="ToPlace" />
+                <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTransportCompanies">
             <EntityTypeMapping TypeName="dbTransportModel.tblTransportCompany">
               <MappingFragment StoreEntitySet="tblTransportCompany">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="CompanyPhNo" ColumnName="CompanyPhNo" />
-                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="AboutCompany" ColumnName="AboutCompany" />
-                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
-                <ScalarProperty Name="ContactPersonNo" ColumnName="ContactPersonNo" />
-                <ScalarProperty Name="WebURL" ColumnName="WebURL" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="WebURL" ColumnName="WebURL" />
+                <ScalarProperty Name="ContactPersonNo" ColumnName="ContactPersonNo" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="AboutCompany" ColumnName="AboutCompany" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyPhNo" ColumnName="CompanyPhNo" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="dbTransportModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
-                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
                 <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblVehicles">
             <EntityTypeMapping TypeName="dbTransportModel.tblVehicle">
               <MappingFragment StoreEntitySet="tblVehicle">
-                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
-                <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="DocumentImage" ColumnName="DocumentImage" />
-                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+                <ScalarProperty Name="DocumentImage" ColumnName="DocumentImage" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblVehicleTypes">
             <EntityTypeMapping TypeName="dbTransportModel.tblVehicleType">
               <MappingFragment StoreEntitySet="tblVehicleType">
-                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
