@@ -25,10 +25,10 @@ namespace KeenConveyance.Areas.Admin.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tblAddress> tblAddresses { get; set; }
         public virtual DbSet<CityMaster> CityMasters { get; set; }
         public virtual DbSet<CountryMaster> CountryMasters { get; set; }
         public virtual DbSet<StateMaster> StateMasters { get; set; }
-        public virtual DbSet<tblAddress> tblAddresses { get; set; }
         public virtual DbSet<tblAdmin> tblAdmins { get; set; }
         public virtual DbSet<tblBidding> tblBiddings { get; set; }
         public virtual DbSet<tblBill> tblBills { get; set; }
