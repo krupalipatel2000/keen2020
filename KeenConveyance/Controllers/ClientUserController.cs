@@ -17,13 +17,13 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
-        public ActionResult UserProfile()
+        public ActionResult UserProfile(int id)
         {
-
-            if (Session["LogID"] != null)
+            if (id != 0)
             {
-                //ViewBag.Year = user.CreatedOn.Year.ToString();
-                return View();
+                tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
+                ViewBag.Year = user.CreatedOn.Year.ToString();
+                return View(user);
             }
             else
             {
@@ -65,12 +65,36 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("List");
         }
+        public ActionResult Edit(int id)
+        {
+            TempData["id"] = id;
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult Edit(FormCollection form)
+        {
+            int id = Convert.ToInt32(TempData["id"]);
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            com.CompanyName = form["txtComName"];
+            com.Logo = form["txtLogo"];
+            com.CompanyPhNo = form["txtComPhNo"];
+            //com.CompanyEmail = form["txtComEmail"];
+            // com.Password = form["txtPwd"];
+            com.AboutCompany = form["txtAboutCompany"];
+            com.ContactPersonName = form["txtContactPersonName"];
+            com.ContactPersonNo = form["txtContactPersonPhNo"];
+            com.WebURL = form["txtWebURL"];
+            dc.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         //public ActionResult List()
         //{
         //    var user = dc.tblUsers.ToList();
         //    return View(user);
         //}
-        [HttpPost]
+        //[HttpPost]
         public JsonResult Active(int id)
         {
             tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
@@ -93,12 +117,12 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult UploadImage(HttpPostedFileBase profimg)
         {
-            int ID = Convert.ToInt32(Session["UserID"]);
+            int ID = Convert.ToInt32(Session["LogID"]);
             tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == ID);
             user.ProfilePic = profimg.FileName;
             dc.SaveChanges();
             //string newImage = profimg.FileName;
-            string path = Server.MapPath("~/images/");
+            string path = Server.MapPath("~/Images/");
             profimg.SaveAs(path + profimg.FileName);
             return View();
         }
