@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="dbTransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="dbTransportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CityMaster">
           <Key>
             <PropertyRef Name="ID" />
@@ -139,23 +139,24 @@
             <PropertyRef Name="ConsignmentId" />
           </Key>
           <Property Name="ConsignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ReceiverName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReceiverContactNo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReceiverPinNo" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="SourceId" Type="int" Nullable="false" />
-          <Property Name="DestinationId" Type="int" Nullable="false" />
-          <Property Name="Distance" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UnitType" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="UnitValue" Type="int" Nullable="false" />
-          <Property Name="Budget" Type="int" Nullable="false" />
+          <Property Name="DispatchDate" Type="datetime" />
+          <Property Name="ReceiverName" Type="varchar" MaxLength="50" />
+          <Property Name="ReceiverContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="ReceiverPinNo" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SourceId" Type="int" />
+          <Property Name="DestinationId" Type="int" />
+          <Property Name="Distance" Type="varchar" MaxLength="50" />
+          <Property Name="UnitType" Type="varchar" MaxLength="60" />
+          <Property Name="UnitValue" Type="int" />
+          <Property Name="Budget" Type="int" />
           <Property Name="IsRefregreted" Type="bit" Nullable="false" />
           <Property Name="IsFlamable" Type="bit" Nullable="false" />
           <Property Name="IsDelicate" Type="bit" Nullable="false" />
-          <Property Name="MinBidValue" Type="int" Nullable="false" />
-          <Property Name="MaxBidValue" Type="int" Nullable="false" />
-          <Property Name="MinTime" Type="datetime" Nullable="false" />
-          <Property Name="MaxTime" Type="datetime" Nullable="false" />
+          <Property Name="MinBidValue" Type="int" />
+          <Property Name="MaxBidValue" Type="int" />
+          <Property Name="MinTime" Type="varchar" MaxLength="50" />
+          <Property Name="MaxTime" Type="varchar" MaxLength="50" />
           <Property Name="IsDelivered" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IsPaid" Type="bit" Nullable="false" />
@@ -373,7 +374,8 @@
             <End Role="StateMaster" EntitySet="StateMaster" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbTransportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -515,26 +517,37 @@
             <PropertyRef Name="ConsignmentId" />
           </Key>
           <Property Name="ConsignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ReceiverContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ReceiverPinNo" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="SourceId" Type="Int32" Nullable="false" />
-          <Property Name="DestinationId" Type="Int32" Nullable="false" />
-          <Property Name="Distance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UnitType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UnitValue" Type="Int32" Nullable="false" />
-          <Property Name="Budget" Type="Int32" Nullable="false" />
+          <Property Name="DispatchDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiverContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiverPinNo" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SourceId" Type="Int32" />
+          <Property Name="DestinationId" Type="Int32" />
+          <Property Name="Distance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UnitValue" Type="Int32" />
+          <Property Name="Budget" Type="Int32" />
           <Property Name="IsRefregreted" Type="Boolean" Nullable="false" />
           <Property Name="IsFlamable" Type="Boolean" Nullable="false" />
           <Property Name="IsDelicate" Type="Boolean" Nullable="false" />
-          <Property Name="MinBidValue" Type="Int32" Nullable="false" />
-          <Property Name="MaxBidValue" Type="Int32" Nullable="false" />
-          <Property Name="MinTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MaxTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MinBidValue" Type="Int32" />
+          <Property Name="MaxBidValue" Type="Int32" />
+          <Property Name="MinTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaxTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblConSignmentImage">
+          <Key>
+            <PropertyRef Name="ConsignmentImageId" />
+          </Key>
+          <Property Name="ConsignmentImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsignmentID" Type="Int32" Nullable="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDriver">
           <Key>
@@ -550,6 +563,16 @@
           <Property Name="AadharcardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblFeedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblInquiry">
           <Key>
@@ -579,6 +602,17 @@
           <Property Name="PricePerUnit" Type="Int32" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
+          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblService">
           <Key>
@@ -685,7 +719,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbTransportEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbTransportEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
           <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
           <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
@@ -697,9 +731,12 @@
           <EntitySet Name="tblCMSPages" EntityType="Self.tblCMSPage" />
           <EntitySet Name="tblComplaints" EntityType="Self.tblComplaint" />
           <EntitySet Name="tblConsignments" EntityType="Self.tblConsignment" />
+          <EntitySet Name="tblConSignmentImages" EntityType="Self.tblConSignmentImage" />
           <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
+          <EntitySet Name="tblFeedbacks" EntityType="Self.tblFeedback" />
           <EntitySet Name="tblInquiries" EntityType="Self.tblInquiry" />
           <EntitySet Name="tblPriceLists" EntityType="Self.tblPriceList" />
+          <EntitySet Name="tblReviews" EntityType="Self.tblReview" />
           <EntitySet Name="tblServices" EntityType="Self.tblService" />
           <EntitySet Name="tblTrackings" EntityType="Self.tblTracking" />
           <EntitySet Name="tblTransportCompanies" EntityType="Self.tblTransportCompany" />
@@ -714,47 +751,13 @@
             <End Role="CountryMaster" EntitySet="CountryMasters" />
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
-          <EntitySet Name="tblConSignmentImages" EntityType="dbTransportModel.tblConSignmentImage" />
-          <EntitySet Name="tblFeedbacks" EntityType="dbTransportModel.tblFeedback" />
-          <EntitySet Name="tblReviews" EntityType="dbTransportModel.tblReview" />
         </EntityContainer>
-        <EntityType Name="tblConSignmentImage">
-          <Key>
-            <PropertyRef Name="ConsignmentImageId" />
-          </Key>
-          <Property Name="ConsignmentImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ConsignmentID" Type="Int32" Nullable="false" />
-          <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblFeedback">
-          <Key>
-            <PropertyRef Name="FeedbackId" />
-          </Key>
-          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblReview">
-          <Key>
-            <PropertyRef Name="ReviewId" />
-          </Key>
-          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
-          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbTransportModelStoreContainer" CdmEntityContainer="dbTransportEntities4">
+        <EntityContainerMapping StorageEntityContainer="dbTransportModelStoreContainer" CdmEntityContainer="dbTransportEntities5">
           <EntitySetMapping Name="CityMasters">
             <EntityTypeMapping TypeName="dbTransportModel.CityMaster">
               <MappingFragment StoreEntitySet="CityMaster">
@@ -835,7 +838,6 @@
           <EntitySetMapping Name="tblBills">
             <EntityTypeMapping TypeName="dbTransportModel.tblBill">
               <MappingFragment StoreEntitySet="tblBill">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="BillId" ColumnName="BillId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="BookingId" ColumnName="BookingId" />
@@ -844,6 +846,7 @@
                 <ScalarProperty Name="GST" ColumnName="GST" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -898,6 +901,7 @@
             <EntityTypeMapping TypeName="dbTransportModel.tblConsignment">
               <MappingFragment StoreEntitySet="tblConsignment">
                 <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
                 <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
                 <ScalarProperty Name="ReceiverContactNo" ColumnName="ReceiverContactNo" />
                 <ScalarProperty Name="ReceiverPinNo" ColumnName="ReceiverPinNo" />
@@ -921,6 +925,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblConSignmentImages">
+            <EntityTypeMapping TypeName="dbTransportModel.tblConSignmentImage">
+              <MappingFragment StoreEntitySet="tblConSignmentImage">
+                <ScalarProperty Name="ConsignmentImageId" ColumnName="ConsignmentImageId" />
+                <ScalarProperty Name="ConsignmentID" ColumnName="ConsignmentID" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblDrivers">
             <EntityTypeMapping TypeName="dbTransportModel.tblDriver">
               <MappingFragment StoreEntitySet="tblDriver">
@@ -934,6 +949,17 @@
                 <ScalarProperty Name="AadharcardNo" ColumnName="AadharcardNo" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeedbacks">
+            <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
+              <MappingFragment StoreEntitySet="tblFeedback">
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -965,6 +991,18 @@
                 <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReviews">
+            <EntityTypeMapping TypeName="dbTransportModel.tblReview">
+              <MappingFragment StoreEntitySet="tblReview">
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1052,40 +1090,6 @@
                 <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblConSignmentImages">
-            <EntityTypeMapping TypeName="dbTransportModel.tblConSignmentImage">
-              <MappingFragment StoreEntitySet="tblConSignmentImage">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
-                <ScalarProperty Name="ConsignmentID" ColumnName="ConsignmentID" />
-                <ScalarProperty Name="ConsignmentImageId" ColumnName="ConsignmentImageId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblFeedbacks">
-            <EntityTypeMapping TypeName="dbTransportModel.tblFeedback">
-              <MappingFragment StoreEntitySet="tblFeedback">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblReviews">
-            <EntityTypeMapping TypeName="dbTransportModel.tblReview">
-              <MappingFragment StoreEntitySet="tblReview">
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="Review" ColumnName="Review" />
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

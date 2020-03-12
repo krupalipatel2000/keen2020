@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Insert2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;height:500px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">Add Consignment</h4></center>
+            </div>
+            <div class="card-body">
+                <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            Your budget is : 
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtBudget" placeholder="Budget">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtminbidvalue" placeholder="minbidvalue">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtmaxbidvalue" placeholder="maxbidvalue">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtmintime" placeholder="mintime">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtmaxtime" placeholder="maxtime">
+                        </div>
+                    </div>
+                    <br /><br /><br />
+                    <div style="overflow:auto;">
+                        <div style="float:right;">
+                            <button type="button" class="btn btn-primary" id="prevBtn">Previous</button>
+                            <button type="submit" class="btn btn-primary" id="nextBtn">Next</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>

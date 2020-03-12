@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class ServiceController : Controller
     {
         // GET: Admin/Service
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var joinservice = from observice in dc.tblServices

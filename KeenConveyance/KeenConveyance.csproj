@@ -153,89 +153,89 @@
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleTypeController.cs" />
     <Compile Include="Areas\Admin\Models\CityMaster.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\CountryMaster.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\dbTransportEntities3.Context.cs">
+    <Compile Include="Areas\Admin\Models\dbTransportEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbTransportEntities3.Context.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\dbTransportEntities3.cs">
+    <Compile Include="Areas\Admin\Models\dbTransportEntity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\dbTransportEntities3.Designer.cs">
+    <Compile Include="Areas\Admin\Models\dbTransportEntity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
+      <DependentUpon>dbTransportEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\JoinViewAll.cs" />
     <Compile Include="Areas\Admin\Models\StateMaster.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblAddress.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblAdmin.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblBidding.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblBill.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblBooking.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblCMSPage.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblComplaint.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblConsignment.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblConSignmentImage.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblDriver.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblFeedback.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblInquiry.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblPriceList.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblReview.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblService.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblTracking.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblTransportCompany.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblUser.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblVehicle.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\tblVehicleType.cs">
-      <DependentUpon>dbTransportEntities3.tt</DependentUpon>
+      <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClientCompanyController.cs" />
     <Compile Include="Controllers\ClientConsignmentController.cs" />
@@ -252,15 +252,15 @@
     <Content Include="App_Data\dbTransport_log.ldf">
       <DependentUpon>dbTransport.mdf</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Models\dbTransportEntities3.Context.tt">
+    <Content Include="Areas\Admin\Models\dbTransportEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
-      <LastGenOutput>dbTransportEntities3.Context.cs</LastGenOutput>
+      <DependentUpon>dbTransportEntity.edmx</DependentUpon>
+      <LastGenOutput>dbTransportEntity.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Admin\Models\dbTransportEntities3.tt">
+    <Content Include="Areas\Admin\Models\dbTransportEntity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
-      <LastGenOutput>dbTransportEntities3.cs</LastGenOutput>
+      <DependentUpon>dbTransportEntity.edmx</DependentUpon>
+      <LastGenOutput>dbTransportEntity.cs</LastGenOutput>
     </Content>
     <Content Include="clientcontent\css\animate.css" />
     <Content Include="clientcontent\css\bootstrap.min.css" />
@@ -687,17 +687,17 @@
     <Content Include="Areas\Admin\Views\Admin\SampleChart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\UserChart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\CompanyChart.cshtml" />
-    <EntityDeploy Include="Areas\Admin\Models\dbTransportEntities3.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbTransportEntities3.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Areas\Admin\Models\dbTransportEntities3.edmx.diagram">
-      <DependentUpon>dbTransportEntities3.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\CMSpage\List.cshtml" />
     <Content Include="Areas\Admin\Views\Consignment\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\CMSpage\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Service\Insert.cshtml" />
+    <EntityDeploy Include="Areas\Admin\Models\dbTransportEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbTransportEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\dbTransportEntity.edmx.diagram">
+      <DependentUpon>dbTransportEntity.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2708,6 +2708,8 @@
     <Content Include="Views\Home\ChangePassword.cshtml" />
     <Content Include="Views\Home\ForgetPassword.cshtml" />
     <Content Include="Views\ClientConsignment\Insert.cshtml" />
+    <Content Include="Views\ClientConsignment\Insert2.cshtml" />
+    <Content Include="Views\ClientConsignment\Insert3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

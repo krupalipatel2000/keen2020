@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class BookingController : Controller
     {
         // GET: Admin/Booking
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
 
         public ActionResult Index()
         {

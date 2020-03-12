@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6438d5360a754adf8d5e4f7da137d224" Name="Diagram1" ZoomLevel="97">
+      <Diagram DiagramId="92fe56af5a024a74b5cae8f9f15daa53" Name="Diagram1">
         <EntityTypeShape EntityType="dbTransportModel.CityMaster" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.CountryMaster" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.StateMaster" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
@@ -16,20 +16,20 @@
         <EntityTypeShape EntityType="dbTransportModel.tblCMSPage" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblComplaint" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblConsignment" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblConSignmentImage" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbTransportModel.tblDriver" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblInquiry" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblPriceList" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblService" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblTracking" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblTransportCompany" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblUser" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblVehicle" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbTransportModel.tblVehicleType" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblFeedback" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblInquiry" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblPriceList" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblReview" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblService" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblTracking" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblTransportCompany" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblUser" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblVehicle" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTransportModel.tblVehicleType" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="dbTransportModel.FK_CityMaster_StateMaster" ManuallyRouted="false" />
         <AssociationConnector Association="dbTransportModel.FK_StateMaster_CountryMaster" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="dbTransportModel.tblConSignmentImage" Width="1.5" PointX="9.375" PointY="13.75" />
-        <EntityTypeShape EntityType="dbTransportModel.tblFeedback" Width="1.5" PointX="13.375" PointY="12.75" />
-        <EntityTypeShape EntityType="dbTransportModel.tblReview" Width="1.5" PointX="15.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

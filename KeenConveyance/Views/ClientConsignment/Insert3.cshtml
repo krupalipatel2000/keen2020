@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Insert3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;height:600px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">Add Consignment</h4></center>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2 style="text-align:left">To Place : </h2>
+                        <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <select name="usertype" class="form-control form-control-user">
+                                        <option value="">Select Address Type &nbsp;&nbsp;</option>
+                                        <option value="H"> Home &nbsp;&nbsp;</option>
+                                        <option value="O"> Office &nbsp;&nbsp;</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtHouseNo" placeholder="House No">
+                                </div>
+                                <div class="col-sm-5 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtLandmark" placeholder="Landmark">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtArea" placeholder="Area">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <textarea cols="20" rows="3" class="form-control" placeholder="Address"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 mb-3 mb-sm-0" id="divstate">
+                                    <select id="ddState" class="form-control"></select>
+                                </div>
+                                <div class="col-sm-5 mb-3 mb-sm-0" id="divcity">
+                                    <select id="ddCity" class="form-control"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <h2 style="text-align:left">From Place : </h2>
+                        <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <select name="usertype" class="form-control form-control-user">
+                                        <option value="">Select Address Type &nbsp;&nbsp;</option>
+                                        <option value="H"> Home &nbsp;&nbsp;</option>
+                                        <option value="O"> Office &nbsp;&nbsp;</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtHouseNo" placeholder="House No">
+                                </div>
+                                <div class="col-sm-5 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtLandmark" placeholder="Landmark">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtArea" placeholder="Area">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <textarea cols="20" rows="3" class="form-control" placeholder="Address"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 mb-3 mb-sm-0" id="divstate">
+                                    <select id="ddState" class="form-control"></select>
+                                </div>
+                                <div class="col-sm-5 mb-3 mb-sm-0" id="divcity">
+                                    <select id="ddCity" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div style="overflow:auto;">
+                                <div style="float:right;">
+                                    <button type="button" class="btn btn-primary" id="prevBtn">Previous</button>
+                                    <button type="submit" class="btn btn-primary" id="nextBtn">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ddCountry').change(function () {
+           //alert("Aavi Gayu");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("GetState", "ClientConsignment")",
+                data: { cid: $('#ddCountry').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    //alert(data.length);
+
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ddState').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                    }
+                    $('#ddState').focus();
+                },
+                error: function (error) {
+
+                    alert(error);
+                }
+            });
+        });
+
+        $('#ddState').change(function () {
+           //alert("Aavi Gayu");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("GetCity","ClientConsignment")",
+                data: { sid: $('#ddState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ddCity').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                    }
+                    $('#ddCity').focus();
+                }
+            });
+        });
+
+    });
+
+</script>

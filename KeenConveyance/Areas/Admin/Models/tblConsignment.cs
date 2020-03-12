@@ -15,23 +15,24 @@ namespace KeenConveyance.Areas.Admin.Models
     public partial class tblConsignment
     {
         public int ConsignmentId { get; set; }
+        public Nullable<System.DateTime> DispatchDate { get; set; }
         public string ReceiverName { get; set; }
         public string ReceiverContactNo { get; set; }
-        public int ReceiverPinNo { get; set; }
-        public int UserId { get; set; }
-        public int SourceId { get; set; }
-        public int DestinationId { get; set; }
+        public Nullable<int> ReceiverPinNo { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<int> SourceId { get; set; }
+        public Nullable<int> DestinationId { get; set; }
         public string Distance { get; set; }
         public string UnitType { get; set; }
-        public int UnitValue { get; set; }
-        public int Budget { get; set; }
+        public Nullable<int> UnitValue { get; set; }
+        public Nullable<int> Budget { get; set; }
         public bool IsRefregreted { get; set; }
         public bool IsFlamable { get; set; }
         public bool IsDelicate { get; set; }
-        public int MinBidValue { get; set; }
-        public int MaxBidValue { get; set; }
-        public System.DateTime MinTime { get; set; }
-        public System.DateTime MaxTime { get; set; }
+        public Nullable<int> MinBidValue { get; set; }
+        public Nullable<int> MaxBidValue { get; set; }
+        public string MinTime { get; set; }
+        public string MaxTime { get; set; }
         public bool IsDelivered { get; set; }
         public bool IsActive { get; set; }
         public bool IsPaid { get; set; }

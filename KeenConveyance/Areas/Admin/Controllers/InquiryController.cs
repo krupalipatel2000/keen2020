@@ -12,7 +12,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class InquiryController : Controller
     {
         // GET: Admin/Inquiry
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
 
         public ActionResult Index()
         {
