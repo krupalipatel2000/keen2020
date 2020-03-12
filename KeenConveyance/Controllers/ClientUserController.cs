@@ -75,18 +75,19 @@ namespace KeenConveyance.Controllers
         public ActionResult Edit(FormCollection form)
         {
             int id = Convert.ToInt32(TempData["id"]);
-            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
-            com.CompanyName = form["txtComName"];
-            com.Logo = form["txtLogo"];
-            com.CompanyPhNo = form["txtComPhNo"];
-            //com.CompanyEmail = form["txtComEmail"];
-            // com.Password = form["txtPwd"];
-            com.AboutCompany = form["txtAboutCompany"];
-            com.ContactPersonName = form["txtContactPersonName"];
-            com.ContactPersonNo = form["txtContactPersonPhNo"];
-            com.WebURL = form["txtWebURL"];
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
+            user.FirstName = form["txtFirstName"];
+            user.LastName = form["txtLastName"];
+            //user.ProfilePic = form["txtprofile"];
+            user.EmailId = form["txtEmailId"];
+            user.Gender = form["gender"];
+            user.ContactNo = form["txtCno"];
+            user.IsActive = false;
+            user.CreatedOn = DateTime.Now;
+            user.IsVerified = false;
+            user.IsMobileVerified = false;
             dc.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("UserProfile",new {  id = user.UserId });
         }
 
         //public ActionResult List()

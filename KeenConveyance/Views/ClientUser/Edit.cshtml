@@ -9,13 +9,13 @@
     function validate() {
         var fname = document.registration.txtFirstName;
         var lname = document.registration.txtLastName;
-        var profile = document.registration.txtprofile;
+        //var profile = document.registration.txtprofile;
         var email = document.registration.txtEmailId;
-        var password = document.registration.txtPwd;
-        var gender = document.registration.gender;
+        //var password = document.registration.txtPwd;
+        //var gender = document.registration.gender;
         var cno = document.registration.txtCno;
         var fname_pat = /^[A-Za-z]+$/;
-        if (fname.value != "" && fname.value.match(fname_pat)) {
+        if (fname.value.match(fname_pat)) {
         }
         else {
             alert("FirstName is not Proper");
@@ -23,18 +23,11 @@
             return false;
         }
         var lname_pat = /^[A-Za-z]+$/;
-        if (lname.value != "" && lname.value.match(lname_pat)) {
+        if ( lname.value.match(lname_pat)) {
         }
         else {
             alert("LastName is not Proper");
             lname.focus();
-            return false;
-        }
-        if (profile.value != "") {
-        }
-        else {
-            alert("choose proper profile pic");
-            profile.focus();
             return false;
         }
         var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -45,21 +38,13 @@
             email.focus();
             return false;
         }
-        var pass_pat = /^[A-Za-z]\w{7,14}$/;
-        if (password != "" && password.value.match(pass_pat)) {
-        }
-        else {
-            alert("Password is not Proper");
-            password.focus();
-            return false;
-        }
-        if (gender != "") {
-        }
-        else {
-            alert("choose gender");
-            gender.focus();
-            return false;
-        }
+        //if (gender != "") {
+        //}
+        //else {
+        //    alert("choose gender");
+        //    gender.focus();
+        //    return false;
+        //}
         var cno_pat = /^\d{10}$/;
         if (cno.value != "" && cno.value.match(cno_pat)) {
         }
@@ -81,36 +66,95 @@
             <div class="card-body">
                 <form class="user" method="post" name="registration" enctype="multipart/form-data">
                     <div class="form-group row">
+                        <div class="col-md-1">
+                            <label>
+                                <b style="color:black">
+                                    FirstName:
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-sm-11">
+                            <label>
+                                <b style="color:black">
+                                    LastName :
+                                </b>
+                            </label>
+                        </div>
+
                         <div class="col-sm-6 mb-3 mb-sm-3">
-                            <input type="text" class="form-control"  value="@Model.FirstName" name="txtFirstName" placeholder="Your FirstName" maxlength="20">
+                            <input type="text" class="form-control" value="@Model.FirstName" name="txtFirstName" placeholder="Your FirstName" maxlength="20">
                         </div>
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" value="@Model.LastName"name="txtLastName" placeholder="Your LastName" maxlength="20">
+                            <input type="text" class="form-control" value="@Model.LastName" name="txtLastName" placeholder="Your LastName" maxlength="20">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    @*<div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>
+                                <b style="color:black">
+                                    ProfilePic Of User :
+                                </b>
+                            </label>
+
+                        </div>
+                        
                         <div class="col-sm-12 mb-3 mb-sm-3">
-                            <input type="file" class="form-control" name="txtprofile" value="@Model.ProfilePic"placeholder="ProfilePic" required>
+                            <input type="file" class="form-control" name="txtprofile" value="@Model.ProfilePic" placeholder="ProfilePic">
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>
+                                <b style="color:black">
+                                    Email Of User :
+                                </b>
+                            </label>
+                        </div>
                         <div class="col-sm-12 mb-3 mb-sm-3">
                             <input type="email" class="form-control" name="txtEmailId" placeholder="Your EmailId" value="@Model.EmailId">
                         </div>
-                       
+
                     </div>
                     <div class="form-group row">
+                        <div class="col-sm-1">
+                            <label>
+                                <b style="color:black">
+                                    Gender:
+                                </b>
+                            </label>
+
+                        </div>
+
                         <div class="col-sm-2 mb-3 mb-sm-0">
-                            <h4 style="text-align:left;">Gender : </h4>
-                            <input type="radio" id="male" name="gender" value="male" checked>
-                            <label for="male">Male</label>&nbsp;&nbsp;
-                            <input type="radio" id="female" name="gender" value="female">
-                            <label for="female">Female</label>
+                            @if (Model.Gender == "male")
+                            {
+                                <input type="radio" id="male" name="gender" value="Male" checked>
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="Female">
+                                <label for="female">Female</label>
+
+                            }
+                            else
+                            {
+
+                                <input type="radio" id="male" name="gender" value="Male" >
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="Female" checked>
+                                <label for="female">Female</label>
+                            }
                         </div>
                     </div>
                     <div class="form-group row">
+                        <div class="col-sm-1">
+                            <label>
+                                <b style="color:black">
+                                    ContactNumber:
+                                </b>
+                            </label>
+
+                        </div>
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" value="@Model.ContactNo" name="txtCno" placeholder="Your ContactNumber">
+                            <input type="text" class="form-control" value="@Model.ContactNo" name="txtCno"  placeholder="Your ContactNumber">
                         </div>
                     </div>
                     <input type="submit" value="Update User" class="btn btn-success" onclick="return validate();" />

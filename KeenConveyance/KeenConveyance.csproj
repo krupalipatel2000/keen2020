@@ -2710,6 +2710,11 @@
     <Content Include="Views\ClientConsignment\Insert.cshtml" />
     <Content Include="Views\ClientConsignment\Insert2.cshtml" />
     <Content Include="Views\ClientConsignment\Insert3.cshtml" />
+    <Content Include="Views\ClientCompany\ChangePassword.cshtml" />
+    <Content Include="Views\ClientCompany\CompanyProfile.cshtml" />
+    <Content Include="Views\ClientCompany\Edit.cshtml" />
+    <Content Include="Views\ClientCompany\ForgetPassword.cshtml" />
+    <Content Include="Views\ClientUser\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

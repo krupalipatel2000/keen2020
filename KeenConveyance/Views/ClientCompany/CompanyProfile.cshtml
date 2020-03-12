@@ -4,110 +4,116 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CompanyProfile</h2>
 
-<div>
-    <div class="row">
-        <div class="col-md-4" style="text-align:center">
-            <p>
-                @Html.ActionLink("Edit Profile", "Edit", new { id = Model.CompanyId })
-            </p>
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">CompanyProfile</h4></center>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                        <p>
+                            @Html.ActionLink("Edit Profile", "Edit", new { id = Model.CompanyId })
+                        </p>
 
-            <img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" onchange="return loadFile(event);" />
-            <br />
+                        <img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" onchange="return loadFile(event);" />
+                        <br />
 
-            @*<button accept="~/Images/" onchange="return loadFile(event);" class="form-control">Upload Image</button>
+                        @*<button accept="~/Images/" onchange="return loadFile(event);" class="form-control">Upload Image</button>
 
-            <input type="file" name="txtLogo" id="txtLogo" style="display:none" onchange="loadFile(event);" />*@
-            <div> <a href="#"> Change Profile Image </a> </div>
+                    <input type="file" name="txtLogo" id="txtLogo" style="display:none" onchange="loadFile(event);" />*@
+                        <div> <a href="#"> Change Profile Image </a> </div>
+                        @*@{
+                        if (Model.Logo != null)
+                        {
 
+                            MvcForm mvcForm = Html.BeginForm("UploadImage", "ClientCompany", FormMethod.Post, new { enctype = "multipart/form-data" });
+                            <div>
+                                <br />
+                                <button id="btnImg" class="btn btn-sm btn-outline-success" onclick="return getfile()"> Upload Image </button>
+                                <input type="file" name="profimg" id="profimg" style="display:none" onchange="preview(event)" />
+                            </div>
+                            <script>
+                                function getfile() {
+                                    var btn = document.querySelector("#btnImg");
+                                    if (btn.innerHTML == "Save Image") {
+                                        return true;
+                                    }
+                                    else {
+                                        document.getElementById('profimg').click();
+                                        return false;
+                                    }
+                                }
+                                function preview(event) {
 
+                                    var img = document.querySelector("#userimage");
+                                    img.src = URL.createObjectURL(event.target.files[0]);
+                                    var btn = document.querySelector("#btnImg");
+                                    btn.innerHTML = "Save Image";
 
-
-            @*@{
-            if (Model.Logo != null)
-            {
-
-                MvcForm mvcForm = Html.BeginForm("UploadImage", "ClientCompany", FormMethod.Post, new { enctype = "multipart/form-data" });
-                <div>
-                    <br />
-                    <button id="btnImg" class="btn btn-sm btn-outline-success" onclick="return getfile()"> Upload Image </button>
-                    <input type="file" name="profimg" id="profimg" style="display:none" onchange="preview(event)" />
-                </div>
-                <script>
-                    function getfile() {
-                        var btn = document.querySelector("#btnImg");
-                        if (btn.innerHTML == "Save Image") {
-                            return true;
+                                }
+                            </script>
+                            mvcForm.EndForm();
                         }
-                        else {
-                            document.getElementById('profimg').click();
-                            return false;
+
+                        else
+                        {
+                            <div> <a href="#"> Change Profile Image </a> </div>
                         }
-                    }
-                    function preview(event) {
 
-                        var img = document.querySelector("#userimage");
-                        img.src = URL.createObjectURL(event.target.files[0]);
-                        var btn = document.querySelector("#btnImg");
-                        btn.innerHTML = "Save Image";
+                    }*@
 
-                    }
-                </script>
-                mvcForm.EndForm();
-            }
+                        <br />
+                        <p>
+                            Member since <b> @Html.ViewBag.Year </b>
+                        </p>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName)'s Profile</h1>
+                        </div>
+                        <div class="row">
+                            <h4>@Html.DisplayFor(model => model.CompanyEmail)</h4>
+                        </div>
+                        <div class="row">
+                            <h4>@Html.DisplayFor(model => model.CompanyPhNo)</h4>
+                        </div>
+                        <div class="row">
+                            <h4>@Html.DisplayFor(model => model.ContactPersonName)</h4>
+                        </div>
+                        <div class="row">
+                            <h4>@Html.DisplayFor(model => model.ContactPersonNo)</h4>
+                        </div>
+                        <div class="row">
+                            <h4>@Html.DisplayFor(model => model.WebURL)</h4>
+                        </div>
+                        <div class="row">
+                            @{
+                                if (Model.IsActive == true)
+                                {
+                                    <a href="#"> Deactivate Account </a>
+                                }
+                            }
+                        </div>
 
-            else
-            {
-                <div> <a href="#"> Change Profile Image </a> </div>
-            }
+                        <div class="row">
+                            <br /><br />
+                            <div class="alert-danger" style="margin-top:40px">
+                                <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                            </div>
+                        </div>
+                    </div>
 
-        }*@
 
-            <br />
-            <p>
-                Member since <b> @Html.ViewBag.Year </b>
-            </p>
-        </div>
-        <div class="col-md-8">
-            <div class="row">
-                <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName)'s Profile</h1>
-            </div>
-            <div class="row">
-                <h4>@Html.DisplayFor(model => model.CompanyEmail)</h4>
-            </div>
-            <div class="row">
-                <h4>@Html.DisplayFor(model => model.CompanyPhNo)</h4>
-            </div>
-            <div class="row">
-                <h4>@Html.DisplayFor(model => model.ContactPersonName)</h4>
-            </div>
-            <div class="row">
-                <h4>@Html.DisplayFor(model => model.ContactPersonNo)</h4>
-            </div>
-            <div class="row">
-                <h4>@Html.DisplayFor(model => model.WebURL)</h4>
-            </div>
-            <div class="row">
-                @{
-                    if (Model.IsActive == true)
-                    {
-                        <a href="#"> Deactivate Account </a>
-                    }
-                }
-            </div>
+                </div>
 
-            <div class="row">
-                <br /><br />
-                <div class="alert-danger" style="margin-top:40px">
-                    <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+
                 </div>
             </div>
         </div>
-
-
-    </div>
-</div>
+</center>
 
 <script>
     var loadFile = function (event) {

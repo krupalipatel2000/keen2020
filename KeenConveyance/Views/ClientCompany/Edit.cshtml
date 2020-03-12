@@ -63,7 +63,6 @@
             <div class="card-header py-3">
                 <center><h4 class="m-0 font-weight-bold text-primary">Edit Company Profile</h4></center>
             </div>
-
             @*<div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">
                         <a href="@Url.Action("Index","Company")" class="btn btn-primary">
@@ -73,49 +72,49 @@
                 </div>*@
             <div class="card-body">
                 <form class="user" method="post" name="registration">
+                    
                     <div class="form-group row">
-                        <div class="col-md-3">
+                        <div class="col-sm-2">
                             <label>
                                 <b style="color:black">
-                                    Logo of Company :
+                                    CompanyName :
                                 </b>
                             </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <label>
-                                    Contact Number of Company :
-                                    
-                                </label>
-                            </div>
                         </div>
+                        <div class="col-sm-10">
+                            <label>
+                                <b style="color:black">
+                                    Contact Number of Company :
+                                </b>
+                            </label>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <input type="file" class="form-control" value="@Model.Logo" name="txtLogo" placeholder="Logo">
+                            <input type="text" class="form-control" value="@Model.CompanyName" name="txtComName" placeholder="Contact Number">
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" value="@Model.CompanyPhNo" name="txtComPhNo" placeholder="Contact Number">
                         </div>
 
                     </div>
-                    <br />
-
                     @*<div class="form-group row">
-                            <div class="col-md-5">
-                                Email Address of Company :
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input type="email" class="form-control" value="@Model.CompanyEmail" name="txtComEmail" placeholder="Email Address"><br />
-                            </div>
-                        </div>*@
+            <div class="col-md-5">
+                Email Address of Company :
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <input type="email" class="form-control" value="@Model.CompanyEmail" name="txtComEmail" placeholder="Email Address"><br />
+            </div>
+        </div>*@
                     <div class="form-group row">
                         <div class="col-sm-3">
-                            <label><b>
-                                Description of Company :
-                            </b>
+                            <label>
+                                <b style="color:black">
+                                    Description of Company :
+                                </b>
                             </label>
-
                         </div>
                     </div>
                     <div class="form-group row">
@@ -125,14 +124,15 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-3">
-                            <label><b>
-                                Name of Company's Owner :
-                            </b></label>
-
+                            <label>
+                                <b style="color:black">
+                                    Name of Company's Owner :
+                                </b>
+                            </label>
                         </div>
                         <div class="col-md-9">
                             <label>
-                                <b>
+                                <b style="color:black">
                                     Contact Number of Company's Owner :
                                 </b>
                             </label>
@@ -147,8 +147,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-5">
-                            WebURL of Company :
+                        <div class="col-sm-3">
+                            <label>
+                                <b style="color:black">
+                                    WebURL of Company :
+                                </b>
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -156,7 +160,6 @@
                             <input type="text" class="form-control" value="@Model.WebURL" name="txtWebURL" placeholder="Enter Web URL">
                         </div>
                     </div>
-                    <br />
                     <input type="submit" value="Update Company" class="btn btn-success" onclick="return validate();" />
                 </form>
             </div>
