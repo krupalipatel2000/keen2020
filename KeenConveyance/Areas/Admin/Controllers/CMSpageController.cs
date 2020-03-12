@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class CMSpageController : Controller
     {
         // GET: Admin/CMSpage
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var TitleList = from ob in dc.tblCMSPages select ob.PageTitle;

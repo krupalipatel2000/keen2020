@@ -11,7 +11,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class TrackingController : Controller
     {
         // GET: Admin/Tracking
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var track = dc.tblTrackings.ToList();

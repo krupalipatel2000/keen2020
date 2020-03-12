@@ -11,7 +11,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class BillController : Controller
     {
         // GET: Admin/Bill
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var joinbill = from obBill in dc.tblBills

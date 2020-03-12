@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class BiddingController : Controller
     {
         // GET: Admin/Bidding
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var joinBid = from obBid in dc.tblBiddings

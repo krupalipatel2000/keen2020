@@ -10,7 +10,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
     public class ConsignmentController : Controller
     {
         // GET: Admin/Consignment
-        dbTransportEntities4 dc = new dbTransportEntities4();
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var consignment = dc.tblConsignments.ToList();
