@@ -6,129 +6,89 @@
 
 <h2>UserProfile</h2>
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-            <a href="@Url.Action("Index","User")" class="btn btn-primary">
-                <i class="fa fa-step-backward"></i>
-            </a>
-        </h6>
-    </div>
-    <div class="card-body">
-        <div>
+<div>
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <p>
+                @Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserId })
+            </p>
+
+            <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+            <br />
+
+
+            @*@{
+                if (Model.ProfilePic != null)
+                {
+
+                    MvcForm mvcForm = Html.BeginForm("UploadImage", "ClientUser", FormMethod.Post, new { enctype = "multipart/form-data" });
+                    <div>
+                        <br />
+                        <button id="btnImg" class="btn btn-sm btn-outline-success" onclick="return getfile()"> Upload Image </button>
+                        <input type="file" name="profimg" id="profimg" style="display:none" onchange="preview(event)" />
+                    </div>
+                    <script>
+                        function getfile() {
+                            var btn = document.querySelector("#btnImg");
+                            if (btn.innerHTML == "Save Image") {
+                                return true;
+                            }
+                            else {
+                                document.getElementById('profimg').click();
+                                return false;
+                            }
+                        }
+                        function preview(event) {
+
+                            var img = document.querySelector("#userimage");
+                            img.src = URL.createObjectURL(event.target.files[0]);
+                            var btn = document.querySelector("#btnImg");
+                            btn.innerHTML = "Save Image";
+
+                        }
+                    </script>
+                    mvcForm.EndForm();
+                }
+
+                else
+                {
+                    <div> <a href="#"> Change Profile Image </a> </div>
+                }
+
+            }*@
+
+            <br />
+            <p>
+                Member since <b> @Html.ViewBag.Year </b>
+            </p>
+        </div>
+        <div class="col-md-8">
             <div class="row">
-                <div class="col-md-4" style="text-align:center">
-                    <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+                <h1 class="alert-light">@Html.DisplayFor(model => model.FirstName)'s Profile</h1>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.EmailId)</h4>
+            </div>
+            <div class="row">
+                <h4>@Html.DisplayFor(model => model.ContactNo)</h4>
+            </div>
+            <div class="row">
+                @{
+                    if (Model.IsActive == true)
+                    {
+                        <a href="#"> Deactivate Account </a>
+                    }
+                }
+            </div>
 
-                    <br />
-                    @*<p>
-                        Member since <b> @Model.CreatedOn.Year </b>
-                    </p>*@
-                    <br />
-                </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <h1 class="text-info"><b>@Html.DisplayFor(model => model.FirstName)'s Profile</b></h1><br />
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-6">
-                            <a href="EmailID:@Html.DisplayFor(model => model.EmailId)">
-                                <h5>@Html.DisplayFor(model => model.EmailId)</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <i class="fa fa-1x fa-phone"></i>
-                        </div>
-                        <div class="col-6">
-                            <a href="tel:@Html.DisplayFor(model => model.ContactNo)">
-                                <h5>@Html.DisplayFor(model => model.ContactNo)</h5>
-                            </a>
-                        </div>
-                    </div>
-                    @*<div class="row">
-                        <h5 class="fa fa-1x">
-                            IsActive &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  @if (Model.IsActive == true)
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
-                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
-                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
-                                </div>
-                            }
-                        </h5>
-                    </div>
-
-                    <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsVerified &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@if (Model.IsVerified == true)
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
-                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
-                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
-                                </div>
-                            }
-                        </h5>
-                    </div>
-
-                    <div class="row">
-                        <h5 class="fa fa-1x">
-                            IsMobileVerified @if (Model.IsMobileVerified == true)
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
-                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.UserId" onchange="return activate(@Model.UserId)">
-                                    <label class="custom-control-label" for="active_@Model.UserId"></label>
-                                </div>
-                            }
-                        </h5>
-                    </div>
-                    <br />*@
-                    @*<div class="row">
-                            @{
-                                if (Model.IsActive == true)
-                                {
-                                    <a href="#"> Deactivate Account </a>
-                                }
-                            }
-                        </div>*@
-                    @*<div class="row">
-                            <br /><br />
-                            <div class="alert-danger" style="margin-top:40px; margin-left:10px">
-                                @{
-                                    if (Model.IsActive == true)
-                                    {
-                                        <a href="@Url.Action("Activate","Admin")" class="btn btn-danger"> Deactivate Account </a>
-                                    }
-                                }
-                            </div>
-                        </div>*@
+            <div class="row">
+                <br /><br />
+                <div class="alert-danger" style="margin-top:40px">
+                    <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>

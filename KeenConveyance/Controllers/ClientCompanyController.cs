@@ -33,6 +33,19 @@ namespace KeenConveyance.Controllers
                 //return RedirectToAction("Dashboard", "Admin");
             }
         }
+        public ActionResult CompanyProfile(int id)
+        {
+            if (id != 0)
+            {
+                tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId== id);
+                ViewBag.Year = com.CreatedOn.Year.ToString();
+                return View(com);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
+        }
         public ActionResult Insert()
         {
             return View();
@@ -69,11 +82,62 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Edit(int id)
+        {
+            TempData["id"] = id;
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            return View(com);
+        }
+        [HttpPost]
+        public ActionResult Edit(FormCollection form)
+        {
+            int id = Convert.ToInt32(TempData["id"]);
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            com.CompanyName = form["txtComName"];
+            com.Logo = form["txtLogo"];
+            com.CompanyPhNo = form["txtComPhNo"];
+            //com.CompanyEmail = form["txtComEmail"];
+            // com.Password = form["txtPwd"];
+            com.AboutCompany = form["txtAboutCompany"];
+            com.ContactPersonName = form["txtContactPersonName"];
+            com.ContactPersonNo = form["txtContactPersonPhNo"];
+            com.WebURL = form["txtWebURL"];
+            dc.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public string Code()
         {
             string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
             return code;
         }
+        [HttpPost]
+        public ActionResult UploadImage(HttpPostedFileBase txtLogo)
+        {
+            //    int ID = Convert.ToInt32(Session["ComapnyId"]);
+            //    tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == ID);
+            //    com.Logo = profimg.FileName;
+            //    dc.SaveChanges();
+            //    //string newImage = profimg.FileName;
+            //    string path = Server.MapPath("~/Images/");
+            //    profimg.SaveAs(path + profimg.FileName);
+            
+            string name = "txtLogo";
+            if (txtLogo != null)
+            {
+                int size = (int)txtLogo.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtLogo.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtLogo.SaveAs(path + "" + name);
+                }
+            }
+               return View();
+
+        }
+
     }
 }
 

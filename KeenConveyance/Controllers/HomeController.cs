@@ -37,16 +37,21 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult Login(string txtEmail, string txtPwd, string usertype)
         {
-           
-
             if (usertype == "U")
             {
                 tblUser user = (from ob in dc.tblUsers where ob.EmailId == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
                 if (user != null)
                 {
-                    Session["UserId"] = user.FirstName;
+                    //Session["UserId"] = user.FirstName;
                     Session["LogID"] = user.UserId;
-                    return RedirectToAction("UserProfile", "ClientUser");
+                    if (Session["LogID"] != null)
+                    {
+                        return RedirectToAction("UserProfile", "ClientUser", new {id=user.UserId});
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
                 else
                 {
@@ -60,9 +65,9 @@ namespace KeenConveyance.Controllers
                 tblTransportCompany com = (from ob in dc.tblTransportCompanies where ob.CompanyEmail == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
                 if (com != null)
                 {
-                    Session["UserId"] = com.CompanyName;
-                    //Session["LogID"] = user.UserId;
-                    return RedirectToAction("CompanyProfile", "ClientCompany");
+                    //Session["UserId"] = com.CompanyName;
+                    Session["CompanyId"] = com.CompanyId;
+                    return RedirectToAction("CompanyProfile", "ClientCompany", new { id = com.CompanyId});
                 }
                 else
                 {
@@ -103,7 +108,7 @@ namespace KeenConveyance.Controllers
                     return View();
                 }
             }
-            else 
+            else
             {
                 tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyEmail == txtForgetEmail);
                 if (com != null)
@@ -131,7 +136,17 @@ namespace KeenConveyance.Controllers
                     return View();
                 }
             }
-            
+
+        }
+        public ActionResult LogoutUser()
+        {
+            Session["LogID"] = null;
+            return RedirectToAction("Index");
+        }
+        public ActionResult LogoCompany()
+        {
+            Session["CompanyId"] = null;
+            return RedirectToAction("Index");
         }
         public ActionResult ChangePassword()
         {

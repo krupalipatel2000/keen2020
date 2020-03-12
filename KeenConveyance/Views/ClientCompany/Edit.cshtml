@@ -1,0 +1,168 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblTransportCompany
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script>
+    function validate() {
+        var name = document.registration.txtComName;
+        // var email = document.registration.txtComEmail;
+        var cno = document.registration.txtComPhNo;
+        var cpname = document.registration.txtContactPersonName;
+        var cpno = document.registration.txtContactPersonPhNo;
+        var name_pat = /^[A-Za-z]+$/;
+        if (name.value.match(name_pat)) {
+        }
+        else {
+            alert("Name is not Proper");
+            name.focus();
+            return false;
+        }
+        //var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        //if (email.value.match(email_pat)) {
+        //}
+        //else {
+        //    alert("Email is not Proper");
+        //    email.focus();
+        //    return false;
+        //}
+
+        var cno_pat = /^\d{10}$/;
+        if (cno.value.match(cno_pat)) {
+        }
+        else {
+            alert("Contact number is not Proper");
+            cno.focus();
+            return false;
+        }
+        var cpname_pat = /^[A-Za-z]+$/;
+        if (cpname.value.match(cpname_pat)) {
+        }
+        else {
+            alert("OwnerName is Not Proper");
+            cpname.focus();
+            return false;
+        }
+        var cpno_pat = /^\d{10}$/;
+        if (cpno.value.match(cpno_pat)) {
+        }
+        else {
+            alert("Owner ContactNo is Not Proper");
+            cpno.focus();
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">Edit Company Profile</h4></center>
+            </div>
+
+            @*<div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <a href="@Url.Action("Index","Company")" class="btn btn-primary">
+                            <i class="fa fa-step-backward"></i>
+                        </a>
+                    </h6>
+                </div>*@
+            <div class="card-body">
+                <form class="user" method="post" name="registration">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>
+                                <b style="color:black">
+                                    Logo of Company :
+                                </b>
+                            </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <label>
+                                    Contact Number of Company :
+                                    
+                                </label>
+                            </div>
+                        </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <input type="file" class="form-control" value="@Model.Logo" name="txtLogo" placeholder="Logo">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" value="@Model.CompanyPhNo" name="txtComPhNo" placeholder="Contact Number">
+                        </div>
+
+                    </div>
+                    <br />
+
+                    @*<div class="form-group row">
+                            <div class="col-md-5">
+                                Email Address of Company :
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <input type="email" class="form-control" value="@Model.CompanyEmail" name="txtComEmail" placeholder="Email Address"><br />
+                            </div>
+                        </div>*@
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label><b>
+                                Description of Company :
+                            </b>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-3">
+                            <input type="text" class="form-control" value="@Model.AboutCompany" name="txtAboutCompany" placeholder="Enter About Company"><br />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label><b>
+                                Name of Company's Owner :
+                            </b></label>
+
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <b>
+                                    Contact Number of Company's Owner :
+                                </b>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" value="@Model.ContactPersonName" name="txtContactPersonName" placeholder="Enter Contact Person Name">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" value="@Model.ContactPersonNo" name="txtContactPersonPhNo" placeholder="Enter Contact Person No"><br />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            WebURL of Company :
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-3">
+                            <input type="text" class="form-control" value="@Model.WebURL" name="txtWebURL" placeholder="Enter Web URL">
+                        </div>
+                    </div>
+                    <br />
+                    <input type="submit" value="Update Company" class="btn btn-success" onclick="return validate();" />
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+</center>
