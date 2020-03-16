@@ -170,6 +170,9 @@ namespace KeenConveyance.Controllers
         {
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
             ViewBag.User = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
+            ViewBag.House = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().HouseNo;
+            ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;
+            ViewBag.Area = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Area;
             ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
@@ -214,6 +217,9 @@ namespace KeenConveyance.Controllers
         {
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
             ViewBag.User = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
+            ViewBag.House = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().HouseNo;
+            ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;
+            ViewBag.Area = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Area;
             ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
@@ -257,7 +263,7 @@ namespace KeenConveyance.Controllers
             add.Zipcode = form["txtZipCode"];
             add.MapURL = form["txtMapURL"];
             dc.SaveChanges();
-            return RedirectToAction("ViewCon", new { id = add.UserId });
+            return RedirectToAction("ViewCon","ClientConsignment", new { id = add.AddressId});
         }
 
 
