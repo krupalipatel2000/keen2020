@@ -2723,6 +2723,7 @@
     <Content Include="Views\ClientConsignment\ComList.cshtml" />
     <Content Include="Views\ClientConsignment\ComConsignment.cshtml" />
     <Content Include="Views\ClientConsignment\EditAdd.cshtml" />
+    <Content Include="Views\ClientConsignment\ComAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

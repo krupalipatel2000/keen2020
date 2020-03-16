@@ -23,47 +23,47 @@
 
                         @*<button accept="~/Images/" onchange="return loadFile(event);" class="form-control">Upload Image</button>
 
-                    <input type="file" name="txtLogo" id="txtLogo" style="display:none" onchange="loadFile(event);" />*@
+                            <input type="file" name="txtLogo" id="txtLogo" style="display:none" onchange="loadFile(event);" />*@
                         <div> <a href="#"> Change Profile Image </a> </div>
                         @*@{
-                        if (Model.Logo != null)
-                        {
+                                if (Model.Logo != null)
+                                {
 
-                            MvcForm mvcForm = Html.BeginForm("UploadImage", "ClientCompany", FormMethod.Post, new { enctype = "multipart/form-data" });
-                            <div>
-                                <br />
-                                <button id="btnImg" class="btn btn-sm btn-outline-success" onclick="return getfile()"> Upload Image </button>
-                                <input type="file" name="profimg" id="profimg" style="display:none" onchange="preview(event)" />
-                            </div>
-                            <script>
-                                function getfile() {
-                                    var btn = document.querySelector("#btnImg");
-                                    if (btn.innerHTML == "Save Image") {
-                                        return true;
-                                    }
-                                    else {
-                                        document.getElementById('profimg').click();
-                                        return false;
-                                    }
+                                    MvcForm mvcForm = Html.BeginForm("UploadImage", "ClientCompany", FormMethod.Post, new { enctype = "multipart/form-data" });
+                                    <div>
+                                        <br />
+                                        <button id="btnImg" class="btn btn-sm btn-outline-success" onclick="return getfile()"> Upload Image </button>
+                                        <input type="file" name="profimg" id="profimg" style="display:none" onchange="preview(event)" />
+                                    </div>
+                                    <script>
+                                        function getfile() {
+                                            var btn = document.querySelector("#btnImg");
+                                            if (btn.innerHTML == "Save Image") {
+                                                return true;
+                                            }
+                                            else {
+                                                document.getElementById('profimg').click();
+                                                return false;
+                                            }
+                                        }
+                                        function preview(event) {
+
+                                            var img = document.querySelector("#userimage");
+                                            img.src = URL.createObjectURL(event.target.files[0]);
+                                            var btn = document.querySelector("#btnImg");
+                                            btn.innerHTML = "Save Image";
+
+                                        }
+                                    </script>
+                                    mvcForm.EndForm();
                                 }
-                                function preview(event) {
 
-                                    var img = document.querySelector("#userimage");
-                                    img.src = URL.createObjectURL(event.target.files[0]);
-                                    var btn = document.querySelector("#btnImg");
-                                    btn.innerHTML = "Save Image";
-
+                                else
+                                {
+                                    <div> <a href="#"> Change Profile Image </a> </div>
                                 }
-                            </script>
-                            mvcForm.EndForm();
-                        }
 
-                        else
-                        {
-                            <div> <a href="#"> Change Profile Image </a> </div>
-                        }
-
-                    }*@
+                            }*@
 
                         <br />
                         <p>
@@ -99,21 +99,17 @@
                         </div>
                         <div class="row">
                             <br /><br />
-                                  <div class="alert-danger" style="margin-top:40px">
-                                      <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
-                                      <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-danger"> Company Consignment </a>
-                                      <a href="@Url.Action("Insert3","ClientConsignment")" class="btn btn-success"> Add Address </a>
-                                  </div>
+                            <div class="alert-danger" style="margin-top:40px">
+                                <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-danger"> Company Consignment </a>
+                                <a href="@Url.Action("ComAdd","ClientConsignment")" class="btn btn-success"> Add Address </a>
+                            </div>
                         </div>
                     </div>
-
-
-                </div>
-
-
                 </div>
             </div>
         </div>
+    </div>
 </center>
 
 <script>
@@ -123,3 +119,18 @@
         output.hidden = false;
     };
 </script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Company's Address
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Type of Address : </b></h5><br />
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"></b></h5><br />
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"></b></h5><br />
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"></h5>
+        </div>
+    </div>
+</div>

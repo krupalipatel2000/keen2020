@@ -75,7 +75,7 @@ namespace KeenConveyance.Controllers
             tblConsignment CurrentCon = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == ConID);
             int distance = Convert.ToInt32(CurrentCon.Distance);
             var tblPricelist = from ob in dc.tblPriceLists where ob.UnitName == CurrentCon.UnitType || ob.UnitName == "KM" select ob;
-            double AvgDistancePrice = (from ob in tblPricelist where ob.UnitName == "KM" && ob.MinValue <= distance && ob.MaxValue >= distance select ob).Average(ob=> ob.PricePerUnit);
+            double AvgDistancePrice = (from ob in tblPricelist where ob.UnitName == "KM" && ob.MinValue <= distance && ob.MaxValue >= distance select ob).Average(ob => ob.PricePerUnit);
             double AvgUnitPrice = (from ob in tblPricelist where ob.UnitName == CurrentCon.UnitType select ob).Average(ob => ob.PricePerUnit);
             double MaxDistancePrice = AvgDistancePrice * Convert.ToInt32(CurrentCon.Distance);
             double MaxUnitPrice = AvgUnitPrice * Convert.ToInt32(CurrentCon.UnitValue);
@@ -109,7 +109,7 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult Insert3(FormCollection form)
         {
-            
+
             tblAddress fromplace = new tblAddress();
             fromplace.AddressType = form["addtype"];
             fromplace.HouseNo = form["txtHouseNo"];
@@ -119,7 +119,7 @@ namespace KeenConveyance.Controllers
             fromplace.Address = form["txtAddress"];
             fromplace.CityId = Convert.ToInt32(form["ddCity"]);
             fromplace.Zipcode = form["txtZip"];
-            
+
             dc.tblAddresses.Add(fromplace);
             dc.SaveChanges();
             int LastFromAddressID = (from ob in dc.tblAddresses orderby ob.AddressId descending select ob).Take(1).SingleOrDefault().AddressId;
@@ -174,6 +174,7 @@ namespace KeenConveyance.Controllers
             ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;
             ViewBag.Area = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Area;
             ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Address;
+            ViewBag.City = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().CityId.ToString();
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
             return View(con);
@@ -221,17 +222,20 @@ namespace KeenConveyance.Controllers
             ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;
             ViewBag.Area = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Area;
             ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Address;
+            ViewBag.City = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().CityId.ToString();
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
             return View(con);
         }
         [HttpPost]
-        public ActionResult ComConsignment(FormCollection form)
+        public ActionResult ComConsignment(FormCollection form,int conID)
         {
+            if (Session["CompanyId"] != null)
+            { 
             int LastID = Convert.ToInt32(Session["LastID"]);
-            tblBidding bid= new tblBidding();
+            tblBidding bid = new tblBidding();
             bid.CompanyId = Convert.ToInt32(Session["CompanyId"]);
-            bid.ConsignmentId= Convert.ToInt32(Session["LastID"]);
+            bid.ConsignmentId = conID;
             bid.BidAmount = Convert.ToInt32(form["txtBidAmount"]);
             bid.BidOn = DateTime.Now;
             bid.EstimatedDelivery = form["txtBidTime"];
@@ -240,7 +244,13 @@ namespace KeenConveyance.Controllers
             bid.IsAssigned = true;
             dc.tblBiddings.Add(bid);
             dc.SaveChanges();
-            return RedirectToAction("Blank","Home");
+                return RedirectToAction("ComList", "ClientConsignment",new { id = bid.ConsignmentId});
+            }
+            else
+            {
+                return View();
+            }
+
         }
         public ActionResult EditAdd(int id)
         {
@@ -259,13 +269,33 @@ namespace KeenConveyance.Controllers
             add.Landmark = form["txtLandMark"];
             add.Area = form["txtArea"];
             add.Address = form["txtAddress"];
-            add.Address = form["txtCityId"];
-            add.Zipcode = form["txtZipCode"];
-            add.MapURL = form["txtMapURL"];
+            add.CityId = Convert.ToInt32(form["txtCityId"]);
+            add.Zipcode = form["txtZipcode"];
+
             dc.SaveChanges();
-            return RedirectToAction("ViewCon","ClientConsignment", new { id = add.AddressId});
+            return RedirectToAction("ViewCon", "ClientConsignment", new { id = add.AddressId });
         }
-
-
+        public ActionResult ComAdd()
+        {
+            var country = dc.CountryMasters;
+            ViewBag.Country = new SelectList(country, "ID", "Name");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ComAdd(FormCollection form)
+        {
+            tblAddress address = new tblAddress();
+            address.AddressType = form["addtype"];
+            address.HouseNo = form["txtHouseNo"];
+            address.Landmark = form["txtLandmark"];
+            address.Area = form["txtArea"];
+            address.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            address.Address = form["txtAddress"];
+            address.CityId = Convert.ToInt32(form["ddCity"]);
+            address.Zipcode = form["txtZip"];
+            dc.tblAddresses.Add(address);
+            dc.SaveChanges();
+            return RedirectToAction("CompanyProfile", "ClientCompany", new { id = address.CompanyId });
+        }
     }
 }

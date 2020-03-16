@@ -60,7 +60,7 @@
                             </label>
                         </div>
                         <div class="col-sm-12 mb-3 mb-sm-3">
-                            <input type="text" class="form-control" name="txtLandMark" placeholder="Your EmailId" value="@Model.Landmark">
+                            <input type="text" class="form-control" name="txtLandMark" placeholder="LandMark" value="@Model.Landmark">
                         </div>
 
                     </div>
@@ -87,7 +87,7 @@
 
                         </div>
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" value="@Model.Address" name="txtArea" placeholder="Your Area">
+                            <input type="text" class="form-control" value="@Model.Address.ToString()" name="txtAddress" placeholder="Your Address">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -113,21 +113,8 @@
                             <input type="text" class="form-control" value="@Model.Zipcode" name="txtZipcode" placeholder="ZipCode">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-1">
-                            <label>
-                                <b style="color:black">
-                                    MapURL:
-                                </b>
-                            </label>
-
-                        </div>
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" value="@Model.MapURL" name="txtMpaUrl" placeholder="Your Area">
-                        </div>
-                    </div>
-
-                    <input type="submit" value="Update Address" class="btn btn-success" onclick="return validate();" />
+                    
+                    <input type="submit" value="Update Address" class="btn btn-success"  />
                 </form>
             </div>
         </div>
