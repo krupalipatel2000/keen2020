@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "ComConsignment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<div class="row">
+    <div class="col-md-5">
+        <div class="card shadow mb-4" style="width:500px;">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Type of Unit : <b>@Model.UnitType</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Value of Unit : <b>@Model.UnitValue</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Budget : <b>@Model.Budget</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    Min Bid Value : <b>@Model.MinBidValue</b>
+                    &nbsp;&nbsp; Max Bid Value : <b>@Model.MaxBidValue</b>
+                </h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    Mini Time : <b>@Model.MinTime</b>
+                    &nbsp;&nbsp; Max Time : <b>@Model.MaxTime</b>
+                </h5><br />
+                <div class="row">
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            IsRefregreted :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsRefregreted == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            IsDelivered :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsDelivered == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            IsFlamable :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsFlamable == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            IsActive :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsActive == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            IsDelicate :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsDelicate == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-4">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            IsPaid :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsPaid == true)
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                <input type="checkbox" disabled class="custom-control-input" id="active_@Model.ConsignmentId" onchange="return activate(@Model.ConsignmentId)">
+                                <label class="custom-control-label" for="active_@Model.ConsignmentId"></label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card shadow mb-4" style="width:600px;">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Sender Name : <b>@ViewBag.User</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Sender Address : <b>@ViewBag.Source</b></h5><br />
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"><img src="~/Images/distance.jpg" style="height:100px;width:100px;" />@Model.Distance KM</h5>
+            </div>
+        </div>
+        <br />
+        <div class="card shadow mb-4" style="width:600px;">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Name : <b>@Model.ReceiverName</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Contact Number : <b>@Model.ReceiverContactNo</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Address : <b>@ViewBag.Destination</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Receiver Pin Number : <b>@Model.ReceiverPinNo</b></h5><br />
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        //alert("Done");
+        $('#dataTable').DataTable();
+    });
+</script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Consignment Images
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            @foreach (var item in ViewBag.ConsignmentImage)
+            {
+                <div class="col-lg-3">
+                    <img src="~/Images/@item.ImageURL" class="img img-thumbnail" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+        <div class="form-group row">
+            <div class="col-sm-3 mb-3 mb-sm-3">
+                <label>
+                    <b style="color:black">
+                        BidAmount:
+                    </b>
+                </label>
+            </div>
+            <div class="col-sm-3 mb-3 mb-sm-3">
+                <label>
+                    <b style="color:black">
+                        BidTime :
+                    </b>
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3 mb-3 mb-sm-3">
+                <input type="text" class="form-control" name="txtBidAmount" placeholder="Bid Amount">
+            </div>
+            <div class="col-sm-3 mb-3 mb-sm-3">
+                <input type="text" class="form-control" name="txtBidTime" placeholder="BidTime">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3 mb-3 mb-sm-3">
+                <input type="submit" class="btn btn-success" value="Submit">
+            </div>
+</div>
+    </form>
+</div>
+

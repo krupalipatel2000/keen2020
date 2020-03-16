@@ -71,7 +71,7 @@
           <Property Name="ConsignmentId" Type="int" Nullable="false" />
           <Property Name="BidAmount" Type="int" Nullable="false" />
           <Property Name="BidOn" Type="datetime" Nullable="false" />
-          <Property Name="EstimatedDelivery" Type="datetime" Nullable="false" />
+          <Property Name="EstimatedDelivery" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsModified" Type="bit" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="IsAssigned" Type="bit" Nullable="false" />
@@ -219,8 +219,8 @@
           </Key>
           <Property Name="PriceListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UnitName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MinValue" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MaxValue" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinValue" Type="int" Nullable="false" />
+          <Property Name="MaxValue" Type="int" Nullable="false" />
           <Property Name="PricePerUnit" Type="int" Nullable="false" />
           <Property Name="CompanyId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -481,7 +481,7 @@
           <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
           <Property Name="BidAmount" Type="Int32" Nullable="false" />
           <Property Name="BidOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EstimatedDelivery" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstimatedDelivery" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsModified" Type="Boolean" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="IsAssigned" Type="Boolean" Nullable="false" />
@@ -629,8 +629,8 @@
           </Key>
           <Property Name="PriceListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MinValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MaxValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MinValue" Type="Int32" Nullable="false" />
+          <Property Name="MaxValue" Type="Int32" Nullable="false" />
           <Property Name="PricePerUnit" Type="Int32" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
@@ -751,7 +751,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

@@ -25,35 +25,39 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="file" multiple class="form-control" name="txtFile" placeholder="Image of consignment">
+                            <input type="file" multiple="multiple" class="form-control" name="txtFile" placeholder="Image of consignment">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <select name="unittype" class="form-control form-control-user">
                                 <option value="">Select Unit Type &nbsp;&nbsp;</option>
-                                <option value="W"> Weight &nbsp;&nbsp;</option>
-                                <option value="P"> Pieces &nbsp;&nbsp;</option>
-                                <option value="L"> ltr &nbsp;&nbsp;</option>
+                                <option value="Weight"> Weight &nbsp;&nbsp;</option>
+                                <option value="Pieces"> Pieces &nbsp;&nbsp;</option>
+                                <option value="LTR"> Ltr &nbsp;&nbsp;</option>
                             </select>
                         </div>
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control" name="txtValue" placeholder="Value of Unit">
                         </div>
                     </div>
-
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtDistance" placeholder="Estimated Distance">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <label for="chkflame">Flamable Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkflame" value="Flamable Consignment" />
+                            <input type="checkbox" name="chkflame"/>
                         </div>
                         <div class="col-lg-4">
                             <label for="chkflame">Delicate Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkdelicate" value="Delicate Consignment" />
+                            <input type="checkbox" name="chkdelicate" />
                         </div>
                         <div class="col-lg-4">
                             <label for="chkflame">Refregerated Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkrefregerated" value="Refregerated Consignment" />
+                            <input type="checkbox" name="chkrefregerated" />
                         </div>
                     </div><br /><br /><br />
                     <div style="overflow:auto;">

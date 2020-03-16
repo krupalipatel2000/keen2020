@@ -16,8 +16,8 @@ namespace KeenConveyance.Areas.Admin.Models
     {
         public int PriceListId { get; set; }
         public string UnitName { get; set; }
-        public string MinValue { get; set; }
-        public string MaxValue { get; set; }
+        public int MinValue { get; set; }
+        public int MaxValue { get; set; }
         public int PricePerUnit { get; set; }
         public int CompanyId { get; set; }
         public bool IsActive { get; set; }

@@ -583,6 +583,7 @@
     <Content Include="Images\home2.jpg" />
     <Content Include="Images\home3.jpg" />
     <Content Include="Images\homeshiping.jpg" />
+    <Content Include="Images\keenconveyance.jpg" />
     <Content Include="Images\keenlogo.png" />
     <Content Include="Images\line.png" />
     <Content Include="Images\login.png" />
@@ -591,6 +592,8 @@
     <Content Include="Images\logo4.jpg" />
     <Content Include="Images\logo5.jpg" />
     <Content Include="Images\night.jpeg" />
+    <Content Include="Images\PicsArt_03-13-05.14.42.jpg" />
+    <Content Include="Images\PicsArt_03-13-05.46.06.jpg" />
     <Content Include="Images\plane.jpg" />
     <Content Include="Images\register.jpg" />
     <Content Include="Images\ship.jpg" />
@@ -2715,6 +2718,11 @@
     <Content Include="Views\ClientCompany\Edit.cshtml" />
     <Content Include="Views\ClientCompany\ForgetPassword.cshtml" />
     <Content Include="Views\ClientUser\Edit.cshtml" />
+    <Content Include="Views\ClientConsignment\ViewCon.cshtml" />
+    <Content Include="Views\ClientConsignment\List.cshtml" />
+    <Content Include="Views\ClientConsignment\ComList.cshtml" />
+    <Content Include="Views\ClientConsignment\ComConsignment.cshtml" />
+    <Content Include="Views\ClientConsignment\EditAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

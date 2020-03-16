@@ -19,7 +19,7 @@ namespace KeenConveyance.Areas.Admin.Models
         public int ConsignmentId { get; set; }
         public int BidAmount { get; set; }
         public System.DateTime BidOn { get; set; }
-        public System.DateTime EstimatedDelivery { get; set; }
+        public string EstimatedDelivery { get; set; }
         public bool IsModified { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public bool IsAssigned { get; set; }

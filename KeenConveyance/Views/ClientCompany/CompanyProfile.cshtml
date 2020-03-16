@@ -97,12 +97,13 @@
                                 }
                             }
                         </div>
-
                         <div class="row">
                             <br /><br />
-                            <div class="alert-danger" style="margin-top:40px">
-                                <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
-                            </div>
+                                  <div class="alert-danger" style="margin-top:40px">
+                                      <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                      <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-danger"> Company Consignment </a>
+                                      <a href="@Url.Action("Insert3","ClientConsignment")" class="btn btn-success"> Add Address </a>
+                                  </div>
                         </div>
                     </div>
 

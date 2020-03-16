@@ -84,7 +84,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn For User" />
+                                            <a href="@Url.Action("Insert","ClientUser")" class="btn btn-primary btn-lg" style="font-size:small;">
+                                                SignIn For User
+                                            </a>
+
+                                            @*<input type="submit" class="btn btn-primary btn-user btn-block" value=" SignIn For User" />*@
                                         </div>
                                         <div class="col-md-7">
                                             <a href="@Url.Action("Insert","ClientCompany")" class="btn btn-primary btn-lg" style="font-size:small;">

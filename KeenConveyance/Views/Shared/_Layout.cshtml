@@ -40,8 +40,8 @@
                         <div class="col-xl-4 col-lg-4">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img src="~/Images/keenlogo.png" style="height:100px;width:100px" alt="">
-                                    <font size="5" style="font-family:Candara"><b>KEEN CONVEYANCE</b></font>
+                                    <img src="~/Images/keenconveyance.jpg" style="height:200px;width:200px" alt="">
+                                    @*<font size="5" style="font-family:Candara"><b>KEEN CONVEYANCE</b></font>*@
                                 </a>
                             </div>
                         </div>
@@ -99,7 +99,16 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="@Url.Action("Insert","ClientConsignment")">Add Consignment</a></li>
+                                                <li>
+                                                    @if (Session["LogID"] != null)
+                                                    {
+                                                        <a href="@Url.Action("Insert","ClientConsignment")">Add Consignment</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Action("Login","Home")"></a>
+                                                    }
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -122,7 +131,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
     </header>
     <div class="container-fluid">
         @RenderBody()

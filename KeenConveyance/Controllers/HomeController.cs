@@ -44,6 +44,7 @@ namespace KeenConveyance.Controllers
                 {
                     //Session["UserId"] = user.FirstName;
                     Session["LogID"] = user.UserId;
+                    Session["Type"] = "User";
                     if (Session["LogID"] != null)
                     {
                         return RedirectToAction("UserProfile", "ClientUser", new {id=user.UserId});
@@ -67,6 +68,7 @@ namespace KeenConveyance.Controllers
                 {
                     //Session["UserId"] = com.CompanyName;
                     Session["CompanyId"] = com.CompanyId;
+                    Session["Type"] = "Company";
                     return RedirectToAction("CompanyProfile", "ClientCompany", new { id = com.CompanyId});
                 }
                 else

@@ -1,0 +1,135 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblAddress
+@{
+    ViewBag.Title = "EditAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditAdd</h2>
+
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">Edit Address</h4></center>
+            </div>
+            <div class="card-body">
+                <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-md-1">
+                            <label>
+                                <b style="color:black">
+                                    AddressType:
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-sm-11">
+                            <label>
+                                <b style="color:black">
+                                    HouseNo :
+                                </b>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-6 mb-3 mb-sm-3">
+                            <input type="text" class="form-control" value="@Model.AddressType" name="txtAddressType" placeholder="Address Type">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" value="@Model.HouseNo" name="txtHouseNo" placeholder="HouseNo">
+                        </div>
+                    </div>
+                    @*<div class="form-group row">
+            <div class="col-sm-2">
+                <label>
+                    <b style="color:black">
+                        ProfilePic Of User :
+                    </b>
+                </label>
+
+            </div>
+
+            <div class="col-sm-12 mb-3 mb-sm-3">
+                <input type="file" class="form-control" name="txtprofile" value="@Model.ProfilePic" placeholder="ProfilePic">
+            </div>
+        </div>*@
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>
+                                <b style="color:black">
+                                    LandMark:
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-sm-12 mb-3 mb-sm-3">
+                            <input type="text" class="form-control" name="txtLandMark" placeholder="Your EmailId" value="@Model.Landmark">
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-1">
+                            <label>
+                                <b style="color:black">
+                                    Area:
+                                </b>
+                            </label>
+
+                        </div>
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" value="@Model.Area" name="txtArea" placeholder="Your Area">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-1">
+                            <label>
+                                <b style="color:black">
+                                    Address:
+                                </b>
+                            </label>
+
+                        </div>
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" value="@Model.Address" name="txtArea" placeholder="Your Area">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-1">
+                            <label>
+                                <b style="color:black">
+                                    CityId:
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-sm-11">
+                            <label>
+                                <b style="color:black">
+                                    ZipeCode :
+                                </b>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-6 mb-3 mb-sm-3">
+                            <input type="text" class="form-control" value="@Model.CityId" name="txtCityId" placeholder="City">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" value="@Model.Zipcode" name="txtZipcode" placeholder="ZipCode">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-1">
+                            <label>
+                                <b style="color:black">
+                                    MapURL:
+                                </b>
+                            </label>
+
+                        </div>
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" value="@Model.MapURL" name="txtMpaUrl" placeholder="Your Area">
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Update Address" class="btn btn-success" onclick="return validate();" />
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
