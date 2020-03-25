@@ -4,6 +4,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    function validate() {
+        var date = document.registration.txtDate;
+        var file = document.registration.txtFile;
+        var utype = document.registration.unittype;
+        var uvalue = document.registration.txtValue;
+        var distance = document.registration.txtDistance;
+        var check = document.registration.chkflame;
+        if (date.value != "" ) {
+        }
+        else {
+            alert("Dispatchdate is not Proper");
+            date.focus();
+            return false;
+        }
+        if (file.value != "") {
+        }
+        else {
+            alert("choose image");
+            file.focus();
+            return false;
+        }
+        if (utype.value != "") {
+        }
+        else {
+            alert("Select UnitType");
+            utype.focus();
+            return false;
+        }
+        if (uvalue.value != "") {
+        }
+        else {
+            alert("UnitValue is not proper");
+            uvalue.focus();
+            return false;
+        }
+        if (distance.value != "") {
+        }
+        else {
+            alert("Estimated Distance is not proper");
+            distance.focus();
+            return false;
+        }
+        if (!registration.chkflame.checked && !registration.chkdelicate.checked && !registration.chkrefregerated.checked) {
+        
+            alert("Select Consignment ");
+            check.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
 <center>
     <div class="p-2">
         <div class="card shadow mb-4" style="width:1000px;height:500px;">
@@ -38,18 +91,18 @@
                             </select>
                         </div>
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtValue" placeholder="Value of Unit">
+                            <input type="number" class="form-control" name="txtValue" placeholder="Value of Unit" min="1" max="1000000">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtDistance" placeholder="Estimated Distance">
+                            <input type="number" class="form-control" name="txtDistance" placeholder="Estimated Distance" min="1">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
                             <label for="chkflame">Flamable Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkflame"/>
+                            <input type="checkbox" name="chkflame" />
                         </div>
                         <div class="col-lg-4">
                             <label for="chkflame">Delicate Consignment : &nbsp;</label>
@@ -62,7 +115,7 @@
                     </div><br /><br /><br />
                     <div style="overflow:auto;">
                         <div style="float:right;">
-                            <button type="submit" class="btn btn-primary" id="nextBtn">Next</button>
+                            <button type="submit" class="btn btn-primary" id="nextBtn" onclick="return validate();">Next</button>
                         </div>
                     </div>
 

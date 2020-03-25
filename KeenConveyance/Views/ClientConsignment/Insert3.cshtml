@@ -4,6 +4,175 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    function validate() {
+        var addtype = document.registration.addtype;
+        var house = document.registration.txtHouseNo;
+        var landmark = document.registration.txtLandmark;
+        var area = document.registration.txtArea;
+        var add = document.registration.txtAddress;
+        var con = document.registration.ddCountry;
+        var state = document.registration.ddState;
+        var city = document.registration.ddCity;
+        var zip = document.registration.txtZip;
+        var addtotype = document.registration.addtotype;
+        var tohouse = document.registration.txttoHouseNo;
+        var tolandmark = document.registration.txttoLandmark;
+        var toarea = document.registration.txttoArea;
+        var toadd = document.registration.txttoAddress;
+        var tostate = document.registration.ddtoState;
+        var tocity = document.registration.ddtoCity;
+        var tozip = document.registration.txttoZip;
+        var addtype_pat = /^[A-Za-z]+$/;
+        if (addtype.value != "" && addtype.value.match(addtype_pat)) {
+        }
+        else {
+            alert("Select Proper FromAddresstype");
+            addtype.focus();
+            return false;
+        }
+
+        if (house.value != "") {
+        }
+        else {
+            alert("Enter FromHouseNo");
+            house.focus();
+            return false;
+        }
+        var landmark_pat = /^[A-Za-z]+$/;
+        if (landmark.value != "" && landmark.value.match(landmark_pat)) {
+        }
+        else {
+            alert("Enter Proper FromLandmark");
+            landmark.focus();
+            return false;
+        }
+        var area_pat = /^[A-Za-z]+$/;
+        if (area.value != "" && area.value.match(area_pat)) {
+        }
+        else {
+            alert("Enter Proper FromArea");
+            area.focus();
+            return false;
+        }
+        var add_pat = /^[A-Za-z]+$/;
+        if (add.value != "" && add.value.match(add_pat)) {
+        }
+        else {
+            alert("Enter Proper FromAddress");
+            add.focus();
+            return false;
+        }
+        //var con_pat = /^[A-Za-z]+$/;
+        if (con.value != "" ) {
+        }
+        else {
+            alert("Enter Proper FromCountry");
+            con.focus();
+            return false;
+        }
+        //var state_pat = /^[A-Za-z]+$/;
+        if (state.value != "" ) {
+        }
+        else {
+            alert("Enter Proper FromState");
+            state.focus();
+            return false;
+        }
+        //var city_pat = /^[A-Za-z]+$/;
+        if (city.value != "" ) {
+        }
+        else {
+            alert("Enter Proper FromCity");
+            city.focus();
+            return false;
+        }
+        var zip_pat = /^\d{6}$/;
+        if (zip.value != "" && zip.value.match(zip_pat)) {
+        }
+        else {
+            alert("Enter Proper FromZipCode");
+            zip.focus();
+            return false;
+        }
+        var addtotype_pat = /^[A-Za-z]+$/;
+        if (addtotype.value != "" && addtotype.value.match(addtotype_pat)) {
+        }
+        else {
+            alert("Select Proper ToAddresstype");
+            addtotype.focus();
+            return false;
+        }
+        if (tohouse.value != "") {
+        }
+        else {
+            alert("Enter ToHouseNo");
+            tohouse.focus();
+            return false;
+        }
+        var tolandmark_pat = /^[A-Za-z]+$/;
+        if (tolandmark.value != "" && tolandmark.value.match(tolandmark_pat)) {
+        }
+        else {
+            alert("Enter Proper ToLandmark");
+            tolandmark.focus();
+            return false;
+        }
+        var toarea_pat = /^[A-Za-z]+$/;
+        if (toarea.value != "" && toarea.value.match(toarea_pat)) {
+        }
+        else {
+            alert("Enter Proper ToArea");
+            toarea.focus();
+            return false;
+        }
+        var toadd_pat = /^[A-Za-z]+$/;
+        if (toadd.value != "" && toarea.value.match(toadd_pat)) {
+        }
+        else {
+            alert("Enter Proper ToAddress");
+            toadd.focus();
+            return false;
+        }
+//var tocon_pat = /^[A-Za-z]+$/;
+        if (tocon.value != "") {
+        }
+        else {
+            alert("Enter Proper ToCountry");
+            tocon.focus();
+            return false;
+        }
+        //var tostate_pat = /^[A-Za-z]+$/;
+        if (tostate.value != "") {
+        }
+        else {
+            alert("Enter Proper ToState");
+            tostate.focus();
+            return false;
+        }
+
+        
+        //var tocity_pat = /^[A-Za-z]+$/;
+        if (tocity.value != "" ) {
+        }
+        else {
+            alert("Enter Proper ToCity");
+            tocity.focus();
+            return false;
+        }
+        var tozip_pat = /^\d{6}$/;
+        if (tozip.value != "" && tozip.value.match(tozip_pat)) {
+        }
+        else {
+            alert("Enter Proper ToZipCode");
+            tozip.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
 <center>
     <div class="p-2">
         <div class="card shadow mb-4" style="width:1000px;height:600px;">
@@ -112,7 +281,7 @@
 
                             <div style="overflow:auto;">
                                 <div style="float:right;">
-                                    <button type="submit" class="btn btn-primary" id="nextBtn">Submit</button>
+                                    <button type="submit" class="btn btn-primary" id="nextBtn"  onclick="return validate();">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +290,7 @@
             </div>
         </div>
     </div>
-    
+
 </center>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">

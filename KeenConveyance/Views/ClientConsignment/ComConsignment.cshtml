@@ -218,6 +218,30 @@
                 <div class="col-sm-3 mb-3 mb-sm-3">
                     <label>
                         <b style="color:black">
+                            User's Budget : @ViewBag.Budget
+                        </b>
+                    </label>
+                </div>
+                <div class="col-sm-3 mb-3 mb-sm-3">
+                    <label>
+                        <b style="color:black">
+                            Minimum Time : @ViewBag.MinTime
+                        </b>
+                    </label>
+                </div>
+                <div class="col-sm-3 mb-3 mb-sm-3">
+                    <label>
+                        <b style="color:black">
+                            Maximum Time : @ViewBag.MaxTime
+                        </b>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3 mb-3 mb-sm-3">
+                    <label>
+                        <b style="color:black">
                             BidAmount:
                         </b>
                     </label>
@@ -241,7 +265,11 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-3 mb-3 mb-sm-3">
-                    <input type="submit" class="btn btn-success" value="Submit" onclick="alert("Successfully Bid ")">
+                    <input type="submit" class="btn btn-success" value="Submit" onclick="alert(' Successfully Bid ');">
+
+                    <a href="@Url.Action("EditBid", "ClientConsignment",new { id = Model.ConsignmentId })" class="btn btn-success">Edit</a>
+                    @*<a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-success"> Add Address </a>*@
+
                 </div>
             </div>
         </form>

@@ -123,14 +123,59 @@ namespace KeenConveyance.Controllers
             com.CreatedOn = DateTime.Now;
             dc.tblTransportCompanies.Add(com);
             dc.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+            tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyEmail == id);
+            if (company != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CheckCom(string id)
+        {
+            string response;
+            tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyName == id);
+            if (company != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
         public ActionResult CompanyProfile(int id)
         {
             if (id != 0)
             {
                 tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+                //ViewBag.House = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().HouseNo;
+                //ViewBag.Landmark = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Landmark;
+                //ViewBag.Area = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Area;
+                //ViewBag.Address = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Address;
                 ViewBag.Year = com.CreatedOn.Year.ToString();
+                var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
+                var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
+                var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+                ViewBag.PriceList = PL;
+                ViewBag.address = Address;
+                ViewBag.bid = Bid;
                 return View(com);
             }
             else

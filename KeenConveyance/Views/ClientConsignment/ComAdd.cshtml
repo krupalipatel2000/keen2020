@@ -3,6 +3,87 @@
     ViewBag.Title = "ComAdd";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function validate() {
+        var addtype = document.registration.addtype;
+        var house = document.registration.txtHouseNo;
+        var landmark = document.registration.txtLandmark;
+        var area = document.registration.txtArea;
+        var add = document.registration.txtAddress;
+        var state = document.registration.ddState;
+        var city = document.registration.ddCity;
+        var zip = document.registration.txtZip;
+        var addtype_pat = /^[A-Za-z]+$/;
+        if (addtype.value != "" && addtype.value.match(addtype_pat)) {
+        }
+        else {
+            alert("Select Proper Addresstype");
+            addtype.focus();
+            return false;
+        }
+
+        if (house.value != "") {
+        }
+        else {
+            alert("Enter HouseNo");
+            house.focus();
+            return false;
+        }
+        var landmark_pat = /^[A-Za-z]+$/;
+        if (landmark.value != "" && landmark.value.match(landmark_pat)) {
+        }
+        else {
+            alert("Enter Proper Landmark");
+            landmark.focus();
+            return false;
+        }
+        var area_pat = /^[A-Za-z]+$/;
+        if (area.value != "" && area.value.match(area_pat)) {
+        }
+        else {
+            alert("Enter Proper Area");
+            area.focus();
+            return false;
+        }
+        var add_pat = /^[A-Za-z]+$/;
+        if (add.value != "" && area.value.match(add_pat)) {
+        }
+        else {
+            alert("Enter Proper Address");
+            add.focus();
+            return false;
+        }
+
+        var con_pat = /^[A-Za-z]+$/;
+        if (con.value != "" && area.value.match(con_pat)) {
+        }
+        else {
+            alert("Enter Proper Country");
+            con.focus();
+            return false;
+        }
+        var city_pat = /^[A-Za-z]+$/;
+        if (city.value != "" && city.value.match(city_pat)) {
+        }
+        else {
+            alert("Enter Proper City");
+            city.focus();
+            return false;
+        }
+        var zip_pat = /^\d{6}$/;
+        if (zip.value != "" && zip.value.match(zip_pat)) {
+        }
+        else {
+            alert("Enter Proper ZipCode");
+            zip.focus();
+            return false;
+        }
+
+
+        return true;
+    }
+</script>
+
 
 <center>
     <div class="p-2">
@@ -50,7 +131,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-5 mb-3 mb-sm-0" id="divstate">
-                                    <select id="ddState" class="form-control"></select>
+                                    <select id="ddState"    name="ddState" class="form-control"></select>
                                 </div>
                                 <div class="col-sm-5 mb-3 mb-sm-0" id="divcity">
                                     <select id="ddCity" name="ddCity" class="form-control"></select>
@@ -63,7 +144,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-10 mb-3 mb-sm-0">
-                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                    <input type="submit" class="btn btn-primary" value="Submit" onclick="return validate();">
                                 </div>
                             </div>
                         </div>

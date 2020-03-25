@@ -27,6 +27,7 @@ namespace KeenConveyance.Controllers
             //con.ProfilePic = name.ToString();
             con.UnitType = form["unittype"];
             con.UnitValue = Convert.ToInt32(form["txtValue"]);
+            con.UserId = Convert.ToInt32(Session["LogID"]);
             string val = form["chkflame"];
             if (form["chkflame"] == "on")
             {
@@ -142,8 +143,7 @@ namespace KeenConveyance.Controllers
             con.SourceId = LastFromAddressID;
             con.DestinationId = LastToAddressID;
             dc.SaveChanges();
-
-            return RedirectToAction("Blank", "Home");
+            return RedirectToAction("UserProfile","ClientUser");
         }
         [HttpPost]
         public JsonResult GetState(int cid)
@@ -174,8 +174,9 @@ namespace KeenConveyance.Controllers
             ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;
             ViewBag.Area = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Area;
             ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Address;
-            ViewBag.City = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().CityId.ToString();
+            ViewBag.City = (from ob in dc.CityMasters where ob.ID == con.SourceId select ob).Take(1).SingleOrDefault().Name;
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
+            ViewBag.BidCount = (from ob in dc.tblBiddings where ob.ConsignmentId == con.ConsignmentId select ob).Count();
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
             return View(con);
         }
@@ -225,26 +226,29 @@ namespace KeenConveyance.Controllers
             ViewBag.City = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().CityId.ToString();
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
+            ViewBag.Budget = (from ob in dc.tblConsignments where ob.ConsignmentId == con.ConsignmentId select ob).Take(1).SingleOrDefault().Budget;
+            ViewBag.MinTime = (from ob in dc.tblConsignments where ob.ConsignmentId == con.ConsignmentId select ob).Take(1).SingleOrDefault().MinTime;
+            ViewBag.MaxTime = (from ob in dc.tblConsignments where ob.ConsignmentId == con.ConsignmentId select ob).Take(1).SingleOrDefault().MaxTime;
             return View(con);
         }
         [HttpPost]
-        public ActionResult ComConsignment(FormCollection form,int conID)
+        public ActionResult ComConsignment(FormCollection form, int conID)
         {
             if (Session["CompanyId"] != null)
-            { 
-            int LastID = Convert.ToInt32(Session["LastID"]);
-            tblBidding bid = new tblBidding();
-            bid.CompanyId = Convert.ToInt32(Session["CompanyId"]);
-            bid.ConsignmentId = conID;
-            bid.BidAmount = Convert.ToInt32(form["txtBidAmount"]);
-            bid.BidOn = DateTime.Now;
-            bid.EstimatedDelivery = form["txtBidTime"];
-            bid.IsModified = false;
-            //bid.ModifiedOn = DateTime.Now;
-            bid.IsAssigned = true;
-            dc.tblBiddings.Add(bid);
-            dc.SaveChanges();
-                return RedirectToAction("ComList", "ClientConsignment",new { id = bid.ConsignmentId});
+            {
+                int LastID = Convert.ToInt32(Session["LastID"]);
+                tblBidding bid = new tblBidding();
+                bid.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+                bid.ConsignmentId = conID;
+                bid.BidAmount = Convert.ToInt32(form["txtBidAmount"]);
+                bid.BidOn = DateTime.Now;
+                bid.EstimatedDelivery = form["txtBidTime"];
+                bid.IsModified = false;
+                //bid.ModifiedOn = DateTime.Now;
+                bid.IsAssigned = true;
+                dc.tblBiddings.Add(bid);
+                dc.SaveChanges();
+                return RedirectToAction("ComList", "ClientConsignment", new { id = bid.ConsignmentId });
             }
             else
             {
@@ -252,10 +256,36 @@ namespace KeenConveyance.Controllers
             }
 
         }
+        public ActionResult EditBid(int id)
+        {
+            TempData["id"] = id;
+            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.BidId == id);
+            ViewBag.Budget = (from ob in dc.tblConsignments where ob.ConsignmentId == bid.ConsignmentId select ob).Take(1).SingleOrDefault().Budget;
+            ViewBag.MinTime = (from ob in dc.tblConsignments where ob.ConsignmentId == bid.ConsignmentId select ob).Take(1).SingleOrDefault().MinTime;
+            ViewBag.MaxTime = (from ob in dc.tblConsignments where ob.ConsignmentId == bid.ConsignmentId select ob).Take(1).SingleOrDefault().MaxTime;
+            return View(bid);
+        }
+        [HttpPost]
+        public ActionResult EditBid(FormCollection form)
+        {
+            int id = Convert.ToInt32(TempData["id"]);
+            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.BidId == id);
+            int LastID = Convert.ToInt32(Session["LastID"]);
+            bid.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            bid.BidAmount = Convert.ToInt32(form["txtBidAmount"]);
+            bid.EstimatedDelivery = form["txtBidTime"];
+            bid.IsModified = true;
+            bid.ModifiedOn = DateTime.Now;
+            dc.SaveChanges();
+            return RedirectToAction("ComList", "ClientConsignment", new { id = bid.ConsignmentId });
+
+        }
         public ActionResult EditAdd(int id)
         {
             TempData["id"] = id;
             tblAddress add = dc.tblAddresses.SingleOrDefault(ob => ob.AddressId == id);
+            ViewBag.City = (from ob in dc.CityMasters where ob.ID == add.CityId select ob).Take(1).SingleOrDefault().Name;
+
             return View(add);
         }
         [HttpPost]
@@ -297,5 +327,23 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("CompanyProfile", "ClientCompany", new { id = address.CompanyId });
         }
+        public ActionResult ViewConBid(int id)
+        {
+            var bids = from ob in dc.tblBiddings
+                       join ob2 in dc.tblTransportCompanies
+                       on ob.CompanyId equals ob2.CompanyId
+                       where ob.ConsignmentId == id
+                       select new JoinViewAll
+                       {
+                           company = ob2,
+                           bid = ob
+                       };
+            ViewBag.Con = (from ob in dc.tblConsignments where ob.ConsignmentId == id select ob);
+            //ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().CompanyName;
+            int count = (from ob in dc.tblBiddings where ob.ConsignmentId == id select ob).Count();
+            ViewBag.BidCount = count;
+            return View(bids);
+        }
+
     }
 }

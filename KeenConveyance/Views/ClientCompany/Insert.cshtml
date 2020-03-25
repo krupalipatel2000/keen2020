@@ -28,7 +28,7 @@
             cno.focus();
             return false;
         }
-        
+
         var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (email.value != "" && email.value.match(email_pat)) {
         }
@@ -45,7 +45,7 @@
             password.focus();
             return false;
         }
-        
+
         var cpname_pat = /^[A-Za-z]+$/;
         if (cpname.value != "" && cpname.value.match(cpname_pat)) {
         }
@@ -134,15 +134,15 @@
                     $.ajax(
                         {
                             type: "POST",
-                            url: "@Url.Action("checkEmail","Company")",
+                            url: "@Url.Action("checkEmail","ClientCompany")",
                             data: { id: val },
                             success: function (response) {
                                 if (response == "false") {
                                 }
                                 else {
                                     alert("Email already exist");
-                                    $('#txtEmail').val("");
-                                    $('#txtEmail').focus();
+                                    $('#txtComEmail').val("");
+                                    $('#txtComEmail').focus();
                                 }
                             },
                             failure: function (response) {
@@ -168,8 +168,8 @@
                                 }
                                 else {
                                     alert("companyname already exist");
-                                    $('#txtcomname').val("");
-                                    $('#txtcomname').focus();
+                                    $('#txtComName').val("");
+                                    $('#txtComName').focus();
                                 }
                             },
                             failure: function (response) {
@@ -182,5 +182,4 @@
                 }
             }
 </script>
-
 

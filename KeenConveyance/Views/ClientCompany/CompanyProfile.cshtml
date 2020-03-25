@@ -6,108 +6,70 @@
 
 
 <center>
-    <div class="p-2">
-        <div class="card shadow mb-4" style="width:1000px;">
-            <div class="card-header py-3">
-                <center><h4 class="m-0 font-weight-bold text-primary">CompanyProfile</h4></center>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                        <p>
-                            @Html.ActionLink("Edit Profile", "Edit", new { id = Model.CompanyId })
-                        </p>
-
-                        <img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" onchange="return loadFile(event);" />
-                        <br />
-
-                        @*<button accept="~/Images/" onchange="return loadFile(event);" class="form-control">Upload Image</button>
-
-                            <input type="file" name="txtLogo" id="txtLogo" style="display:none" onchange="loadFile(event);" />*@
-                        <div> <a href="#"> Change Profile Image </a> </div>
-                        @*@{
-                                if (Model.Logo != null)
-                                {
-
-                                    MvcForm mvcForm = Html.BeginForm("UploadImage", "ClientCompany", FormMethod.Post, new { enctype = "multipart/form-data" });
-                                    <div>
-                                        <br />
-                                        <button id="btnImg" class="btn btn-sm btn-outline-success" onclick="return getfile()"> Upload Image </button>
-                                        <input type="file" name="profimg" id="profimg" style="display:none" onchange="preview(event)" />
-                                    </div>
-                                    <script>
-                                        function getfile() {
-                                            var btn = document.querySelector("#btnImg");
-                                            if (btn.innerHTML == "Save Image") {
-                                                return true;
-                                            }
-                                            else {
-                                                document.getElementById('profimg').click();
-                                                return false;
-                                            }
-                                        }
-                                        function preview(event) {
-
-                                            var img = document.querySelector("#userimage");
-                                            img.src = URL.createObjectURL(event.target.files[0]);
-                                            var btn = document.querySelector("#btnImg");
-                                            btn.innerHTML = "Save Image";
-
-                                        }
-                                    </script>
-                                    mvcForm.EndForm();
-                                }
-
-                                else
-                                {
-                                    <div> <a href="#"> Change Profile Image </a> </div>
-                                }
-
-                            }*@
-
-                        <br />
-                        <p>
-                            Member since <b> @Html.ViewBag.Year </b>
-                        </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="p-2">
+                <div class="card shadow mb-4" style="width:700px;">
+                    <div class="card-header py-3">
+                        <center><h4 class="m-0 font-weight-bold text-primary">CompanyProfile</h4></center>
                     </div>
-                    <div class="col-md-8">
+                    <div class="card-body">
                         <div class="row">
-                            <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName)'s Profile</h1>
-                        </div>
-                        <div class="row">
-                            <h4>@Html.DisplayFor(model => model.CompanyEmail)</h4>
-                        </div>
-                        <div class="row">
-                            <h4>@Html.DisplayFor(model => model.CompanyPhNo)</h4>
-                        </div>
-                        <div class="row">
-                            <h4>@Html.DisplayFor(model => model.ContactPersonName)</h4>
-                        </div>
-                        <div class="row">
-                            <h4>@Html.DisplayFor(model => model.ContactPersonNo)</h4>
-                        </div>
-                        <div class="row">
-                            <h4>@Html.DisplayFor(model => model.WebURL)</h4>
-                        </div>
-                        <div class="row">
-                            @{
-                                if (Model.IsActive == true)
-                                {
-                                    <a href="#"> Deactivate Account </a>
-                                }
-                            }
-                        </div>
-                        <div class="row">
-                            <br /><br />
-                            <div class="alert-danger" style="margin-top:40px">
-                                <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
-                                <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-danger"> Company Consignment </a>
-                                <a href="@Url.Action("ComAdd","ClientConsignment")" class="btn btn-success"> Add Address </a>
+                            <div class="col-md-4" style="text-align:center">
+                                <p>
+                                    @Html.ActionLink("Edit Profile", "Edit", new { id = Model.CompanyId })
+                                </p>
+
+                                <img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" onchange="return loadFile(event);" />
+                                <br />
+                                <div> <a href="#"> Change Profile Image </a> </div>
+                                <br />
+                                <p>
+                                    Member since <b> @Html.ViewBag.Year </b>
+                                </p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName)'s Profile</h1>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.CompanyEmail)</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.CompanyPhNo)</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.ContactPersonName)</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.ContactPersonNo)</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.WebURL)</h4>
+                                </div>
+                                <div class="row">
+                                    @{
+                                        if (Model.IsActive == true)
+                                        {
+                                            <a href="#"> Deactivate Account </a>
+                                        }
+                                    }
+                                </div>
+                                <div class="row">
+                                    <br /><br />
+                                    <div class="alert-danger" style="margin-top:40px">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                        <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-danger"> Company Consignment </a>
+                                        <a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-success"> Add Address </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-3">
         </div>
     </div>
 </center>
@@ -119,18 +81,79 @@
         output.hidden = false;
     };
 </script>
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-            Company's Address
-        </h6>
+
+<div class="card-deck">
+    @foreach (var item in ViewBag.address)
+    {
+        <center>
+            <div class="card shadow mb-4" style="width:300px;height:150px;">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-dark">
+                        Company's Address
+                    </h6>
+                </div>
+                <div class="card-body" style="height:100px;width:200px;">
+                    <div class="row">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            @item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </center>
+    }
+</div>
+
+
+<div class="row offset-1">
+    <div class="card-deck">
+        @foreach (var item in ViewBag.bid)
+        {
+            <center>
+                <div class="card shadow mb-4" style="width:300px;height:200px;">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-dark">
+                            Company's Bid
+                        </h6>
+                    </div>
+                    <div class="card-body" style="height:100px;width:200px;">
+                        <div class="row">
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                <a href="@Url.Action("ViewCon","ClientConsignment",new { id = item.ConsignmentId })"># @item.ConsignmentId <br /></a>
+                                BidAmount : @item.BidAmount <br />
+                                EstimatedDelivery : @item.EstimatedDelivery <br />
+                            </h5>
+                            <a href="@Url.Action("Insert","ClientBooking")" class="btn btn-outline-primary">Accept</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        }
     </div>
-    <div class="card-body">
-        <div class="row">
-            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Type of Address : </b></h5><br />
-            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"></b></h5><br />
-            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"></b></h5><br />
-            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"></h5>
-        </div>
-    </div>
+</div>
+
+
+<div class="card-deck">
+    @foreach (var item in ViewBag.PriceList)
+    {
+        <center>
+            <div class="card shadow mb-4" style="width:300px;">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-dark">
+                        Company's PriceList
+                    </h6>
+                </div>
+                <div class="card-body" style="height:100px;width:200px;">
+                    <div class="row">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            Unit Name : @item.UnitName <br />
+                            MinValue : @item.MinValue <br />
+                            MaxValue : @item.MaxValue <br />
+                            PricePerUnit : @item.PricePerUnit
+                        </h5><br />
+                    </div>
+                </div>
+            </div>
+        </center>
+    }
 </div>

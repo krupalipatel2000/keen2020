@@ -237,6 +237,7 @@
     <Compile Include="Areas\Admin\Models\tblVehicleType.cs">
       <DependentUpon>dbTransportEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClientBookingController.cs" />
     <Compile Include="Controllers\ClientCompanyController.cs" />
     <Compile Include="Controllers\ClientConsignmentController.cs" />
     <Compile Include="Controllers\ClientInqueryController.cs" />
@@ -2724,9 +2725,12 @@
     <Content Include="Views\ClientConsignment\ComConsignment.cshtml" />
     <Content Include="Views\ClientConsignment\EditAdd.cshtml" />
     <Content Include="Views\ClientConsignment\ComAdd.cshtml" />
+    <Content Include="Views\ClientConsignment\EditBid.cshtml" />
+    <Content Include="Views\ClientConsignment\ViewConBid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\ClientBooking\" />
     <Folder Include="Views\Temp\" />
   </ItemGroup>
   <ItemGroup>

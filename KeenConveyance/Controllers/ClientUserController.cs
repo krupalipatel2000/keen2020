@@ -22,6 +22,7 @@ namespace KeenConveyance.Controllers
             if (id != 0)
             {
                 tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
+                ViewBag.Year = user.CreatedOn.Year.ToString();
                 ViewBag.con = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob);
                 ViewBag.conId = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().ConsignmentId;
                 ViewBag.House = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().HouseNo;
@@ -30,8 +31,6 @@ namespace KeenConveyance.Controllers
                 ViewBag.Source = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Address;
                 ViewBag.Destination = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Address;
                 ViewBag.Distance = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Distance;
-                //ViewBag.TotalBid = (from ob in dc.tblBiddings where ob.ConsignmentId ==  where ob.ConsignmentId
-                ViewBag.Year = user.CreatedOn.Year.ToString();
                 return View(user);
             }
             else
@@ -72,8 +71,25 @@ namespace KeenConveyance.Controllers
             user.ProfilePic = name.ToString();
             dc.tblUsers.Add(user);
             dc.SaveChanges();
-            return RedirectToAction("List");
+            return RedirectToAction("Login","Home");
         }
+        [HttpPost]
+        public JsonResult checkEmail(string id)
+        {
+            string response;
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.EmailId == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            //dc.SaveChanges();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Edit(int id)
         {
             TempData["id"] = id;
