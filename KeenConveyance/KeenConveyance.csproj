@@ -2727,6 +2727,8 @@
     <Content Include="Views\ClientConsignment\ComAdd.cshtml" />
     <Content Include="Views\ClientConsignment\EditBid.cshtml" />
     <Content Include="Views\ClientConsignment\ViewConBid.cshtml" />
+    <Content Include="Views\ClientCompany\AddDriver.cshtml" />
+    <Content Include="Views\ClientCompany\AddVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

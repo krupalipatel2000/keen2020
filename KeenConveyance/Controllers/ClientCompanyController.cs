@@ -212,6 +212,83 @@ namespace KeenConveyance.Controllers
             string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");
             return code;
         }
+        public ActionResult AddDriver()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddDriver(FormCollection form, HttpPostedFileBase txtProfile)
+        {
+            string name = "txtProfile";
+            if (txtProfile != null)
+            {
+                int size = (int)txtProfile.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtProfile.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtProfile.SaveAs(path + "" + name);
+                }
+            }
+            tblDriver driver = new tblDriver();
+            driver.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            driver.DriverName = form["txtDname"];
+            driver.ImageURL = name.ToString();
+            driver.ContactNo = form["txtCno"];
+            driver.EmailId = form["txtEmail"];
+            driver.LicenseNo = form["txtLno"];
+            driver.AadharcardNo = form["txtAno"];
+            driver.IsActive = true;
+            driver.CreatedOn = DateTime.Now;
+            dc.tblDrivers.Add(driver);
+            dc.SaveChanges();
+            return RedirectToAction("CompanyProfile", "ClientCompany", new { id = driver.CompanyId });
+        }
+        public ActionResult AddVehicle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddVehicle(FormCollection form, HttpPostedFileBase txtImage, HttpPostedFileBase txtVimage)
+        {
+            string name = "txtImage";
+            if (txtImage != null)
+            {
+                int size = (int)txtImage.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtImage.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtImage.SaveAs(path + "" + name);
+                }
+            }
+            string vehiclename = "txtVimage";
+            if (txtVimage != null)
+            {
+                int size = (int)txtVimage.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtVimage.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    vehiclename = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtVimage.SaveAs(path + "" + name);
+                }
+            }
+            tblVehicle vehicle = new tblVehicle();
+            vehicle.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            vehicle.VehicleName = form["txtVname"];
+            vehicle.RegNo = form["txtRno"];
+            vehicle.DocumentImage = name.ToString();
+            vehicle.Fuel = form["txtFuel"];
+            vehicle.Capacity = form["txtCapacity"];
+            vehicle.IsActive = true;
+            vehicle.Image = vehiclename.ToString();
+            dc.tblVehicles.Add(vehicle);
+            dc.SaveChanges();
+            return RedirectToAction("CompanyProfile", "ClientCompany", new { id = vehicle.CompanyId });
+        }
     }
 }
 

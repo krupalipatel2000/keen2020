@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "AddVehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;height:500px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">Add Driver Detail</h4></center>
+            </div>
+            <div class="card-body">
+                <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="txtVname">Vehicle Name : </label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <label for="txtRno">Registration No : </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtVname" placeholder="Vehicle Name">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtRno" placeholder="Registration No">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="txtImage">Document Image : </label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <label for="txtFuel">Fuel : </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtImage" name="txtImage" placeholder="Logo">
+                            <img src="#" id="txtImage" name="txtImage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtFuel" placeholder="Type of Fuel">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="txtCapacity">Capacity of Vehicle : </label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <label for="txtVimage">Vehicle Image : </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtCapacity" placeholder="Capacity of Vehicle">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtVimage" name="txtVimage" placeholder="Logo">
+                            <img src="#" id="txtVimage" name="txtVimage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="submit" name="txtSubmit" value="Submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('txtImage');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.hidden = false;
+    };
+</script>
+
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('txtVimage');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.hidden = false;
+    };
+</script>
+

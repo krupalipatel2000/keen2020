@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "AddDriver";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center>
+    <div class="p-2">
+        <div class="card shadow mb-4" style="width:1000px;height:500px;">
+            <div class="card-header py-3">
+                <center><h4 class="m-0 font-weight-bold text-primary">Add Driver Detail</h4></center>
+            </div>
+            <div class="card-body">
+                <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="txtDname">Driver Name : </label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <label for="txtProfile">Driver Image : </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtDname" placeholder="Driver Name">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtProfile" name="txtProfile" placeholder="Logo">
+                            <img src="#" id="txtProfile" name="txtProfile" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="txtCno">Contact No : </label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <label for="txtEmail">EmailId : </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtCno" placeholder="Driver's ContactNo">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="email" class="form-control" name="txtEmail" placeholder="Driver's EmailID">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <label for="txtLno">LicenseNo : </label>
+                        </div>
+                        <div class="col-sm-10 mb-3 mb-sm-0">
+                            <label for="txtAno">Aadharcard No : </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtLno" placeholder="Driver's LicenseNo">
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" name="txtAno" placeholder="Driver's AadharcardNo">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <input type="submit" name="txtSubmit" value="Submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('txtProfile');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.hidden = false;
+    };
+</script>
+
