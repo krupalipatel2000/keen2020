@@ -2707,7 +2707,6 @@
     <Content Include="Views\ClientCompany\Insert.cshtml" />
     <Content Include="Views\ClientCompany\Index.cshtml" />
     <Content Include="Views\ClientUser\UserProfile.cshtml" />
-    <Content Include="Views\ClientUser\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
     <Content Include="Views\Home\ForgetPassword.cshtml" />
@@ -2729,6 +2728,7 @@
     <Content Include="Views\ClientConsignment\ViewConBid.cshtml" />
     <Content Include="Views\ClientCompany\AddDriver.cshtml" />
     <Content Include="Views\ClientCompany\AddVehicle.cshtml" />
+    <Content Include="Views\ClientUser\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

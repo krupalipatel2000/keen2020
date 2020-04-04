@@ -13,16 +13,24 @@ namespace KeenConveyance.Controllers
     {
         // GET: User
         dbTransportEntities5 dc = new dbTransportEntities5();
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
+                ViewBag.Year = user.CreatedOn.Year.ToString();
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
         public ActionResult UserProfile(int id)
         {
             if (id != 0)
             {
                 tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
-                ViewBag.Year = user.CreatedOn.Year.ToString();
                 ViewBag.con = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob);
                 ViewBag.conId = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().ConsignmentId;
                 ViewBag.House = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().HouseNo;
@@ -35,7 +43,7 @@ namespace KeenConveyance.Controllers
             }
             else
             {
-                return RedirectToAction("Login","Home");
+                return View();
             }
         }
         public ActionResult Insert()
@@ -71,7 +79,7 @@ namespace KeenConveyance.Controllers
             user.ProfilePic = name.ToString();
             dc.tblUsers.Add(user);
             dc.SaveChanges();
-            return RedirectToAction("Login","Home");
+            return RedirectToAction("Login", "Home");
         }
         [HttpPost]
         public JsonResult checkEmail(string id)
@@ -112,7 +120,7 @@ namespace KeenConveyance.Controllers
             user.IsVerified = false;
             user.IsMobileVerified = false;
             dc.SaveChanges();
-            return RedirectToAction("UserProfile",new {  id = user.UserId });
+            return RedirectToAction("UserProfile", new { id = user.UserId });
         }
 
         //public ActionResult List()
@@ -152,7 +160,7 @@ namespace KeenConveyance.Controllers
             profimg.SaveAs(path + profimg.FileName);
             return View();
         }
-        
+
     }
 
 }

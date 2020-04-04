@@ -47,7 +47,7 @@ namespace KeenConveyance.Controllers
                     Session["Type"] = "User";
                     if (Session["LogID"] != null)
                     {
-                        return RedirectToAction("UserProfile", "ClientUser", new {id=user.UserId});
+                        return RedirectToAction("Index", "ClientUser", new {id=user.UserId});
                     }
                     else
                     {

@@ -88,7 +88,6 @@ namespace KeenConveyance.Controllers
                 return RedirectToAction("Login");
             }
         }
-
         public ActionResult Insert()
         {
             return View();
@@ -157,9 +156,6 @@ namespace KeenConveyance.Controllers
             //dc.SaveChanges();
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-
-
-
         public ActionResult CompanyProfile(int id)
         {
             if (id != 0)
@@ -206,7 +202,6 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("CompanyProfile", new { id = com.CompanyId });
         }
-
         public string Code()
         {
             string code = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss-ff").Replace("-", "");

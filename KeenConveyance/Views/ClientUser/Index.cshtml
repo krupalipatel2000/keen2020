@@ -1,62 +1,63 @@
-﻿
+﻿@model KeenConveyance.Areas.Admin.Models.tblUser
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<body class="bg-gradient-primary">
-    <div class="container">
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
+<br />
+<center>
+    <div class="row">
+        <div class="col-md-11">
+            <div class="p-2 offset-1">
+                <div class="card shadow mb-4" style="width:500px;">
+                    <div class="card-header py-3">
+                        <center><h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("UserProfile","ClientUser",new { id = Model.UserId })">UserProfile</a></h4></center>
+                    </div>
+                    <div class="card-body">
                         <div class="row">
-                            @*<img src="~/Images/login.png" style="height:650px;width:450px;" />*@
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
-                                    </div>
-                                    <form class="user" method="post" name="login">
-                                        <div class="form-group">
-                                            <input type="email" name="txtEmail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="txtPwd" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-                                            </div>
-                                        </div>
-
-                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="LogIn" onclick="return validate();" />
-                                        <hr>
-
-                                        <div style="color:red">
-                                            @ViewBag.message
-                                        </div>
-                                    </form>
-                                    @*<div class="text-center">
-                                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a class="small" href="@Url.Action("Insert")">Create an Account!</a>
-                                        </div>*@
-                                </div>
+                            <div class="col-md-4" style="text-align:center">
+                                <p>
+                                    @Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserId })
+                                </p>
+                                <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+                                <br />
+                                <br />
+                                <p>
+                                    Member since <b> @Html.ViewBag.Year </b>
+                                </p>
                             </div>
-                            <div class="col-lg-6">
-                                <img class="img-profile" src="~/Images/trveltransport.jpg" style="height:650px;width:450px;">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <h1 class="alert-light">@Html.DisplayFor(model => model.FirstName)'s Profile</h1>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.EmailId)</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.ContactNo)</h4>
+                                </div>
+                                <div class="row">
+                                    @{
+                                        if (Model.IsActive == true)
+                                        {
+                                            <a href="#"> Deactivate Account </a>
+                                        }
+                                    }
+                                </div>
+                                <div class="row">
+                                    <br /><br />
+                                    <div class="alert-danger" style="margin-top:40px">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </div>
-</body>
+</center>
 

@@ -22,7 +22,7 @@ namespace KeenConveyance.Controllers
         public ActionResult Insert(FormCollection form)
         {
             tblBooking book = new tblBooking();
-
+            
             return View();
         }
     }
