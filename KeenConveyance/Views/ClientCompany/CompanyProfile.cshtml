@@ -89,28 +89,29 @@
     };
 </script>
 
-<div class="card-deck">
-    @foreach (var item in ViewBag.address)
-    {
-        <center>
-            <div class="card shadow mb-4" style="width:300px;height:150px;">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-dark">
-                        Company's Address
-                    </h6>
-                </div>
-                <div class="card-body" style="height:100px;width:200px;">
-                    <div class="row">
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                            @item.HouseNo, @item.Landmark, @item.Area, @item.Address
-                        </h5>
+<div class="row offset-1">
+    <div class="card-deck">
+        @foreach (var item in ViewBag.address)
+        {
+            <center>
+                <div class="card shadow mb-4" style="width:300px;height:150px;">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-dark">
+                            Company's Address
+                        </h6>
+                    </div>
+                    <div class="card-body" style="height:100px;width:200px;">
+                        <div class="row">
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                @item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                            </h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </center>
-    }
+            </center>
+        }
+    </div>
 </div>
-
 
 <div class="row offset-1">
     <div class="card-deck">
@@ -139,11 +140,10 @@
     </div>
 </div>
 
-
-<div class="card-deck">
-    @foreach (var item in ViewBag.PriceList)
-    {
-        <center>
+<div class="row offset-1">
+    <div class="card-deck">
+        @foreach (var item in ViewBag.PriceList)
+        {
             <div class="card shadow mb-4" style="width:300px;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-dark">
@@ -161,6 +161,6 @@
                     </div>
                 </div>
             </div>
-        </center>
-    }
+        }
+    </div>
 </div>
