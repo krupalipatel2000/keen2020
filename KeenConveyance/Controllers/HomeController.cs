@@ -180,8 +180,9 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult AboutUs()
         {
-            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault();
-            return View(cms);
+            tblCMSPage cms = new tblCMSPage();
+            ViewBag.desc = (from ob in dc.tblCMSPages select ob).Take(1).SingleOrDefault().Desc;
+            return View();
         }
     }
 }
