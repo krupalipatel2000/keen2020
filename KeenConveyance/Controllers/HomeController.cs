@@ -178,5 +178,10 @@ namespace KeenConveyance.Controllers
             OTP = R.Next(1111, 9999).ToString();
             return OTP;
         }
+        public ActionResult AboutUs()
+        {
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault();
+            return View(cms);
+        }
     }
 }
