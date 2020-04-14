@@ -45,6 +45,21 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("Blank","Home");
         }
-
+        public ActionResult Feedback()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Feedback(FormCollection form)
+        {
+            tblFeedback feedback = new tblFeedback();
+            feedback.Subject = form["txtSubject"];
+            feedback.Desc = form["txtDesc"];
+            feedback.CreatedOn = DateTime.Now;
+            feedback.IsActive = false;
+            dc.tblFeedbacks.Add(feedback);
+            dc.SaveChanges();
+            return RedirectToAction("Blank","Home");
+        }
     }
 }

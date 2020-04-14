@@ -19,7 +19,6 @@
                                 <p>
                                     @Html.ActionLink("Edit Profile", "Edit", new { id = Model.CompanyId })
                                 </p>
-
                                 <img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" onchange="return loadFile(event);" />
                                 <br />
                                 <div> <a href="#"> Change Profile Image </a> </div>
@@ -164,3 +163,28 @@
         }
     </div>
 </div>
+
+<form method="post">
+    <div class="row offset-2" style="margin-top:20px;">
+        <div class="col-md-4 col-lg-offset-1 ">
+            <h2> Give Feedback </h2>
+            <div class="form-group" style="margin-top:30px">
+                <input name="txtReview" type="text" id="txtReview" class="form-control" placeholder="Subject" Required="" />
+            </div>
+            <div class="form-group">
+                <img src="~/Images/star.png" alt="Star Rating" align="middle" id="1" class="rating" style="height:50px;width:50px;" />
+                
+                <img src="~/Images/star.png" alt="Star Rating" align="middle" id="2" class="rating" style="height:50px;width:50px;" />
+                
+                <img src="~/Images/star.png" alt="Star Rating" align="middle" id="3" class="rating" style="height:50px;width:50px;" />
+                
+                <img src="~/Images/star.png" alt="Star Rating" align="middle" id="4" class="rating" style="height:50px;width:50px;" />
+                
+                <img src="~/Images/star.png" alt="Star Rating" align="middle" id="5" class="rating" style="height:50px;width:50px;" />
+            </div>
+            <div class="form-group">
+                <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

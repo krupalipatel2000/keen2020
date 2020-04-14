@@ -600,6 +600,7 @@
     <Content Include="Images\plane.jpg" />
     <Content Include="Images\register.jpg" />
     <Content Include="Images\ship.jpg" />
+    <Content Include="Images\star.png" />
     <Content Include="Images\stransport.jpg" />
     <Content Include="Images\tata.jpg" />
     <Content Include="Images\tempo.jpg" />
@@ -2733,6 +2734,7 @@
     <Content Include="Views\ClientUser\Index.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\ClientContact\Index.cshtml" />
+    <Content Include="Views\ClientContact\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
