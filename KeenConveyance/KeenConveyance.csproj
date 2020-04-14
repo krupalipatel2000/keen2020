@@ -173,6 +173,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbTransportEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\Googlemap.cs" />
     <Compile Include="Areas\Admin\Models\JoinViewAll.cs" />
     <Compile Include="Areas\Admin\Models\StateMaster.cs">
       <DependentUpon>dbTransportEntity.tt</DependentUpon>
