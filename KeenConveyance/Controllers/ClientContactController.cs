@@ -10,6 +10,7 @@ namespace KeenConveyance.Controllers
     public class ClientContactController : Controller
     {
         // GET: ClientContact
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             var cities = new List<Googlemap>();
@@ -29,6 +30,21 @@ namespace KeenConveyance.Controllers
         private static Random _rnd = new Random();
 
         private static List<string> _db = new List<string> { "Yes", "No", "Definitely, yes", "I don't know", "Looks like, yes" };
+
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            tblInquiry inquiry = new tblInquiry();
+            inquiry.FirstName = form["txtName"];
+            inquiry.EmailId = form["txtEmail"];
+            inquiry.ContactNo = form["txtContact"];
+            inquiry.Desc = form["txtMessage"];
+            inquiry.CreatedOn = DateTime.Now;
+            inquiry.IsReplied = false;
+            dc.tblInquiries.Add(inquiry);
+            dc.SaveChanges();
+            return RedirectToAction("Blank","Home");
+        }
+
     }
-}
 }

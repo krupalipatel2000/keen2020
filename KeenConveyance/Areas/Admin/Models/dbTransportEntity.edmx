@@ -201,13 +201,13 @@
             <PropertyRef Name="InquiryId" />
           </Key>
           <Property Name="InquiryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ContactNo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="EmailId" Type="varchar" MaxLength="254" Nullable="false" />
-          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Desc" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="EmailId" Type="varchar" MaxLength="254" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="Desc" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
           <Property Name="IsReplied" Type="bit" Nullable="false" />
           <Property Name="RepliedText" Type="varchar" MaxLength="100" />
           <Property Name="RepliedOn" Type="datetime" />
@@ -611,13 +611,13 @@
             <PropertyRef Name="InquiryId" />
           </Key>
           <Property Name="InquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Desc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="IsReplied" Type="Boolean" Nullable="false" />
           <Property Name="RepliedText" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RepliedOn" Type="DateTime" Precision="3" />

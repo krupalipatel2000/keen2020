@@ -8,71 +8,74 @@
 <!-- template from http://getbootstrap.com/getting-started -->
 
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Google Maps example</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-
-    <style type="text/css">
-
-        #map_canvas {
-            height: 400px;
-        }
-    </style>
-</head>
 
 <body>
+    <div class="container p-5">
+        <center>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.566125369142!2d72.78574931476659!3d21.209387985900793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c3bb22d3cf1%3A0xeb66c940a46828f3!2sRenown%20Infosys!5e0!3m2!1sen!2sin!4v1586853455532!5m2!1sen!2sin" width="1100" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </center>
+    </div>
+    <form method="post">
+        <div class="row offset-2" style="margin-top:20px;">
+            <div class="col-md-4 col-lg-offset-1 ">
+                <h2> Contact Us </h2>
+                <div class="form-group" style="margin-top:30px">
+                    <input name="txtName" type="text" id="txtName" class="form-control" placeholder="Name" Required="" />
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input name="txtEMail" type="text" id="txtEMail" class="form-control" placeholder="E-Mail Address" Required="" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input name="txtContact" type="text" id="txtContact" class="form-control" placeholder="Contact Number" Required="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea name="txtMessage" rows="2" cols="20" id="txtMessage" placeholder=" " class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" value="Send Message" id="btnSubmit" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="col-md-6 offset-1">
+                <h2 style="font-family:open sans;font-weight:normal;margin-bottom:38px;">Contact Info</h2>
+                <div class="row">
+                    <div id="rand_7yidepwo6juj886stm0v" class="zolo-icon-box circle thick_bordered none" style="font-size:22px;line-height:22px;width:60px;height:60px;color:#f8c200">
+                        <i class="zolo-icon fa fa-home">
 
-
-    <script>
-    var cities = @Html.Raw(Json.Encode(Model));
-	//console.log(cities);
-
-
-
-    $(document).ready(function() {
-        // execute
-        (function() {
-            // map options
-            var options = {
-                zoom: 5,
-                center: new google.maps.LatLng(45.1479007,7.4386887),
-                mapTypeId: google.maps.MapTypeId.TERRAIN,
-                mapTypeControl: false
-            };
-
-            // init map
-            var map = new google.maps.Map(document.getElementById('map_canvas'), options);
-
-
-            for (var i = 0; i < cities.length; i++) {
-                // init markers
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(cities[i].Lat, cities[i].Lng),
-                    map: map,
-                    title: cities[i].Title
-                });
-
-                // process multiple info windows
-                (function(marker, i) {
-                    // add click event
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow = new google.maps.InfoWindow({
-                            content: cities[i].Title
-                        });
-                        infowindow.open(map, marker);
-                    });
-                })(marker, i);
-            }
-        })();
-    });
-
-    </script>
-
-    <div id="map_canvas"></div>
+                        </i>
+                        <span class="zolo_icon_shape" style="  box-shadow: 0 0 0 3px #f8c200 inset;"></span>
+                    </div>
+                    <div class="zolo-icon-content">
+                        <p style="font-family:open sans;">
+                            4, Bhagyoday Society,
+                            B/H BSNL Office,
+                            Palanpur Patia, Rander Road,<br>
+                            Surat 395009
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="rand_0evivjsv40ro9tc64clw" class="zolo-icon-box circle thick_bordered none" style="font-size:22px;line-height:22px;width:60px;height:60px;color:#f8c200">
+                        <i class="zolo-icon fa fa-phone-square"></i>
+                        <span class="zolo_icon_shape" style="  box-shadow: 0 0 0 3px #f8c200 inset;"></span>
+                    </div>
+                    <div class="zolo-icon-content"><p style="font-family:open sans;">1601-609 6780</p></div>
+                </div>
+                <div class="row">
+                    <div id="rand_b2qnbefqjcbpibo5n0v9" class="zolo-icon-box circle thick_bordered none" style="font-size:22px;line-height:22px;width:60px;height:60px;color:#f8c200">
+                        <i class="zolo-icon fa fa-envelope"></i>
+                        <span class="zolo_icon_shape" style="  box-shadow: 0 0 0 3px #f8c200 inset;"></span>
+                    </div>
+                    <div class="zolo-icon-content"><p style="font-family:open sans;"> keenconveyance@gmail.com</p></div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
 

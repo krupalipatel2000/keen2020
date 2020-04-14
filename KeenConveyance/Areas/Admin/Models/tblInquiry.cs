@@ -21,7 +21,7 @@ namespace KeenConveyance.Areas.Admin.Models
         public string EmailId { get; set; }
         public string Subject { get; set; }
         public string Desc { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public bool IsReplied { get; set; }
         public string RepliedText { get; set; }
         public Nullable<System.DateTime> RepliedOn { get; set; }
