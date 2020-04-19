@@ -273,6 +273,7 @@
     <Content Include="clientcontent\css\magnific-popup.css" />
     <Content Include="clientcontent\css\nice-select.css" />
     <Content Include="clientcontent\css\owl.carousel.min.css" />
+    <Content Include="clientcontent\css\rating.css" />
     <Content Include="clientcontent\css\slick.css" />
     <Content Include="clientcontent\css\slicknav.css" />
     <Content Include="clientcontent\css\style.css" />
@@ -2712,7 +2713,6 @@
     <Content Include="Views\ClientUser\UserProfile.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
-    <Content Include="Views\Home\ForgetPassword.cshtml" />
     <Content Include="Views\ClientConsignment\Insert.cshtml" />
     <Content Include="Views\ClientConsignment\Insert2.cshtml" />
     <Content Include="Views\ClientConsignment\Insert3.cshtml" />
@@ -2735,6 +2735,8 @@
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\ClientContact\Index.cshtml" />
     <Content Include="Views\ClientContact\Feedback.cshtml" />
+    <Content Include="Views\ClientCompany\Rate.cshtml" />
+    <Content Include="Views\Home\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

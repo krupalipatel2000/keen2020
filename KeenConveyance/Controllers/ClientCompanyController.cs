@@ -179,6 +179,22 @@ namespace KeenConveyance.Controllers
                 return RedirectToAction("Login", "Home");
             }
         }
+        public ActionResult Rate()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Rate(FormCollection form)
+        {
+            tblReview rate = new tblReview();
+            rate.UserId = Convert.ToInt32(Session["LogID"]);
+            rate.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            rate.Review = form["txtReview"];
+            rate.Rate=form["txtRate"];
+            dc.tblReviews.Add(rate);
+            dc.SaveChanges();
+            return View();
+        }
         public ActionResult Edit(int id)
         {
             TempData["id"] = id;

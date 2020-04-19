@@ -232,7 +232,6 @@
           <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="ConsignmentId" Type="int" Nullable="false" />
           <Property Name="Review" Type="varchar(max)" />
           <Property Name="Rate" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -642,7 +641,6 @@
           <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
           <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -998,7 +996,6 @@
               <MappingFragment StoreEntitySet="tblReview">
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="Review" ColumnName="Review" />
-                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />

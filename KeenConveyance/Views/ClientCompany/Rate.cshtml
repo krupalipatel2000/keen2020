@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Rate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/clientcontent/css/rating.css" />
+</head>
+<body class="alert">
+    <form method="post">
+        <div class="row offset-2" style="margin-top:20px;">
+            <div class="col-md-4 col-lg-offset-1 ">
+                <h2 class="alert alert-light"> Give Feedback </h2>
+                <div class="form-group" style="margin-top:30px">
+                    <input name="txtReview" type="text" id="txtReview" class="form-control" placeholder="Write your review" Required="" />
+                </div>
+                <div class="form-group">
+                    <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 Star"></label>
+                        <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Preety Good - 4.5 Star"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Preety Good - 4 Star"></label>
+                        <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 Star"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 Star"></label>
+                        <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda Bad - 2.5 Star"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda Bad - 2 Star"></label>
+                        <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 Star"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks Big Time - 1 Star"></label>
+                        <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks Big Time - 0.5 Star"></label>
+                    </fieldset>
+                    <br />
+                    <br />
+                    <input type="hidden" value="0" id="txtRate" name="txtRate" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" onclick="getRate();" />
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    function getRate() {
+        var ele = document.getElementsByName('rating');
+        var txtRate = document.getElementById('txtRate');
+        var Rate;
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked) {
+                Rate = ele[i].value;
+            }
+        }
+        txtRate.value = Rate;
+    }
+</script>
+

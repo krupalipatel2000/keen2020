@@ -53,14 +53,15 @@
                                                     </div>
                                                 </div>
                                                 <hr>
+
+                                                <div class="text-center">
+                                                    @*<a class="small" href="forgot-password.html">Forgot Password?</a>*@
+                                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#FPModal" style="font-size:small;">
+                                                        Forgot Password
+                                                    </button>
+                                                </div>
+                                                @ViewBag.message
                                             </form>
-                                            <div class="text-center">
-                                                @*<a class="small" href="forgot-password.html">Forgot Password?</a>*@
-                                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#FPModal" style="font-size:small;">
-                                                    Forgot Password
-                                                </button>
-                                            </div>
-                                            @ViewBag.message
                                         </center>
                                     </div>
                                 </div>
@@ -106,6 +107,7 @@
         </div>
     </div>
 </body>
+
 <div class="modal fade" id="FPModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -17,7 +17,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public int ReviewId { get; set; }
         public int UserId { get; set; }
         public int CompanyId { get; set; }
-        public int ConsignmentId { get; set; }
         public string Review { get; set; }
         public string Rate { get; set; }
     }
