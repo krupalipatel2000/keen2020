@@ -289,6 +289,7 @@ namespace KeenConveyance.Controllers
             }
             tblVehicle vehicle = new tblVehicle();
             vehicle.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            vehicle.VehicleTypeId = Convert.ToInt32(form["vehicletype"]);
             vehicle.VehicleName = form["txtVname"];
             vehicle.RegNo = form["txtRno"];
             vehicle.DocumentImage = name.ToString();
