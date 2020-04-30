@@ -239,7 +239,7 @@
           <Key>
             <PropertyRef Name="ServiceId" />
           </Key>
-          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompanyId" Type="int" Nullable="false" />
           <Property Name="ServiceName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ServiceDesc" Type="varchar(max)" Nullable="false" />

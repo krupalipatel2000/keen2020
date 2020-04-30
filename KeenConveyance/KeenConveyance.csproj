@@ -2737,6 +2737,7 @@
     <Content Include="Views\ClientContact\Feedback.cshtml" />
     <Content Include="Views\ClientCompany\Rate.cshtml" />
     <Content Include="Views\Home\ForgetPassword.cshtml" />
+    <Content Include="Views\ClientCompany\AddService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

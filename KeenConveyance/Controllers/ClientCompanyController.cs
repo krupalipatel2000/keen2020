@@ -301,6 +301,36 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("CompanyProfile", "ClientCompany", new { id = vehicle.CompanyId });
         }
+        public ActionResult AddService()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddService(FormCollection form, HttpPostedFileBase txtService)
+        {
+            string name = "txtService";
+            if (txtService != null)
+            {
+                int size = (int)txtService.ContentLength / 1024;
+                var extention = System.IO.Path.GetExtension(txtService.FileName);
+                if (size <= 1024 && (extention.ToLower().Equals(".jpg") || extention.ToLower().Equals(".jpeg") || extention.ToLower().Equals(".png")))
+                {
+                    name = Code() + "" + extention;
+                    string path = Server.MapPath("~/Images/");
+                    txtService.SaveAs(path + "" + name);
+                }
+            }
+            tblService service = new tblService();
+            service.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            service.ServiceName = form["txtSname"];
+            service.ServiceDesc = form["txtSDesc"];
+            service.ServiceImage = name.ToString();
+            service.IsActive = false;
+            service.CreatedOn = DateTime.Now;
+            dc.tblServices.Add(service);
+            dc.SaveChanges();
+            return RedirectToAction("CompanyProfile", "ClientCompany", new { id = service.CompanyId });
+        }
     }
 }
 
