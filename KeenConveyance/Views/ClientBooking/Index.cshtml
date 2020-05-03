@@ -1,0 +1,44 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblUser
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<center>
+    <div class="row">
+        <div class="col-md-11">
+            <div class="p-2 offset-1">
+                <div class="card shadow mb-4" style="width:500px;">
+                    <div class="card-header py-3">
+                        <center><h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("UserProfile","ClientUser",new { id = Model.UserId })">UserProfile</a></h4></center>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-4" style="text-align:center">
+                                <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+                                <br />
+                                <br />
+                                <p>
+                                    Member since <b> @Html.ViewBag.Year </b>
+                                </p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <h1 class="alert-light">@Html.DisplayFor(model => model.FirstName)'s Profile</h1>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.EmailId)</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>@Html.DisplayFor(model => model.ContactNo)</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

@@ -10,6 +10,7 @@ namespace KeenConveyance.Controllers
     public class ClientBookingController : Controller
     {
         // GET: ClientBooking
+        dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
         {
             return View();

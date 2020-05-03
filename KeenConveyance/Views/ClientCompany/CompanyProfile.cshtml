@@ -93,7 +93,7 @@
     };
 </script>
 
-<div class="row offset-1">
+<div class="row offset-5">
     <div class="card-deck">
         @foreach (var item in ViewBag.address)
         {
@@ -116,6 +116,7 @@
         }
     </div>
 </div>
+<br />
 
 <div class="row offset-1">
     <div class="card-deck">
@@ -135,7 +136,7 @@
                                 BidAmount : @item.BidAmount <br />
                                 EstimatedDelivery : @item.EstimatedDelivery <br />
                             </h5>
-                            <a href="@Url.Action("Insert","ClientBooking")" class="btn btn-outline-primary">Accept</a>
+                            <a href="@Url.Action("Index","ClientBooking")" class="btn btn-outline-primary">Accept</a>
                         </div>
                     </div>
                 </div>
