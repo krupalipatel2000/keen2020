@@ -136,7 +136,7 @@
                                 BidAmount : @item.BidAmount <br />
                                 EstimatedDelivery : @item.EstimatedDelivery <br />
                             </h5>
-                            <a href="@Url.Action("Index","ClientBooking")" class="btn btn-outline-primary">Accept</a>
+                            <a href="@Url.Action("Index","ClientBooking", new { id = item.ConsignmentId })" class="btn btn-outline-primary">Accept</a>
                         </div>
                     </div>
                 </div>
