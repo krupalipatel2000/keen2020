@@ -18,6 +18,7 @@ namespace KeenConveyance.Controllers
                           join ob3 in dc.tblUsers on ob2.UserId equals ob3.UserId
                           join ob4 in dc.tblDrivers on ob.DriverId equals ob4.DriverId
                           join ob5 in dc.tblVehicles on ob.VehicleId equals ob5.VehicleId
+                          where ob2.UserId == ob3.UserId
                           select new JoinViewAll
                           {
                               user = ob3,

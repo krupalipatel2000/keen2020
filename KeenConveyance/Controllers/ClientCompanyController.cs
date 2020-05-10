@@ -258,6 +258,14 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult AddVehicle()
         {
+            //var vehicle = from ob in dc.tblVehicles
+            //              join ob2 in dc.tblVehicleTypes on ob.VehicleTypeId equals ob2.VehicleTypeId
+            //              select new JoinViewAll
+            //              {
+            //                  vehicle = ob,
+            //                  vehicletype = ob2
+            //              };
+            //ViewBag.vehicle = vehicle;
             return View();
         }
         [HttpPost]

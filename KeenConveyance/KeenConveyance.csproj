@@ -558,6 +558,12 @@
     <Content Include="DataTables\datatables.min.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.js" />
     <Content Include="DataTables\jQuery-3.3.1\jquery-3.3.1.min.js" />
+    <Content Include="Images\1.png" />
+    <Content Include="Images\2.png" />
+    <Content Include="Images\3.png" />
+    <Content Include="Images\4.png" />
+    <Content Include="Images\5.png" />
+    <Content Include="Images\6.png" />
     <Content Include="Images\admin.png" />
     <Content Include="Images\admin1.jpg" />
     <Content Include="Images\box.jpg" />
@@ -600,6 +606,7 @@
     <Content Include="Images\PicsArt_03-13-05.46.06.jpg" />
     <Content Include="Images\plane.jpg" />
     <Content Include="Images\register.jpg" />
+    <Content Include="Images\service_details.png" />
     <Content Include="Images\ship.jpg" />
     <Content Include="Images\star.png" />
     <Content Include="Images\stransport.jpg" />
