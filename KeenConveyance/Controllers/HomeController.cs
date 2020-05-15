@@ -13,7 +13,7 @@ namespace KeenConveyance.Controllers
     {
         dbTransportEntities5 dc = new dbTransportEntities5();
         public ActionResult Index()
-        {
+        {   
             return View();
         }
         public ActionResult About()

@@ -11,7 +11,11 @@ namespace KeenConveyance.Controllers
     {
         // GET: ClientBooking
         dbTransportEntities5 dc = new dbTransportEntities5();
-        public ActionResult Index(int id)
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Insert(int id)
         {
             var Booking = from ob in dc.tblBookings
                           join ob2 in dc.tblConsignments on ob.ConsignmentId equals ob2.ConsignmentId
@@ -30,15 +34,15 @@ namespace KeenConveyance.Controllers
             ViewBag.Booking = Booking;
             return View(Booking);
         }
-        public ActionResult Insert()
-        {
-            return View();
-        }
         [HttpPost]
-        public ActionResult Insert(FormCollection form)
+        public ActionResult Insert(int id, int id1)
         {
             tblBooking book = new tblBooking();
-            
+            book.ConsignmentId = id;
+            book.BidId = id1;
+            book.IsPaid = false;
+            dc.tblBookings.Add(book);
+            dc.SaveChanges();
             return View();
         }
     }

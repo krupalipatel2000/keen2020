@@ -265,6 +265,8 @@
       <DependentUpon>dbTransportEntity.edmx</DependentUpon>
       <LastGenOutput>dbTransportEntity.cs</LastGenOutput>
     </Content>
+    <Content Include="AdminContent\css\sb-admin-2.css" />
+    <Content Include="AdminContent\css\sb-admin-2.min.css" />
     <Content Include="clientcontent\css\animate.css" />
     <Content Include="clientcontent\css\bootstrap.min.css" />
     <Content Include="clientcontent\css\flaticon.css" />
@@ -273,7 +275,6 @@
     <Content Include="clientcontent\css\magnific-popup.css" />
     <Content Include="clientcontent\css\nice-select.css" />
     <Content Include="clientcontent\css\owl.carousel.min.css" />
-    <Content Include="clientcontent\css\rating.css" />
     <Content Include="clientcontent\css\slick.css" />
     <Content Include="clientcontent\css\slicknav.css" />
     <Content Include="clientcontent\css\style.css" />
@@ -425,6 +426,7 @@
     <Content Include="clientcontent\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="clientcontent\js\waypoints.min.js" />
     <Content Include="clientcontent\js\wow.min.js" />
+    <Content Include="clientcontent\Logistico doc\contact.html" />
     <Content Include="clientcontent\Logistico doc\css\font-awesome.min.css" />
     <Content Include="clientcontent\Logistico doc\css\main.css" />
     <Content Include="clientcontent\Logistico doc\css\normalize.min.css" />
@@ -478,8 +480,6 @@
     <Content Include="clientcontent\Logistico doc\syntax-highlighter\styles\shThemeMDUltra.css" />
     <Content Include="clientcontent\Logistico doc\syntax-highlighter\styles\shThemeMidnight.css" />
     <Content Include="clientcontent\Logistico doc\syntax-highlighter\styles\shThemeRDark.css" />
-    <Content Include="AdminContent\css\sb-admin-2.css" />
-    <Content Include="AdminContent\css\sb-admin-2.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -716,6 +716,77 @@
     <Content Include="Areas\Admin\Models\dbTransportEntity.edmx.diagram">
       <DependentUpon>dbTransportEntity.edmx</DependentUpon>
     </Content>
+    <Content Include="clientcontent\css\style.map" />
+    <Content Include="clientcontent\css\theme-default.map" />
+    <Content Include="clientcontent\fonts\fa-brands-400.eot" />
+    <Content Include="clientcontent\fonts\fa-brands-400.ttf" />
+    <Content Include="clientcontent\fonts\fa-brands-400.woff" />
+    <Content Include="clientcontent\fonts\fa-brands-400.woff2" />
+    <Content Include="clientcontent\fonts\fa-regular-400.eot" />
+    <Content Include="clientcontent\fonts\fa-regular-400.ttf" />
+    <Content Include="clientcontent\fonts\fa-regular-400.woff" />
+    <Content Include="clientcontent\fonts\fa-regular-400.woff2" />
+    <Content Include="clientcontent\fonts\fa-solid-900.eot" />
+    <Content Include="clientcontent\fonts\fa-solid-900.ttf" />
+    <Content Include="clientcontent\fonts\fa-solid-900.woff" />
+    <Content Include="clientcontent\fonts\fa-solid-900.woff2" />
+    <Content Include="clientcontent\fonts\Flaticon.eot" />
+    <Content Include="clientcontent\fonts\Flaticon.ttf" />
+    <Content Include="clientcontent\fonts\Flaticon.woff" />
+    <Content Include="clientcontent\fonts\Flaticon.woff2" />
+    <Content Include="clientcontent\fonts\fontawesome-webfont.eot" />
+    <Content Include="clientcontent\fonts\fontawesome-webfont.ttf" />
+    <Content Include="clientcontent\fonts\fontawesome-webfont.woff" />
+    <Content Include="clientcontent\fonts\fontawesome-webfont.woff2" />
+    <Content Include="clientcontent\fonts\FontAwesome.otf" />
+    <Content Include="clientcontent\fonts\gijgo-material.eot" />
+    <Content Include="clientcontent\fonts\gijgo-material.ttf" />
+    <Content Include="clientcontent\fonts\gijgo-material.woff" />
+    <Content Include="clientcontent\fonts\themify.eot" />
+    <Content Include="clientcontent\fonts\themify.ttf" />
+    <Content Include="clientcontent\fonts\themify.woff" />
+    <Content Include="clientcontent\Logistico doc\fonts\fontawesome-webfont.eot" />
+    <Content Include="clientcontent\Logistico doc\fonts\fontawesome-webfont.ttf" />
+    <Content Include="clientcontent\Logistico doc\fonts\fontawesome-webfont.woff" />
+    <Content Include="clientcontent\Logistico doc\fonts\FontAwesome.otf" />
+    <Content Include="clientcontent\scss\style.scss" />
+    <Content Include="clientcontent\scss\theme-default.scss" />
+    <Content Include="clientcontent\scss\_about.scss" />
+    <Content Include="clientcontent\scss\_accordion.scss" />
+    <Content Include="clientcontent\scss\_accordion_area.scss" />
+    <Content Include="clientcontent\scss\_blog.scss" />
+    <Content Include="clientcontent\scss\_blog_part.scss" />
+    <Content Include="clientcontent\scss\_bradcam.scss" />
+    <Content Include="clientcontent\scss\_btn.scss" />
+    <Content Include="clientcontent\scss\_case_details.scss" />
+    <Content Include="clientcontent\scss\_contact.scss" />
+    <Content Include="clientcontent\scss\_contact_action.scss" />
+    <Content Include="clientcontent\scss\_contact_quote.scss" />
+    <Content Include="clientcontent\scss\_counter.scss" />
+    <Content Include="clientcontent\scss\_department.scss" />
+    <Content Include="clientcontent\scss\_elements.scss" />
+    <Content Include="clientcontent\scss\_emergency_contact.scss" />
+    <Content Include="clientcontent\scss\_Estimate_area.scss" />
+    <Content Include="clientcontent\scss\_experts.scss" />
+    <Content Include="clientcontent\scss\_extend.scss" />
+    <Content Include="clientcontent\scss\_footer.scss" />
+    <Content Include="clientcontent\scss\_gallery.scss" />
+    <Content Include="clientcontent\scss\_header.scss" />
+    <Content Include="clientcontent\scss\_mixins.scss" />
+    <Content Include="clientcontent\scss\_offers.scss" />
+    <Content Include="clientcontent\scss\_prise_slider.scss" />
+    <Content Include="clientcontent\scss\_property_details.scss" />
+    <Content Include="clientcontent\scss\_responsive.scss" />
+    <Content Include="clientcontent\scss\_section_title.scss" />
+    <Content Include="clientcontent\scss\_service.scss" />
+    <Content Include="clientcontent\scss\_service_details.scss" />
+    <Content Include="clientcontent\scss\_slick-nav.scss" />
+    <Content Include="clientcontent\scss\_slider.scss" />
+    <Content Include="clientcontent\scss\_team.scss" />
+    <Content Include="clientcontent\scss\_tesmonial.scss" />
+    <Content Include="clientcontent\scss\_testmonial.scss" />
+    <Content Include="clientcontent\scss\_transport.scss" />
+    <Content Include="clientcontent\scss\_varriable.scss" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -2750,7 +2821,7 @@
     <Content Include="Views\ClientCompany\Rate.cshtml" />
     <Content Include="Views\Home\ForgetPassword.cshtml" />
     <Content Include="Views\ClientCompany\AddService.cshtml" />
-    <Content Include="Views\ClientBooking\Index.cshtml" />
+    <Content Include="Views\ClientBooking\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

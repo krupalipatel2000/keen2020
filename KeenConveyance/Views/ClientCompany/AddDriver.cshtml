@@ -4,74 +4,143 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<center>
-    <div class="p-2">
-        <div class="card shadow mb-4" style="width:1000px;height:500px;">
-            <div class="card-header py-3">
-                <center><h4 class="m-0 font-weight-bold text-primary">Add Driver Detail</h4></center>
-            </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <label for="txtDname">Driver Name : </label>
+<html>
+<head>
+    <script>
+        function validate() {
+            var dname = document.registration.txtDname;
+            var image = document.registration.txtProfile;
+            var cno = document.registration.txtCno;
+            var email = document.registration.txtEmail;
+            var lno = document.registration.txtLno;
+            var ano = document.registration.txtAno;
+            var dname_pat = /^[A-Za-z]+$/;
+            if (dname.value != "" && dname.value.match(dname_pat)) {
+            }
+            else {
+                alert("DriverName is not Proper");
+                dname.focus();
+                return false;
+            }
+            //var image_pat = /^[A-Za-z]+$/;
+            if (image.value != "") {
+            }
+            else {
+                alert("Select Image");
+                image.focus();
+                return false;
+            }
+
+            var cno_pat = /^\d{10}$/;
+            if (cno.value != "" && cno.value.match(cno_pat)) {
+            }
+            else {
+                alert("Contact number is not Proper");
+                cno.focus();
+                return false;
+            }
+            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (email.value.match(email_pat)) {
+            }
+            else {
+                alert("Email is not Proper");
+                email.focus();
+                return false;
+            }
+
+            var lno_pat = /^(?<intro>[A-Z]{2})(?<numeric>\d{2})(?<year>\d{4})(?<tail>\d{7})$/;
+            if (lno != "" && lno.value.match(lno_pat)) {
+            }
+            else {
+                alert("LicenseNo is not Proper");
+                lno.focus();
+                return false;
+            }
+            var ano_pat = /^\d{12}$/;
+            if (ano != "" && ano.value.match(ano_pat)) {
+            }
+            else {
+                alert("AadharcardNo is not Proper");
+                ano.focus();
+                return false;
+            }
+
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <div class="p-2">
+            <div class="card shadow mb-4" style="width:1000px;height:500px;">
+                <div class="card-header py-3">
+                    <center><h4 class="m-0 font-weight-bold text-primary">Add Driver Detail</h4></center>
+                </div>
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <label for="txtDname">Driver Name : </label>
+                            </div>
+                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                <label for="txtProfile">Driver Image : </label>
+                            </div>
                         </div>
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <label for="txtProfile">Driver Image : </label>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtDname" placeholder="Driver Name">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtProfile" name="txtProfile" placeholder="Logo">
+                                <img src="#" id="txtProfile" name="txtProfile" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtDname" placeholder="Driver Name">
+                        <div class="row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <label for="txtCno">Contact No : </label>
+                            </div>
+                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                <label for="txtEmail">EmailId : </label>
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtProfile" name="txtProfile" placeholder="Logo">
-                            <img src="#" id="txtProfile" name="txtProfile" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtCno" placeholder="Driver's ContactNo">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="email" class="form-control" name="txtEmail" placeholder="Driver's EmailID">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <label for="txtCno">Contact No : </label>
+                        <div class="row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <label for="txtLno">LicenseNo : </label>
+                            </div>
+                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                <label for="txtAno">Aadharcard No : </label>
+                            </div>
                         </div>
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <label for="txtEmail">EmailId : </label>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtLno" placeholder="Driver's LicenseNo">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtAno" placeholder="Driver's AadharcardNo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtCno" placeholder="Driver's ContactNo">
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="submit" name="txtSubmit" value="Submit" onclick="return validate();" />
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="email" class="form-control" name="txtEmail" placeholder="Driver's EmailID">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <label for="txtLno">LicenseNo : </label>
-                        </div>
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <label for="txtAno">Aadharcard No : </label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtLno" placeholder="Driver's LicenseNo">
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtAno" placeholder="Driver's AadharcardNo">
-                        </div>
-                    </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="submit" name="txtSubmit" value="Submit" />
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</center>
+    </center>
+</body>
+</html>
 <script>
     var loadFile = function (event) {
         var output = document.getElementById('txtProfile');

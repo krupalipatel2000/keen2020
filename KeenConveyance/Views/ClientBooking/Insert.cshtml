@@ -198,37 +198,66 @@
         <div class="row">
             <div class="card shadow mb-4 bg-transparent" style="width:500px;">
                 <div class="card-body">
-                    <div class="card-text">
-                        <h3 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                            Select Driver & Vehicle
-                        </h3>
-                        <br />
-                        <div class="form-group">
-                            <select name="driver" class="form-control">
-                                <option value="">Select Driver &nbsp;&nbsp;</option>
-                                @foreach (var item in ViewBag.Booking)
-                                {
-                                    <option value="">
-                                        @item.driver.DriverName
-                                    </option>
-                                }
-                            </select>
+                    <form method="post">
+                        <div class="card-text">
+                            @*<h3 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                    Select Driver & Vehicle
+                                </h3>*@
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="driver" class="form-control">
+                                            <option value="">Select Driver &nbsp;&nbsp;</option>
+                                            @foreach (var item in ViewBag.Booking)
+                                            {
+                                                <option value="">
+                                                    @item.driver.DriverName
+                                                </option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="vehicle" class="form-control">
+                                            <option value="">Select Vehicle &nbsp;&nbsp;</option>
+                                            <option value="">
+                                                @foreach (var item in ViewBag.Booking)
+                                                {
+                                                    @item.vehicle.VehicleName
+                                                }
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" name="txtDispatch" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" name="txtDeliver" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="txtPayment" placeholder="Enter Total Amount of Payment" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="txtRemark" placeholder="Enter Remarks" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="txtpayMode" placeholder="Enter Payment Mode" />
+                            </div>
+                            <div class="form-group">
+                                <center><input type="submit" class="btn btn-success" value="Assign" /></center>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <select name="vehicle" class="form-control">
-                                <option value="">Select Vehicle &nbsp;&nbsp;</option>
-                                <option value="">
-                                    @foreach (var item in ViewBag.Booking)
-                                    {
-                                        @item.vehicle.VehicleName
-                                    }
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <center><input type="submit" class="btn btn-success" value="Assign" /></center>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

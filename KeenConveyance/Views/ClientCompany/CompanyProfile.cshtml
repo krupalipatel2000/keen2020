@@ -46,36 +46,40 @@
                                 <div class="row">
                                     <h4>@Html.DisplayFor(model => model.WebURL)</h4>
                                 </div>
-                                <div class="row">
-                                    @{
-                                        if (Model.IsActive == true)
-                                        {
-                                            <a href="#"> Deactivate Account </a>
+                                @if (Session["CompanyId"] != null)
+                                {
+                                    <div class="row">
+                                        @{
+                                            if (Model.IsActive == true)
+                                            {
+                                                <a href="#"> Deactivate Account </a>
+                                            }
                                         }
-                                    }
-                                </div>
-                                <div class="row">
-                                    <br />
-                                    <div style="margin-top:40px">
-                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
-                                        <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-light"> Company Consignment </a>
-                                        <a href="@Url.Action("AddService","ClientCompany")" class="btn btn-light"> Add Service </a>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <br />
-                                    <div class="alert-link" style="margin-top:40px">
-                                        <a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-light"> Add Address </a>
-                                        <a href="@Url.Action("AddDriver","ClientCompany")" class="btn btn-light"> Add Driver </a>
-                                        <a href="@Url.Action("AddVehicle","ClientCompany")" class="btn btn-light"> Add Vehicle </a>
+                                    <div class="row">
+                                        <br />
+                                        <div style="margin-top:40px">
+                                            <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                            <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-light"> Company Consignment </a>
+                                            <a href="@Url.Action("AddService","ClientCompany")" class="btn btn-light"> Add Service </a>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <br />
+                                        <div class="alert-link" style="margin-top:40px">
+                                            <a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-light"> Add Address </a>
+                                            <a href="@Url.Action("AddDriver","ClientCompany")" class="btn btn-light"> Add Driver </a>
+                                            <a href="@Url.Action("AddVehicle","ClientCompany")" class="btn btn-light"> Add Vehicle </a>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <center>
-                        <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4></center>
+                            <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4>
+                        </center>
                     </div>
                 </div>
             </div>
@@ -136,7 +140,9 @@
                                 BidAmount : @item.BidAmount <br />
                                 EstimatedDelivery : @item.EstimatedDelivery <br />
                             </h5>
-                            <a href="@Url.Action("Index","ClientBooking", new { id = item.ConsignmentId })" class="btn btn-outline-primary">Accept</a>
+                            <a href="@Url.Action("Insert","ClientBooking", new { id = item.ConsignmentId , id1=item.BidId })" class="btn btn-outline-primary">
+                                    Accept
+                            </a>
                         </div>
                     </div>
                 </div>

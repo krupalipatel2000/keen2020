@@ -2,7 +2,52 @@
     ViewBag.Title = "Home Page";
 }
 
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" /> 
+
+    <title>Hello, world!</title>
+    <style>
+        .col-md-3 {
+            display: inline-block;
+            margin-left: -4px;
+        }
+
+        .carousel-indicators .active {
+            background-color: blue;
+        }
+
+        .col-md-3 img {
+            width: 285px;
+            height: 260px;
+        }
+
+        body .carousel-indicator li {
+            background-color: blue;
+        }
+
+        body .carousel-indicators {
+            bottom: 0;
+        }
+
+        body .carousel-control-prev-icon,
+        body .carousel-control-next-icon {
+            margin-top: 1600px;
+            background-color: blue;
+        }
+
+        body .no-padding {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    </style>
+</head>
 <body>
     <div class="slider_area">
         <div class="single_slider  d-flex align-items-center slider_bg_1">
@@ -21,73 +66,120 @@
             </div>
         </div>
     </div>
+    <br />
+    <br />
+    <div class="container">
+        <div id="demo" class="carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
 
-    <div class="service_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title mb-50 text-center">
-                        <h3>
-                            Services We Offer
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card-deck">
-                        <div class="card">
+            <!--Slideshow starts here -->
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active" style="margin-left:90px;">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" style="width: 18rem;">
                             <img src="~/Images/ocean.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Ocean Freight</h5>
-                                <p class="card-text">Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
-                        <div class="card">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3" style="margin-left:30px;">
+                        <div class="card" style="width: 18rem;">
                             <img src="~/Images/land.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Land Transport</h5>
-                                <p class="card-text">Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
-                        <div class="card">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3" style="margin-left:30px;">
+                        <div class="card" style="width: 18rem;">
                             <img src="~/Images/air.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Air Freight</h5>
-                                <p class="card-text">Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card-deck">
-                        <div class="card">
+                <div class="carousel-item" style="margin-left:90px;">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" style="width: 18rem;">
                             <img src="~/Images/flame1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Flammable Service</h5>
-                                <p class="card-text">Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
-                        <div class="card">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3" style="margin-left:30px;">
+                        <div class="card" style="width: 18rem;">
                             <img src="~/Images/delicate1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Delicate Service</h5>
-                                <p class="card-text">Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
-                        <div class="card">
-                            <img src="~/Images/coldstorage.jpg" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3" style="margin-left:30px;">
+                        <div class="card" style="width: 18rem;">
+                            <img src="~/Images/cold1.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Cold Storage Service</h5>
-                                <p class="card-text">Esteem spirit temper too say adieus who direct esteem.</p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        @*<script src="~/Scripts/jquery-3.5.0.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>*@
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        @*<script src="~/Scripts/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>*@
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+        @*<script src="~/Scripts/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>*@
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </div>
+    <br /><br />
+    <div class="contact_action_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-md-6">
+                    <div class="action_heading">
+                        <h3>100% secure and safe</h3>
+                        <p>
+                            Esteem spirit temper too say adieus who direct esteem. It look estee luckily or picture
+                            placing drawing.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-md-6">
+                    <div class="call_add_action">
+                        <a href="#" class="boxed-btn3">+10 672 457 356</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+</html>

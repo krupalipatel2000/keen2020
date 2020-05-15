@@ -4,89 +4,156 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<center>
-    <div class="p-2">
-        <div class="card shadow mb-4" style="width:1000px;height:500px;">
-            <div class="card-header py-3">
-                <center><h4 class="m-0 font-weight-bold text-primary">Add Vehicle Detail</h4></center>
-            </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <select name="vehicletype" class="form-control form-control-user">
-                            <option value="">Select Vehicle Type &nbsp;&nbsp;</option>
-                            @*@foreach(var item in ViewBag.vehicle)
-                            {
-                                <option value="@item.vehicletype.TypeName">
-                                    @item.vehicletype.TypeName
-                                </option>
-                            }*@
-                            <option value="S"> Ship &nbsp;&nbsp;</option>
-                            <option value="T"> Truck &nbsp;&nbsp;</option>
-                            <option value="P"> Plane &nbsp;&nbsp;</option>
-                        </select>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <label for="txtVname">Vehicle Name : </label>
+<html>
+<head>
+    <script>
+        function validate() {
+            var vname = document.registration.txtVname;
+            var rno = document.registration.txtRno;
+            var dimage = document.registration.txtImage;
+            var fuel = document.registration.txtFuel;
+            var capacity = document.registration.txtCapacity;
+            var image = document.registration.txtVimage;
+
+            var vname_pat = /^[A-Za-z]+$/;
+            if (vname.value != "" && vname.value.match(vname_pat)) {
+            }
+            else {
+                alert("VehicleName is not Proper");
+                vname.focus();
+                return false;
+            }
+            var rno_pat = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/;
+            if (rno.value != "" && rno.value.match(rno_pat)) {
+            }
+            else {
+                alert("Registration number is not Proper");
+                rno.focus();
+                return false;
+            }
+            //var image_pat = /^[A-Za-z]+$/;
+            if (dimage.value != "") {
+            }
+            else {
+                alert("Select DocumentImage");
+                dimage.focus();
+                return false;
+            }
+
+            var fuel_pat = /^[A-Za-z]+$/;
+            if (fuel.value.match(fuel_pat)) {
+            }
+            else {
+                alert("Fuel is not Proper");
+                fuel.focus();
+                return false;
+            }
+            if (capacity.value != "") {
+            }
+            else {
+                alert("Capacity is not Proper");
+                capacity.focus();
+                return false;
+            }
+            if (image.value != "") {
+            }
+            else {
+                alert("Select Image");
+                image.focus();
+                return false;
+            }
+
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <div class="p-2">
+            <div class="card shadow mb-4" style="width:1000px;height:500px;">
+                <div class="card-header py-3">
+                    <center><h4 class="m-0 font-weight-bold text-primary">Add Vehicle Detail</h4></center>
+                </div>
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <select name="vehicletype" class="form-control form-control-user">
+                                <option value="">Select Vehicle Type &nbsp;&nbsp;</option>
+                                @*@foreach(var item in ViewBag.vehicle)
+                                    {
+                                        <option value="@item.vehicletype.TypeName">
+                                            @item.vehicletype.TypeName
+                                        </option>
+                                    }*@
+                                <option value="S"> Ship &nbsp;&nbsp;</option>
+                                <option value="T"> Truck &nbsp;&nbsp;</option>
+                                <option value="P"> Plane &nbsp;&nbsp;</option>
+                            </select>
                         </div>
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <label for="txtRno">Registration No : </label>
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <label for="txtVname">Vehicle Name : </label>
+                            </div>
+                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                <label for="txtRno">Registration No : </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtVname" placeholder="Vehicle Name">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtVname" placeholder="Vehicle Name">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtRno" placeholder="Registration No">
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtRno" placeholder="Registration No">
+                        <div class="row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <label for="txtImage">Document Image : </label>
+                            </div>
+                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                <label for="txtFuel">Fuel : </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <label for="txtImage">Document Image : </label>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtImage" name="txtImage" placeholder="Logo">
+                                <img src="#" id="txtImage" name="txtImage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtFuel" placeholder="Type of Fuel">
+                            </div>
                         </div>
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <label for="txtFuel">Fuel : </label>
+                        <div class="row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <label for="txtCapacity">Capacity of Vehicle : </label>
+                            </div>
+                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                <label for="txtVimage">Vehicle Image : </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtImage" name="txtImage" placeholder="Logo">
-                            <img src="#" id="txtImage" name="txtImage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtCapacity" placeholder="Capacity of Vehicle">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtVimage" name="txtVimage" placeholder="Logo">
+                                <img src="#" id="txtVimage" name="txtVimage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtFuel" placeholder="Type of Fuel">
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="submit" name="txtSubmit" value="Submit" onclick="return validate();" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <label for="txtCapacity">Capacity of Vehicle : </label>
-                        </div>
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <label for="txtVimage">Vehicle Image : </label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtCapacity" placeholder="Capacity of Vehicle">
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtVimage" name="txtVimage" placeholder="Logo">
-                            <img src="#" id="txtVimage" name="txtVimage" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
-                        </div>
-                    </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="submit" name="txtSubmit" value="Submit" />
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</center>
+    </center>
+</body>
+</html>
 <script>
     var loadFile = function (event) {
         var output = document.getElementById('txtImage');
