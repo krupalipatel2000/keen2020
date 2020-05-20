@@ -209,7 +209,7 @@
                                     <div class="form-group">
                                         <select name="driver" class="form-control">
                                             <option value="">Select Driver &nbsp;&nbsp;</option>
-                                            @foreach (var item in ViewBag.Booking)
+                                            @foreach (var item in ViewBag.driver)
                                             {
                                                 <option value="">
                                                     @item.driver.DriverName
@@ -222,12 +222,12 @@
                                     <div class="form-group">
                                         <select name="vehicle" class="form-control">
                                             <option value="">Select Vehicle &nbsp;&nbsp;</option>
-                                            <option value="">
-                                                @foreach (var item in ViewBag.Booking)
-                                                {
+                                            @foreach (var item in ViewBag.driver)
+                                            {
+                                                <option value="">
                                                     @item.vehicle.VehicleName
-                                                }
-                                            </option>
+                                                </option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@
                                 <input type="text" class="form-control" name="txtpayMode" placeholder="Enter Payment Mode" />
                             </div>
                             <div class="form-group">
-                                <center><input type="submit" class="btn btn-success" value="Assign" /></center>
+                                <center><a href="@Url.Action("Index","ClientBooking")" class="btn btn-success">Assign</a></center>
                             </div>
                         </div>
                     </form>

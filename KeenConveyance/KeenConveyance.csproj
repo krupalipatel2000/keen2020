@@ -2821,7 +2821,7 @@
     <Content Include="Views\ClientCompany\Rate.cshtml" />
     <Content Include="Views\Home\ForgetPassword.cshtml" />
     <Content Include="Views\ClientCompany\AddService.cshtml" />
-    <Content Include="Views\ClientBooking\Insert.cshtml" />
+    <Content Include="Views\ClientBooking\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
