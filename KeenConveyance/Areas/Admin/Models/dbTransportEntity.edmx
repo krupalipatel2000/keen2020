@@ -96,11 +96,11 @@
           </Key>
           <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConsignmentId" Type="int" Nullable="false" />
-          <Property Name="VehicleId" Type="int" Nullable="false" />
-          <Property Name="DriverId" Type="int" Nullable="false" />
-          <Property Name="DispatchDate" Type="datetime" Nullable="false" />
-          <Property Name="DeliveredDate" Type="datetime" Nullable="false" />
-          <Property Name="TotalPayment" Type="int" Nullable="false" />
+          <Property Name="VehicleId" Type="int" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="DispatchDate" Type="datetime" />
+          <Property Name="DeliveredDate" Type="datetime" />
+          <Property Name="TotalPayment" Type="int" />
           <Property Name="Remarks" Type="varchar" MaxLength="50" />
           <Property Name="IsPaid" Type="bit" Nullable="false" />
           <Property Name="PaymentMode" Type="varchar" MaxLength="50" />
@@ -505,11 +505,11 @@
           </Key>
           <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
-          <Property Name="VehicleId" Type="Int32" Nullable="false" />
-          <Property Name="DriverId" Type="Int32" Nullable="false" />
-          <Property Name="DispatchDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeliveredDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TotalPayment" Type="Int32" Nullable="false" />
+          <Property Name="VehicleId" Type="Int32" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="DispatchDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveredDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalPayment" Type="Int32" />
           <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
           <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

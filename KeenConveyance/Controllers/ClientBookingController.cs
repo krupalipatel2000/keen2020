@@ -16,13 +16,12 @@ namespace KeenConveyance.Controllers
             var Booking = from ob in dc.tblBookings
                           join ob2 in dc.tblConsignments on ob.ConsignmentId equals ob2.ConsignmentId
                           join ob3 in dc.tblUsers on ob2.UserId equals ob3.UserId
-                          //where ob2.UserId == ob3.UserId
+                          where ob2.UserId == ob3.UserId
                           select new JoinViewAll
                           {
                               user = ob3,
                               consignment = ob2,
-                              book = ob,
-                              
+                              book = ob
                           };
             ViewBag.Booking = Booking;
             var driver = from obCom in dc.tblTransportCompanies
@@ -36,12 +35,8 @@ namespace KeenConveyance.Controllers
             ViewBag.driver= driver;
             return View(Booking);
         }
-        public ActionResult Insert()
-        {
-            return View();
-        }
         [HttpPost]
-        public ActionResult Insert(int id, int id1)
+        public ActionResult Index(FormCollection form, int id, int id1)
         {
             tblBooking book = new tblBooking();
             book.ConsignmentId = id;
@@ -49,6 +44,10 @@ namespace KeenConveyance.Controllers
             book.IsPaid = false;
             dc.tblBookings.Add(book);
             dc.SaveChanges();
+            return View();
+        }
+        public ActionResult Insert()
+        {
             return View();
         }
     }

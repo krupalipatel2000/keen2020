@@ -193,7 +193,7 @@ namespace KeenConveyance.Controllers
             rate.Rate=form["txtRate"];
             dc.tblReviews.Add(rate);
             dc.SaveChanges();
-            return View();
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Edit(int id)
         {

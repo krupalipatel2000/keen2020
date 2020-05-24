@@ -16,11 +16,11 @@ namespace KeenConveyance.Areas.Admin.Models
     {
         public int BookingId { get; set; }
         public int ConsignmentId { get; set; }
-        public int VehicleId { get; set; }
-        public int DriverId { get; set; }
-        public System.DateTime DispatchDate { get; set; }
-        public System.DateTime DeliveredDate { get; set; }
-        public int TotalPayment { get; set; }
+        public Nullable<int> VehicleId { get; set; }
+        public Nullable<int> DriverId { get; set; }
+        public Nullable<System.DateTime> DispatchDate { get; set; }
+        public Nullable<System.DateTime> DeliveredDate { get; set; }
+        public Nullable<int> TotalPayment { get; set; }
         public string Remarks { get; set; }
         public bool IsPaid { get; set; }
         public string PaymentMode { get; set; }
