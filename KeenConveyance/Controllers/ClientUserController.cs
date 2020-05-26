@@ -19,31 +19,13 @@ namespace KeenConveyance.Controllers
             {
                 tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
                 ViewBag.Year = user.CreatedOn.Year.ToString();
+                ViewBag.con = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob);
+                ViewBag.conId = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().ConsignmentId;
                 return View(user);
             }
             else
             {
                 return RedirectToAction("Login", "Home");
-            }
-        }
-        public ActionResult UserProfile(int id)
-        {
-            if (id != 0)
-            {
-                tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
-                ViewBag.con = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob);
-                ViewBag.conId = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().ConsignmentId;
-                ViewBag.House = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().HouseNo;
-                ViewBag.Landmark = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Landmark;
-                ViewBag.Area = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Area;
-                ViewBag.Source = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Address;
-                ViewBag.Destination = (from ob in dc.tblAddresses where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Address;
-                ViewBag.Distance = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().Distance;
-                return View(user);
-            }
-            else
-            {
-                return View();
             }
         }
         public ActionResult Insert()

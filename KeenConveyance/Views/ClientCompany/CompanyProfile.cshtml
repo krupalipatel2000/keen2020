@@ -76,11 +76,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <center>
-                            <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4>
-                        </center>
-                    </div>
+                    @if (Session["CompanyId"] != null)
+                    { 
+                        <div class="card-footer">
+                            <center>
+                                <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4>
+                            </center>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -140,9 +143,10 @@
                                 BidAmount : @item.BidAmount <br />
                                 EstimatedDelivery : @item.EstimatedDelivery <br />
                             </h5>
-                            <a href="@Url.Action("Index","ClientBooking", new { id = item.ConsignmentId , id1=item.BidId })" class="btn btn-outline-primary">
+                            <a href="@Url.Action("Index","Home")" class="btn btn-outline-primary" onclick='alert("Your bid is accepted")';>
                                     Accept
                             </a>
+                            @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
                         </div>
                     </div>
                 </div>

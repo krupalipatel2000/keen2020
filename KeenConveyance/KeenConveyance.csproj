@@ -2793,7 +2793,6 @@
     <Content Include="Views\ClientInquery\Index.cshtml" />
     <Content Include="Views\ClientCompany\Insert.cshtml" />
     <Content Include="Views\ClientCompany\Index.cshtml" />
-    <Content Include="Views\ClientUser\UserProfile.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
     <Content Include="Views\ClientConsignment\Insert.cshtml" />
