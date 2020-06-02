@@ -169,6 +169,7 @@ namespace KeenConveyance.Controllers
                 var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
                 var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
                 var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+                ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 ViewBag.bid = Bid;
