@@ -35,17 +35,7 @@ namespace KeenConveyance.Controllers
             //ViewBag.driver= driver;
             return View();
         }
-        [HttpPost]
-        public ActionResult Index(int id, int id1)
-        {
-            tblBooking book = new tblBooking();
-            book.ConsignmentId = id;
-            book.BidId = id1;
-            //book.IsPaid = false;
-            dc.tblBookings.Add(book);
-            dc.SaveChanges();
-            return View();
-        }
+        
         
     }
 }

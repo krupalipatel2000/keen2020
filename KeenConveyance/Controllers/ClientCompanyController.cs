@@ -170,6 +170,13 @@ namespace KeenConveyance.Controllers
                 var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
                 var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
                 ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
+                var CompanyId = Convert.ToInt32(Session["CompanyId"]);
+                var AcceptedBid = from obBid in dc.tblBiddings
+                                  join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+                                  where obBid.CompanyId == CompanyId
+                                   && obBook.VehicleId == null
+                                  select obBid;
+                ViewBag.Abid = AcceptedBid.ToList();
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 ViewBag.bid = Bid;
@@ -339,6 +346,16 @@ namespace KeenConveyance.Controllers
             dc.tblServices.Add(service);
             dc.SaveChanges();
             return RedirectToAction("CompanyProfile", "ClientCompany", new { id = service.CompanyId });
+        }
+        public ActionResult AddBid(int id, int id1)
+        {
+            tblBooking book = new tblBooking();
+            book.ConsignmentId = id;
+            book.BidId = id1;
+            //book.IsPaid = false;
+            dc.tblBookings.Add(book);
+            dc.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

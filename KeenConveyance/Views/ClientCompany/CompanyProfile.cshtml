@@ -89,7 +89,14 @@
             <br />
             <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
             <br />
-            <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Accepted Bids : </h5>
+            <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                Accepted Bids :
+                @foreach(var item in ViewBag.Abid)
+                {
+                    @item.BidId
+                }
+               
+            </h5>
         </div>
     </div>
 </div>
@@ -131,8 +138,8 @@
 <br />
 
 <div class="row offset-1">
-    <div class="card-deck">
-        <form method="post">
+    <form method="post">
+        <div class="card-deck">
             @foreach (var item in ViewBag.bid)
             {
                 <center>
@@ -149,7 +156,7 @@
                                     BidAmount : @item.BidAmount <br />
                                     EstimatedDelivery : @item.EstimatedDelivery <br />
                                 </h5>
-                                <a href="@Url.Action("Index","ClientBooking", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary" onclick='alert("Your bid is accepted")' ;>
+                                <a href="@Url.Action("AddBid","ClientCompany", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary">
                                     Accept
                                 </a>
                                 @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
@@ -158,8 +165,8 @@
                     </div>
                 </center>
             }
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <div class="row offset-1">
