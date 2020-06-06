@@ -243,6 +243,7 @@
     <Compile Include="Controllers\ClientConsignmentController.cs" />
     <Compile Include="Controllers\ClientContactController.cs" />
     <Compile Include="Controllers\ClientInqueryController.cs" />
+    <Compile Include="Controllers\ClientServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2823,6 +2824,9 @@
     <Content Include="Views\ClientCompany\AddService.cshtml" />
     <Content Include="Views\ClientBooking\Index.cshtml" />
     <Content Include="Views\ClientCompany\AddBid.cshtml" />
+    <Content Include="Views\ClientCompany\ViewAconsignment.cshtml" />
+    <Content Include="Views\ClientCompany\EditBook.cshtml" />
+    <Content Include="Views\ClientService\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

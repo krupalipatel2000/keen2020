@@ -84,21 +84,22 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 p-2">
-        <div class="card shadow mb-4" style="width:200px;">
-            <br />
-            <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
-            <br />
-            <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                Accepted Bids :
-                @foreach(var item in ViewBag.Abid)
-                {
-                    @item.BidId
-                }
-               
-            </h5>
+    @if (Session["CompanyId"] != null)
+    {
+        <div class="col-md-4 p-2">
+            <div class="card shadow mb-4" style="width:200px;">
+                <br />
+                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
+                <br />
+                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    Accepted Bids :
+                    
+                        @*<a href="@Url.Action("ViewAconsignment","ClientCompany",new { id =  })">@ViewBag.Abid</a>*@
+                    
+                </h5>
+            </div>
         </div>
-    </div>
+    }
 </div>
 
 

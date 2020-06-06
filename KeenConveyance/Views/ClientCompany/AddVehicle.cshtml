@@ -23,14 +23,14 @@
                 vname.focus();
                 return false;
             }
-            var rno_pat = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/;
-            if (rno.value != "" && rno.value.match(rno_pat)) {
-            }
-            else {
-                alert("Registration number is not Proper");
-                rno.focus();
-                return false;
-            }
+            //var rno_pat = /^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/;
+            //if (rno.value != "" && rno.value.match(rno_pat)) {
+            //}
+            //else {
+            //    alert("Registration number is not Proper");
+            //    rno.focus();
+            //    return false;
+            //}
             //var image_pat = /^[A-Za-z]+$/;
             if (dimage.value != "") {
             }
@@ -77,20 +77,20 @@
                 </div>
                 <div class="card-body">
                     <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <select name="vehicletype" class="form-control form-control-user">
                                 <option value="">Select Vehicle Type &nbsp;&nbsp;</option>
-                                @*@foreach(var item in ViewBag.vehicle)
+                                @foreach(var item in ViewBag.vehicle)
                                     {
                                         <option value="@item.vehicletype.TypeName">
                                             @item.vehicletype.TypeName
                                         </option>
-                                    }*@
+                                    }
                                 <option value="S"> Ship &nbsp;&nbsp;</option>
                                 <option value="T"> Truck &nbsp;&nbsp;</option>
                                 <option value="P"> Plane &nbsp;&nbsp;</option>
                             </select>
-                        </div>
+                        </div>*@
                         <div class="form-group row">
                             <div class="col-sm-2 mb-3 mb-sm-0">
                                 <label for="txtVname">Vehicle Name : </label>

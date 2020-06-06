@@ -1,0 +1,57 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblConsignment
+@{
+    ViewBag.Title = "ViewAconsignment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2><b>Company's Accepted Bid</b></h2></center>
+
+<div class="card-deck">
+    @foreach (var item in ViewBag.Aconsignment)
+    {
+        <div class="row">
+            <div class="col-md-7">
+                <div class="p-2 offset-1">
+                    <div class="card shadow mb-4" style="width:550px;">
+                        <div class="card-header py-3">
+                            <center><h4 class="m-0 font-weight-bold text-primary">Accepted Consignment</h4></center>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <h3 class="alert-light"># @item.ConsignmentId</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="alert-light">Receiver Name : </h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="alert-light">Unit Type : </h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="alert-light">Unit Value : </h5>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="alert-light">@item.ReceiverName</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="alert-light">@item.UnitType</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="alert-light">@item.UnitValue</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <center><a href="@Url.Action("EditBook", "ClientCompany", new { id = item.ConsignmentId })" class="btn btn-success">Assign</a></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

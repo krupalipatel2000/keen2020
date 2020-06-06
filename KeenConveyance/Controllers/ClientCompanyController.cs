@@ -176,7 +176,13 @@ namespace KeenConveyance.Controllers
                                   where obBid.CompanyId == CompanyId
                                    && obBook.VehicleId == null
                                   select obBid;
-                ViewBag.Abid = AcceptedBid.ToList();
+                ViewBag.Abid = AcceptedBid.ToList().Count;
+                var consignment = from obBid in dc.tblBiddings
+                                  join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+                                  where obBid.CompanyId == CompanyId
+                                  // && obBook.VehicleId == null
+                                  select obBid;
+                ViewBag.Consignment = consignment.ToList();
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 ViewBag.bid = Bid;
@@ -186,6 +192,44 @@ namespace KeenConveyance.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+        }
+        public ActionResult ViewAconsignment(int id)
+        {
+            var Aconsignment = from obCon in dc.tblConsignments
+                               join obBid in dc.tblBiddings on obCon.ConsignmentId equals obBid.ConsignmentId
+                              join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+                              //where obBid.CompanyId == CompanyId
+                              // && obBook.VehicleId == null
+                              select obCon;
+            ViewBag.Aconsignment = Aconsignment;
+            return View();
+        }
+        public ActionResult EditBook(int id)
+        {
+            int CompanyID = Convert.ToInt32(Session["CompanyId"]);
+            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BidId == id);
+            var drivers = from obDriver in dc.tblDrivers where obDriver.CompanyId == CompanyID select obDriver;
+            var vehicles = from obVehicle in dc.tblVehicles where obVehicle.CompanyId == CompanyID select obVehicle;
+            ViewBag.driver = new SelectList(drivers, "DriverId", "DriverName");
+            ViewBag.vehicle = new SelectList(vehicles, "VehicleId", "VehicleName");
+            return View(book);
+        }
+        [HttpPost]
+        public ActionResult EditBook(FormCollection form,int id)
+        {
+            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.ConsignmentId == id);
+            book.VehicleId = Convert.ToInt32(form["ddVehicle"]);
+            book.DriverId = Convert.ToInt32(form["ddDriver"]);
+            book.DispatchDate = Convert.ToDateTime(form["txtDispatch"]);
+            book.DeliveredDate = Convert.ToDateTime(form["txtDeliver"]);
+            book.TotalPayment = Convert.ToInt32(form["txtPayment"]);
+            book.PaymentMode = form["txtPaymentMode"];
+            book.Remarks = form["txtRemark"];
+            dc.SaveChanges();
+
+            //tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
+            //bidding.IsAssigned = true;
+            return RedirectToAction("Index","Home");
         }
         public ActionResult Rate()
         {
@@ -305,7 +349,7 @@ namespace KeenConveyance.Controllers
             }
             tblVehicle vehicle = new tblVehicle();
             vehicle.CompanyId = Convert.ToInt32(Session["CompanyId"]);
-            vehicle.VehicleTypeId = Convert.ToInt32(form["vehicletype"]);
+            //vehicle.VehicleTypeId = Convert.ToInt32(form["vehicletype"]);
             vehicle.VehicleName = form["txtVname"];
             vehicle.RegNo = form["txtRno"];
             vehicle.DocumentImage = name.ToString();
