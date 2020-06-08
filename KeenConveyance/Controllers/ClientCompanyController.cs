@@ -227,9 +227,10 @@ namespace KeenConveyance.Controllers
             book.Remarks = form["txtRemark"];
             dc.SaveChanges();
 
-            //tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
-            //bidding.IsAssigned = true;
-            return RedirectToAction("Index","Home");
+            tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
+            bidding.IsAssigned = true;
+            dc.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Rate()
         {

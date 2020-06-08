@@ -93,9 +93,10 @@
                 <br />
                 <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                     Accepted Bids :
-                    
-                        @*<a href="@Url.Action("ViewAconsignment","ClientCompany",new { id =  })">@ViewBag.Abid</a>*@
-                    
+                    @foreach (var item in ViewBag.Consignment)
+                    {
+                        <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = item.BidId })">@ViewBag.Abid</a>
+                    }
                 </h5>
             </div>
         </div>

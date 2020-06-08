@@ -3,10 +3,9 @@
 	float : left;
 }
 
-    .rating > input {
-        color: #ddd;
-        display: none;
-    }
+.rating>input{
+	display : none;
+}
 
 .rating>label:before{
 	margin : 5px;

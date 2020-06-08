@@ -10,21 +10,21 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
     <!-- CSS here -->
-    <link href="~/clientcontent/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/clientcontent/css/bootstrap.min.css">
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/owl.carousel.min.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/magnific-popup.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/themify-icons.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/nice-select.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/flaticon.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/gijgo.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/animate.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/slick.css" rel="stylesheet" />
-    <link href="~/clientcontent/css/slicknav.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/clientcontent/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/clientcontent/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/clientcontent/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/clientcontent/css/themify-icons.css">
+    <link rel="stylesheet" href="~/clientcontent/css/nice-select.css">
+    <link rel="stylesheet" href="~/clientcontent/css/flaticon.css">
+    <link rel="stylesheet" href="~/clientcontent/css/gijgo.css">
+    <link rel="stylesheet" href="~/clientcontent/css/animate.css">
+    <link rel="stylesheet" href="~/clientcontent/css/slick.css">
+    <link rel="stylesheet" href="~/clientcontent/css/slicknav.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-    <link href="~/clientcontent/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/clientcontent/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 <body>
@@ -41,7 +41,6 @@
                             <div class="logo">
                                 <a href="index.html">
                                     <img src="~/Images/keenconveyance.jpg" style="height:200px;width:200px" alt="">
-                                    @*<font size="5" style="font-family:Candara"><b>KEEN CONVEYANCE</b></font>*@
                                 </a>
                             </div>
                         </div>
@@ -53,7 +52,6 @@
                                         <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
                                     </ul>
                                 </div>
-
                                 @*<div class="book_btn d-none d-lg-block">
                                         <a class="boxed-btn3-line" href="#">Get Free Quote</a>
                                     </div>*@
@@ -66,64 +64,65 @@
                         </div>
                     </div>
                 </div>
-                <div id="sticky-header" class="main-header-area">
-                    <div class="container">
-                        <div class="header_bottom_border">
-                            <div class="row align-items-center">
-                                <div class="col-12 d-block d-lg-none">
-                                    <div class="logo">
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-12 d-block d-lg-none">
+                                <div class="logo">
+                                    <a href="index.html">
                                         <img src="img/logo.png" alt="">
-                                    </div>
+                                    </a>
                                 </div>
-                                <div class="col-xl-9 col-lg-9">
-                                    <div class="main-menu  d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">
-                                                <li><a href="@Url.Action("Index","Home")">home</a></li>
-                                                <li><a href="@Url.Action("Index","ClientService")">Services</a></li>
-                                                <li><a href="@Url.Action("AboutUs","Home")">about</a></li>
-                                                @*<li>
-                                                        <a href="#">pages <i class="ti-angle-down"></i></a>
-                                                        <ul class="submenu">
-                                                            <li><a href="service_details.html">service details</a></li>
-                                                            <li><a href="elements.html">elements</a></li>
-                                                        </ul>
-                                                    </li>*@
-                                                @*<li>
-                                                        <a href="#">blog <i class="ti-angle-down"></i></a>
-                                                        <ul class="submenu">
-                                                            <li><a href="blog.html">blog</a></li>
-                                                            <li><a href="single-blog.html">single-blog</a></li>
-                                                        </ul>
-                                                    </li>*@
-                                                <li><a href="@Url.Action("Index","ClientContact")">Contact</a></li>
-                                                <li>
-                                                    @if (Session["LogID"] != null)
-                                                    {
-                                                        <a href="@Url.Action("Insert","ClientConsignment")">Add Consignment</a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a href="@Url.Action("Login","Home")"></a>
-                                                    }
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-9">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="@Url.Action("Index","Home")">home</a></li>
+                                            <li><a href="@Url.Action("Index","ClientService")">Services</a></li>
+                                            <li><a href="@Url.Action("AboutUs","Home")">about</a></li>
+                                            @*<li>
+                                                    <a href="#">pages <i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                        <li><a href="service_details.html">service details</a></li>
+                                                        <li><a href="elements.html">elements</a></li>
+                                                    </ul>
+                                                </li>*@
+                                            @*<li>
+                                                    <a href="#">blog <i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                        <li><a href="blog.html">blog</a></li>
+                                                        <li><a href="single-blog.html">single-blog</a></li>
+                                                    </ul>
+                                                </li>*@
+                                            <li><a href="@Url.Action("Index","ClientContact")">Contact</a></li>
+                                            <li>
+                                                @if (Session["LogID"] != null)
+                                                {
+                                                    <a href="@Url.Action("Insert","ClientConsignment")">Add Consignment</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@Url.Action("Login","Home")"></a>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
-                                @*<div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                                        <div class="Appointment justify-content-end">
-                                            <div class="search_btn">
-                                                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
+                            </div>
+                            @*<div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                    <div class="Appointment justify-content-end">
+                                        <div class="search_btn">
+                                            <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                                                <i class="ti-search"></i>
+                                            </a>
                                         </div>
-                                    </div>*@
-                                <div class="col-12">
-                                    <div class="mobile_menu d-block d-lg-none"></div>
-                                </div>
-
+                                    </div>
+                                </div>*@
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
                         </div>
                     </div>
@@ -134,8 +133,6 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
-    <!--/ contact_location  -->
-    <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">
             <div class="container">
@@ -215,9 +212,6 @@
             </div>
         </div>
     </footer>
-    <!--/ footer end  -->
-    <!-- Button trigger modal -->
-    <!-- Modal -->
     <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -229,8 +223,8 @@
         </div>
     </div>
     <!-- JS here -->
-
     <script src="~/clientcontent/js/vendor/modernizr-3.5.0.min.js"></script>
+    @*<script src="~/clientcontent/js/vendor/jquery-1.12.4.min.js"></script>*@
     <script src="~/clientcontent/js/popper.min.js"></script>
     <script src="~/clientcontent/js/bootstrap.min.js"></script>
     <script src="~/clientcontent/js/owl.carousel.min.js"></script>
@@ -247,16 +241,17 @@
     <script src="~/clientcontent/js/jquery.magnific-popup.min.js"></script>
     <script src="~/clientcontent/js/plugins.js"></script>
     <!-- <script src="js/gijgo.min.js"></script> -->
-
     <script src="~/clientcontent/js/slick.min.js"></script>
 
     <!--contact js-->
-
     <script src="~/clientcontent/js/contact.js"></script>
     <script src="~/clientcontent/js/jquery.ajaxchimp.min.js"></script>
     <script src="~/clientcontent/js/jquery.form.js"></script>
     <script src="~/clientcontent/js/jquery.validate.min.js"></script>
     <script src="~/clientcontent/js/mail-script.js"></script>
+
     <script src="~/clientcontent/js/main.js"></script>
+
+
 </body>
 </html>
