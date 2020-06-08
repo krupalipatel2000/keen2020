@@ -29,6 +29,7 @@ namespace KeenConveyance.Areas.Admin.Models
         public CityMaster city { get; set; }
         public StateMaster state { get; set; }
         public CountryMaster country { get; set; }
+        public tblReview review { get; set; }
         public IEnumerable<JoinViewAll> joinViewAlls { get; set; }
     }
 }

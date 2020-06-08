@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "bill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+
+</head>
+<body>
+    @*<b><input type="text" id="t1"> Bill</b>&nbsp;&nbsp;&nbsp; <br />*@
+    <center>
+        
+        <table class="table table-bordered" style="height:200px;width:1000px;">
+            <tr style="text-align:left">
+                Company Name : @ViewBag.companyname
+            </tr>
+            <tr>
+                <th style="width:500px;">DESCRIPTION</th>
+                <th>PRICE</th>
+                <th>TALLTAX</th>
+                <th>GST</th>
+                <th>TOTALPRICE</th>
+            </tr>
+            <tr>
+                <td height="300px;"></td>
+                <td height="300px;"></td>
+                <td height="300px;"></td>
+                <td height="300px;"></td>
+                <td height="300px;"></td>
+            </tr>
+            <tr>
+                <td colspan=4>Total Price:</td>
+                <td></td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

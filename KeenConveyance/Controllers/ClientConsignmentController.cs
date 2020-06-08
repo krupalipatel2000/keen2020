@@ -178,6 +178,7 @@ namespace KeenConveyance.Controllers
             ViewBag.Destination = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().Address;
             ViewBag.BidCount = (from ob in dc.tblBiddings where ob.ConsignmentId == con.ConsignmentId select ob).Count();
             ViewBag.ConsignmentImage = from ob in dc.tblConSignmentImages where ob.ConsignmentID == id select ob;
+            //ViewBag.assign = from ob in dc.tblBiddings where ob.ConsignmentId == con.ConsignmentId select ob;
             return View(con);
         }
         public ActionResult List(int id)

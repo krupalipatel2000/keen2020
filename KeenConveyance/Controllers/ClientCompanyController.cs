@@ -183,9 +183,18 @@ namespace KeenConveyance.Controllers
                                   // && obBook.VehicleId == null
                                   select obBid;
                 ViewBag.Consignment = consignment.ToList();
+                var rating = from ob in dc.tblReviews
+                             join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
+                             where ob.CompanyId == com.CompanyId select new JoinViewAll
+                             {
+                                 review=ob,
+                                 user=obUser,
+                                 company=com
+                             };
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 ViewBag.bid = Bid;
+                ViewBag.rate = rating;
                 return View(com);
             }
             else
@@ -237,11 +246,12 @@ namespace KeenConveyance.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Rate(FormCollection form)
+        public ActionResult Rate(FormCollection form,int id)
         {
-            tblReview rate = new tblReview();
+
+            tblReview rate = dc.tblReviews.SingleOrDefault(ob => ob.CompanyId == id);
             rate.UserId = Convert.ToInt32(Session["LogID"]);
-            rate.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            rate.CompanyId = id;
             rate.Review = form["txtReview"];
             rate.Rate=form["txtRate"];
             dc.tblReviews.Add(rate);
@@ -401,6 +411,12 @@ namespace KeenConveyance.Controllers
             dc.tblBookings.Add(book);
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult bill(int id)
+        {
+            tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.CompanyId == id);
+            ViewBag.companyname = (from ob in dc.tblTransportCompanies where ob.CompanyId == bill.CompanyId select ob).Take(1).SingleOrDefault().CompanyName; ;
+            return View(bill);
         }
     }
 }

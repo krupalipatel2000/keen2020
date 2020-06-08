@@ -295,8 +295,8 @@
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        //alert("Aavi Gayu");
         $('#ddCountry').change(function () {
-           //alert("Aavi Gayu");
             $.ajax({
                 type: "post",
                 url: "@Url.Action("GetState", "ClientConsignment")",
