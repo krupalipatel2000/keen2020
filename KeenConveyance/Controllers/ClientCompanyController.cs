@@ -412,11 +412,16 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult bill()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult bill(int id)
         {
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.CompanyId == id);
-            ViewBag.companyname = (from ob in dc.tblTransportCompanies where ob.CompanyId == bill.CompanyId select ob).Take(1).SingleOrDefault().CompanyName; ;
-            return View(bill);
+            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == bill.CompanyId select ob).Take(1).SingleOrDefault().CompanyName;
+            return View();
         }
     }
 }
