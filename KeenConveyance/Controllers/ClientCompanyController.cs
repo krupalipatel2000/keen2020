@@ -412,11 +412,6 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult bill()
-        {
-            return View();
-        }
-        [HttpPost]
         public ActionResult bill(int id)
         {
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.CompanyId == id);
