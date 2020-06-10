@@ -216,7 +216,7 @@ namespace KeenConveyance.Controllers
         public ActionResult EditBook(int id)
         {
             int CompanyID = Convert.ToInt32(Session["CompanyId"]);
-            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BidId == id);
+            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.ConsignmentId == id);
             var drivers = from obDriver in dc.tblDrivers where obDriver.CompanyId == CompanyID select obDriver;
             var vehicles = from obVehicle in dc.tblVehicles where obVehicle.CompanyId == CompanyID select obVehicle;
             ViewBag.driver = new SelectList(drivers, "DriverId", "DriverName");
@@ -239,7 +239,7 @@ namespace KeenConveyance.Controllers
             tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
             bidding.IsAssigned = true;
             dc.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("bill", "ClientCompany",new { id = book.BookingId });
         }
         public ActionResult Rate()
         {
@@ -413,9 +413,25 @@ namespace KeenConveyance.Controllers
             return RedirectToAction("Index", "Home");
         }
         public ActionResult bill()
-        {
+        {   
 
             return View();
+        }
+        [HttpPost]
+        public ActionResult bill(FormCollection form,int id)
+        {
+            tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
+
+            bill.BookingId = id;
+            bill.Desc = form["txtDesc"];
+            bill.Price = Convert.ToInt32(form["txtPrice"]);
+            bill.TollTax = Convert.ToInt32(form["txtToll"]);
+            bill.GST = (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
+            bill.TotalPrice = Convert.ToInt32(form["txtPrice"]) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
+            bill.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            dc.tblBills.Add(bill);
+            dc.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

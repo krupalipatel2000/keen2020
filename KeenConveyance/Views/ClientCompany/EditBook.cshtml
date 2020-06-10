@@ -4,6 +4,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+        function validate() {
+            var dname = document.registration.ddDriver;
+	    var vname = document.registration.ddVehicle;
+ 	    var dispatch = document.registration.txtDispatch;
+            var diliver = document.registration.txtDeliver;
+	    var payment = document.registration.txtPayment;
+            var pmode= document.registration.txtPaymentMode;
+	    var remark = document.registration.txtRemark;
+ 	  //  var dname_pat = /^[A-Za-z]+$/;
+    //        if (dname.value != "" && dname.value.match(dname_pat)) {
+    //        }
+    //        else {
+    //            alert("DriverName is not Proper");
+    //            dname.focus();
+    //            return false;
+    //        }
+	   //var vname_pat = /^[A-Za-z]+$/;
+    //        if (vname.value != "" && vname.value.match(vname_pat)) {
+    //        }
+    //        else {
+    //            alert("VehicleName is not Proper");
+    //            vname.focus();
+    //            return false;
+    //        }
+
+	    if (new Date() >= new Date(dispatch .value)) {
+
+            alert("Dispatch date is not proper");
+            dispatch.focus();
+            return false;
+            }
+            if (new Date() >= new Date(diliver.value)) {
+
+            alert("Diliver date is not proper");
+            diliver.focus();
+            return false;
+            }
+            if (payment.value != "" ) {
+            }
+            else {
+                alert("Total payment Is not proper");
+                payment.focus();
+                return false;
+            }
+		pmode_pat= /^[A-Za-z]+$/;
+            if (pmode.value != ""  && pmode.value.match(pmode_pat)) {
+            }
+            else {
+                alert("PaymentMode Is not proper");
+                pmode.focus();
+                return false;
+            }
+	    var remark_pat = /^[A-Za-z]+$/;
+            if (remark.value != "" && remark.value.match(remark_pat)) {
+            }
+            else {
+                alert("Remark is not proper");
+                remark.focus();
+                return false;
+            }
+            return true;
+        }
+</script>
+
 <center>
     <div class="p-2">
         <div class="card shadow mb-4" style="width:700px;">
@@ -45,7 +110,7 @@
                             </label>
                         </div>
                         <div class="col-md-5">
-                            <input type="date" name="txtDispatch" class="form-control" />
+                            <input type="date" name="txtDispatch" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -57,7 +122,7 @@
                             </label>
                         </div>
                         <div class="col-md-5">
-                            <input type="date" name="txtDeliver" class="form-control" />
+                            <input type="date" name="txtDeliver" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -69,7 +134,7 @@
                             </label>
                         </div>
                         <div class="col-md-5">
-                            <input type="text" name="txtPayment" class="form-control" placeholder="Enter payment" />
+                            <input type="number" name="txtPayment" class="form-control" placeholder="Enter payment" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -96,7 +161,8 @@
                             <input type="text" name="txtRemark" class="form-control" placeholder="Enter remarks" />
                         </div>
                     </div>
-                    <a href="@Url.Action("bill","ClientCompany",new { id = Model.BookingId })" class="btn btn-primary">Assign</a>
+                    <input type="submit" class="btn btn-primary" value="Assign" onclick="return validate();" />
+                    @*<a href="@Url.Action("bill","ClientCompany",new { id = Model.BookingId })" class="btn btn-primary">Assign</a>*@
                 </form>
             </div>
         </div>

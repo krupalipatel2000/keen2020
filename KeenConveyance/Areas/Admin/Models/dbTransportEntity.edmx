@@ -83,6 +83,7 @@
           <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="Desc" Type="varchar(max)" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="TollTax" Type="int" Nullable="false" />
           <Property Name="GST" Type="int" Nullable="false" />
@@ -297,7 +298,7 @@
           </Key>
           <Property Name="VehicleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="VehicleTypeId" Type="int" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="int" />
           <Property Name="VehicleName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RegNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DocumentImage" Type="varchar" MaxLength="50" Nullable="false" />
@@ -498,6 +499,7 @@
           <Property Name="TotalPrice" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblBooking">
           <Key>
@@ -706,7 +708,7 @@
           </Key>
           <Property Name="VehicleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="VehicleTypeId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="Int32" />
           <Property Name="VehicleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RegNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DocumentImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -835,6 +837,7 @@
           <EntitySetMapping Name="tblBills">
             <EntityTypeMapping TypeName="dbTransportModel.tblBill">
               <MappingFragment StoreEntitySet="tblBill">
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />

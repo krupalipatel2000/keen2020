@@ -7,14 +7,11 @@
 
 <html>
 <body>
-    @*<b><input type="text" id="t1"> Bill</b>&nbsp;&nbsp;&nbsp; <br />*@
-
-    <center>
-                    <table class="table table-bordered" style="height:200px;width:1000px;">
+    <form method="post">
+        <center>
+            <table class="table table-bordered" style="height:200px;width:1000px;">
                 <tr style="text-align:left">
-                    @*<td><img src="~/Images/@Model.company.Logo" style="height:100px;width:100px;" /></td>*@
-                    @*<td><img src="~/Images/@ViewBag.Logo" style="height:100px;width:100px;" /></td>*@
-                    <td>Company Name : @ViewBag.Company</td>
+                    <td>Company Name : </td>
                 </tr>
                 <tr>
                     <th style="width:500px;">DESCRIPTION</th>
@@ -24,9 +21,15 @@
                     <th>TOTALPRICE</th>
                 </tr>
                 <tr>
-                    <td height="300px;"></td>
-                    <td height="300px;"></td>
-                    <td height="300px;"></td>
+                    <td height="300px;">
+                        <textarea cols="50" rows="10" style="border:hidden;" name="txtDesc"></textarea>
+                    </td>
+                    <td height="300px;">
+                        <input type="text" style="border:hidden;" name="txtPrice" />
+                    </td>
+                    <td height="300px;">
+                        <input type="text" style="border:hidden;" name="txtToll" />
+                    </td>
                     <td height="300px;"></td>
                     <td height="300px;"></td>
                 </tr>
@@ -34,7 +37,13 @@
                     <td colspan=4>Total Price:</td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
             </table>
-    </center>
+        </center>
+    </form>
 </body>
 </html>

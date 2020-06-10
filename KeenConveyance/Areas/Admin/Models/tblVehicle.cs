@@ -16,7 +16,7 @@ namespace KeenConveyance.Areas.Admin.Models
     {
         public int VehicleId { get; set; }
         public int CompanyId { get; set; }
-        public int VehicleTypeId { get; set; }
+        public Nullable<int> VehicleTypeId { get; set; }
         public string VehicleName { get; set; }
         public string RegNo { get; set; }
         public string DocumentImage { get; set; }
