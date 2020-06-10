@@ -96,7 +96,7 @@
                             <input type="text" name="txtRemark" class="form-control" placeholder="Enter remarks" />
                         </div>
                     </div>
-                    <input type="submit" value="Assign" class="btn btn-success" />
+                    <a href="@Url.Action("bill","ClientCompany",new { id = Model.BookingId })" class="btn btn-primary">Assign</a>
                 </form>
             </div>
         </div>
