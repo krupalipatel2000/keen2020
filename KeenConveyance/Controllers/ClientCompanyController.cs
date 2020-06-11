@@ -204,10 +204,11 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult ViewAconsignment(int id)
         {
+            int CompanyID = Convert.ToInt32(Session["CompanyId"]);
             var Aconsignment = from obCon in dc.tblConsignments
                                join obBid in dc.tblBiddings on obCon.ConsignmentId equals obBid.ConsignmentId
                               join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
-                              //where obBid.CompanyId == CompanyId
+                              where obBid.CompanyId == CompanyID
                               // && obBook.VehicleId == null
                               select obCon;
             ViewBag.Aconsignment = Aconsignment;
@@ -420,12 +421,8 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult bill(FormCollection form,int id)
         {
-            var user = from ob in dc.tblBookings
-                       join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
-                       join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
-                       select ob;
             tblBill bill = new tblBill();
-            bill.UserId = Convert.ToInt32(user);
+            
             bill.BookingId = id;
             bill.Desc = form["txtDesc"];
             bill.Price = Convert.ToInt32(form["txtPrice"]);

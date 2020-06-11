@@ -143,7 +143,7 @@ namespace KeenConveyance.Controllers
             con.SourceId = LastFromAddressID;
             con.DestinationId = LastToAddressID;
             dc.SaveChanges();
-            return RedirectToAction("UserProfile","ClientUser");
+            return RedirectToAction("Index","Home");
         }
         [HttpPost]
         public JsonResult GetState(int cid)
