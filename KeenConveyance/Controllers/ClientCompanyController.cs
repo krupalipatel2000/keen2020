@@ -412,16 +412,20 @@ namespace KeenConveyance.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult bill()
-        {   
-
-            return View();
+        public ActionResult bill(int id)
+        {
+            tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
+            return View(bill);
         }
         [HttpPost]
         public ActionResult bill(FormCollection form,int id)
         {
-            tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
-
+            var user = from ob in dc.tblBookings
+                       join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
+                       join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
+                       select ob;
+            tblBill bill = new tblBill();
+            bill.UserId = Convert.ToInt32(user);
             bill.BookingId = id;
             bill.Desc = form["txtDesc"];
             bill.Price = Convert.ToInt32(form["txtPrice"]);
@@ -429,6 +433,7 @@ namespace KeenConveyance.Controllers
             bill.GST = (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
             bill.TotalPrice = Convert.ToInt32(form["txtPrice"]) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
             bill.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            bill.CreatedOn = DateTime.Now;
             dc.tblBills.Add(bill);
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");

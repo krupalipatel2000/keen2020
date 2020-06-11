@@ -299,7 +299,7 @@
     $(document).ready(function () {
         
         $('#ddCountry').change(function () {
-            //alert("Aavi Gayu");
+            alert("Aavi Gayu");
             $.ajax({
                 type: "post",
                 url: "@Url.Action("GetState", "ClientConsignment")",
@@ -323,7 +323,7 @@
         });
 
         $('#ddState').change(function () {
-           //alert("Aavi Gayu");
+           alert("Aavi Gayu");
             $.ajax({
                 type: "post",
                 url: "@Url.Action("GetCity","ClientConsignment")",
