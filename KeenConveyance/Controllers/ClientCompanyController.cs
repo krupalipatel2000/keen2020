@@ -416,13 +416,13 @@ namespace KeenConveyance.Controllers
         public ActionResult bill(int id)
         {
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
+            
             return View(bill);
         }
         [HttpPost]
         public ActionResult bill(FormCollection form,int id)
         {
             tblBill bill = new tblBill();
-            
             bill.BookingId = id;
             bill.Desc = form["txtDesc"];
             bill.Price = Convert.ToInt32(form["txtPrice"]);
