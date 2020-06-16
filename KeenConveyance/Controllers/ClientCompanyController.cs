@@ -183,18 +183,15 @@ namespace KeenConveyance.Controllers
                                   // && obBook.VehicleId == null
                                   select obBid;
                 ViewBag.Consignment = consignment.ToList();
-                var rating = from ob in dc.tblReviews
-                             join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
-                             where ob.CompanyId == com.CompanyId select new JoinViewAll
-                             {
-                                 review=ob,
-                                 user=obUser,
-                                 company=com
-                             };
+                //ViewBag.review = (from ob in dc.tblReviews 
+                //                  join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
+                //                  where ob.CompanyId == com.CompanyId
+                //                  select ob).Take(1).SingleOrDefault().Review;
+                
+                
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 ViewBag.bid = Bid;
-                ViewBag.rate = rating;
                 return View(com);
             }
             else
@@ -244,6 +241,7 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult Rate()
         {
+            
             return View();
         }
         [HttpPost]
@@ -422,6 +420,7 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult bill(FormCollection form,int id)
         {
+
             tblBill bill = new tblBill();
             bill.BookingId = id;
             bill.Desc = form["txtDesc"];

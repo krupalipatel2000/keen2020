@@ -401,7 +401,6 @@
           <EntitySet Name="StateMasters" EntityType="dbTransportModel.StateMaster" />
           <EntitySet Name="tblAdmins" EntityType="dbTransportModel.tblAdmin" />
           <EntitySet Name="tblBiddings" EntityType="dbTransportModel.tblBidding" />
-          <EntitySet Name="tblBills" EntityType="dbTransportModel.tblBill" />
           <EntitySet Name="tblBookings" EntityType="dbTransportModel.tblBooking" />
           <EntitySet Name="tblCMSPages" EntityType="dbTransportModel.tblCMSPage" />
           <EntitySet Name="tblComplaints" EntityType="dbTransportModel.tblComplaint" />
@@ -426,6 +425,7 @@
             <End Role="CountryMaster" EntitySet="CountryMasters" />
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
+          <EntitySet Name="tblBills" EntityType="dbTransportModel.tblBill" />
           </EntityContainer>
         <EntityType Name="CityMaster">
           <Key>
@@ -485,21 +485,6 @@
           <Property Name="IsModified" Type="Boolean" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="IsAssigned" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblBill">
-          <Key>
-            <PropertyRef Name="BillId" />
-          </Key>
-          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BookingId" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="TollTax" Type="Int32" Nullable="false" />
-          <Property Name="GST" Type="Int32" Nullable="false" />
-          <Property Name="TotalPrice" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="Desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblBooking">
           <Key>
@@ -650,7 +635,7 @@
           <Key>
             <PropertyRef Name="ServiceId" />
           </Key>
-          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ServiceDesc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -751,6 +736,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblBill">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="TollTax" Type="Int32" Nullable="false" />
+          <Property Name="GST" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -831,22 +831,6 @@
                 <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="BidId" ColumnName="BidId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblBills">
-            <EntityTypeMapping TypeName="dbTransportModel.tblBill">
-              <MappingFragment StoreEntitySet="tblBill">
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="GST" ColumnName="GST" />
-                <ScalarProperty Name="TollTax" ColumnName="TollTax" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1089,6 +1073,22 @@
                 <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBills">
+            <EntityTypeMapping TypeName="dbTransportModel.tblBill">
+              <MappingFragment StoreEntitySet="tblBill">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="TollTax" ColumnName="TollTax" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

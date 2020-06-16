@@ -17,12 +17,12 @@ namespace KeenConveyance.Areas.Admin.Models
         public int BillId { get; set; }
         public int UserId { get; set; }
         public int BookingId { get; set; }
+        public string Desc { get; set; }
         public int Price { get; set; }
         public int TollTax { get; set; }
         public int GST { get; set; }
         public int TotalPrice { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CompanyId { get; set; }
-        public string Desc { get; set; }
     }
 }

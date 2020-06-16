@@ -98,7 +98,7 @@
                         <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = item.BidId })">@ViewBag.Abid</a>
                     }
                 </h5>
-                
+
             </div>
         </div>
     }
@@ -200,27 +200,22 @@
 </div>
 
 @*<div class="row offset-1">
-    <div class="card-deck">
-        @foreach (var item in ViewBag.rate)
-        {
-            <center>
-                <div class="card shadow mb-4" style="width:300px;">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">
-                            Company's Review & Rating
-                        </h6>
-                    </div>
-                    <div class="card-body" style="height:100px;width:300px;">
-                        <div class="row">
-                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                User Name : @item.user.FirstName <br />
-                                Review : @item.review.Review <br />
-                                Rate : @item.review.Rate <br />
-                            </h5><br />
-                        </div>
-                    </div>
+
+    <center>
+        <div class="card shadow mb-4" style="width:300px;">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-dark">
+                    Company's Review & Rating
+                </h6>
+            </div>
+            <div class="card-deck">
+                <div class="card-body" style="height:100px;width:300px;">
+                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                        @ViewBag.review
+                    </h5><br />
                 </div>
-            </center>
-        }
-    </div>
+            </div>
+        </div>
+    </center>
+
 </div>*@

@@ -31,7 +31,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public virtual DbSet<StateMaster> StateMasters { get; set; }
         public virtual DbSet<tblAdmin> tblAdmins { get; set; }
         public virtual DbSet<tblBidding> tblBiddings { get; set; }
-        public virtual DbSet<tblBill> tblBills { get; set; }
         public virtual DbSet<tblBooking> tblBookings { get; set; }
         public virtual DbSet<tblCMSPage> tblCMSPages { get; set; }
         public virtual DbSet<tblComplaint> tblComplaints { get; set; }
@@ -48,5 +47,6 @@ namespace KeenConveyance.Areas.Admin.Models
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblVehicle> tblVehicles { get; set; }
         public virtual DbSet<tblVehicleType> tblVehicleTypes { get; set; }
+        public virtual DbSet<tblBill> tblBills { get; set; }
     }
 }
