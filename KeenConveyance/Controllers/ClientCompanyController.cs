@@ -420,9 +420,14 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult bill(FormCollection form,int id)
         {
-
+            var user = from ob in dc.tblBookings
+                       join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
+                       join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
+                       select obUser;
             tblBill bill = new tblBill();
+            
             bill.BookingId = id;
+            bill.UserId = Convert.ToInt32(user.Single().UserId);
             bill.Desc = form["txtDesc"];
             bill.Price = Convert.ToInt32(form["txtPrice"]);
             bill.TollTax = Convert.ToInt32(form["txtToll"]);

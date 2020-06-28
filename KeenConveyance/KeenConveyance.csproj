@@ -2828,6 +2828,7 @@
     <Content Include="Views\ClientCompany\EditBook.cshtml" />
     <Content Include="Views\ClientService\Index.cshtml" />
     <Content Include="Views\ClientCompany\bill.cshtml" />
+    <Content Include="Views\ClientUser\UserConsignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

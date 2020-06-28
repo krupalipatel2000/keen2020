@@ -19,14 +19,20 @@ namespace KeenConveyance.Controllers
             {
                 tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
                 ViewBag.Year = user.CreatedOn.Year.ToString();
-                ViewBag.con = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob);
-                ViewBag.conId = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().ConsignmentId;
+
                 return View(user);
             }
             else
             {
                 return RedirectToAction("Login", "Home");
             }
+        }
+        public ActionResult UserConsignment(int id)
+        {
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == id);
+            ViewBag.con = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob);
+            ViewBag.conId = (from ob in dc.tblConsignments where ob.UserId == user.UserId select ob).Take(1).SingleOrDefault().ConsignmentId;
+            return View();
         }
         public ActionResult Insert()
         {

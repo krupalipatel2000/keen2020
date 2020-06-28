@@ -171,6 +171,7 @@ namespace KeenConveyance.Controllers
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
             ViewBag.User = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
             ViewBag.House = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().HouseNo;
+            //ViewBag.house = (from ob in dc.tblAddresses where ob.AddressId == con.DestinationId select ob).Take(1).SingleOrDefault().HouseNo;
             ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;
             ViewBag.Area = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Area;
             ViewBag.Source = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Address;
@@ -285,7 +286,7 @@ namespace KeenConveyance.Controllers
         {
             TempData["id"] = id;
             tblAddress add = dc.tblAddresses.SingleOrDefault(ob => ob.AddressId == id);
-            ViewBag.City = (from ob in dc.CityMasters where ob.ID == add.CityId select ob).Take(1).SingleOrDefault().Name;
+            ViewBag.City = (from ob in dc.CityMasters where ob.ID == add.CityId select ob).Take(1).SingleOrDefault().ID;
 
             return View(add);
         }
