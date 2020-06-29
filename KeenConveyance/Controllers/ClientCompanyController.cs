@@ -183,12 +183,8 @@ namespace KeenConveyance.Controllers
                                   // && obBook.VehicleId == null
                                   select obBid;
                 ViewBag.Consignment = consignment.ToList();
-                //ViewBag.review = (from ob in dc.tblReviews 
-                //                  join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
-                //                  where ob.CompanyId == com.CompanyId
-                //                  select ob).Take(1).SingleOrDefault().Review;
-                
-                
+                //var rate = (from ob in dc.tblReviews where ob.CompanyId == CompanyId select ob).SingleOrDefault().Rate;
+                //ViewBag.Rate = rate.Average();
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 ViewBag.bid = Bid;
@@ -414,7 +410,6 @@ namespace KeenConveyance.Controllers
         public ActionResult bill(int id)
         {
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
-            
             return View(bill);
         }
         [HttpPost]
@@ -425,9 +420,8 @@ namespace KeenConveyance.Controllers
                        join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
                        select obUser;
             tblBill bill = new tblBill();
-            
             bill.BookingId = id;
-            bill.UserId = Convert.ToInt32(user.Single().UserId);
+            bill.UserId = Convert.ToInt32(user.First().UserId);
             bill.Desc = form["txtDesc"];
             bill.Price = Convert.ToInt32(form["txtPrice"]);
             bill.TollTax = Convert.ToInt32(form["txtToll"]);
