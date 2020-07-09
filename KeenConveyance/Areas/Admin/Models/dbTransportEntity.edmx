@@ -161,6 +161,7 @@
           <Property Name="IsDelivered" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IsPaid" Type="bit" Nullable="false" />
+          <Property Name="IsProcessed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblConSignmentImage">
           <Key>
@@ -556,6 +557,7 @@
           <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="IsProcessed" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblConSignmentImage">
           <Key>
@@ -884,6 +886,7 @@
           <EntitySetMapping Name="tblConsignments">
             <EntityTypeMapping TypeName="dbTransportModel.tblConsignment">
               <MappingFragment StoreEntitySet="tblConsignment">
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
                 <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />

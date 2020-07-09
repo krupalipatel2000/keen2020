@@ -233,6 +233,11 @@ namespace KeenConveyance.Controllers
             tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
             bidding.IsAssigned = true;
             dc.SaveChanges();
+
+            tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
+            con.IsProcessed = true;
+            dc.SaveChanges();
+
             return RedirectToAction("bill", "ClientCompany",new { id = book.BookingId });
         }
         public ActionResult Rate()

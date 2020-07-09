@@ -6,50 +6,54 @@
 
 
 <br /><br />
+
 <div class="row offset-1">
     <div class="card-deck">
         @foreach (var item in Model)
         {
-            <div class="col-md-6">
-                <div class="card shadow mb-4" style="width:300px;">
-                    <div class="card-header">
-                        <center>
-                            <h3 class="text-primary" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                <b>Consignment Detail</b>
-                            </h3>
-                        </center>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                            Receiver Name :
-                            <a href=" @Url.Action("ComConsignment", new { id = item.ConsignmentId })">
-                                @item.ReceiverName
-                            </a>
-                        </h5>
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Type of Unit : @item.UnitType</h5>
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Value of Unit : @item.UnitValue</h5>
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Budget : @item.Budget</h5>
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                            IsActive : <b>
-                                @if (item.IsActive == true)
-                                {
-                                    <div class="custom-control custom-switch" style="float:right;margin-left:auto">
-                                        <input type="checkbox" checked class="custom-control-input" id="active_@item.ConsignmentId" onchange="return activate(@item.ConsignmentId)">
-                                        <label class="custom-control-label" for="active_@item.ConsignmentId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style="float:right;margin-left:auto">
-                                        <input type="checkbox" class="custom-control-input" id="active_@item.ConsignmentId" onchange="return activate(@item.ConsignmentId)">
-                                        <label class="custom-control-label" for="active_@item.ConsignmentId"></label>
-                                    </div>
-                                }
-                            </b>
-                        </h5><br />
+            if (item.IsProcessed == false)
+            {
+                <div class="col-md-6">
+                    <div class="card shadow mb-4" style="width:300px;">
+                        <div class="card-header">
+                            <center>
+                                <h3 class="text-primary" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                    <b>Consignment Detail</b>
+                                </h3>
+                            </center>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                Receiver Name :
+                                <a href=" @Url.Action("ComConsignment", new { id = item.ConsignmentId })">
+                                    @item.ReceiverName
+                                </a>
+                            </h5>
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Type of Unit : @item.UnitType</h5>
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Value of Unit : @item.UnitValue</h5>
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Budget : @item.Budget</h5>
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                IsActive : <b>
+                                    @if (item.IsActive == true)
+                                    {
+                                        <div class="custom-control custom-switch" style="float:right;margin-left:auto">
+                                            <input type="checkbox" checked class="custom-control-input" id="active_@item.ConsignmentId" onchange="return activate(@item.ConsignmentId)">
+                                            <label class="custom-control-label" for="active_@item.ConsignmentId"></label>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="custom-control custom-switch" style="float:right;margin-left:auto">
+                                            <input type="checkbox" class="custom-control-input" id="active_@item.ConsignmentId" onchange="return activate(@item.ConsignmentId)">
+                                            <label class="custom-control-label" for="active_@item.ConsignmentId"></label>
+                                        </div>
+                                    }
+                                </b>
+                            </h5><br />
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>

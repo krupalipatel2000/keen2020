@@ -19,79 +19,47 @@
                         <h1 class="text-primary"><b>@ViewBag.Company's PriceList</b></h1><br />
                     </div>
                     <hr />
-                    <div class="row">
-                        <div class="col-2">
-                            <h4 class="fa fa-1x">Name of Unit</h4>
-                            @*<i class="fa fa-1x fa-weight"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.UnitName)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h4 class="fa fa-1x">Minimum Value of Unit</h4>
-                            @*<i class="fa fa-1x fa-minus"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.MinValue)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h4 class="fa fa-1x">Maximum Value of Unit</h4>
-                            @*<i class="fa fa-1x fa-window-maximize"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.MaxValue)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h4 class="fa fa-1x">Price Per Unit</h4>
-                            @*<i class="fa fa-1x fa-monero"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@Html.DisplayFor(model => model.PricePerUnit)</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h4 class="fa fa-1x">Name of Company</h4>
-                            @*<i class="fa fa-1x fa-id-card"></i>*@
-                        </div>
-                        <div class="col-6">
-                            <h5>@ViewBag.Company</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <h5 class="fa fa-1x">
-                                IsActive
-                            </h5>
-                        </div>
-                        <div class="col-1">
-                            @if (Model.IsActive == true)
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.PriceListId" onchange="return activate(@Model.PriceListId)">
-                                    <label class="custom-control-label" for="active_@Model.PriceListId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch" style="float:right;margin-left:10px">
-                                    <input type="checkbox" disabled class="custom-control-input" id="active_@Model.PriceListId" onchange="return activate(@Model.PriceListId)">
-                                    <label class="custom-control-label" for="active_@Model.PriceListId"></label>
-                                </div>
-                            }
-                        </div>
+                    <table border="1" align="center" class="table table-hover">
+                        <tr>
+                            <th>Name of Unit</th>
+                            <th>Minimum Value of Unit</th>
+                            <th>Maximum Value of Unit</th>
+                            <th>Price Per Unit</th>
+                            <th>Name of Company</th>
+                            <th>IsActive</th>
+                        </tr>
+                        <tr>
 
-                    </div>
+                            <td><h5>@Html.DisplayFor(model => model.UnitName)</h5></td>
+                            <td><h5>@Html.DisplayFor(model => model.MinValue)</h5></td>
+                            <td><h5>@Html.DisplayFor(model => model.MaxValue)</h5></td>
+                            <td><h5>@Html.DisplayFor(model => model.PricePerUnit)</h5></td>
+                            <td><h5>@ViewBag.Company</h5></td>
+                            <td>
+
+                                @if (Model.IsActive == true)
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled checked class="custom-control-input" id="active_@Model.PriceListId" onchange="return activate(@Model.PriceListId)">
+                                        <label class="custom-control-label" for="active_@Model.PriceListId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style="float:right;margin-left:10px">
+                                        <input type="checkbox" disabled class="custom-control-input" id="active_@Model.PriceListId" onchange="return activate(@Model.PriceListId)">
+                                        <label class="custom-control-label" for="active_@Model.PriceListId"></label>
+                                    </div>
+                                }
+
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-4" style="text-align:center">
             <p>

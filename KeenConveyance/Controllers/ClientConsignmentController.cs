@@ -97,6 +97,7 @@ namespace KeenConveyance.Controllers
             con.ReceiverName = form["txtName"];
             con.ReceiverContactNo = form["txtCno"];
             con.ReceiverPinNo = Convert.ToInt32(form["txtPin"]);
+            con.IsProcessed = false;
             dc.SaveChanges();
             return RedirectToAction("Insert3", "ClientConsignment");
         }

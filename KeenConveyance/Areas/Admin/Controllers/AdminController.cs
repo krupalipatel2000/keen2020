@@ -225,17 +225,18 @@ namespace KeenConveyance.Areas.Admin.Controllers
             //ViewBag.Y = new List<int>() { 10, 24, 23, 47, 50, 36, 27, 18 };
             //ViewBag.X = new List<int>() {1,2,3,4,5,6,7,8,9,10,11,12};
 
-            var company = from ob in dc.tblTransportCompanies select ob;
-            int[] X = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            int[] Y = new int[12];
+            var com = (from ob in dc.tblTransportCompanies where ob.CreatedOn.Year == DateTime.Now.Year select ob.CreatedOn.Month).Distinct();
+            string[] X = new string[com.Count()];
+            int[] Y = new int[com.Count()];
             int i = 0;
-            foreach (tblTransportCompany u in company)
+            foreach (int Month in com)
             {
+
+                X[i] = Month.ToString();
+                Y[i] = (from ob in dc.tblTransportCompanies where ob.CreatedOn.Month == Month select ob).ToList().Count();
                 i++;
-
-                Y[i] = (from ob in dc.tblTransportCompanies where ob.CreatedOn.Month == i select ob).ToList().Count;
-
             }
+
             ViewBag.X = X;
             ViewBag.Y = Y;
 
