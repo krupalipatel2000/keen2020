@@ -39,9 +39,9 @@
                     <div class="row align-items-center">
                         <div class="col-xl-4 col-lg-4">
                             <div class="logo">
-                                <a href="index.html">
+                                
                                     <img src="~/Images/keenconveyance.jpg" style="height:200px;width:200px" alt="">
-                                </a>
+                                
                             </div>
                         </div>
                         <div class="col-xl-8 col-md-8">
@@ -57,7 +57,7 @@
                                     </div>*@
                                 <div>
                                     <a href="@Url.Action("Login","Home")" class="btn btn-success btn-sm">
-                                        SignUp
+                                        SignIn
                                     </a>
                                 </div>
                             </div>
@@ -65,24 +65,22 @@
                     </div>
                 </div>
             </div>
-            <div id="sticky-header" class="main-header-area">
+            <div id="sticky-header" class="main-header-area" style="background-color:black;">
                 <div class="container">
                     <div class="header_bottom_border">
                         <div class="row align-items-center">
                             <div class="col-12 d-block d-lg-none">
                                 <div class="logo">
-                                    <a href="index.html">
                                         <img src="img/logo.png" alt="">
-                                    </a>
                                 </div>
                             </div>
-                            <div class="col-xl-9 col-lg-9">
+                            <div class="col-xl-9 col-lg-9" >
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="@Url.Action("Index","Home")">home</a></li>
-                                            <li><a href="@Url.Action("Index","ClientService")">Services</a></li>
-                                            <li><a href="@Url.Action("AboutUs","Home")">about</a></li>
+                                            <li><a href="@Url.Action("Index","Home")"><b style="color:whitesmoke;">home</b></a></li>
+                                            <li><a href="@Url.Action("Index","ClientService")"><b style="color:whitesmoke;">Services</b></a></li>
+                                            <li><a href="@Url.Action("AboutUs","Home")"><b style="color:whitesmoke;">about</b></a></li>
                                             @*<li>
                                                     <a href="#">pages <i class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
@@ -97,11 +95,11 @@
                                                         <li><a href="single-blog.html">single-blog</a></li>
                                                     </ul>
                                                 </li>*@
-                                            <li><a href="@Url.Action("Index","ClientContact")">Contact</a></li>
+                                            <li><a href="@Url.Action("Index","ClientContact")"><b style="color:whitesmoke;">Contact</b></a></li>
                                             <li>
                                                 @if (Session["LogID"] != null)
                                                 {
-                                                    <a href="@Url.Action("Insert","ClientConsignment")">Add Consignment</a>
+                                                    <a href="@Url.Action("Insert","ClientConsignment")"><b style="color:whitesmoke;">Add Consignment</b></a>
                                                 }
                                                 else
                                                 {
