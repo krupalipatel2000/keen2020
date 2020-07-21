@@ -148,7 +148,89 @@ namespace KeenConveyance.Controllers
             profimg.SaveAs(path + profimg.FileName);
             return View();
         }
-
+        public ActionResult ViewCom(int id)
+        {
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            //ViewBag.House = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().HouseNo;
+            //ViewBag.Landmark = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Landmark;
+            //ViewBag.Area = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Area;
+            //ViewBag.Address = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Address;
+            //ViewBag.Year = com.CreatedOn.Year.ToString();
+            //var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
+            //var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
+            //var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+            //ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
+            //var CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            //var AcceptedBid = from obBid in dc.tblBiddings
+            //                  join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+            //                  where obBid.CompanyId == CompanyId
+            //                   && obBook.VehicleId == null
+            //                  select obBid;
+            //ViewBag.Abid = AcceptedBid.ToList().Count;
+            //var consignment = from obBid in dc.tblBiddings
+            //                  join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+            //                  where obBid.CompanyId == CompanyId
+            //                  // && obBook.VehicleId == null
+            //                  select obBid;
+            //ViewBag.Consignment = consignment.ToList();
+            //var rate = from ob in dc.tblReviews
+            //           join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
+            //           where ob.CompanyId == com.CompanyId
+            //           select ob;
+            //ViewBag.Rate = rate;
+            //var user = (from ob in dc.tblUsers
+            //            join obRate in dc.tblReviews on ob.UserId equals obRate.UserId
+            //            where obRate.CompanyId == com.CompanyId
+            //            select ob).Take(1).SingleOrDefault().FirstName;
+            //ViewBag.User = user;
+            //ViewBag.PriceList = PL;
+            //ViewBag.address = Address;
+            //ViewBag.bid = Bid;
+            return View(com);
+        }
+        public ActionResult CompanyDetail(int id)
+        {
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            ViewBag.Year = com.CreatedOn.Year.ToString();
+            //var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
+            //var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
+            //var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+            //ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
+            //var CompanyId = Convert.ToInt32(Session["CompanyId"]);
+            //var AcceptedBid = from obBid in dc.tblBiddings
+            //                  join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+            //                  where obBid.CompanyId == CompanyId
+            //                   && obBook.VehicleId == null
+            //                  select obBid;
+            //ViewBag.Abid = AcceptedBid.ToList().Count;
+            //var consignment = from obBid in dc.tblBiddings
+            //                  join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+            //                  where obBid.CompanyId == CompanyId
+            //                  // && obBook.VehicleId == null
+            //                  select obBid;
+            //ViewBag.Consignment = consignment.ToList();
+            //var rate = from ob in dc.tblReviews
+            //           join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
+            //           where ob.CompanyId == com.CompanyId
+            //           select ob;
+            //ViewBag.Rate = rate;
+            //var user = (from ob in dc.tblUsers
+            //            join obRate in dc.tblReviews on ob.UserId equals obRate.UserId
+            //            where obRate.CompanyId == com.CompanyId
+            //            select ob).Take(1).SingleOrDefault().FirstName;
+            //ViewBag.User = user;
+            //ViewBag.PriceList = PL;
+            //ViewBag.address = Address;
+            //ViewBag.bid = Bid;
+            return View(com);
+        }
+        public ActionResult PriceList(int id)
+        {
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
+            ViewBag.PriceList = PL;
+            return View(com);
+        }
     }
 
 }

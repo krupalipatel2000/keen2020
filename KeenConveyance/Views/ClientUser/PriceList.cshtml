@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "PriceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row offset-1 py-3">
+    <center>
+        <h2 class="m-0 font-weight-bold text-dark">
+            Company's PriceList
+        </h2>
+        <br />
+        <table class="table table-hover table-bordered">
+            <tr>
+                <th>Unit Name</th>
+                <th>Minimum Value</th>
+                <th>Maximum Value</th>
+                <th>Price Per Unit</th>
+            </tr>
+            @foreach (var item in ViewBag.PriceList)
+            {
+                <tr>
+                    <td>@item.UnitName</td>
+                    <td>@item.MinValue</td>
+                    <td>@item.MaxValue</td>
+                    <td>@item.PricePerUnit</td>
+                </tr>
+            }
+        </table>
+    </center>
+</div>
+
+

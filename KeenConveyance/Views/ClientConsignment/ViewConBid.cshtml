@@ -31,7 +31,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h5 class="alert-light"><a href="@Url.Action("CompanyProfile", "ClientCompany", new { id = item.company.CompanyId })">@item.company.CompanyName</a></h5>
+                                    <h5 class="alert-light"><a href="@Url.Action("ViewCom", "ClientUser", new { id = item.company.CompanyId })">@item.company.CompanyName</a></h5>
                                 </div>
                                 <div class="col-md-3">
                                     <h5 class="alert-light">@item.bid.BidAmount</h5>

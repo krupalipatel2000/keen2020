@@ -2829,6 +2829,9 @@
     <Content Include="Views\ClientService\Index.cshtml" />
     <Content Include="Views\ClientCompany\bill.cshtml" />
     <Content Include="Views\ClientUser\UserConsignment.cshtml" />
+    <Content Include="Views\ClientUser\ViewCom.cshtml" />
+    <Content Include="Views\ClientUser\CompanyDetail.cshtml" />
+    <Content Include="Views\ClientUser\PriceList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

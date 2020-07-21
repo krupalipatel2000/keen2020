@@ -210,12 +210,15 @@
     <div class="col-md-4">
         <div class="card shadow mb-4" style="width:400px;">
             <br />
-            <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Total Bid : <a href="@Url.Action("ViewConBid","ClientConsignment",new { id = Model.ConsignmentId })">@ViewBag.BidCount</a> </h5>
-            @*@if(ViewBag.assign == true)
+            <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                Total Bid : @ViewBag.BidCount
+                <a href="@Url.Action("ViewConBid","ClientConsignment",new { id = Model.ConsignmentId })" class="btn btn-success offset-6"> View Bid </a>
+            </h5>
+                @*@if(ViewBag.assign == true)
             {
             <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your consignment is accepted and paymentmode is COD.</h5>
-            }*@   
-            <br />
+            }*@
+                <br />
         </div>
     </div>
 </div>

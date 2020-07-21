@@ -1,0 +1,113 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblTransportCompany
+@{
+    ViewBag.Title = "CompanyDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="p-2">
+            <div class="card shadow mb-4" style="width:1470px;">
+                <div class="card-header py-3">
+                    <center><h2 class="m-0 font-weight-bold text-primary">Company Profile</h2></center>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4" style="text-align:center">
+                            <p>
+                                @Html.ActionLink("Edit Profile", "Edit", new { id = Model.CompanyId })
+                            </p>
+                            <img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="img-thumbnail" onchange="return loadFile(event);" />
+                            <br />
+                            <div> <a href="#"> Change Profile Image </a> </div>
+                            <br />
+                            <p>
+                                Member since <b> @Html.ViewBag.Year </b>
+                            </p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <h1>@Html.DisplayFor(model => model.CompanyName) Transportation Company</h1>
+                            </div>
+                            <div class="row">
+                                <h2 class="fa fa-envelope" style="font-size:30px;">&nbsp;@Html.DisplayFor(model => model.CompanyEmail)</h2>
+                            </div>
+                            <div class="row">
+                                <h2 class="fa fa-phone" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.CompanyPhNo)</h2>
+                            </div>
+                            <div class="row">
+                                <h2 class="fa fa-user" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.ContactPersonName)</h2>
+                            </div>
+                            <div class="row">
+                                <h2 class="fa fa-mobile" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.ContactPersonNo)</h2>
+                            </div>
+                            <div class="row">
+                                <h4 class="fa fa-globe" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.WebURL)</h4>
+                            </div>
+                            <div class="row">
+                                <center>
+                                    @foreach (var item in ViewBag.address)
+                                    {
+                                        <h5 class="fa fa-home" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;font-size:25px;">
+                                            @item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                                        </h5>
+                                    }
+                                </center>
+                            </div>
+                            <br />
+                            <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4>
+                            @*@if (Session["CompanyId"] != null)
+                            {
+                                <div class="row">
+                                    @{
+                                        if (Model.IsActive == true)
+                                        {
+                                            <a href="#"> Deactivate Account </a>
+                                        }
+                                    }
+                                </div>
+                                <div class="row">
+                                    <br />
+                                    <div style="margin-top:40px">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                        <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-light"> Company Consignment </a>
+                                        <a href="@Url.Action("AddService","ClientCompany")" class="btn btn-light"> Add Service </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <br />
+                                    <div class="alert-link" style="margin-top:40px">
+                                        <a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-light"> Add Address </a>
+                                        <a href="@Url.Action("AddDriver","ClientCompany")" class="btn btn-light"> Add Driver </a>
+                                        <a href="@Url.Action("AddVehicle","ClientCompany")" class="btn btn-light"> Add Vehicle </a>
+                                    </div>
+                                </div>
+
+                            }*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Session["CompanyId"] != null)
+    {
+        <div class="col-md-4 p-2">
+            <div class="card shadow mb-4" style="width:200px;">
+                <br />
+                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
+                <br />
+                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    Accepted Bids :
+                    @foreach (var item in ViewBag.Consignment)
+                    {
+                        <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = item.BidId })">@ViewBag.Abid</a>
+                    }
+                </h5>
+
+            </div>
+        </div>
+    }
+</div>
+
+

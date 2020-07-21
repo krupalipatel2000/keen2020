@@ -8,10 +8,10 @@
 <center>
     <div class="row">
         <div class="col-md-11">
-            <div class="p-2 offset-1">
-                <div class="card shadow mb-4" style="width:500px;">
+            <div class="p-2">
+                <div class="card shadow mb-4" style="width:1450px;">
                     <div class="card-header py-3">
-                        <center><h4 class="m-0 font-weight-bold text-primary">UserProfile</h4></center>
+                        <center><h1 class="m-0 font-weight-bold text-primary" style="font-family:sans-serif">User Profile</h1></center>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -19,35 +19,36 @@
                                 <p>
                                     @Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserId })
                                 </p>
-                                <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" />
+                                <img src="~/Images/@Html.DisplayFor(model => model.ProfilePic)" class="img-thumbnail" style="height:400px;width:400px;" />
                                 <br />
                                 <br />
                                 <p>
                                     Member since <b> @Html.ViewBag.Year </b>
                                 </p>
                             </div>
-                            <div class="col-md-8">
+                            <br />
+                            <div class="col-md-8" style="text-align:right;">
                                 <div class="row">
-                                    <h1 class="alert-light">@Html.DisplayFor(model => model.FirstName)'s Profile</h1>
+                                    <h1 class="text-dark offset-1" style="font-size:55px;">@Html.DisplayFor(model => model.FirstName)'s Profile</h1>
                                 </div>
                                 <div class="row">
-                                    <h4>@Html.DisplayFor(model => model.EmailId)</h4>
+                                    <h3 class="fa fa-envelope offset-1" style="font-size:30px;">&nbsp;&nbsp;@Html.DisplayFor(model => model.EmailId)</h3>
                                 </div>
                                 <div class="row">
-                                    <h4>@Html.DisplayFor(model => model.ContactNo)</h4>
+                                    <h4 class="fa fa-phone-square offset-1" style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(model => model.ContactNo)</h4>
                                 </div>
-                                <div class="row">
+                                @*<div class="row">
                                     @{
                                         if (Model.IsActive == true)
                                         {
-                                            <a href="#"> Deactivate Account </a>
+                                            <a href="@Url.Action("Login","Home")" class="offset-1"> Deactivate Account </a>
                                         }
                                     }
-                                </div>
+                                </div>*@
                                 <div class="row">
                                     <br /><br />
-                                    <div class="alert-danger" style="margin-top:40px">
-                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                    <div class="offset-3" style="margin-top:40px;">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> &nbsp;&nbsp;Signout </a>&nbsp;
                                         <a href="@Url.Action("UserConsignment","ClientUser",new { id = Model.UserId })" class="btn btn-primary"> View Consignment </a>
                                     </div>
                                 </div>

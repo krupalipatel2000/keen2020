@@ -6,87 +6,41 @@
 
 <head>
     <style>
-        * {
-  box-sizing: border-box;
-}
+        .rating {
+            border: none;
+            float: left;
+        }
 
-body {
-  font-family: Arial;
-  margin: 0 auto; /* Center website */
-  max-width: 800px; /* Max width */
-  padding: 20px;
-}
+            .rating > input {
+                display: none;
+            }
 
-.heading {
-  font-size: 25px;
-  margin-right: 25px;
-}
+            .rating > label:before {
+                margin: 5px;
+                font-size: 1.25em;
+                font-family: FontAwesome;
+                display: inline-block;
+                content: "\f005";
+            }
 
-.fa {
-  font-size: 25px;
-}
+            .rating > .half:before {
+                content: "\f089";
+                position: absolute;
+            }
 
-.checked {
-  color: orange;
-}
+            .rating > label {
+                color: #ddd;
+                float: right;
+            }
 
-/* Three column layout */
-.side {
-  float: left;
-  width: 15%;
-  margin-top: 10px;
-}
-
-.middle {
-  float: left;
-  width: 70%;
-  margin-top: 10px;
-}
-
-/* Place text to the right */
-.right {
-  text-align: right;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* The bar container */
-.bar-container {
-  width: 100%;
-  background-color: #f1f1f1;
-  text-align: center;
-  color: white;
-}
-
-/* Individual bars */
-.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
-.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
-.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
-.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
-.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
-
-/* Responsive layout - make the columns stack on top of each other instead of next to each other */
-@@media (max-width: 400px) {
-  .side, .middle {
-    width: 100%;
-  }
-  /* Hide the right column on small screens */
-  .right {
-    display: none;
-  }
-}
     </style>
 </head>
+
 
 <div class="row">
     <div class="col-md-8">
         <div class="p-2">
-            <div class="card shadow mb-4" style="width:700px;">
+            <div class="card shadow mb-4" style="width:1480px;">
                 <div class="card-header py-3">
                     <center><h4 class="m-0 font-weight-bold text-primary">Company Profile</h4></center>
                 </div>
@@ -123,6 +77,12 @@ body {
                             <div class="row">
                                 <h4>@Html.DisplayFor(model => model.WebURL)</h4>
                             </div>
+                            @foreach (var item in ViewBag.address)
+                            {
+                                                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                                        @item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                                                    </h5>
+                            }
                             @if (Session["CompanyId"] != null)
                             {
                                 <div class="row">
@@ -152,11 +112,6 @@ body {
                             }
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <center>
-                        <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4>
-                    </center>
                 </div>
             </div>
         </div>
@@ -190,31 +145,6 @@ body {
     };
 </script>
 
-<div class="row offset-5">
-    <div class="card-deck">
-        @foreach (var item in ViewBag.address)
-        {
-            <center>
-                <div class="card shadow mb-4" style="width:250px;height:150px;">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">
-                            Company's Address
-                        </h6>
-                    </div>
-                    <div class="card-body" style="height:100px;width:200px;">
-                        <div class="row">
-                            <center>
-                                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                    @item.HouseNo, @item.Landmark, @item.Area, @item.Address
-                                </h5>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-            </center>
-        }
-    </div>
-</div>
 <br />
 
 <div class="row offset-1">
@@ -276,101 +206,35 @@ body {
     </div>
 </div>
 
-<link rel="stylesheet" href="~/clientcontent/css/rating.css" />
 <div class="row offset-1">
+    <h4 class="m-0 font-weight-bold text-dark">
+        Company's Review & Rating
+    </h4>
+    <br />
     @foreach (var item in ViewBag.Rate)
     {
-        <center>
-            <div class="card shadow mb-4" style="width:300px;">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-dark">
-                        Company's Review & Rating
-                    </h6>
-                </div>
-                <div class="card-deck">
-                    <div class="card-body" style="height:100px;width:300px;">
-                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                            @ViewBag.User
-                            <br />
-                            @item.Rate
-                            <br />
-                            @item.Review
-                        </h5><br />
-                    </div>
-                </div>
-            </div>
-        </center>
+        <br />
+        <div class="col-md-6">
+            <center>
+
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    @ViewBag.User
+                    <br />
+                    $(function(){
+
+                    .checked {
+                    color: orange;
+                    rating: @item.Rate;
+                    }
+                    });
+                    <br />
+                    @item.Review
+                </h5><br />
+            </center>
+        </div>
+        <br />
     }
+    <br />
 </div>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<span class="heading">User Rating</span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<p>4.1 average based on 254 reviews.</p>
-<h5 style="border:3px solid #f1f1f1">
-
-    <div class="row">
-        <div class="side">
-            <div>5 star</div>
-        </div>
-        <div class="middle">
-            <div class="bar-container">
-                <div class="bar-5"></div>
-            </div>
-        </div>
-        <div class="side right">
-            <div>150</div>
-        </div>
-        <div class="side">
-            <div>4 star</div>
-        </div>
-        <div class="middle">
-            <div class="bar-container">
-                <div class="bar-4"></div>
-            </div>
-        </div>
-        <div class="side right">
-            <div>63</div>
-        </div>
-        <div class="side">
-            <div>3 star</div>
-        </div>
-        <div class="middle">
-            <div class="bar-container">
-                <div class="bar-3"></div>
-            </div>
-        </div>
-        <div class="side right">
-            <div>15</div>
-        </div>
-        <div class="side">
-            <div>2 star</div>
-        </div>
-        <div class="middle">
-            <div class="bar-container">
-                <div class="bar-2"></div>
-            </div>
-        </div>
-        <div class="side right">
-            <div>6</div>
-        </div>
-        <div class="side">
-            <div>1 star</div>
-        </div>
-        <div class="middle">
-            <div class="bar-container">
-                <div class="bar-1"></div>
-            </div>
-        </div>
-        <div class="side right">
-            <div>20</div>
-        </div>
-    </div>
-
-</h5>

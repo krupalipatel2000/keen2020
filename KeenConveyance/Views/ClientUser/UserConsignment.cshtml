@@ -4,52 +4,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card-deck">
-    @foreach (var item in ViewBag.con)
-    {
-        <div class="row">
+
+        <div class="row py-2">
             <div class="col-md-7">
                 <div class="p-2 offset-1">
-                    <div class="card shadow mb-4" style="width:550px;">
+                    <div class="card shadow mb-4" style="width:1300px;">
                         <div class="card-header py-3">
-                            <center><h4 class="m-0 font-weight-bold text-primary">User's Consignment</h4></center>
+                            <center><h1 class="m-0 font-weight-bold text-primary">User's Consignment</h1></center>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <h3 class="alert-light"># @item.ConsignmentId</h3>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="alert-light">Receiver Name : </h5>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5 class="alert-light">Unit Type : </h5>
-                                </div>
-                                <div class="col-md-4">
-                                    <h5 class="alert-light">Unit Value : </h5>
-                                </div>
-                            </div>
+                        @foreach (var item in ViewBag.con)
+                        {
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="alert-light">@item.ReceiverName</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <h2 class="alert-light" style="color:black;"># @item.ConsignmentId</h2><br />
                                 </div>
-                                <div class="col-md-4">
-                                    <h5 class="alert-light">@item.UnitType</h5>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="alert-light" style="color:black;">Receiver Name : @item.ReceiverName</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="alert-light" style="color:black;">Unit Type : @item.UnitType</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="alert-light" style="color:black;">Unit Value : @item.UnitValue</h4>
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <h5 class="alert-light">@item.UnitValue</h5>
+
+                                @*<div class="row">
+                                    <div class="col-md-4">
+                                        <h5 class="alert-light"></h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="alert-light"></h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="alert-light"></h5>
+                                    </div>
+                                </div>*@
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <center><a href="@Url.Action("ViewCon", "ClientConsignment", new { id = item.ConsignmentId })" class="btn btn-success offset-10">View Detail</a></center>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <center><a href="@Url.Action("ViewCon", "ClientConsignment", new { id = item.ConsignmentId })" class="btn btn-success">View Detail</a></center>
-                                </div>
-                            </div>
+                            <hr />
+                        }
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
-    }
-</div>
