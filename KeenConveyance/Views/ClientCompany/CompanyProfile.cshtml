@@ -6,12 +6,17 @@
 
 <head>
     <style>
+        .checked {
+            color: orange;
+        }
+
         .rating {
             border: none;
             float: left;
         }
 
             .rating > input {
+                color: orange;
                 display: none;
             }
 
@@ -32,7 +37,6 @@
                 color: #ddd;
                 float: right;
             }
-
     </style>
 </head>
 
@@ -44,7 +48,7 @@
                 <div class="card-header py-3">
                     <center><h4 class="m-0 font-weight-bold text-primary">Company Profile</h4></center>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="background-color:aliceblue;">
                     <div class="row">
                         <div class="col-md-4" style="text-align:center">
                             <p>
@@ -58,7 +62,7 @@
                                 Member since <b> @Html.ViewBag.Year </b>
                             </p>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="row">
                                 <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName)'s Profile</h1>
                             </div>
@@ -79,9 +83,9 @@
                             </div>
                             @foreach (var item in ViewBag.address)
                             {
-                                                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                                        @item.HouseNo, @item.Landmark, @item.Area, @item.Address
-                                                    </h5>
+                                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                    @item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                                </h5>
                             }
                             @if (Session["CompanyId"] != null)
                             {
@@ -111,29 +115,31 @@
                                 </div>
                             }
                         </div>
+                        <div class="col-md-2">
+                            @if (Session["CompanyId"] != null)
+                            {
+                                <div class="col-md-4 p-2">
+                                    <div class="card shadow mb-4" style="width:200px;">
+                                        <br />
+                                        <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                            <a href="@Url.Action("ComBidding","ClientCompany",new { id = Model.CompanyId })">View Your Bids</a>
+                                        </h5>
+                                        <br />
+                                        <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                            <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = Model.CompanyId })">View Accepted Bids </a>
+                                        </h5>
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @if (Session["CompanyId"] != null)
-    {
-        <div class="col-md-4 p-2">
-            <div class="card shadow mb-4" style="width:200px;">
-                <br />
-                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
-                <br />
-                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                    Accepted Bids :
-                    @foreach (var item in ViewBag.Consignment)
-                    {
-                        <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = item.BidId })">@ViewBag.Abid</a>
-                    }
-                </h5>
 
-            </div>
-        </div>
-    }
 </div>
 
 
@@ -147,63 +153,31 @@
 
 <br />
 
-<div class="row offset-1">
-    <form method="post">
-        <div class="card-deck">
-            @foreach (var item in ViewBag.bid)
-            {
-                <center>
-                    <div class="card shadow mb-4" style="width:300px;height:200px;">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-dark">
-                                Company's Bid
-                            </h6>
-                        </div>
-                        <div class="card-body" style="height:100px;width:200px;">
-                            <div class="row">
-                                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                    <a href="@Url.Action("ViewCon","ClientConsignment",new { id = item.ConsignmentId })"># @item.ConsignmentId <br /></a>
-                                    BidAmount : @item.BidAmount <br />
-                                    EstimatedDelivery : @item.EstimatedDelivery <br />
-                                </h5>
-                                <a href="@Url.Action("AddBid","ClientCompany", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary">
-                                    Accept
-                                </a>
-                                @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
-                            </div>
-                        </div>
-                    </div>
-                </center>
-            }
-        </div>
-    </form>
-</div>
 
-<div class="row offset-1">
-    <div class="card-deck">
-        @foreach (var item in ViewBag.PriceList)
-        {
-            <center>
-                <div class="card shadow mb-4" style="width:300px;">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">
-                            Company's PriceList
-                        </h6>
-                    </div>
-                    <div class="card-body" style="height:100px;width:300px;">
-                        <div class="row">
-                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                Unit Name : @item.UnitName <br />
-                                MinValue : @item.MinValue <br />
-                                MaxValue : @item.MaxValue <br />
-                                PricePerUnit : @item.PricePerUnit
-                            </h5><br />
-                        </div>
-                    </div>
-                </div>
-            </center>
-        }
-    </div>
+<div class="row offset-1 py-3">
+    <center>
+        <h2 class="m-0 font-weight-bold text-dark">
+            Company's PriceList
+        </h2>
+        <br />
+        <table class="table table-hover table-bordered">
+            <tr>
+                <th>Unit Name</th>
+                <th>Minimum Value</th>
+                <th>Maximum Value</th>
+                <th>Price Per Unit</th>
+            </tr>
+            @foreach (var item in ViewBag.PriceList)
+            {
+                <tr>
+                    <td>@item.UnitName</td>
+                    <td>@item.MinValue</td>
+                    <td>@item.MaxValue</td>
+                    <td>@item.PricePerUnit</td>
+                </tr>
+            }
+        </table>
+    </center>
 </div>
 
 <div class="row offset-1">
@@ -220,13 +194,13 @@
                 <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
                     @ViewBag.User
                     <br />
-                    $(function(){
-
-                    .checked {
-                    color: orange;
-                    rating: @item.Rate;
-                    }
-                    });
+                    <script>
+                        $(function () {
+                            $("#checked").rating({
+                                rating: @item.Rate;
+                            });
+                        });
+                    </script>
                     <br />
                     @item.Review
                 </h5><br />

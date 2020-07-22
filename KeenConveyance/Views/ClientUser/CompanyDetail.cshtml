@@ -57,57 +57,57 @@
                             <br />
                             <h4 class="m-0 font-weight-bold text-primary"><a href="@Url.Action("Rate","ClientCompany",new { id = Model.CompanyId })">Give Rating</a></h4>
                             @*@if (Session["CompanyId"] != null)
-                            {
-                                <div class="row">
-                                    @{
-                                        if (Model.IsActive == true)
-                                        {
-                                            <a href="#"> Deactivate Account </a>
+                                {
+                                    <div class="row">
+                                        @{
+                                            if (Model.IsActive == true)
+                                            {
+                                                <a href="#"> Deactivate Account </a>
+                                            }
                                         }
-                                    }
-                                </div>
-                                <div class="row">
-                                    <br />
-                                    <div style="margin-top:40px">
-                                        <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
-                                        <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-light"> Company Consignment </a>
-                                        <a href="@Url.Action("AddService","ClientCompany")" class="btn btn-light"> Add Service </a>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <br />
-                                    <div class="alert-link" style="margin-top:40px">
-                                        <a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-light"> Add Address </a>
-                                        <a href="@Url.Action("AddDriver","ClientCompany")" class="btn btn-light"> Add Driver </a>
-                                        <a href="@Url.Action("AddVehicle","ClientCompany")" class="btn btn-light"> Add Vehicle </a>
+                                    <div class="row">
+                                        <br />
+                                        <div style="margin-top:40px">
+                                            <a href="@Url.Action("Login","Home")" class="btn btn-danger"> Signout </a>
+                                            <a href="@Url.Action("ComList","ClientConsignment",new { id = Model.CompanyId})" class="btn btn-light"> Company Consignment </a>
+                                            <a href="@Url.Action("AddService","ClientCompany")" class="btn btn-light"> Add Service </a>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <br />
+                                        <div class="alert-link" style="margin-top:40px">
+                                            <a href="@Url.Action("ComAdd","ClientConsignment",new { id = Model.CompanyId })" class="btn btn-light"> Add Address </a>
+                                            <a href="@Url.Action("AddDriver","ClientCompany")" class="btn btn-light"> Add Driver </a>
+                                            <a href="@Url.Action("AddVehicle","ClientCompany")" class="btn btn-light"> Add Vehicle </a>
+                                        </div>
+                                    </div>
 
-                            }*@
+                                }*@
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @if (Session["CompanyId"] != null)
-    {
-        <div class="col-md-4 p-2">
-            <div class="card shadow mb-4" style="width:200px;">
-                <br />
-                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
-                <br />
-                <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                    Accepted Bids :
-                    @foreach (var item in ViewBag.Consignment)
-                    {
-                        <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = item.BidId })">@ViewBag.Abid</a>
-                    }
-                </h5>
+    @*@if (Session["CompanyId"] != null)
+        {
+            <div class="col-md-4 p-2">
+                <div class="card shadow mb-4" style="width:200px;">
+                    <br />
+                    <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Your Bids : @ViewBag.Bids</h5>
+                    <br />
+                    <h5 class="text offset-1" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                        Accepted Bids :
+                        @foreach (var item in ViewBag.Consignment)
+                        {
+                            <a href="@Url.Action("ViewAconsignment","ClientCompany",new { id = item.BidId })">@ViewBag.Abid</a>
+                        }
+                    </h5>
 
+                </div>
             </div>
-        </div>
-    }
+        }*@
 </div>
 
 

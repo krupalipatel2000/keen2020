@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "ComBidding";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row offset-1">
+    <form method="post">
+        <div class="card-deck">
+            @foreach (var item in ViewBag.bid)
+            {
+                <center>
+                    <div class="card shadow mb-4" style="width:300px;height:200px;">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-dark">
+                                Company's Bid
+                            </h6>
+                        </div>
+                        <div class="card-body" style="height:100px;width:200px;">
+                            <div class="row">
+                                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                    <a href="@Url.Action("ViewCon","ClientConsignment",new { id = item.ConsignmentId })"># @item.ConsignmentId <br /></a>
+                                    BidAmount : @item.BidAmount <br />
+                                    EstimatedDelivery : @item.EstimatedDelivery <br />
+                                </h5>
+                                <a href="@Url.Action("ComConsignment","ClientConsignment", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary">
+                                    Edit
+                                </a>&nbsp;
+                                <a href="@Url.Action("AddBid","ClientCompany", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary">
+                                    Delete
+                                </a>
+                                @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            }
+        </div>
+    </form>
+</div>
+

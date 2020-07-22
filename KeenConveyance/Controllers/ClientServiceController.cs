@@ -13,5 +13,21 @@ namespace KeenConveyance.Controllers
         {
             return View();
         }
+        public ActionResult Ocean()
+        {
+            return View();
+        }
+        public ActionResult Air()
+        {
+            return View();
+        }
+        public ActionResult Land()
+        {
+            return View();
+        }
+        public ActionResult ColdStorage()
+        {
+            return View();
+        }
     }
 }

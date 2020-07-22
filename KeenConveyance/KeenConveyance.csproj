@@ -566,9 +566,11 @@
     <Content Include="Images\4.png" />
     <Content Include="Images\5.png" />
     <Content Include="Images\6.png" />
+    <Content Include="Images\about.png" />
     <Content Include="Images\admin.png" />
     <Content Include="Images\admin1.jpg" />
     <Content Include="Images\air.jpg" />
+    <Content Include="Images\banner5.jpg" />
     <Content Include="Images\box.jpg" />
     <Content Include="Images\cold1.jpg" />
     <Content Include="Images\cold2.jpg" />
@@ -599,6 +601,7 @@
     <Content Include="Images\keenconveyance.jpg" />
     <Content Include="Images\keenlogo.png" />
     <Content Include="Images\land.jpg" />
+    <Content Include="Images\land1.jpg" />
     <Content Include="Images\line.png" />
     <Content Include="Images\login.png" />
     <Content Include="Images\logo1.png" />
@@ -606,6 +609,7 @@
     <Content Include="Images\logo4.jpg" />
     <Content Include="Images\logo5.jpg" />
     <Content Include="Images\night.jpeg" />
+    <Content Include="Images\ocean-freight.jpg" />
     <Content Include="Images\ocean.jpg" />
     <Content Include="Images\PicsArt_03-13-05.14.42.jpg" />
     <Content Include="Images\PicsArt_03-13-05.46.06.jpg" />
@@ -2832,6 +2836,12 @@
     <Content Include="Views\ClientUser\ViewCom.cshtml" />
     <Content Include="Views\ClientUser\CompanyDetail.cshtml" />
     <Content Include="Views\ClientUser\PriceList.cshtml" />
+    <Content Include="Views\ClientUser\ComBid.cshtml" />
+    <Content Include="Views\ClientCompany\ComBidding.cshtml" />
+    <Content Include="Views\ClientService\Ocean.cshtml" />
+    <Content Include="Views\ClientService\Air.cshtml" />
+    <Content Include="Views\ClientService\Land.cshtml" />
+    <Content Include="Views\ClientService\ColdStorage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

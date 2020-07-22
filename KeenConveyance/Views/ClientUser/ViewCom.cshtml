@@ -37,11 +37,11 @@
     </style>
 </head>
 <div class="container py-2">
-    <center><img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="image" onchange="return loadFile(event);" style="image-orientation:from-image;" /></center>
+    <center><img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="image" onchange="return loadFile(event);" style="image-orientation:from-image;height:600px;width:1000px;" /></center>
     <div class="top-left"><h2 class="alert-light" style="background-color:black;color:white;"><span>@Html.DisplayFor(model => model.CompanyName) Transportation Company</span></h2></div>
     <div class="bottom-left"><a href="@Url.Action("CompanyDetail","ClientUser",new { id = Model.CompanyId })" class="btn btn-primary">View Company Detail</a></div>
     <div class="bottom-right"><a href="@Url.Action("PriceList","ClientUser",new { id=Model.CompanyId})" class="btn btn-primary">Company's Pricelist</a></div>
-    <div class="centered"><a href="@Url.Action()" class="btn btn-primary">Company's Bid</a></div>
+    <div class="centered"><a href="@Url.Action("ComBid","ClientUser",new { id=Model.CompanyId})" class="btn btn-primary">Company's Bid</a></div>
 </div>
 
 

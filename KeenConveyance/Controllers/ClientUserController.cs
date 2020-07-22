@@ -193,8 +193,8 @@ namespace KeenConveyance.Controllers
             tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
             ViewBag.Year = com.CreatedOn.Year.ToString();
             //var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
-            //var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
-            //var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+            var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
+            
             //ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
             //var CompanyId = Convert.ToInt32(Session["CompanyId"]);
             //var AcceptedBid = from obBid in dc.tblBiddings
@@ -220,8 +220,7 @@ namespace KeenConveyance.Controllers
             //            select ob).Take(1).SingleOrDefault().FirstName;
             //ViewBag.User = user;
             //ViewBag.PriceList = PL;
-            //ViewBag.address = Address;
-            //ViewBag.bid = Bid;
+            ViewBag.address = Address;
             return View(com);
         }
         public ActionResult PriceList(int id)
@@ -229,6 +228,23 @@ namespace KeenConveyance.Controllers
             tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
             var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
             ViewBag.PriceList = PL;
+            return View(com);
+        }
+        public ActionResult ComBid(int id)
+        {
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            var user = Convert.ToInt32(Session["LogID"]);
+            var Bid = from ob in dc.tblUsers
+                      join obCon in dc.tblConsignments on ob.UserId equals obCon.UserId
+                      join obBid in dc.tblBiddings on obCon.ConsignmentId equals obBid.ConsignmentId
+                      where ob.UserId == user
+                      select new JoinViewAll
+                      {
+                          user = ob,
+                          consignment = obCon,
+                          bid = obBid
+                      };
+            ViewBag.bid = Bid;
             return View(com);
         }
     }

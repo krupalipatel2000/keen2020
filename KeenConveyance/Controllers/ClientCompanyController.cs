@@ -168,7 +168,7 @@ namespace KeenConveyance.Controllers
                 ViewBag.Year = com.CreatedOn.Year.ToString();
                 var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
                 var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
-                var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+                
                 ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
                 var CompanyId = Convert.ToInt32(Session["CompanyId"]);
                 var AcceptedBid = from obBid in dc.tblBiddings
@@ -195,7 +195,7 @@ namespace KeenConveyance.Controllers
                 ViewBag.User = user;
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
-                ViewBag.bid = Bid;
+                
                 return View(com);
             }
             else
@@ -447,6 +447,13 @@ namespace KeenConveyance.Controllers
             dc.tblBills.Add(bill);
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult ComBidding(int id)
+        {
+            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+            var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
+            ViewBag.bid = Bid;
+            return View(com);
         }
     }
 }

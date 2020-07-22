@@ -1,0 +1,44 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblTransportCompany
+@{
+    ViewBag.Title = "ComBid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row offset-1 py-2">
+    <form method="post">
+        <div class="card-deck">
+            @foreach (var item in ViewBag.bid)
+            {
+                <center>
+                    @if (item.consignment.IsProcessed == false)
+                    {
+                        <div class="card shadow mb-4" style="width:300px;height:200px;">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-dark">
+                                    Company's Bid
+                                </h6>
+                            </div>
+                            <div class="card-body" style="height:100px;width:200px;">
+                                <div class="row">
+                                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                        <a href="@Url.Action("ViewCon", "ClientConsignment", new { id = item.consignment.ConsignmentId })"># @item.consignment.ConsignmentId <br /></a>
+                                        BidAmount : @item.bid.BidAmount <br />
+                                        EstimatedDelivery : @item.bid.EstimatedDelivery <br />
+                                    </h5>
+                                    <a href="@Url.Action("AddBid", "ClientCompany", new { id = item.consignment.ConsignmentId, id1 = item.bid.BidId })" class="btn btn-outline-primary">
+                                        Accept
+                                    </a>&nbsp;
+                                    @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </center>
+            }
+        </div>
+    </form>
+</div>
+
+
+

@@ -5,7 +5,35 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/clientcontent/css/rating.css" />
+    <style>
+        .rating {
+            border: none;
+            float: left;
+        }
+
+            .rating > input {
+                color: orange;
+                display: none;
+            }
+
+            .rating > label:before {
+                margin: 5px;
+                font-size: 1.25em;
+                font-family: FontAwesome;
+                display: inline-block;
+                content: "\f005";
+            }
+
+            .rating > .half:before {
+                content: "\f089";
+                position: absolute;
+            }
+
+            .rating > label {
+                color: #ddd;
+                float: right;
+            }
+    </style>
     
 </head>
 <body class="alert">

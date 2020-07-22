@@ -25,19 +25,8 @@
                         <img src="~/Images/ocean.jpg" alt="">
                     </div>
                     <div class="service_info">
-                        <h3>Ocean Freight</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="single_service">
-                    <div class="thumb">
-                        <img src="~/Images/land.jpg" alt="">
-                    </div>
-                    <div class="service_info">
-                        <h3>Land Transport</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                        <a href="@Url.Action("Ocean","ClientService")"><h3>Ocean Freight</h3></a>
+                        
                     </div>
                 </div>
             </div>
@@ -47,8 +36,17 @@
                         <img src="~/Images/air.jpg" alt="">
                     </div>
                     <div class="service_info">
-                        <h3>Air Freight</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                        <a href="@Url.Action("Air","ClientService")"><h3>Air Freight</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="single_service">
+                    <div class="thumb">
+                        <img src="~/Images/land.jpg" alt="">
+                    </div>
+                    <div class="service_info">
+                        <a href="@Url.Action("Land","ClientService")"><h3>Land Transport</h3></a>
                     </div>
                 </div>
             </div>
@@ -80,8 +78,7 @@
                         <img src="~/Images/cold1.jpg" alt="">
                     </div>
                     <div class="service_info">
-                        <h3>Cold Storage Service</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                        <a href="@Url.Action("ColdStorage","ClientService")"><h3>Cold Storage Service</h3></a>
                     </div>
                 </div>
             </div>
