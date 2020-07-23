@@ -17,8 +17,9 @@ namespace KeenConveyance.Areas.Admin.Controllers
             ViewBag.Titles = TitleList;
             return View();
         }
-        [HttpPost,ValidateInput(false)]
-        public ActionResult Index(string txtTitle, string BlogContent)
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult Index(string BlogContent, string txtTitle)
         {
             tblCMSPage cms = new tblCMSPage();
             cms.PageTitle = txtTitle;
@@ -27,7 +28,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             cms.IsActive = true;
             dc.tblCMSPages.Add(cms);
             dc.SaveChanges();
-            ViewBag.Desc = BlogContent;
+            ViewBag.Content = BlogContent;
             return RedirectToAction("ViewCMS", new { Title = txtTitle });
         }
         public ActionResult ViewCMS(int id = 1)
@@ -43,9 +44,7 @@ namespace KeenConveyance.Areas.Admin.Controllers
             tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
             cms.Desc = BlogContent;
             dc.SaveChanges();
-            //string myOTP = Services.GenerateOTP();
-            //string UCode = Services.UniqueCode();
-            return RedirectToAction("ViewCMS", "CMSpage");
+            return RedirectToAction("ViewCMS", "CMS");
         }
 
     }

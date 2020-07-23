@@ -58,18 +58,7 @@
                 }
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
-                    <span>CMS Pages</span>
-                </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="@Url.Action("Index","CMSpage")">Add New</a>
-                        <a class="collapse-item" href="@Url.Action("ViewCMS","CMSpage")">View/Edit</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                @*<a class="nav-link collapsed" href="@Url.Action("Index","CMSpage")">CMS Page</a>*@
+                <a class="nav-link collapsed" href="@Url.Action("ViewCMS","CMSpage")">CMS Page</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","User")">User</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Company")">Company</a>
                 <a class="nav-link collapsed" href="@Url.Action("Index","Driver")">Driver</a>

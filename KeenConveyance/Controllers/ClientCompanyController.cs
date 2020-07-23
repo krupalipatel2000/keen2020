@@ -432,7 +432,7 @@ namespace KeenConveyance.Controllers
                        join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
                        join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
                        select obUser;
-            //ViewBag.Company = from ob in dc.tblBookings where ob.BookingId==id select
+            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == id select ob).Take(1).SingleOrDefault().CompanyName;
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
             tblBill bill = new tblBill();
             bill.BookingId = id;
