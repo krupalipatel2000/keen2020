@@ -2842,6 +2842,7 @@
     <Content Include="Views\ClientService\Air.cshtml" />
     <Content Include="Views\ClientService\Land.cshtml" />
     <Content Include="Views\ClientService\ColdStorage.cshtml" />
+    <Content Include="Views\ClientCompany\Track.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

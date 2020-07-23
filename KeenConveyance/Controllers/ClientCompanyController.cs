@@ -168,7 +168,7 @@ namespace KeenConveyance.Controllers
                 ViewBag.Year = com.CreatedOn.Year.ToString();
                 var PL = from ob in dc.tblPriceLists where ob.CompanyId == com.CompanyId select ob;
                 var Address = from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob;
-                
+
                 ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
                 var CompanyId = Convert.ToInt32(Session["CompanyId"]);
                 var AcceptedBid = from obBid in dc.tblBiddings
@@ -189,13 +189,13 @@ namespace KeenConveyance.Controllers
                            select ob;
                 ViewBag.Rate = rate;
                 var user = (from ob in dc.tblUsers
-                           join obRate in dc.tblReviews on ob.UserId equals obRate.UserId
-                           where obRate.CompanyId == com.CompanyId
-                           select ob).Take(1).SingleOrDefault().FirstName;
+                            join obRate in dc.tblReviews on ob.UserId equals obRate.UserId
+                            where obRate.CompanyId == com.CompanyId
+                            select ob).Take(1).SingleOrDefault().FirstName;
                 ViewBag.User = user;
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
-                
+
                 return View(com);
             }
             else
@@ -208,10 +208,10 @@ namespace KeenConveyance.Controllers
             int CompanyID = Convert.ToInt32(Session["CompanyId"]);
             var Aconsignment = from obCon in dc.tblConsignments
                                join obBid in dc.tblBiddings on obCon.ConsignmentId equals obBid.ConsignmentId
-                              join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
-                              where obBid.CompanyId == CompanyID
-                              // && obBook.VehicleId == null
-                              select obCon;
+                               join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
+                               where obBid.CompanyId == CompanyID
+                               // && obBook.VehicleId == null
+                               select obCon;
             ViewBag.Aconsignment = Aconsignment;
             return View();
         }
@@ -226,7 +226,7 @@ namespace KeenConveyance.Controllers
             return View(book);
         }
         [HttpPost]
-        public ActionResult EditBook(FormCollection form,int id)
+        public ActionResult EditBook(FormCollection form, int id)
         {
             tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.ConsignmentId == id);
             book.VehicleId = Convert.ToInt32(form["ddVehicle"]);
@@ -246,22 +246,22 @@ namespace KeenConveyance.Controllers
             con.IsProcessed = true;
             dc.SaveChanges();
 
-            return RedirectToAction("bill", "ClientCompany",new { id = book.BookingId });
+            return RedirectToAction("bill", "ClientCompany", new { id = book.BookingId });
         }
         public ActionResult Rate()
         {
-            
+
             return View();
         }
         [HttpPost]
-        public ActionResult Rate(FormCollection form,int id)
+        public ActionResult Rate(FormCollection form, int id)
         {
 
             tblReview rate = dc.tblReviews.SingleOrDefault(ob => ob.CompanyId == id);
             rate.UserId = Convert.ToInt32(Session["LogID"]);
             rate.CompanyId = id;
             rate.Review = form["txtReview"];
-            rate.Rate=form["txtRate"];
+            rate.Rate = form["txtRate"];
             dc.tblReviews.Add(rate);
             dc.SaveChanges();
             return RedirectToAction("Index", "Home");
@@ -426,7 +426,7 @@ namespace KeenConveyance.Controllers
             return View(bill);
         }
         [HttpPost]
-        public ActionResult bill(FormCollection form,int id)
+        public ActionResult bill(FormCollection form, int id)
         {
             var user = from ob in dc.tblBookings
                        join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
@@ -446,7 +446,7 @@ namespace KeenConveyance.Controllers
             bill.CreatedOn = DateTime.Now;
             dc.tblBills.Add(bill);
             dc.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Track", "ClientCompany");
         }
         public ActionResult ComBidding(int id)
         {
@@ -454,6 +454,21 @@ namespace KeenConveyance.Controllers
             var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
             ViewBag.bid = Bid;
             return View(com);
+        }
+        public ActionResult Track()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Track(FormCollection form,int id)
+        {
+            tblTracking track = new tblTracking();
+            track.ToPlace = form["txtToplace"];
+            track.FromPlace = form["txtFromplace"];
+            track.Status = form["txtStatus"];
+            dc.tblTrackings.Add(track);
+            dc.SaveChanges();
+            return View("Index","Home");
         }
     }
 }
