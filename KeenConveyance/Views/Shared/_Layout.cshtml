@@ -82,20 +82,21 @@
                                             <li><a href="@Url.Action("Index","ClientService")"><b style="color:whitesmoke;">Services</b></a></li>
                                             <li><a href="@Url.Action("AboutUs","Home")"><b style="color:whitesmoke;">about</b></a></li>
                                             @*<li>
-                                                    <a href="#">pages <i class="ti-angle-down"></i></a>
-                                                    <ul class="submenu">
-                                                        <li><a href="service_details.html">service details</a></li>
-                                                        <li><a href="elements.html">elements</a></li>
-                                                    </ul>
-                                                </li>*@
+            <a href="#">pages <i class="ti-angle-down"></i></a>
+            <ul class="submenu">
+                <li><a href="service_details.html">service details</a></li>
+                <li><a href="elements.html">elements</a></li>
+            </ul>
+        </li>*@
                                             @*<li>
-                                                    <a href="#">blog <i class="ti-angle-down"></i></a>
-                                                    <ul class="submenu">
-                                                        <li><a href="blog.html">blog</a></li>
-                                                        <li><a href="single-blog.html">single-blog</a></li>
-                                                    </ul>
-                                                </li>*@
+            <a href="#">blog <i class="ti-angle-down"></i></a>
+            <ul class="submenu">
+                <li><a href="blog.html">blog</a></li>
+                <li><a href="single-blog.html">single-blog</a></li>
+            </ul>
+        </li>*@
                                             <li><a href="@Url.Action("Index","ClientContact")"><b style="color:whitesmoke;">Contact</b></a></li>
+                                            @*<li><a href="@Url.Action("Index","VisitorCompany")"><b style="color:whitesmoke;">Company</b></a></li>*@
                                             <li>
                                                 @if (Session["LogID"] != null)
                                                 {
@@ -141,11 +142,12 @@
                                 Services
                             </h3>
                             <ul>
-                                <li><a href="#">Air Transportation</a></li>
-                                <li><a href="#">Ocean Freight</a></li>
-                                <li><a href="#">Ocean Cargo</a></li>
-                                <li><a href="#">Logistics</a></li>
-                                <li><a href="#">Warehouse Moving</a></li>
+                                <li><a href="@Url.Action("Air","ClientService")">Air Transportation</a></li>
+                                <li><a href="@Url.Action("Ocean","ClientService")">Ocean Freight</a></li>
+                                <li><a href="@Url.Action("Land","ClientService")">Land Transportation</a></li>
+                                <li><a href="@Url.Action("ColdStorage","ClientService")">Cold Storage Service</a></li>
+                                <li><a href="@Url.Action("Flammable","ClientService")">Flammable Service</a></li>
+                                <li><a href="@Url.Action("Delicate","ClientService")">Delicate Service</a></li>
                             </ul>
                         </div>
                     </div>
@@ -172,7 +174,7 @@
                         <p class="copy_right text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved 
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>

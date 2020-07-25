@@ -1,0 +1,56 @@
+﻿@model KeenConveyance.Areas.Admin.Models.tblTransportCompany
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        /* Container holding the image and the text */
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 8px;
+            left: 70px;
+        }
+
+        .bottom-left {
+            position: absolute;
+            bottom: -7px;
+            left: 170px;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: -7px;
+            right: 180px;
+        }
+
+        .centered {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<div class="container">
+    <div class="card-deck">
+        @foreach (var item in ViewBag.Com)
+        {
+            <div class="container py-2">
+                <center><img src="~/Images/@Html.DisplayFor(model => model.Logo)" class="image" onchange="return loadFile(event);" style="image-orientation:from-image;height:400px;width:500px;" /></center>
+                <div class="top-left"><h2 class="alert-light" style="background-color:black;color:white;"><span>@Html.DisplayFor(model => model.CompanyName) Transportation Company</span></h2></div>
+                <div class="bottom-left"><a href="@Url.Action("CompanyDetail","ClientUser",new { id = Model.CompanyId })" class="btn btn-primary">View Company Detail</a></div>
+                <div class="bottom-right"><a href="@Url.Action("PriceList","ClientUser",new { id=Model.CompanyId})" class="btn btn-primary">Company's Pricelist</a></div>
+                <div class="centered"><a href="@Url.Action("ComBid","ClientUser",new { id=Model.CompanyId})" class="btn btn-primary">Company's Bid</a></div>
+            </div>
+
+        }
+    </div>
+</div>

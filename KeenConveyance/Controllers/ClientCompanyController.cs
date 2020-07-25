@@ -188,11 +188,9 @@ namespace KeenConveyance.Controllers
                            where ob.CompanyId == com.CompanyId
                            select ob;
                 ViewBag.Rate = rate;
-                var user = (from ob in dc.tblUsers
-                            join obRate in dc.tblReviews on ob.UserId equals obRate.UserId
-                            where obRate.CompanyId == com.CompanyId
-                            select ob).Take(1).SingleOrDefault().FirstName;
-                ViewBag.User = user;
+                var user = (from ob in dc.tblReviews select ob).Take(1).SingleOrDefault().UserId;
+                var name = (from obUser in dc.tblUsers where obUser.UserId == user select obUser).Take(1).SingleOrDefault().FirstName;
+                ViewBag.User = name;
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
 
@@ -236,7 +234,9 @@ namespace KeenConveyance.Controllers
             book.TotalPayment = Convert.ToInt32(form["txtPayment"]);
             book.PaymentMode = form["txtPaymentMode"];
             book.Remarks = form["txtRemark"];
+            Session["Price"] = book.TotalPayment;
             dc.SaveChanges();
+            
 
             tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
             bidding.IsAssigned = true;
@@ -329,14 +329,14 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult AddVehicle()
         {
-            //var vehicle = from ob in dc.tblVehicles
-            //              join ob2 in dc.tblVehicleTypes on ob.VehicleTypeId equals ob2.VehicleTypeId
-            //              select new JoinViewAll
-            //              {
-            //                  vehicle = ob,
-            //                  vehicletype = ob2
-            //              };
-            //ViewBag.vehicle = vehicle;
+            var vehicle = from ob in dc.tblVehicles
+                          join ob2 in dc.tblVehicleTypes on ob.VehicleTypeId equals ob2.VehicleTypeId
+                          select new JoinViewAll
+                          {
+                              vehicle = ob,
+                              vehicletype = ob2
+                          };
+            ViewBag.vehicle = vehicle;
             return View();
         }
         [HttpPost]
@@ -368,7 +368,7 @@ namespace KeenConveyance.Controllers
             }
             tblVehicle vehicle = new tblVehicle();
             vehicle.CompanyId = Convert.ToInt32(Session["CompanyId"]);
-            //vehicle.VehicleTypeId = Convert.ToInt32(form["vehicletype"]);
+            vehicle.VehicleTypeId = Convert.ToInt32(form["vehicletype"]);
             vehicle.VehicleName = form["txtVname"];
             vehicle.RegNo = form["txtRno"];
             vehicle.DocumentImage = name.ToString();
@@ -432,13 +432,15 @@ namespace KeenConveyance.Controllers
                        join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
                        join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
                        select obUser;
-            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == id select ob).Take(1).SingleOrDefault().CompanyName;
+            var com = Convert.ToInt32(Session["CompanyId"]);
+            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == com select ob).Take(1).SingleOrDefault().CompanyName;
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
+            var price= Convert.ToInt32(Session["Price"]);
             tblBill bill = new tblBill();
             bill.BookingId = id;
             bill.UserId = Convert.ToInt32(user.First().UserId);
             bill.Desc = form["txtDesc"];
-            //bill.Price = Convert.ToInt32(form["txtPrice"]);
+            bill.Price = price;
             bill.TollTax = Convert.ToInt32(form["txtToll"]);
             bill.GST = (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
             bill.TotalPrice = Convert.ToInt32(form["txtPrice"]) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
@@ -446,7 +448,7 @@ namespace KeenConveyance.Controllers
             bill.CreatedOn = DateTime.Now;
             dc.tblBills.Add(bill);
             dc.SaveChanges();
-            return RedirectToAction("Track", "ClientCompany");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ComBidding(int id)
         {
@@ -455,21 +457,21 @@ namespace KeenConveyance.Controllers
             ViewBag.bid = Bid;
             return View(com);
         }
-        public ActionResult Track()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Track(FormCollection form,int id)
-        {
-            tblTracking track = new tblTracking();
-            track.ToPlace = form["txtToplace"];
-            track.FromPlace = form["txtFromplace"];
-            track.Status = form["txtStatus"];
-            dc.tblTrackings.Add(track);
-            dc.SaveChanges();
-            return View("Index","Home");
-        }
+        //public ActionResult Track()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Track(FormCollection form,int id)
+        //{
+        //    tblTracking track = new tblTracking();
+        //    track.ToPlace = form["txtToplace"];
+        //    track.FromPlace = form["txtFromplace"];
+        //    track.Status = form["txtStatus"];
+        //    dc.tblTrackings.Add(track);
+        //    dc.SaveChanges();
+        //    return View("Index","Home");
+        //}
     }
 }
 

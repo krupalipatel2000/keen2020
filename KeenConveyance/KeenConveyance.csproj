@@ -246,6 +246,7 @@
     <Compile Include="Controllers\ClientServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
+    <Compile Include="Controllers\VisitorCompanyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2843,6 +2844,7 @@
     <Content Include="Views\ClientService\Land.cshtml" />
     <Content Include="Views\ClientService\ColdStorage.cshtml" />
     <Content Include="Views\ClientCompany\Track.cshtml" />
+    <Content Include="Views\VisitorCompany\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
