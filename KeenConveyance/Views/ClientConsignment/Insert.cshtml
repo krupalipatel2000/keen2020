@@ -55,6 +55,51 @@
         return true;
     }
 </script>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/consign.jpg");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
 
 <center>
     <div class="p-2">
@@ -62,63 +107,65 @@
             <div class="card-header py-3">
                 <center><h4 class="m-0 font-weight-bold text-primary">Add Consignment</h4></center>
             </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="row">
-                        <label for="txtDate">Dispatch Date : </label>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="date" class="form-control" name="txtDate" placeholder="Dispatch Date">
+            <div class="bg-img">
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="row">
+                            <label for="txtDate" style="color:white;font-size:15px;">Dispatch Date : </label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label for="txtFile">Consignment Image : </label>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="file" multiple="multiple" class="form-control" name="txtFile" placeholder="Image of consignment">
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="date" class="form-control" name="txtDate" placeholder="Dispatch Date">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <select name="unittype" class="form-control form-control-user">
-                                <option value="">Select Unit Type &nbsp;&nbsp;</option>
-                                <option value="Weight"> Weight &nbsp;&nbsp;</option>
-                                <option value="Pieces"> Pieces &nbsp;&nbsp;</option>
-                                <option value="LTR"> Ltr &nbsp;&nbsp;</option>
-                            </select>
+                        <div class="row">
+                            <label for="txtFile" style="color:white;font-size:15px;">Consignment Image : </label>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="number" class="form-control" name="txtValue" placeholder="Value of Unit" min="1" max="1000000">
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="file" multiple="multiple" class="form-control" name="txtFile" placeholder="Image of consignment">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="number" class="form-control" name="txtDistance" placeholder="Estimated Distance" min="1">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <select name="unittype" class="form-control form-control-user">
+                                    <option value="">Select Unit Type &nbsp;&nbsp;</option>
+                                    <option value="Weight"> Weight &nbsp;&nbsp;</option>
+                                    <option value="Pieces"> Pieces &nbsp;&nbsp;</option>
+                                    <option value="LTR"> Ltr &nbsp;&nbsp;</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="number" class="form-control" name="txtValue" placeholder="Value of Unit" min="1" max="1000000">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <label for="chkflame">Flamable Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkflame" />
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="number" class="form-control" name="txtDistance" placeholder="Estimated Distance" min="1">
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <label for="chkflame">Delicate Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkdelicate" />
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label for="chkflame" style="color:white;font-size:15px;">Flamable Consignment : &nbsp;</label>
+                                <input type="checkbox" name="chkflame" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="chkflame" style="color:white;font-size:15px;">Delicate Consignment : &nbsp;</label>
+                                <input type="checkbox" name="chkdelicate" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="chkflame" style="color:white;font-size:15px;">Refregerated Consignment : &nbsp;</label>
+                                <input type="checkbox" name="chkrefregerated" />
+                            </div>
+                        </div><br />
+                        <div style="overflow:auto;">
+                            <div style="float:right;">
+                                <button type="submit" class="btn btn-primary" id="nextBtn" onclick="return validate();">Next</button>
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <label for="chkflame">Refregerated Consignment : &nbsp;</label>
-                            <input type="checkbox" name="chkrefregerated" />
-                        </div>
-                    </div><br /><br /><br />
-                    <div style="overflow:auto;">
-                        <div style="float:right;">
-                            <button type="submit" class="btn btn-primary" id="nextBtn" onclick="return validate();">Next</button>
-                        </div>
-                    </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

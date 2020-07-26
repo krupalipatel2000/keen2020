@@ -329,19 +329,17 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult AddVehicle()
         {
-            var vehicle = from ob in dc.tblVehicles
-                          join ob2 in dc.tblVehicleTypes on ob.VehicleTypeId equals ob2.VehicleTypeId
-                          select new JoinViewAll
-                          {
-                              vehicle = ob,
-                              vehicletype = ob2
-                          };
-            ViewBag.vehicle = vehicle;
+
+            var vehicles = from ob in dc.tblVehicles
+                           join ob2 in dc.tblVehicleTypes on ob.VehicleTypeId equals ob2.VehicleTypeId
+                           select ob2;
+            ViewBag.vehicle = vehicles;
             return View();
         }
         [HttpPost]
         public ActionResult AddVehicle(FormCollection form, HttpPostedFileBase txtImage, HttpPostedFileBase txtVimage)
         {
+            
             string name = "txtImage";
             if (txtImage != null)
             {

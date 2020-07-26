@@ -78,18 +78,20 @@
                 <div class="card-body">
                     <form class="user" method="post" name="registration" enctype="multipart/form-data">
                         <div class="form-group">
-                            <select name="vehicletype" class="form-control form-control-user">
-                                <option value="">Select Vehicle Type &nbsp;&nbsp;</option>
-                                @foreach(var item in ViewBag.vehicle)
+                            <div class="dropdown">
+                                <select name="vehicletype" class="form-control form-control-user">
+                                    <option value="">Select Vehicle Type &nbsp;&nbsp;</option>
+                                    @foreach (var item in ViewBag.vehicle)
                                     {
                                         <option value="@item.vehicletype.VehicleTypeId">
                                             @item.vehicletype.TypeName
                                         </option>
                                     }
-                                <option value="S"> Ship &nbsp;&nbsp;</option>
-                                <option value="T"> Truck &nbsp;&nbsp;</option>
-                                <option value="P"> Plane &nbsp;&nbsp;</option>
-                            </select>
+                                    @*<option value="S"> Ship &nbsp;&nbsp;</option>
+                                        <option value="T"> Truck &nbsp;&nbsp;</option>
+                                        <option value="P"> Plane &nbsp;&nbsp;</option>*@
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-2 mb-3 mb-sm-0">

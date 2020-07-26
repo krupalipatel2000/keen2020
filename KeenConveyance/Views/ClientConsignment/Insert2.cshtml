@@ -13,7 +13,7 @@
         var rname = document.registration.txtName;
         var cno = document.registration.txtCno;
         var pin = document.registration.txtPin;
-     
+
 
         if (budget.value != "" && budget.value >= @ViewBag.Budget ) {
         }
@@ -77,6 +77,51 @@
         return true;
     }
 </script>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/consign.jpg");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
 
 
 <center>
@@ -85,53 +130,55 @@
             <div class="card-header py-3">
                 <center><h4 class="m-0 font-weight-bold text-primary">Add Consignment</h4></center>
             </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            Your budget is : @ViewBag.Budget
+            <div class="bg-img">
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0" style="color:white;font-size:20px;">
+                                Your budget is : @ViewBag.Budget
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtBudget" placeholder="Budget">
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtBudget" placeholder="Budget">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="number" class="form-control" name="txtminbidvalue" placeholder="minbidvalue" min="1">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="number" class="form-control" name="txtmaxbidvalue" placeholder="maxbidvalue" min="1">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="number" class="form-control" name="txtminbidvalue" placeholder="minbidvalue" min="1">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtmintime" placeholder="mintime"><h4 style="color:white;">In Days</h4>
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtmaxtime" placeholder="maxtime"><h4 style="color:white;">In Days</h4>
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="number" class="form-control" name="txtmaxbidvalue" placeholder="maxbidvalue" min="1">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtName" placeholder="Receiver's Name">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtCno" placeholder="Receiver's ContactNo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtmintime" placeholder="mintime">In Days
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtmaxtime" placeholder="maxtime">In Days
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtName" placeholder="Receiver's Name">
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtCno" placeholder="Receiver's ContactNo">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtPin" placeholder="Receiver's Pin Number">
-                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtPin" placeholder="Receiver's Pin Number">
+                            </div>
 
-                    </div>
-                    <br /><br /><br />
-                    <div style="overflow:auto;">
-                        <div style="float:right;">
-                            <button type="submit" class="btn btn-primary" id="nextBtn" onclick="return validate();">Next</button>
                         </div>
-                    </div>
-                </form>
+                        <br />
+                        <div style="overflow:auto;">
+                            <div style="float:right;">
+                                <button type="submit" class="btn btn-primary" id="nextBtn" onclick="return validate();">Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

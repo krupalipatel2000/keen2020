@@ -65,61 +65,112 @@
         return true;
     }
 </script>
-<center>
-    <div class="p-2">
-        <div class="card shadow mb-4" style="width:1000px;">
-            <div class="card-header py-3">
-                <center><h4 class="m-0 font-weight-bold text-primary">Registration For Company</h4></center>
-            </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtComName" placeholder="Company Name" onblur="return CheckCom(this.value);">
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtLogo" name="txtLogo" placeholder="Logo">
-                        </div>
-                        <div class="col-6">
-                            <img src="#" id="txtLogo" name="txtLogo" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
-                        </div>
+<html>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/comform.jpg");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
+<body>
+    <center>
+        <div class="p-2">
+            <div class="card shadow mb-4" style="width:1000px;">
+                <div class="card-header py-3">
+                    <center><h4 class="m-0 font-weight-bold text-primary">Registration For Company</h4></center>
+                </div>
+                <div class="bg-img">
+                    <div class="card-body">
+                        <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtComName" placeholder="Company Name" onblur="return CheckCom(this.value);">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtLogo" name="txtLogo" placeholder="Logo">
+                                </div>
+                                <div class="col-6">
+                                    <img src="#" id="txtLogo" name="txtLogo" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtComPhNo" placeholder="Contact Number">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="email" class="form-control" name="txtComEmail" placeholder="Email Address" onblur="return checkEmail(this.value);"><br />
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control" name="txtPwd" placeholder="Enter Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <textarea class="form-control" rows="5" placeholder="About Company......"></textarea>
+                                    @*<input type="text" class="form-control" name="txtAboutCompany" placeholder="Enter About Company"><br />*@
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="txtContactPersonName" placeholder="Enter Contact Person Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="txtContactPersonPhNo" placeholder="Enter Contact Person No"><br />
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="txtWebURL" placeholder="Enter Web URL">
+                                </div>
+                            </div>
+                            <input type="submit" value="Create Company" class="btn btn-success" onclick="return validate();" />
+                        </form>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtComPhNo" placeholder="Contact Number">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="email" class="form-control" name="txtComEmail" placeholder="Email Address" onblur="return checkEmail(this.value);"><br />
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control" name="txtPwd" placeholder="Enter Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <textarea class="form-control" rows="5" placeholder="About Company......"></textarea>
-                            @*<input type="text" class="form-control" name="txtAboutCompany" placeholder="Enter About Company"><br />*@
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtContactPersonName" placeholder="Enter Contact Person Name">
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="txtContactPersonPhNo" placeholder="Enter Contact Person No"><br />
-                        </div>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" name="txtWebURL" placeholder="Enter Web URL">
-                        </div>
-                    </div>
-                    <input type="submit" value="Create Company" class="btn btn-success" onclick="return validate();" />
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</center>
+    </center>
+</body>
+</html>
 <script>
     var loadFile = function (event) {
         var output = document.getElementById('txtLogo');

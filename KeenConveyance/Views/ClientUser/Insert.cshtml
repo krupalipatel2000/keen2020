@@ -72,56 +72,106 @@
         return true;
     }
 </script>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/4.png");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
+
 <center>
     <div class="p-2">
         <div class="card shadow mb-4" style="width:1000px;">
             <div class="card-header py-3">
                 <center><h4 class="m-0 font-weight-bold text-primary">Registration For User</h4></center>
             </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-3">
-                            <input type="text" class="form-control" name="txtFirstName" placeholder="Your FirstName" maxlength="20">
+            
+
+            <div class="bg-img">
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-3">
+                                <input type="text" class="form-control" name="txtFirstName" placeholder="Your First Name" maxlength="20">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtLastName" placeholder="Your Last Name" maxlength="20">
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtLastName" placeholder="Your LastName" maxlength="20">
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-3">
+                                <input type="file" class="form-control" name="txtprofile" placeholder="ProfilePic" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-3">
-                            <input type="file" class="form-control" name="txtprofile" placeholder="ProfilePic" required>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="email" class="form-control" id="txtEmailId" name="txtEmailId" placeholder="Your Email Id" onblur="return checkEmail(this.value);">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="password" class="form-control" name="txtPwd" placeholder=" Your Password">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="email" class="form-control" id="txtEmailId" name="txtEmailId" placeholder="Your EmailId" onblur="return checkEmail(this.value);">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <h4 style="text-align:left;">Gender : </h4>
+                                <input type="radio" id="male" name="gender" value="male" checked>
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control" name="txtPwd" placeholder=" Your Password">
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <input type="text" class="form-control" name="txtCno" placeholder="Your Contact Number">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-2 mb-3 mb-sm-0">
-                            <h4 style="text-align:left;">Gender : </h4>
-                            <input type="radio" id="male" name="gender" value="male" checked>
-                            <label for="male">Male</label>&nbsp;&nbsp;
-                            <input type="radio" id="female" name="gender" value="female">
-                            <label for="female">Female</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="text" class="form-control" name="txtCno" placeholder="Your ContactNumber">
-                        </div>
-                    </div>
-                    <input type="submit" value="Create User" class="btn btn-success" onclick="return validate();" />
-                </form>
+                        <br />
+                        <input type="submit" value="Create User" class="btn btn-success" onclick="return validate();" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </center>
-
 @*<div class="p-2">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -140,7 +190,6 @@
             </div>
         </div>
     </div>*@
-
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
     function checkEmail(val) {
