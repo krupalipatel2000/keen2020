@@ -4,54 +4,101 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<center>
-    <div class="p-2">
-        <div class="card shadow mb-4" style="width:700px;height:550px;">
-            <div class="card-header py-3">
-                <center><h4 class="m-0 font-weight-bold text-primary">Add Service Detail</h4></center>
-            </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <label for="txtSname">Service Name : </label>
-                        </div>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/form1.jpg");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
+<div>
+    <center>
+        <div class="p-2">
+            <div class="card shadow mb-4" style="width:700px;height:550px;">
+                <div class="card-header py-3">
+                    <center><h4 class="m-0 font-weight-bold text-primary">Add Service Detail</h4></center>
+                </div>
+                <div class="bg-img">
+                    <div class="card-body">
+                        <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <label for="txtSname">Service Name : </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0 offset-1">
+                                    <input type="text" class="form-control" name="txtSname" placeholder="Service Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <label for="txtService">Service Image : </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0 offset-1">
+                                    <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtService" name="txtService" placeholder="Image">
+                                    <img src="#" id="txtService" name="txtService" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <label for="txtSDesc">Service Desc : </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <textarea cols="50" rows="5" name="txtSDesc" placeholder="Enter Service Description"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <input type="submit" name="txtSubmit" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 mb-3 mb-sm-0 offset-1">
-                            <input type="text" class="form-control" name="txtSname" placeholder="Service Name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <label for="txtService">Service Image : </label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 mb-3 mb-sm-0 offset-1">
-                            <input type="file" accept="~/Images/" onchange="return loadFile(event);" class="form-control" id="txtService" name="txtService" placeholder="Image">
-                            <img src="#" id="txtService" name="txtService" class="img-fluid img-thumbnail" style="width:100px;height:100px" hidden />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <label for="txtSDesc">Service Desc : </label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 mb-3 mb-sm-0">
-                            <textarea cols="50" rows="5" name="txtSDesc" placeholder="Enter Service Description"></textarea>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-sm-12 mb-3 mb-sm-0">
-                            <input type="submit" name="txtSubmit" value="Submit" />
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</center>
-
+    </center>
+</div>

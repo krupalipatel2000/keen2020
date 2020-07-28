@@ -83,7 +83,51 @@
         return true;
     }
 </script>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
 
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/form1.jpg");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
 
 <center>
     <div class="p-2">
@@ -91,63 +135,65 @@
             <div class="card-header py-3">
                 <center><h4 class="m-0 font-weight-bold text-primary">Add Address</h4></center>
             </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-md-12 offset-1 p-3">
-                            <div class="form-group row">
-                                <div class="col-md-10 mb-3 mb-sm-0">
-                                    <select name="addtype" class="form-control form-control-user">
-                                        <option value="">Select Address Type &nbsp;&nbsp;</option>
-                                        <option value="H"> Home &nbsp;&nbsp;</option>
-                                        <option value="O"> Office &nbsp;&nbsp;</option>
-                                    </select>
+            <div class="bg-img">
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-12 offset-1 p-3">
+                                <div class="form-group row">
+                                    <div class="col-md-10 mb-3 mb-sm-0">
+                                        <select name="addtype" class="form-control form-control-user">
+                                            <option value="">Select Address Type &nbsp;&nbsp;</option>
+                                            <option value="H"> Home &nbsp;&nbsp;</option>
+                                            <option value="O"> Office &nbsp;&nbsp;</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-5 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control" name="txtHouseNo" placeholder="House No">
+                                <div class="form-group row">
+                                    <div class="col-md-5 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control" name="txtHouseNo" placeholder="House No">
+                                    </div>
+                                    <div class="col-md-5 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control" name="txtLandmark" placeholder="Landmark">
+                                    </div>
                                 </div>
-                                <div class="col-md-5 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control" name="txtLandmark" placeholder="Landmark">
+                                <div class="form-group row">
+                                    <div class="col-sm-10 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control" name="txtArea" placeholder="Area">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control" name="txtArea" placeholder="Area">
+                                <div class="form-group row">
+                                    <div class="col-sm-10 mb-3 mb-sm-0">
+                                        <textarea cols="20" rows="3" class="form-control" name="txtAddress" placeholder="Address"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10 mb-3 mb-sm-0">
-                                    <textarea cols="20" rows="3" class="form-control" name="txtAddress" placeholder="Address"></textarea>
+                                <div class="form-group row">
+                                    <div class="col-sm-10 mb-3 mb-sm-0">
+                                        @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10 mb-3 mb-sm-0">
-                                    @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                                <div class="form-group row">
+                                    <div class="col-sm-5 mb-3 mb-sm-0" id="divstate">
+                                        <select id="ddState" name="ddState" class="form-control"></select>
+                                    </div>
+                                    <div class="col-sm-5 mb-3 mb-sm-0" id="divcity">
+                                        <select id="ddCity" name="ddCity" class="form-control"></select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-5 mb-3 mb-sm-0" id="divstate">
-                                    <select id="ddState"    name="ddState" class="form-control"></select>
+                                <div class="form-group row">
+                                    <div class="col-sm-10 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control" name="txtZip" placeholder="Zip Code">
+                                    </div>
                                 </div>
-                                <div class="col-sm-5 mb-3 mb-sm-0" id="divcity">
-                                    <select id="ddCity" name="ddCity" class="form-control"></select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control" name="txtZip" placeholder="Zip Code">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10 mb-3 mb-sm-0">
-                                    <input type="submit" class="btn btn-primary" value="Submit" onclick="return validate();">
+                                <div class="form-group row">
+                                    <div class="col-sm-10 mb-3 mb-sm-0">
+                                        <input type="submit" class="btn btn-primary" value="Submit" onclick="return validate();">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

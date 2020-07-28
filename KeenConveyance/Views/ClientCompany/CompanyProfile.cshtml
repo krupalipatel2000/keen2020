@@ -64,28 +64,28 @@
                         </div>
                         <div class="col-md-6">
                             <div class="row">
-                                <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName)'s Profile</h1>
+                                <h1 class="alert-light">@Html.DisplayFor(model => model.CompanyName) Transportation Company's Profile</h1>
                             </div>
                             <div class="row">
-                                <h4>@Html.DisplayFor(model => model.CompanyEmail)</h4>
+                                <h4 class="fa fa-envelope" style="font-size:30px;">&nbsp;@Html.DisplayFor(model => model.CompanyEmail)</h4>
                             </div>
                             <div class="row">
-                                <h4>@Html.DisplayFor(model => model.CompanyPhNo)</h4>
+                                <h4 class="fa fa-phone" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.CompanyPhNo)</h4>
                             </div>
                             <div class="row">
-                                <h4>@Html.DisplayFor(model => model.ContactPersonName)</h4>
+                                <h4 class="fa fa-user" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.ContactPersonName)</h4>
                             </div>
                             <div class="row">
-                                <h4>@Html.DisplayFor(model => model.ContactPersonNo)</h4>
+                                <h4 class="fa fa-mobile" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.ContactPersonNo)</h4>
                             </div>
                             <div class="row">
-                                <h4>@Html.DisplayFor(model => model.WebURL)</h4>
+                                <h4 class="fa fa-globe" style="font-size:25px;">&nbsp;@Html.DisplayFor(model => model.WebURL)</h4>
                             </div>
                             @foreach (var item in ViewBag.address)
                             {
-                                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                                    @item.HouseNo, @item.Landmark, @item.Area, @item.Address
-                                </h5>
+                            <h5 class="fa fa-home" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;font-size:25px;">
+                                &nbsp;@item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                            </h5>
                             }
                             @if (Session["CompanyId"] != null)
                             {
@@ -156,11 +156,11 @@
 
 <div class="row offset-1 py-3">
     <center>
-        <h2 class="m-0 font-weight-bold text-dark">
-            Company's PriceList
+        <h2 style="color:blue;font-size:40px;">
+            <u>@ViewBag.CompanyName Transportation Company's PriceList</u>
         </h2>
         <br />
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-striped" style="width:1200px;">
             <tr>
                 <th>Unit Name</th>
                 <th>Minimum Value</th>
@@ -220,7 +220,7 @@
             <center>
 
                 <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                    @ViewBag.User
+                    @ViewBag.Name
 
                     <br />
                 @item.Rate

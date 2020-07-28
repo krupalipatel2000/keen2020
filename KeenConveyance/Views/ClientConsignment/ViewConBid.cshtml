@@ -4,46 +4,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card-deck">
-    @foreach (var item in Model)
-    {
-        <div class="row">
-            <div class="col-md-5">
-                <div class="p-2 offset-1">
-                    <div class="card shadow mb-4" style="width:500px;height:200px;">
-                        <div class="card-header py-3">
-                            <center><h4 class="m-0 font-weight-bold text-primary">Consignment's Bid</h4></center>
-                        </div>
-
-                        @*<h1> @ViewBag.Con. </h1>*@
-
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h5 class="alert-light">Company Name : </h5>
-                                </div>
-                                <div class="col-md-3">
-                                    <h5 class="alert-light">Bid Amount : </h5>
-                                </div>
-                                <div class="col-md-3">
-                                    <h5 class="alert-light">Estimated Delivery : </h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h5 class="alert-light"><a href="@Url.Action("ViewCom", "ClientUser", new { id = item.company.CompanyId })">@item.company.CompanyName</a></h5>
-                                </div>
-                                <div class="col-md-3">
-                                    <h5 class="alert-light">@item.bid.BidAmount</h5>
-                                </div>
-                                <div class="col-md-3">
-                                    <h5 class="alert-light">@item.bid.EstimatedDelivery</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="row py-2">
+    <div class="col-md-7">
+        <div class="p-2 offset-1">
+            <div class="card shadow mb-4" style="width:1300px;">
+                <div class="card-header py-3">
+                    <center><h1 class="m-0 font-weight-bold text-primary">User's Consignment</h1></center>
                 </div>
+
+                @foreach (var item in Model)
+                {
+
+                    @*<h1> @ViewBag.Con. </h1>*@
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5 class="alert-light">Company Name : @item.company.CompanyName</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <h5 class="alert-light">Bid Amount : @item.bid.BidAmount</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <h5 class="alert-light">Estimated Delivery : @item.bid.EstimatedDelivery</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <center><a href="@Url.Action("ViewCom", "ClientUser", new { id = item.company.CompanyId })" class="btn btn-success offset-10">View Company</a></center>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                }
             </div>
         </div>
-    }
+    </div>
 </div>

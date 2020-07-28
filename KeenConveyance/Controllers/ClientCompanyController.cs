@@ -161,6 +161,7 @@ namespace KeenConveyance.Controllers
             if (id != 0)
             {
                 tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
+                
                 //ViewBag.House = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().HouseNo;
                 //ViewBag.Landmark = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Landmark;
                 //ViewBag.Area = (from ob in dc.tblAddresses where ob.CompanyId == com.CompanyId select ob).Take(1).SingleOrDefault().Area;
@@ -171,6 +172,7 @@ namespace KeenConveyance.Controllers
 
                 ViewBag.Bids = (from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob).Count();
                 var CompanyId = Convert.ToInt32(Session["CompanyId"]);
+                ViewBag.CompanyName = (from ob in dc.tblTransportCompanies where ob.CompanyId == CompanyId select ob).Take(1).SingleOrDefault().CompanyName;
                 var AcceptedBid = from obBid in dc.tblBiddings
                                   join obBook in dc.tblBookings on obBid.BidId equals obBook.BidId
                                   where obBid.CompanyId == CompanyId
@@ -188,9 +190,10 @@ namespace KeenConveyance.Controllers
                            where ob.CompanyId == com.CompanyId
                            select ob;
                 ViewBag.Rate = rate;
-                var user = (from ob in dc.tblReviews select ob).Take(1).SingleOrDefault().UserId;
-                var name = (from obUser in dc.tblUsers where obUser.UserId == user select obUser).Take(1).SingleOrDefault().FirstName;
-                ViewBag.User = name;
+                
+                //tblReview user = dc.tblReviews.SingleOrDefault(ob=>ob.ReviewId==);
+                //tblUser username = dc.tblUsers.SingleOrDefault(ob => ob.UserId == user.UserId);
+                //ViewBag.Name = username.FirstName;
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
 
@@ -329,11 +332,8 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult AddVehicle()
         {
-
-            var vehicles = from ob in dc.tblVehicles
-                           join ob2 in dc.tblVehicleTypes on ob.VehicleTypeId equals ob2.VehicleTypeId
-                           select ob2;
-            ViewBag.vehicle = vehicles;
+            var vehicles = from obVehicle in dc.tblVehicleTypes select obVehicle;
+            ViewBag.vehicle = new SelectList(vehicles, "VehicleTypeId", "TypeName");
             return View();
         }
         [HttpPost]
@@ -420,25 +420,31 @@ namespace KeenConveyance.Controllers
         }
         public ActionResult bill(int id)
         {
+            tblBooking booking = dc.tblBookings.SingleOrDefault(ob => ob.BookingId == id);
+            ViewBag.TotalPrice = booking.TotalPayment;
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
             return View(bill);
         }
         [HttpPost]
         public ActionResult bill(FormCollection form, int id)
         {
-            var user = from ob in dc.tblBookings
-                       join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
-                       join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
-                       select obUser;
+            //var user = from ob in dc.tblBookings
+            //           join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
+            //           join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
+            //           select obUser;
+            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BookingId == id);
+            tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == book.ConsignmentId);
+            tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == con.UserId);
+
             var com = Convert.ToInt32(Session["CompanyId"]);
-            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == com select ob).Take(1).SingleOrDefault().CompanyName;
+            tblTransportCompany Company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == com);
+            ViewBag.Company = Company.CompanyName;
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
-            var price= Convert.ToInt32(Session["Price"]);
             tblBill bill = new tblBill();
             bill.BookingId = id;
-            bill.UserId = Convert.ToInt32(user.First().UserId);
+            bill.UserId = Convert.ToInt32(user.UserId);
             bill.Desc = form["txtDesc"];
-            bill.Price = price;
+            bill.Price = ViewBag.TotalPrice;
             bill.TollTax = Convert.ToInt32(form["txtToll"]);
             bill.GST = (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
             bill.TotalPrice = Convert.ToInt32(form["txtPrice"]) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
