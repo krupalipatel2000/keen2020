@@ -83,9 +83,9 @@
                             </div>
                             @foreach (var item in ViewBag.address)
                             {
-                            <h5 class="fa fa-home" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;font-size:25px;">
-                                &nbsp;@item.HouseNo, @item.Landmark, @item.Area, @item.Address
-                            </h5>
+                                <h5 class="fa fa-home" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;font-size:25px;">
+                                    &nbsp;@item.HouseNo, @item.Landmark, @item.Area, @item.Address
+                                </h5>
                             }
                             @if (Session["CompanyId"] != null)
                             {
@@ -183,55 +183,58 @@
 
 
 @*<!-- Red -->
-<div class="progress">
-    <div class="progress-bar bg-danger" style="width:50%"></div>
-</div>
-<br />
-<!-- Orange -->
-<div class="progress">
-    <div class="progress-bar bg-warning" style="width:40%"></div>
-</div>
-<br />
-<!-- Turquoise -->
-<div class="progress">
-    <div class="progress-bar bg-info" style="width:30%"></div>
-</div>
-<br />
-<!-- Green -->
-<div class="progress">
-    <div class="progress-bar bg-success" style="width:20%"></div>
-</div>
-<br />
-<!-- Blue -->
-<div class="progress">
-    <div class="progress-bar" style="width:10%"></div>
-</div>*@
+    <div class="progress">
+        <div class="progress-bar bg-danger" style="width:50%"></div>
+    </div>
+    <br />
+    <!-- Orange -->
+    <div class="progress">
+        <div class="progress-bar bg-warning" style="width:40%"></div>
+    </div>
+    <br />
+    <!-- Turquoise -->
+    <div class="progress">
+        <div class="progress-bar bg-info" style="width:30%"></div>
+    </div>
+    <br />
+    <!-- Green -->
+    <div class="progress">
+        <div class="progress-bar bg-success" style="width:20%"></div>
+    </div>
+    <br />
+    <!-- Blue -->
+    <div class="progress">
+        <div class="progress-bar" style="width:10%"></div>
+    </div>*@
 
 
 <div class="row offset-1">
-    <h4 class="m-0 font-weight-bold text-dark">
-        Company's Review & Rating
-    </h4>
-    <br />
+    <center>
+        <h3 class="m-0 font-weight-bold text-dark">
+            Company's Review & Rating
+        </h3>
+    </center>
+</div>
+<br />
+<div class="offset-1">
     @foreach (var item in ViewBag.Rate)
     {
-        <br />
-        <div class="col-md-6">
-            <center>
-
-                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
-                    @ViewBag.Name
-
-                    <br />
-                @item.Rate
-                    <br />
-                    @item.Review
-                </h5><br />
-            </center>
+        <div class="row">
+            <img src="~/Images/@item.user.ProfilePic" style="height:50px;width:50px;" />
         </div>
-        <br />
+        <div class="row">
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                @item.user.FirstName
+                <br />
+                @item.review.Rate
+                <br />
+                @item.review.Review
+            </h5>
+        </div>
+        <hr />
     }
-    <br />
 </div>
+<br />
+
 
 

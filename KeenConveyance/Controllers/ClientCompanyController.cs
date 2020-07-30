@@ -188,15 +188,15 @@ namespace KeenConveyance.Controllers
                 var rate = from ob in dc.tblReviews
                            join obUser in dc.tblUsers on ob.UserId equals obUser.UserId
                            where ob.CompanyId == com.CompanyId
-                           select ob;
+                           select new JoinViewAll
+                           {
+                               review = ob,
+                               user = obUser
+                           };
                 ViewBag.Rate = rate;
                 
-                //tblReview user = dc.tblReviews.SingleOrDefault(ob=>ob.ReviewId==);
-                //tblUser username = dc.tblUsers.SingleOrDefault(ob => ob.UserId == user.UserId);
-                //ViewBag.Name = username.FirstName;
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
-
                 return View(com);
             }
             else
@@ -435,10 +435,9 @@ namespace KeenConveyance.Controllers
             tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BookingId == id);
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == book.ConsignmentId);
             tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == con.UserId);
-
+            
             var com = Convert.ToInt32(Session["CompanyId"]);
-            tblTransportCompany Company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == com);
-            ViewBag.Company = Company.CompanyName;
+            
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
             tblBill bill = new tblBill();
             bill.BookingId = id;

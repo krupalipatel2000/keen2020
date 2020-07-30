@@ -38,6 +38,7 @@ namespace KeenConveyance.Controllers
             inquiry.FirstName = form["txtName"];
             inquiry.EmailId = form["txtEmail"];
             inquiry.ContactNo = form["txtContact"];
+            inquiry.Subject = form["txtSubject"];
             inquiry.Desc = form["txtMessage"];
             inquiry.CreatedOn = DateTime.Now;
             inquiry.IsReplied = false;
