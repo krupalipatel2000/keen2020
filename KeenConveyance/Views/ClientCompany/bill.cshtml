@@ -44,3 +44,46 @@
     </form>
 </body>
 </html>
+
+<div class="card shadow mb-4">
+    
+    <div class="card-body">
+        <div class="row">
+            <h1 class="text text-primary"><b>@ViewBag.Companyname Transportation Company</b></h1>
+        </div>
+        <hr />
+        <div class="row">
+            <img src="~/Images/weburl.png" style="height:50px;width:50px" />
+            <h3 class="text text-dark"><b>&nbsp;@ViewBag.weburl</b></h3>
+        </div>
+        <div class="row">
+            <h3>Name : <b>@ViewBag.FirstName</b></h3>
+        </div>
+        <div class="row">
+            <h3>Contact Number : <b>@ViewBag.cno</b></h3>
+        </div>
+        <br />
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Description</b></td>
+                        <td><b>Price</b></td>
+                        <td><b>Toll Tax</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td height="300px;">
+                            <textarea cols="50" rows="10" style="border:hidden;" name="txtDesc"></textarea>
+                        </td>
+                        <td>@ViewBag.TotalPrice</td>
+                        <td height="300px;">
+                            <input type="text" style="border:hidden;" name="txtToll" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

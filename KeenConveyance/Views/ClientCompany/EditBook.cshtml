@@ -68,6 +68,51 @@
             return true;
         }
 </script>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../../Images/form1.jpg");
+            /* Control the height of the image */
+            min-height: 380px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Add styles to the form container */
+        /*.container {
+            position: relative;
+            right: 0;
+            margin-left: 300px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }*/
+        .user {
+            position: relative;
+            right: 0;
+            margin: 20px;
+            max-width: 1000px;
+            padding: 16px;
+            background-color: transparent;
+        }
+        /*.btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 25%;
+            opacity: 0.9;
+        }*/
+    </style>
+</head>
 
 <center>
     <div class="p-2">
@@ -75,95 +120,97 @@
             <div class="card-header py-3">
                 <center><h4 class="m-0 font-weight-bold text-primary">Booking Detail</h4></center>
             </div>
-            <div class="card-body">
-                <form class="user" method="post" name="registration" enctype="multipart/form-data">
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Driver Name:
-                                </b>
-                            </label>
+            <div class="bg-img">
+                <div class="card-body">
+                    <form class="user" method="post" name="registration" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Driver Name:
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownList("ddDriver", ViewBag.driver as SelectList, "Select Driver", new { @class = "form-control" })
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            @Html.DropDownList("ddDriver", ViewBag.driver as SelectList, "Select Driver", new { @class = "form-control" })
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Vehicle Name :
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownList("ddVehicle", ViewBag.vehicle as SelectList, "Select Vehicle", new { @class = "form-control" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Vehicle Name :
-                                </b>
-                            </label>
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Dispatch Date :
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="date" name="txtDispatch" class="form-control" required />
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            @Html.DropDownList("ddVehicle", ViewBag.vehicle as SelectList, "Select Vehicle", new { @class = "form-control" })
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Delivered Date :
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="date" name="txtDeliver" class="form-control" required />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Dispatch Date :
-                                </b>
-                            </label>
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Total Payment :
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="number" name="txtPayment" class="form-control" placeholder="Enter payment" />
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <input type="date" name="txtDispatch" class="form-control" required />
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Payment Mode :
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" name="txtPaymentMode" class="form-control" placeholder="Enter payment mode" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Delivered Date :
-                                </b>
-                            </label>
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label>
+                                    <b style="color:black">
+                                        Remarks :
+                                    </b>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" name="txtRemark" class="form-control" placeholder="Enter remarks" />
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <input type="date" name="txtDeliver" class="form-control" required />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Total Payment :
-                                </b>
-                            </label>
-                        </div>
-                        <div class="col-md-5">
-                            <input type="number" name="txtPayment" class="form-control" placeholder="Enter payment" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Payment Mode :
-                                </b>
-                            </label>
-                        </div>
-                        <div class="col-md-5">
-                            <input type="text" name="txtPaymentMode" class="form-control" placeholder="Enter payment mode" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <label>
-                                <b style="color:black">
-                                    Remarks :
-                                </b>
-                            </label>
-                        </div>
-                        <div class="col-md-5">
-                            <input type="text" name="txtRemark" class="form-control" placeholder="Enter remarks" />
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Assign" onclick="return validate();" />
-                    @*<a href="@Url.Action("bill","ClientCompany",new { id = Model.BookingId })" class="btn btn-primary">Assign</a>*@
-                </form>
+                        <input type="submit" class="btn btn-primary" value="Assign" onclick="return validate();" />
+                        @*<a href="@Url.Action("bill","ClientCompany",new { id = Model.BookingId })" class="btn btn-primary">Assign</a>*@
+                    </form>
+                </div>
             </div>
         </div>
     </div>

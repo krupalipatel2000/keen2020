@@ -437,13 +437,17 @@ namespace KeenConveyance.Controllers
             tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == con.UserId);
             
             var com = Convert.ToInt32(Session["CompanyId"]);
-            
+            tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == com);
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
             tblBill bill = new tblBill();
+            ViewBag.FirstName = user.FirstName;
+            ViewBag.Companyname = company.CompanyName;
+            ViewBag.weburl = company.WebURL;
+            ViewBag.Cno = company.ContactPersonNo;
             bill.BookingId = id;
             bill.UserId = Convert.ToInt32(user.UserId);
             bill.Desc = form["txtDesc"];
-            bill.Price = ViewBag.TotalPrice;
+            bill.Price = Convert.ToInt32(book.TotalPayment);
             bill.TollTax = Convert.ToInt32(form["txtToll"]);
             bill.GST = (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
             bill.TotalPrice = Convert.ToInt32(form["txtPrice"]) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
@@ -459,6 +463,13 @@ namespace KeenConveyance.Controllers
             var Bid = from ob in dc.tblBiddings where ob.CompanyId == com.CompanyId select ob;
             ViewBag.bid = Bid;
             return View(com);
+        }
+        public ActionResult DeleteBid(int id1)
+        {
+            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.BidId == id1);
+            dc.tblBiddings.Remove(bid);
+            dc.SaveChanges();
+            return RedirectToAction("ComBidding", "ClientCompany");
         }
         //public ActionResult Track()
         //{

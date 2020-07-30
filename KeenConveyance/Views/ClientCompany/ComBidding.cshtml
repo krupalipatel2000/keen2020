@@ -23,10 +23,8 @@
                                     BidAmount : @item.BidAmount <br />
                                     EstimatedDelivery : @item.EstimatedDelivery <br />
                                 </h5>
-                                <a href="@Url.Action("ComConsignment","ClientConsignment", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary">
-                                    Edit
-                                </a>&nbsp;
-                                <a href="@Url.Action("AddBid","ClientCompany", new { id = item.ConsignmentId , id1 = item.BidId })" class="btn btn-outline-primary">
+                                
+                                <a href="@Url.Action("DeleteBid","ClientCompany", new { id1 = item.BidId })" class="btn btn-outline-primary">
                                     Delete
                                 </a>
                                 @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
