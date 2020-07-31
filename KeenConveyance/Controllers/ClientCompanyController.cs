@@ -428,14 +428,15 @@ namespace KeenConveyance.Controllers
         [HttpPost]
         public ActionResult bill(FormCollection form, int id)
         {
-            //var user = from ob in dc.tblBookings
-            //           join obCon in dc.tblConsignments on ob.ConsignmentId equals obCon.ConsignmentId
-            //           join obUser in dc.tblUsers on obCon.UserId equals obUser.UserId
-            //           select obUser;
+            
             tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BookingId == id);
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == book.ConsignmentId);
             tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserId == con.UserId);
-            
+            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.BidId == book.BidId);
+            ViewBag.UserName = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
+            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().CompanyName;
+            ViewBag.Weburl = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().WebURL;
+            ViewBag.Contact = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().ContactPersonNo;
             var com = Convert.ToInt32(Session["CompanyId"]);
             tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == com);
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
