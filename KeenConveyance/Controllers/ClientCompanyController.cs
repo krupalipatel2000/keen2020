@@ -421,7 +421,7 @@ namespace KeenConveyance.Controllers
         public ActionResult bill(int id)
         {
             tblBooking booking = dc.tblBookings.SingleOrDefault(ob => ob.BookingId == id);
-            ViewBag.TotalPrice = booking.TotalPayment;
+            ViewBag.Price = booking.TotalPayment;
             tblBill bill = dc.tblBills.SingleOrDefault(ob => ob.BookingId == id);
             return View(bill);
         }
@@ -440,17 +440,13 @@ namespace KeenConveyance.Controllers
             tblTransportCompany company = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == com);
             //ViewBag.Bill = (from ob in dc.tblBookings where ob.BookingId == id select ob).Take(1).SingleOrDefault().TotalPayment;
             tblBill bill = new tblBill();
-            ViewBag.FirstName = user.FirstName;
-            ViewBag.Companyname = company.CompanyName;
-            ViewBag.weburl = company.WebURL;
-            ViewBag.Cno = company.ContactPersonNo;
             bill.BookingId = id;
             bill.UserId = Convert.ToInt32(user.UserId);
             bill.Desc = form["txtDesc"];
             bill.Price = Convert.ToInt32(book.TotalPayment);
             bill.TollTax = Convert.ToInt32(form["txtToll"]);
-            bill.GST = (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
-            bill.TotalPrice = Convert.ToInt32(form["txtPrice"]) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(form["txtPrice"]) * 18) / 100;
+            bill.GST = (Convert.ToInt32(book.TotalPayment) * 18) / 100;
+            bill.TotalPrice = Convert.ToInt32(book.TotalPayment) + Convert.ToInt32(form["txtToll"]) + (Convert.ToInt32(book.TotalPayment) * 18) / 100;
             bill.CompanyId = Convert.ToInt32(Session["CompanyId"]);
             bill.CreatedOn = DateTime.Now;
             dc.tblBills.Add(bill);

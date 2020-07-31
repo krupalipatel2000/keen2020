@@ -2845,6 +2845,7 @@
     <Content Include="Views\ClientService\ColdStorage.cshtml" />
     <Content Include="Views\ClientCompany\Track.cshtml" />
     <Content Include="Views\VisitorCompany\Index.cshtml" />
+    <Content Include="Views\ClientUser\ViewBill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

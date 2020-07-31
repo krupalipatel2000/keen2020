@@ -247,6 +247,27 @@ namespace KeenConveyance.Controllers
             ViewBag.bid = Bid;
             return View(com);
         }
+        public ActionResult ViewBill(int id)
+        {
+            tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
+            ViewBag.UserName = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
+            string Name = ViewBag.UserName;
+            
+            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == con.ConsignmentId);
+            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BidId == bid.BidId);
+            ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().CompanyName;
+            ViewBag.Weburl = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().WebURL;
+            ViewBag.Contact = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().ContactPersonNo;
+            ViewBag.Desc = (from ob in dc.tblBills where ob.BookingId == book.BookingId select ob).Take(1).SingleOrDefault().Desc;
+            ViewBag.Price = (from ob in dc.tblBills where ob.BookingId == book.BookingId select ob).Take(1).SingleOrDefault().Price;
+            ViewBag.Tolltax = (from ob in dc.tblBills where ob.BookingId == book.BookingId select ob).Take(1).SingleOrDefault().TollTax;
+            ViewBag.GST = (from ob in dc.tblBills where ob.BookingId == book.BookingId select ob).Take(1).SingleOrDefault().GST;
+            ViewBag.TotalPrice = (from ob in dc.tblBills where ob.BookingId == book.BookingId select ob).Take(1).SingleOrDefault().TotalPrice;
+            string Company = ViewBag.Company;
+            string weburl = ViewBag.Weburl;
+            string cno = ViewBag.Contact;
+            return View(con);
+        }
     }
 
 }
