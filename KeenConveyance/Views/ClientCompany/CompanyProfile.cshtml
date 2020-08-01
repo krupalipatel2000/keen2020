@@ -180,6 +180,69 @@
     </center>
 </div>
 
+<div class="row offset-1 py-3">
+    <center>
+        <h2 style="color:blue;font-size:40px;">
+            <u>@ViewBag.CompanyName Transportation Company's Drivers</u>
+        </h2>
+        <br />
+        <table class="table table-hover table-bordered table-striped" style="width:1200px;">
+            <tr>
+                <th>Driver Name</th>
+                <th>ContactNo</th>
+                <th>EmailId</th>
+                <th>LicenseNo</th>
+                <th>AadharcardNo</th>
+                <th>IsActive</th>
+                <th>Image</th>
+            </tr>
+            @foreach (var item in ViewBag.Driver)
+            {
+                <tr>
+                    <td>@item.DriverName</td>
+                    <td>@item.ContactNo</td>
+                    <td>@item.EmailId</td>
+                    <td>@item.LicenseNo</td>
+                    <td>@item.AadharcardNo</td>
+                    <td>@item.IsActive</td>
+                    <td><img src="~/Images/@item.ImageURL" class="img-thumbnail" style="height:100px;width:100px;" /></td>
+                </tr>
+            }
+        </table>
+    </center>
+</div>
+
+<div class="row offset-1 py-3">
+    <center>
+        <h2 style="color:blue;font-size:40px;">
+            <u>@ViewBag.CompanyName Transportation Company's Vehicles</u>
+        </h2>
+        <br />
+        <table class="table table-hover table-bordered table-striped" style="width:1200px;">
+            <tr>
+                <th>Vehicle Name</th>
+                <th>Registration Number</th>
+                <th>Document Image</th>
+                <th>Type of Fuel</th>
+                <th>Capacity of Vehicle</th>
+                <th>IsActive</th>
+                <th>Image</th>
+            </tr>
+            @foreach (var item in ViewBag.Vehicle)
+            {
+            <tr>
+                <td>@item.VehicleName</td>
+                <td>@item.RegNo</td>
+                <td><img src="~/Images/@item.DocumentImage" class="img-thumbnail" style="height:100px;width:100px;" /></td>
+                <td>@item.Fuel</td>
+                <td>@item.Capacity</td>
+                <td>@item.IsActive</td>
+                <td><img src="~/Images/@item.Image" class="img-thumbnail" style="height:100px;width:100px;" /></td>
+            </tr>
+            }
+        </table>
+    </center>
+</div>
 
 
 @*<!-- Red -->

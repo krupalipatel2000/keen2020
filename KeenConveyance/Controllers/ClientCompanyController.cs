@@ -194,7 +194,10 @@ namespace KeenConveyance.Controllers
                                user = obUser
                            };
                 ViewBag.Rate = rate;
-                
+                var Driver = from ob in dc.tblDrivers where ob.CompanyId == com.CompanyId select ob;
+                var Vehicle = from ob in dc.tblVehicles where ob.CompanyId == com.CompanyId select ob;
+                ViewBag.Driver = Driver;
+                ViewBag.Vehicle = Vehicle;
                 ViewBag.PriceList = PL;
                 ViewBag.address = Address;
                 return View(com);
