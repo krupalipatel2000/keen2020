@@ -39,7 +39,7 @@ namespace KeenConveyance.Controllers
         {
             if (usertype == "U")
             {
-                tblUser user = (from ob in dc.tblUsers where ob.EmailId == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
+                tblUser user = (from ob in dc.tblUsers where ob.EmailId == txtEmail && ob.Password == txtPwd && ob.IsActive == true select ob).Take(1).SingleOrDefault();
                 if (user != null)
                 {
                     //Session["UserId"] = user.FirstName;
@@ -63,7 +63,7 @@ namespace KeenConveyance.Controllers
             }
             else
             {
-                tblTransportCompany com = (from ob in dc.tblTransportCompanies where ob.CompanyEmail == txtEmail && ob.Password == txtPwd select ob).Take(1).SingleOrDefault();
+                tblTransportCompany com = (from ob in dc.tblTransportCompanies where ob.CompanyEmail == txtEmail && ob.Password == txtPwd && ob.IsActive == true select ob).Take(1).SingleOrDefault();
                 if (com != null)
                 {
                     //Session["UserId"] = com.CompanyName;
