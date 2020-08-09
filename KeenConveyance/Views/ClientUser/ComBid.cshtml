@@ -26,9 +26,7 @@
                                         BidAmount : @item.bid.BidAmount <br />
                                         EstimatedDelivery : @item.bid.EstimatedDelivery <br />
                                     </h5>
-                                    <a href="@Url.Action("AddBid", "ClientCompany", new { id = item.consignment.ConsignmentId, id1 = item.bid.BidId })" class="btn btn-outline-primary">
-                                        Accept
-                                    </a>&nbsp;
+                                    &nbsp;
                                     @*<input type="submit" value="Accept" class="btn btn-primary" onclick='alert("Your bid is accepted")'; />*@
                                 </div>
                             </div>

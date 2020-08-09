@@ -168,31 +168,16 @@ namespace KeenConveyance.Controllers
             ViewBag.PriceList = PL;
             return View(com);
         }
-        public ActionResult ComBid(int id)
-        {
-            tblTransportCompany com = dc.tblTransportCompanies.SingleOrDefault(ob => ob.CompanyId == id);
-            var user = Convert.ToInt32(Session["LogID"]);
-            var Bid = from ob in dc.tblUsers
-                      join obCon in dc.tblConsignments on ob.UserId equals obCon.UserId
-                      join obBid in dc.tblBiddings on obCon.ConsignmentId equals obBid.ConsignmentId
-                      where ob.UserId == user
-                      select new JoinViewAll
-                      {
-                          user = ob,
-                          consignment = obCon,
-                          bid = obBid
-                      };
-            ViewBag.bid = Bid;
-            return View(com);
-        }
+        
         public ActionResult ViewBill(int id)
         {
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
             ViewBag.UserName = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
             string Name = ViewBag.UserName;
             
-            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == con.ConsignmentId);
-            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.BidId == bid.BidId);
+            
+            tblBooking book = dc.tblBookings.SingleOrDefault(ob => ob.ConsignmentId == con.ConsignmentId);
+            tblBidding bid = dc.tblBiddings.SingleOrDefault(ob => ob.BidId == book.BidId);
             ViewBag.Company = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().CompanyName;
             ViewBag.Weburl = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().WebURL;
             ViewBag.Contact = (from ob in dc.tblTransportCompanies where ob.CompanyId == bid.CompanyId select ob).Take(1).SingleOrDefault().ContactPersonNo;

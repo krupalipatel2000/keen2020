@@ -97,6 +97,7 @@ namespace KeenConveyance.Controllers
             con.ReceiverName = form["txtName"];
             con.ReceiverContactNo = form["txtCno"];
             con.ReceiverPinNo = Convert.ToInt32(form["txtPin"]);
+            con.IsActive = true;
             con.IsProcessed = false;
             dc.SaveChanges();
             return RedirectToAction("Insert3", "ClientConsignment");
@@ -221,6 +222,15 @@ namespace KeenConveyance.Controllers
         public ActionResult ComConsignment(int id)
         {
             tblConsignment con = dc.tblConsignments.SingleOrDefault(ob => ob.ConsignmentId == id);
+            int distance = Convert.ToInt32(con.Distance);
+            var tblPricelist = from ob in dc.tblPriceLists where ob.UnitName == con.UnitType || ob.UnitName == "KM" select ob;
+            double AvgDistancePrice = (from ob in tblPricelist where ob.UnitName == "KM" && ob.MinValue <= distance && ob.MaxValue >= distance select ob).Average(ob => ob.PricePerUnit);
+            double AvgUnitPrice = (from ob in tblPricelist where ob.UnitName == con.UnitType select ob).Average(ob => ob.PricePerUnit);
+            double MaxDistancePrice = AvgDistancePrice * Convert.ToInt32(con.Distance);
+            double MaxUnitPrice = AvgUnitPrice * Convert.ToInt32(con.UnitValue);
+            double CalculatedValue = MaxDistancePrice + MaxUnitPrice;
+            ViewBag.Budgets = CalculatedValue;
+
             ViewBag.User = (from ob in dc.tblUsers where ob.UserId == con.UserId select ob).Take(1).SingleOrDefault().FirstName;
             ViewBag.House = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().HouseNo;
             ViewBag.Landmark = (from ob in dc.tblAddresses where ob.AddressId == con.SourceId select ob).Take(1).SingleOrDefault().Landmark;

@@ -9,7 +9,7 @@
         <div class="p-2 offset-1">
             <div class="card shadow mb-4" style="width:1300px;">
                 <div class="card-header py-3">
-                    <center><h1 class="m-0 font-weight-bold text-primary">User's Consignment</h1></center>
+                    <center><h1 class="m-0 font-weight-bold text-primary">Consignment's Bids</h1></center>
                 </div>
 
                 @foreach (var item in Model)
@@ -30,8 +30,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <center><a href="@Url.Action("ViewCom", "ClientUser", new { id = item.company.CompanyId })" class="btn btn-success offset-10">View Company</a></center>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="@Url.Action("AddBid", "ClientCompany", new { id = item.bid.ConsignmentId , id1 = item.bid.BidId })" class="btn btn-outline-primary">
+                                    Accept Bid
+                                </a>
                             </div>
                         </div>
                         <hr />

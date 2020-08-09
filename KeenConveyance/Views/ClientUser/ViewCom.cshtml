@@ -18,16 +18,19 @@
             top: 8px;
             left: 70px;
         }
+
         .bottom-left {
             position: absolute;
             bottom: -7px;
             left: 170px;
         }
+
         .bottom-right {
             position: absolute;
             bottom: -7px;
             right: 180px;
         }
+
         .centered {
             position: absolute;
             bottom: -25px;
@@ -41,7 +44,7 @@
     <div class="top-left"><h2 class="alert-light" style="background-color:black;color:white;"><span>@Html.DisplayFor(model => model.CompanyName) Transportation Company</span></h2></div>
     <div class="bottom-left"><a href="@Url.Action("CompanyDetail","ClientUser",new { id = Model.CompanyId })" class="btn btn-primary">View Company Detail</a></div>
     <div class="bottom-right"><a href="@Url.Action("PriceList","ClientUser",new { id=Model.CompanyId})" class="btn btn-primary">Company's Pricelist</a></div>
-    <div class="centered"><a href="@Url.Action("ComBid","ClientUser",new { id=Model.CompanyId})" class="btn btn-primary">Company's Bid</a></div>
+    
 </div>
 
 

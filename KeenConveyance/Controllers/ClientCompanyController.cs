@@ -242,9 +242,8 @@ namespace KeenConveyance.Controllers
             book.Remarks = form["txtRemark"];
             Session["Price"] = book.TotalPayment;
             dc.SaveChanges();
-            
 
-            tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.ConsignmentId == id);
+            tblBidding bidding = dc.tblBiddings.SingleOrDefault(ob => ob.BidId == book.BidId);
             bidding.IsAssigned = true;
             dc.SaveChanges();
 
